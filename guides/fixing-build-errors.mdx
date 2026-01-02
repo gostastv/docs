@@ -32,34 +32,28 @@ You'll need to intervene when:
     A dialog appears asking what you want to do.
   </Step>
   <Step title="Click Apply Fix">
-    Select **Apply Fix** to trigger another attempt with a fresh perspective.
-  </Step>
-  <Step title="Provide Additional Context">
-    If prompted, explain what you think is wrong. This helps the AI approach the problem differently.
+    Select **Apply Fix** — the AI will automatically analyze the error and attempt a fix.
   </Step>
 </Steps>
 
 ### What Happens Next
 
 The AI will:
-1. Re-analyze the error with fresh context
+1. Automatically analyze the error
 2. Consider approaches it hasn't tried
-3. Use your hints if provided
-4. Attempt a new fix
+3. Attempt a new fix
+
+No additional input is required — clicking Apply Fix triggers automatic fixing.
 
 ---
 
-## Providing Helpful Context
+## Providing Additional Context (Optional)
 
-The more specific you are, the better the fix.
+Clicking **Apply Fix** works automatically, but you can optionally help the AI by typing additional context in the chat.
 
-### Unhelpful Context
+### When to Provide Context
 
-- "It's broken"
-- "Fix it"
-- "I don't know what's wrong"
-
-### Helpful Context
+If Apply Fix alone isn't solving the problem, try messaging the AI with details:
 
 ```
 The error says 'user' isn't found. I think it should be
@@ -75,6 +69,8 @@ The issue might be related to the new permission code.
 The error mentions a type mismatch. The function expects
 a String but I'm passing an Int from the slider value.
 ```
+
+This is optional — most fixes work automatically without extra context.
 
 ---
 

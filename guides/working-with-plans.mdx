@@ -5,11 +5,16 @@ description: "Understand how AI plans work and manage them effectively"
 
 # Working with Plans
 
-When you ask Nativeline to build something, the AI creates a plan — a step-by-step approach to implementing your request. Understanding plans helps you work more effectively.
+When you ask Nativeline to build something, the AI creates a plan and immediately starts executing it. Understanding plans helps you follow along and work more effectively.
 
 ## What is a Plan?
 
-A plan is the AI's strategy for completing your request. It breaks down your request into specific tasks.
+A plan serves three purposes:
+1. **Internal guidance** — Helps the AI know what to do next
+2. **Memory** — Helps the AI remember what it already did
+3. **Transparency** — Shows you what's happening so you can follow along
+
+The AI creates plans and executes them automatically — there's no approval step. You can watch the progress and intervene if needed, but most of the time you just let it work.
 
 ### Example
 
@@ -132,12 +137,14 @@ Create a file called ProfileView.swift with a struct that has an @State variable
 Add a profile screen where users can edit their username and email
 ```
 
-### 2. Review the Plan Before Execution
+### 2. Watch the Plan Execute
 
-When the AI shows its plan, you can:
-- **Approve:** Just let it proceed
-- **Modify:** "Actually, don't include email, just username"
-- **Reject:** "That's not quite what I want, let me explain differently"
+The AI shows its plan as it works. You can:
+- **Let it work:** Most of the time, just watch it execute
+- **Redirect:** "Actually, don't include email, just username"
+- **Clarify:** "That's not quite what I want, let me explain differently"
+
+The AI doesn't wait for approval — it starts working immediately. But you can always interrupt if it's going in the wrong direction.
 
 ### 3. Keep Plans Focused
 

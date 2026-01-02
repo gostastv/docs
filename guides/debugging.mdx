@@ -16,8 +16,7 @@ When you see "Build Failed" in Nativeline, it means the Swift code couldn't comp
 When a build fails:
 1. The chat shows an error message
 2. The error includes the file and line number
-3. The AI automatically analyzes the error
-4. A fix is proposed
+3. The AI automatically analyzes and fixes it — no action needed from you
 
 ### Common Error Types
 
@@ -40,7 +39,7 @@ Nativeline automatically attempts to fix build errors. Here's how it works:
 ```
 Build Fails
     ↓
-Attempt 1: AI analyzes error, proposes fix
+Attempt 1: AI automatically fixes
     ↓
 Build Fails Again?
     ↓
@@ -56,6 +55,10 @@ Manual intervention needed (see below)
 ```
 
 Most errors are fixed within 1-2 attempts. Complex issues may require all 3.
+
+<Note>
+The AI detects and fixes errors automatically. It doesn't wait for your approval — it just fixes things. You only need to intervene if automatic fixing fails after 3 attempts.
+</Note>
 
 ### Watching the Process
 
@@ -81,23 +84,17 @@ If the AI can't fix the error after 3 attempts, you need to intervene.
     A popup appears asking what you want to do.
   </Step>
   <Step title="Click Apply Fix">
-    Select **Apply Fix** to trigger another fix attempt with additional context.
-  </Step>
-  <Step title="Provide Context (Optional)">
-    You can add context about what you think is wrong to help the AI.
+    Select **Apply Fix** — the AI will automatically analyze the error and fix it.
   </Step>
 </Steps>
 
-### When to Provide Context
+### Providing Context (Optional)
 
-Help the AI by explaining:
-- What you were trying to build
-- What worked before this error
-- What you think might be wrong
-- Any patterns you've noticed
+Apply Fix works automatically, but you can optionally message the AI with additional context if the automatic fix doesn't work:
 
-**Example:**
 > "I was adding a save button. The error mentions 'user' not found — I think the variable should be 'currentUser' from the login screen."
+
+Most fixes work without extra context.
 
 ---
 
