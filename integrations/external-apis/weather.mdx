@@ -1,0 +1,335 @@
+---
+title: "Weather APIs"
+description: "Add weather data to your app"
+---
+
+# Weather APIs
+
+Display current weather, forecasts, and weather alerts using WeatherKit or third-party services like OpenWeather.
+
+## Available Options
+
+| Service | Cost | Ease of Setup | Data Quality |
+|---------|------|---------------|--------------|
+| **WeatherKit** | Free (with limits) | Easy | Excellent |
+| **OpenWeather** | Free tier available | Medium | Good |
+
+---
+
+## WeatherKit (Apple)
+
+Apple's native weather service. Recommended for iOS apps.
+
+### Pros
+
+- Built into iOS (no external SDK)
+- High-quality data (powered by Apple Weather)
+- Privacy-focused
+- Free tier: 500K calls/month
+
+### Cons
+
+- Requires Apple Developer account
+- iOS 16+ only
+- Must enable capability in Xcode
+
+---
+
+## WeatherKit Setup
+
+<Steps>
+  <Step title="Enable WeatherKit capability">
+    In Nativeline: Settings → Capabilities → WeatherKit → Enable
+
+    Or ask:
+    ```
+    Enable WeatherKit capability for this app
+    ```
+  </Step>
+  <Step title="Request location permission">
+    Weather data needs location (or specific coordinates)
+  </Step>
+  <Step title="Fetch weather data">
+    ```
+    Get the current weather for the user's location using WeatherKit.
+    Display temperature, conditions, and a weather icon.
+    ```
+  </Step>
+</Steps>
+
+---
+
+## WeatherKit Data
+
+### Current Weather
+
+```
+Show current weather:
+- Temperature (with high/low)
+- Condition (sunny, cloudy, rain)
+- Humidity
+- Wind speed and direction
+- UV index
+- Feels like temperature
+```
+
+### Forecast
+
+```
+Show a 7-day forecast:
+- Day of week
+- Weather icon
+- High/low temperatures
+```
+
+### Hourly
+
+```
+Show hourly forecast for next 24 hours:
+- Hour
+- Temperature
+- Condition icon
+- Precipitation chance
+```
+
+---
+
+## OpenWeather API
+
+Alternative weather service with more customization options.
+
+### Setup
+
+<Steps>
+  <Step title="Create account">
+    Go to [openweathermap.org](https://openweathermap.org) and sign up
+  </Step>
+  <Step title="Get API key">
+    Dashboard → API Keys → Generate
+  </Step>
+  <Step title="Configure in Nativeline">
+    ```
+    Add OpenWeather API with key: your-api-key
+    ```
+  </Step>
+</Steps>
+
+### Free Tier
+
+- 1,000 calls per day
+- Current weather
+- 5-day forecast
+- Geocoding
+
+---
+
+## OpenWeather Data
+
+### Current Weather
+
+```
+Get current weather from OpenWeather:
+- Temperature
+- Description
+- Icon
+- Wind
+- Humidity
+```
+
+### Forecast
+
+```
+Get 5-day forecast from OpenWeather
+with 3-hour intervals
+```
+
+---
+
+## Building Weather UI
+
+### Current Weather Card
+
+```
+Create a weather card showing:
+- Large temperature display
+- Weather condition icon
+- Condition text (e.g., "Partly Cloudy")
+- High/low for today
+- Location name
+```
+
+### Forecast List
+
+```
+Show forecast as horizontal scrolling cards:
+- Each card has day, icon, temps
+- Today highlighted differently
+- Smooth scrolling
+```
+
+### Weather Details
+
+```
+Add a details section showing:
+- Feels like
+- Humidity percentage
+- Wind speed (mph)
+- UV index
+- Visibility
+- Pressure
+```
+
+---
+
+## Dynamic UI Based on Weather
+
+### Background Changes
+
+```
+Change the background based on weather:
+- Sunny: Blue gradient
+- Cloudy: Gray gradient
+- Rainy: Dark blue
+- Snowy: Light blue/white
+- Night: Dark purple
+```
+
+### Weather Animations
+
+```
+Add subtle animations:
+- Rain drops falling
+- Clouds drifting
+- Sun rays
+```
+
+---
+
+## Location-Based Weather
+
+### Current Location
+
+```
+Get weather for the user's current location.
+Update when location changes significantly.
+```
+
+### Search Location
+
+```
+Add city search:
+- User types city name
+- Show search results
+- Select to see weather
+- Save as favorite
+```
+
+### Saved Locations
+
+```
+Let users save multiple locations:
+- Add/remove favorites
+- Swipe between cities
+- Show all on one screen
+```
+
+---
+
+## Weather Alerts
+
+### With WeatherKit
+
+```
+Check for active weather alerts.
+If any, show warning banner with:
+- Alert type (storm, heat, etc.)
+- Severity level
+- Tap for details
+```
+
+### Alert Types
+
+- Severe storms
+- Heat warnings
+- Flood alerts
+- Air quality alerts
+- Winter weather
+
+---
+
+## Caching Weather Data
+
+Weather doesn't change every second. Cache to reduce API calls:
+
+```
+Cache weather data for 10 minutes.
+Show cached data immediately, refresh in background.
+Show "Last updated" timestamp.
+```
+
+---
+
+## Error Handling
+
+### Common Issues
+
+| Issue | User Message |
+|-------|--------------|
+| No location | "Enable location to see weather" |
+| API error | "Unable to load weather" |
+| No network | "Check your internet connection" |
+
+### Graceful Degradation
+
+```
+If weather fails to load:
+- Show cached data if available
+- Show "Unable to load" message
+- Provide retry button
+- Don't crash the app
+```
+
+---
+
+## WeatherKit vs OpenWeather
+
+| Feature | WeatherKit | OpenWeather |
+|---------|------------|-------------|
+| Setup | Easiest | Medium |
+| Cost | Free 500K/mo | Free 1K/day |
+| Data source | Apple | OpenWeather |
+| Alerts | Yes | Paid tier |
+| Historical | No | Paid tier |
+| iOS version | 16+ | Any |
+
+### Recommendation
+
+- **Most apps:** Use WeatherKit
+- **iOS 15 support needed:** Use OpenWeather
+- **Historical data needed:** Use OpenWeather paid tier
+
+---
+
+## Testing Weather
+
+### In Simulator
+
+Set Simulator location to test different conditions:
+- Features → Location → Custom Location
+
+### Different Conditions
+
+Test various weather types by setting location to cities with different climates.
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Maps & Location" icon="map" href="/integrations/external-apis/maps">
+    Combine weather with maps
+  </Card>
+  <Card title="Other APIs" icon="puzzle-piece" href="/integrations/external-apis/other">
+    Generic API guide
+  </Card>
+</CardGroup>

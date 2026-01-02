@@ -1,0 +1,176 @@
+---
+title: "Publishing Overview"
+description: "Get your app into the hands of users"
+---
+
+# Publishing Your App
+
+You've built something great. Now let's get it to your users. This section covers everything from testing with friends to launching on the App Store.
+
+## The Publishing Journey
+
+```
+Build Your App → Test with TestFlight → Submit to App Store → Launch!
+     ↓                    ↓                      ↓               ↓
+  Nativeline         Beta testers          Apple Review      Users
+```
+
+---
+
+## What You'll Need
+
+### Apple Developer Account
+
+Required for any distribution beyond your own device.
+
+| Feature | Without Account | With Account ($99/yr) |
+|---------|-----------------|----------------------|
+| Test on your device | ✓ | ✓ |
+| TestFlight | ✗ | ✓ |
+| App Store | ✗ | ✓ |
+| Push notifications | ✗ | ✓ |
+
+<Card title="Apple Developer Account" icon="apple" href="/publishing/apple-developer-account">
+  Learn how to enroll
+</Card>
+
+---
+
+## Publishing Options
+
+### TestFlight (Beta Testing)
+
+Share your app with up to 10,000 testers before launching publicly.
+
+**Use TestFlight to:**
+- Get feedback from real users
+- Test on various devices
+- Find bugs before public launch
+- Build excitement for your app
+
+<Card title="TestFlight Guide" icon="paper-plane" href="/publishing/testflight/overview">
+  Start beta testing
+</Card>
+
+### App Store (Public Launch)
+
+Make your app available to everyone with an iPhone.
+
+**App Store provides:**
+- Global distribution
+- Payment processing
+- Automatic updates
+- Visibility and discovery
+
+<Card title="App Store Guide" icon="app-store" href="/publishing/app-store/overview">
+  Launch publicly
+</Card>
+
+---
+
+## The Process at a Glance
+
+<Steps>
+  <Step title="Prepare your app">
+    Finish building, test thoroughly, gather assets
+  </Step>
+  <Step title="Set up Apple Developer account">
+    Enroll in the Apple Developer Program ($99/year)
+  </Step>
+  <Step title="Configure certificates">
+    Set up code signing (mostly automated by Nativeline)
+  </Step>
+  <Step title="Beta test with TestFlight">
+    Upload build, invite testers, gather feedback
+  </Step>
+  <Step title="Submit to App Store">
+    Create listing, upload screenshots, submit for review
+  </Step>
+  <Step title="Launch and iterate">
+    Respond to reviews, push updates, grow your user base
+  </Step>
+</Steps>
+
+---
+
+## Before You Start
+
+### App Completeness Checklist
+
+Before publishing, make sure:
+
+- [ ] Core features work reliably
+- [ ] No major bugs or crashes
+- [ ] App works offline (if applicable)
+- [ ] Loading states for slow operations
+- [ ] Error messages are user-friendly
+- [ ] Tested on multiple device sizes
+
+### Required Assets
+
+You'll need these for the App Store:
+
+| Asset | Specifications |
+|-------|---------------|
+| App icon | 1024x1024 PNG (no alpha) |
+| Screenshots | Various sizes per device |
+| App description | Clear, compelling text |
+| Keywords | Up to 100 characters |
+| Privacy policy URL | Required for all apps |
+
+---
+
+## Timeline Expectations
+
+Publishing involves waiting for Apple:
+
+| Step | Typical Wait Time |
+|------|-------------------|
+| Developer account approval | 24-48 hours |
+| TestFlight processing | 10-30 minutes |
+| App Store review | 24-48 hours (can vary) |
+
+<Note>
+  Review times can vary. During busy periods or for complex apps, expect longer waits.
+</Note>
+
+---
+
+## Common Concerns
+
+<AccordionGroup>
+  <Accordion title="Do I need to pay $99 for TestFlight?" icon="dollar-sign">
+    Yes. TestFlight requires an Apple Developer account, which costs $99/year. There's no way around this for distribution.
+  </Accordion>
+
+  <Accordion title="How long does App Store review take?" icon="clock">
+    Most apps are reviewed within 24-48 hours. First-time submissions and apps with in-app purchases may take longer.
+  </Accordion>
+
+  <Accordion title="Can my app get rejected?" icon="xmark">
+    Yes. Apple reviews apps against their guidelines. Common rejection reasons are covered in our Review Guidelines section.
+  </Accordion>
+
+  <Accordion title="What if I just want friends to test?" icon="users">
+    TestFlight is the way. You can add up to 100 internal testers immediately. External testers (up to 10,000) require a quick beta review.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Publishing Sections
+
+<CardGroup cols={2}>
+  <Card title="Apple Developer Account" icon="id-card" href="/publishing/apple-developer-account">
+    Enrollment and setup
+  </Card>
+  <Card title="Certificates & Profiles" icon="certificate" href="/publishing/certificates-profiles">
+    Code signing explained
+  </Card>
+  <Card title="TestFlight" icon="paper-plane" href="/publishing/testflight/overview">
+    Beta testing guide
+  </Card>
+  <Card title="App Store" icon="app-store" href="/publishing/app-store/overview">
+    Public launch guide
+  </Card>
+</CardGroup>

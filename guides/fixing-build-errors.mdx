@@ -1,0 +1,307 @@
+---
+title: "Fixing Build Errors"
+description: "When automatic fixes fail, here's how to intervene"
+---
+
+# Fixing Build Errors
+
+Nativeline's AI automatically fixes most build errors. But sometimes you need to step in. This guide covers manual intervention when automatic fixes fail.
+
+## When Manual Intervention is Needed
+
+You'll need to intervene when:
+- The AI has tried 3 times and still failing
+- The same error keeps recurring
+- The AI is stuck in a loop
+- You understand the problem better than the AI
+
+---
+
+## The Manual Fix Process
+
+### Step-by-Step
+
+<Steps>
+  <Step title="Recognize the Pattern">
+    If you see the AI attempting fixes repeatedly without success, it's time to intervene.
+  </Step>
+  <Step title="Press Run App">
+    Click the **Run App** button in the Nativeline interface.
+  </Step>
+  <Step title="Wait for the Popup">
+    A dialog appears asking what you want to do.
+  </Step>
+  <Step title="Click Apply Fix">
+    Select **Apply Fix** to trigger another attempt with a fresh perspective.
+  </Step>
+  <Step title="Provide Additional Context">
+    If prompted, explain what you think is wrong. This helps the AI approach the problem differently.
+  </Step>
+</Steps>
+
+### What Happens Next
+
+The AI will:
+1. Re-analyze the error with fresh context
+2. Consider approaches it hasn't tried
+3. Use your hints if provided
+4. Attempt a new fix
+
+---
+
+## Providing Helpful Context
+
+The more specific you are, the better the fix.
+
+### Unhelpful Context
+
+- "It's broken"
+- "Fix it"
+- "I don't know what's wrong"
+
+### Helpful Context
+
+```
+The error says 'user' isn't found. I think it should be
+'currentUser' from the AuthManager I created earlier.
+```
+
+```
+This started happening after I added the camera feature.
+The issue might be related to the new permission code.
+```
+
+```
+The error mentions a type mismatch. The function expects
+a String but I'm passing an Int from the slider value.
+```
+
+---
+
+## Understanding Common Errors
+
+### "Cannot find 'X' in scope"
+
+**What it means:** A variable, function, or type isn't found.
+
+**How to help:**
+```
+I think 'X' should be [correct name] from [file/location].
+```
+or
+```
+I created 'X' in [file]. Maybe it needs to be imported or made public.
+```
+
+### "Type 'X' has no member 'Y'"
+
+**What it means:** Accessing a property or method that doesn't exist.
+
+**How to help:**
+```
+The property might be named differently. Check [struct/class name]
+to see what properties it actually has.
+```
+
+### "Cannot convert value of type..."
+
+**What it means:** Type mismatch.
+
+**How to help:**
+```
+It needs a [correct type]. Convert the value or use a different property.
+```
+
+### "Missing argument for parameter"
+
+**What it means:** Function call is incomplete.
+
+**How to help:**
+```
+The function needs [parameter name]. It should be [value/source].
+```
+
+### "Value of optional type must be unwrapped"
+
+**What it means:** Using a possibly-nil value unsafely.
+
+**How to help:**
+```
+Safely unwrap it with a default value or guard statement.
+```
+
+---
+
+## When the Same Error Keeps Returning
+
+If the same error persists despite multiple fixes:
+
+### 1. Try a Different Approach
+
+```
+This approach isn't working. Try implementing [feature]
+using [alternative method] instead.
+```
+
+### 2. Simplify
+
+```
+/planclear
+Let's try a simpler version without [complex part].
+```
+
+### 3. Remove and Rebuild
+
+```
+Remove the code for [feature] completely and rebuild it from scratch.
+```
+
+### 4. Work Around It
+
+```
+Skip this feature for now. Let's continue with the rest and
+come back to this later.
+```
+
+---
+
+## Using the Code Editor (Pro)
+
+With a Pro plan, you can investigate and fix errors yourself:
+
+### Finding the Error
+
+1. Open **Code Editor** tab
+2. Files with errors are highlighted
+3. Click to see the exact line
+4. Error message appears inline
+
+### Making Manual Fixes
+
+If you spot an obvious fix:
+1. Edit the code directly
+2. Save (Cmd+S)
+3. The app rebuilds automatically
+
+### When to Edit Manually
+
+Manual edits work well for:
+- Obvious typos
+- Simple variable name changes
+- Quick value adjustments
+- Adding missing imports
+
+Leave complex fixes to the AI.
+
+---
+
+## Breaking the Error Loop
+
+Sometimes the AI gets stuck trying the same thing repeatedly.
+
+### Signs of a Loop
+
+- Same error message over and over
+- AI making the same changes
+- Undoing its own fixes
+- No progress after multiple attempts
+
+### Breaking Out
+
+**Option 1: Explicit Different Approach**
+```
+Stop trying that approach. Instead, try [specific alternative].
+```
+
+**Option 2: Clear and Restart**
+```
+/planclear
+Let's start over with [feature]. Use a simpler approach this time.
+```
+
+**Option 3: Manual Intervention**
+If you have Pro plan, make the fix yourself in the code editor.
+
+**Option 4: Temporary Skip**
+```
+Let's leave this for now and work on [other feature].
+We'll come back to this later.
+```
+
+---
+
+## Preventing Future Errors
+
+### Build Incrementally
+
+Don't request huge features all at once:
+
+❌ "Build a complete e-commerce system"
+
+✅ "Add a product list page" → "Add product details" → "Add cart" → etc.
+
+### Be Specific
+
+Vague requests lead to implementation mistakes:
+
+❌ "Make it work"
+
+✅ "Connect the save button to store the form data in SwiftData"
+
+### Test Frequently
+
+Check after each change. Catching errors early is easier than debugging cascading failures.
+
+### Use Reference Images
+
+Visual references reduce misunderstandings and implementation errors.
+
+---
+
+## When to Start Fresh
+
+Sometimes starting over is faster than fixing:
+
+### Signs It's Time to Rebuild
+
+- Multiple interconnected errors
+- Fundamental design flaw
+- More time debugging than building
+- The code structure is wrong
+
+### Partial Rebuild
+
+```
+Delete all the [feature] code and rebuild it from scratch.
+Keep everything else.
+```
+
+### Full Restart (Rare)
+
+If the whole project is broken:
+1. Create a new project
+2. Describe your working features
+3. Rebuild more carefully
+
+This is rare but sometimes the fastest path.
+
+---
+
+## Getting Help
+
+If you're stuck and nothing works:
+
+<CardGroup cols={2}>
+  <Card title="Discord Community" icon="discord" href="https://discord.gg/nativeline">
+    Get help from other users
+  </Card>
+  <Card title="Contact Support" icon="envelope" href="mailto:support@nativeline.ai">
+    Email with your error details
+  </Card>
+</CardGroup>
+
+Include in support requests:
+- macOS version
+- What you were building
+- The error message (screenshot)
+- What you've tried

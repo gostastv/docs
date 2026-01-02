@@ -1,0 +1,320 @@
+---
+title: "Supabase Realtime"
+description: "Live data updates and subscriptions"
+---
+
+# Supabase Realtime
+
+Supabase Realtime lets your app receive instant updates when data changes — perfect for chat apps, live feeds, and collaborative features.
+
+## What is Realtime?
+
+Instead of constantly polling for new data, Realtime pushes changes to your app instantly:
+
+```
+Without Realtime:
+App → "Any new messages?" → Server (every 5 seconds)
+
+With Realtime:
+Server → "New message!" → App (instantly when it happens)
+```
+
+---
+
+## Prerequisites
+
+- [Supabase connected](/integrations/supabase/setup)
+- A table to subscribe to
+- RLS policies configured
+
+---
+
+## Enabling Realtime
+
+### In Supabase Dashboard
+
+1. Go to **Database → Tables**
+2. Select your table
+3. Click "Realtime" toggle to enable
+
+Or via SQL:
+```sql
+ALTER TABLE messages REPLICA IDENTITY FULL;
+```
+
+---
+
+## Basic Subscription
+
+Ask Nativeline:
+
+```
+Subscribe to the messages table in Supabase.
+When a new message is added, automatically add it to the list.
+Don't require a refresh to see new messages.
+```
+
+### Subscription Code Pattern
+
+```swift
+// Subscribe to changes
+let channel = supabase.channel("messages")
+
+channel.on("postgres_changes", filter: .init(
+  schema: "public",
+  table: "messages",
+  event: .all
+)) { payload in
+  // Handle the change
+  switch payload.eventType {
+  case .insert:
+    // New message added
+  case .update:
+    // Message updated
+  case .delete:
+    // Message deleted
+  }
+}
+
+await channel.subscribe()
+```
+
+---
+
+## Event Types
+
+| Event | When It Fires |
+|-------|---------------|
+| `insert` | New row added |
+| `update` | Existing row modified |
+| `delete` | Row removed |
+| `*` (all) | Any change |
+
+---
+
+## Use Cases
+
+### Live Chat
+
+```
+Create a chat interface:
+- Load existing messages on open
+- Subscribe to new messages
+- New messages appear instantly at bottom
+- Show typing indicators
+```
+
+### Activity Feed
+
+```
+Build a live activity feed:
+- Show recent activities
+- Subscribe to activity table
+- New activities slide in from top
+- Animate new items
+```
+
+### Collaborative Lists
+
+```
+Make the todo list collaborative:
+- Multiple users can add tasks
+- Changes appear instantly for everyone
+- Show who made each change
+- Handle conflicts gracefully
+```
+
+### Live Notifications
+
+```
+Add live notifications:
+- Subscribe to notifications table
+- Show badge count
+- Toast notification for new items
+- Mark as read when viewed
+```
+
+---
+
+## Filtering Subscriptions
+
+### By Column Value
+
+Only listen for messages in a specific chat:
+
+```swift
+channel.on("postgres_changes", filter: .init(
+  schema: "public",
+  table: "messages",
+  event: .insert,
+  filter: "chat_id=eq.123"
+)) { payload in
+  // Only messages for chat 123
+}
+```
+
+### By User
+
+Only listen for the current user's notifications:
+
+```swift
+filter: "user_id=eq.\(currentUserId)"
+```
+
+---
+
+## Handling Changes
+
+### Insert (New Data)
+
+```
+When a new message is inserted:
+1. Parse the new message from payload
+2. Add to local messages array
+3. Scroll to bottom
+4. Play notification sound (optional)
+```
+
+### Update (Modified Data)
+
+```
+When a message is updated:
+1. Find the message in local array by ID
+2. Replace with updated version
+3. UI updates automatically
+```
+
+### Delete (Removed Data)
+
+```
+When a message is deleted:
+1. Find the message in local array by ID
+2. Remove from array
+3. Animate removal
+```
+
+---
+
+## Unsubscribing
+
+Always clean up subscriptions when leaving a screen:
+
+```swift
+// When view disappears
+channel.unsubscribe()
+
+// Or remove all subscriptions
+supabase.removeAllChannels()
+```
+
+---
+
+## Realtime + RLS
+
+Realtime respects Row Level Security:
+- Users only receive events for rows they can SELECT
+- Your existing RLS policies apply automatically
+- No additional security configuration needed
+
+---
+
+## Performance Considerations
+
+<AccordionGroup>
+  <Accordion title="Subscribe to specific tables" icon="table">
+    Don't subscribe to tables you don't need. Each subscription uses resources.
+  </Accordion>
+
+  <Accordion title="Filter when possible" icon="filter">
+    Use column filters to reduce events received. Don't subscribe to all messages if you only need one chat room.
+  </Accordion>
+
+  <Accordion title="Unsubscribe when done" icon="plug">
+    Always unsubscribe when leaving screens. Orphaned subscriptions waste resources.
+  </Accordion>
+
+  <Accordion title="Handle reconnection" icon="rotate">
+    Supabase handles reconnection automatically, but you may want to refresh data after a reconnection.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Not receiving updates" icon="bell-slash">
+    - Is Realtime enabled on the table?
+    - Are RLS policies allowing SELECT?
+    - Is the subscription active?
+    - Check Supabase dashboard logs
+  </Accordion>
+
+  <Accordion title="Receiving all events (not filtered)" icon="filter-circle-xmark">
+    - Check filter syntax
+    - Verify column name is correct
+    - Ensure filter value matches data type
+  </Accordion>
+
+  <Accordion title="Duplicate events" icon="clone">
+    - May have multiple subscriptions
+    - Unsubscribe when view disappears
+    - Use unique channel names
+  </Accordion>
+
+  <Accordion title="Connection drops" icon="wifi-slash">
+    Supabase auto-reconnects, but after prolonged disconnection:
+    - Refresh data when connection restores
+    - Show connection status to user
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Example: Building Live Chat
+
+<Steps>
+  <Step title="Create messages table">
+    - id (uuid)
+    - chat_id (uuid)
+    - user_id (uuid)
+    - content (text)
+    - created_at (timestamp)
+  </Step>
+  <Step title="Add RLS policies">
+    Users can read messages in chats they're part of.
+  </Step>
+  <Step title="Enable Realtime">
+    Toggle Realtime on the messages table.
+  </Step>
+  <Step title="Subscribe in app">
+    Subscribe to inserts filtered by chat_id.
+  </Step>
+  <Step title="Handle new messages">
+    Append to local array, scroll to bottom.
+  </Step>
+  <Step title="Clean up">
+    Unsubscribe when leaving chat screen.
+  </Step>
+</Steps>
+
+---
+
+## Next Steps
+
+You now have a complete picture of Supabase:
+
+<CardGroup cols={2}>
+  <Card title="Authentication" icon="lock" href="/integrations/supabase/authentication">
+    User accounts and sessions
+  </Card>
+  <Card title="Database" icon="table" href="/integrations/supabase/database">
+    Store and query data
+  </Card>
+  <Card title="Storage" icon="folder" href="/integrations/supabase/storage">
+    Upload files
+  </Card>
+  <Card title="External APIs" icon="plug" href="/integrations/external-apis/overview">
+    Other integrations
+  </Card>
+</CardGroup>

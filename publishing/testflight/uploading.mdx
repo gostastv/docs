@@ -1,0 +1,237 @@
+---
+title: "Uploading Builds"
+description: "Get your app builds to TestFlight"
+---
+
+# Uploading Builds
+
+Once TestFlight is set up, uploading new builds is straightforward. This guide covers the upload process and what to expect.
+
+## Before Uploading
+
+### Increment Build Number
+
+Each upload requires a unique build number:
+
+```
+Settings → App Identity → Build Number
+```
+
+Build numbers must always increase:
+- Build 1 → Build 2 → Build 3
+- Can skip numbers (1 → 5 is fine)
+- Cannot reuse numbers
+
+### Version vs Build Number
+
+| Field | What It Is | When to Change |
+|-------|-----------|----------------|
+| Version | User-facing (1.0.0) | New features, major updates |
+| Build | Internal (1, 2, 3...) | Every upload |
+
+Example progression:
+```
+Version 1.0.0, Build 1  → First TestFlight upload
+Version 1.0.0, Build 2  → Bug fix
+Version 1.0.0, Build 3  → Another fix
+Version 1.1.0, Build 4  → New feature (version bumped)
+```
+
+---
+
+## Uploading from Nativeline
+
+<Steps>
+  <Step title="Ensure your app builds successfully">
+    Run in Simulator first to catch obvious issues
+  </Step>
+  <Step title="Increment build number">
+    Settings → App Identity → Build Number
+  </Step>
+  <Step title="Start upload">
+    Click **Upload to TestFlight** button or Settings → Publishing → Upload
+  </Step>
+  <Step title="Wait for build">
+    Nativeline creates a release build (may take several minutes)
+  </Step>
+  <Step title="Wait for upload">
+    Binary uploads to App Store Connect
+  </Step>
+  <Step title="Done">
+    You'll see a confirmation when complete
+  </Step>
+</Steps>
+
+---
+
+## Upload Progress
+
+During upload, you'll see:
+
+1. **Building** — Creating release binary
+2. **Signing** — Applying distribution certificate
+3. **Uploading** — Sending to Apple servers
+4. **Processing** — Apple validating (this happens in App Store Connect)
+
+---
+
+## After Upload
+
+### Immediate
+
+- Build appears in App Store Connect under TestFlight tab
+- Status shows "Processing"
+
+### Processing Time
+
+- Usually 10-30 minutes
+- Can take longer during busy periods
+- You'll get an email when processing completes
+
+### Processing Status
+
+| Status | Meaning |
+|--------|---------|
+| Processing | Apple is validating your build |
+| Ready to Submit | Can be sent to testers |
+| Missing Compliance | Need to answer export compliance |
+| Invalid Binary | There's an issue (check email) |
+
+---
+
+## Export Compliance
+
+After processing, you'll need to answer export compliance:
+
+**Question:** Does your app use encryption?
+
+**Common Answer:** If your app only uses HTTPS (most apps):
+- Select "Yes"
+- Confirm it only uses HTTPS or other exempt encryption
+- Save
+
+<Tip>
+  Standard HTTPS for API calls is exempt. If you're not implementing custom encryption, you're likely exempt.
+</Tip>
+
+To avoid answering each time, add to your Info.plist:
+```
+ITSAppUsesNonExemptEncryption: NO
+```
+
+Nativeline can set this for you:
+```
+Set export compliance to no custom encryption
+```
+
+---
+
+## Automatic Distribution
+
+Once a build is processed, you can enable automatic distribution to testers:
+
+1. In App Store Connect → TestFlight
+2. Select your tester group
+3. Enable "Automatic Distribution"
+4. New builds are automatically sent to that group
+
+---
+
+## Multiple Builds
+
+You can have multiple builds available:
+
+### Managing Builds
+
+- Expire old builds manually
+- Add notes to builds for tracking
+- Enable/disable builds for specific groups
+
+### Best Practice
+
+- Keep recent builds active
+- Expire very old builds to avoid confusion
+- Use build notes to track what changed
+
+---
+
+## Build Notes
+
+Add notes to help testers know what changed:
+
+1. In App Store Connect → TestFlight → select build
+2. Click "Test Details"
+3. Add "What to Test" notes
+
+Example:
+```
+What to Test:
+- New photo filter feature
+- Fixed crash when saving
+- Please test on both WiFi and cellular
+```
+
+---
+
+## Upload Tips
+
+<AccordionGroup>
+  <Accordion title="Upload seems stuck" icon="clock">
+    Large apps take time. The progress bar may seem stuck during actual file transfer. Wait at least 30 minutes before troubleshooting.
+  </Accordion>
+
+  <Accordion title="Keep internet stable" icon="wifi">
+    Uploads require consistent internet. If connection drops, you'll need to restart the upload.
+  </Accordion>
+
+  <Accordion title="Close other heavy apps" icon="microchip">
+    Building and uploading uses significant RAM and CPU. Close other intensive apps for faster uploads.
+  </Accordion>
+
+  <Accordion title="Upload during off-peak hours" icon="moon">
+    Apple's servers are faster during off-peak hours. Early morning or late night uploads often process faster.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Common Upload Issues
+
+### "Invalid Binary"
+
+**Cause:** Something is wrong with the build
+
+**Check:**
+- Email from Apple with specific error
+- Common issues: missing icon, wrong provisioning, invalid entitlements
+
+### "Processing Failed"
+
+**Cause:** Apple couldn't process the build
+
+**Fix:**
+- Increment build number
+- Upload again
+- If persists, check Apple System Status
+
+### "Upload Failed"
+
+**Cause:** Network or authentication issue
+
+**Fix:**
+- Check internet connection
+- Re-authenticate with App Store Connect in Nativeline
+- Try again
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Invite Testers" icon="user-plus" href="/publishing/testflight/testers">
+    Share with your testers
+  </Card>
+  <Card title="Troubleshooting" icon="wrench" href="/publishing/testflight/troubleshooting">
+    Fix upload issues
+  </Card>
+</CardGroup>

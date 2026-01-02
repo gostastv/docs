@@ -1,0 +1,235 @@
+---
+title: "Technical FAQs"
+description: "Questions about code, Swift, and development"
+---
+
+# Technical FAQs
+
+Questions about the technical aspects of Nativeline and iOS development.
+
+---
+
+<AccordionGroup>
+  <Accordion title="What programming language does Nativeline use?">
+    Nativeline generates **Swift** code using **SwiftUI** for the user interface.
+
+    - **Swift** — Apple's modern programming language
+    - **SwiftUI** — Apple's declarative UI framework
+    - Native iOS frameworks for device features
+
+    These are the same technologies professional iOS developers use.
+  </Accordion>
+
+  <Accordion title="Can I see the code Nativeline generates?">
+    Yes, with the **Pro plan**:
+    1. Open your project
+    2. Click "Code Editor" tab
+    3. Browse all Swift files
+
+    You can view, search, and even modify the code manually.
+  </Accordion>
+
+  <Accordion title="Can I edit the code myself?">
+    Yes, with the **Pro plan**'s Code Editor. You can:
+    - View all Swift source files
+    - Make manual edits
+    - Fix issues yourself
+    - Add custom code
+
+    Edits sync with the AI's understanding of your project.
+  </Accordion>
+
+  <Accordion title="Where is my project code stored?">
+    Projects are stored locally on your Mac:
+    ```
+    ~/Documents/Nativeline Projects/[Project Name]/
+    ```
+
+    Each project folder contains:
+    - Swift source files (.swift)
+    - Asset files (images, icons)
+    - Xcode project file (.xcodeproj)
+    - Configuration files
+  </Accordion>
+
+  <Accordion title="Can I open the project in Xcode?">
+    Yes. Navigate to your project folder and double-click the `.xcodeproj` file. This opens the project in Xcode where you can:
+    - Make advanced modifications
+    - Use Xcode-specific features
+    - Debug with Xcode's tools
+
+    Note: Extensive Xcode modifications may confuse Nativeline's AI.
+  </Accordion>
+
+  <Accordion title="Can I export my project and continue elsewhere?">
+    Yes. Your project folder contains everything needed to:
+    - Open in Xcode
+    - Build independently
+    - Hand off to a developer
+    - Continue without Nativeline
+
+    You own the code. There's no vendor lock-in.
+  </Accordion>
+
+  <Accordion title="What iOS versions does my app support?">
+    By default, apps target recent iOS versions (typically iOS 17+).
+
+    You can tell the AI to support older versions:
+    "Make this app support iOS 16 and later"
+
+    Note: Older iOS support may limit available features.
+  </Accordion>
+
+  <Accordion title="Does Nativeline support iPad?">
+    Yes! Apps automatically adapt to iPad. For specific iPad layouts:
+    "Optimize the layout for iPad with a sidebar navigation"
+
+    You can also create iPad-only apps or customize layouts per device.
+  </Accordion>
+
+  <Accordion title="What is SwiftUI?">
+    SwiftUI is Apple's modern UI framework that:
+    - Uses declarative syntax (describe what you want)
+    - Automatically handles many layout concerns
+    - Works across all Apple platforms
+    - Is the future of Apple development
+
+    Nativeline generates SwiftUI code for your interfaces.
+  </Accordion>
+
+  <Accordion title="What about UIKit?">
+    UIKit is Apple's older UI framework. Nativeline primarily uses SwiftUI but can use UIKit when needed:
+    - Some features not yet in SwiftUI
+    - Specific customization needs
+    - Legacy integrations
+
+    The AI handles which framework to use.
+  </Accordion>
+
+  <Accordion title="Can I use CocoaPods or Swift Package Manager?">
+    Yes. The AI can add dependencies:
+    - "Add the Alamofire networking library"
+    - "Include the Kingfisher image loading package"
+
+    Swift Package Manager is preferred for modern dependencies.
+  </Accordion>
+
+  <Accordion title="How does data persistence work?">
+    **Local storage options:**
+    - **UserDefaults** — Simple key-value storage
+    - **SwiftData** — Apple's modern ORM framework
+    - **Core Data** — Older but powerful database
+
+    **Cloud storage:**
+    - **Supabase** — Recommended backend
+    - **CloudKit** — Apple's iCloud service
+    - **Custom APIs** — Your own server
+
+    Tell the AI what kind of persistence you need.
+  </Accordion>
+
+  <Accordion title="Can my app work offline?">
+    Yes. For offline support:
+    - Local storage for data (SwiftData, UserDefaults)
+    - Cache remote data locally
+    - Sync when connection returns
+
+    Tell the AI: "Make this feature work offline and sync when connected"
+  </Accordion>
+
+  <Accordion title="How do I add push notifications?">
+    Push notifications require:
+    1. Apple Developer account
+    2. Push capability enabled
+    3. Backend to send notifications
+
+    With Supabase or your own server:
+    "Add push notifications for new messages"
+
+    See [Capabilities](/features/capabilities) for setup.
+  </Accordion>
+
+  <Accordion title="Can I use HealthKit or other Apple frameworks?">
+    Yes! Most Apple frameworks are available:
+    - **HealthKit** — Health data
+    - **HomeKit** — Smart home
+    - **SiriKit** — Voice commands
+    - **ARKit** — Augmented reality
+    - **Core ML** — Machine learning
+
+    Tell the AI which framework to use. Some require capabilities enabled in Settings.
+  </Accordion>
+
+  <Accordion title="What about Core Data?">
+    Nativeline can use Core Data, though SwiftData is preferred for new projects (it's simpler and more modern).
+
+    If you specifically need Core Data:
+    "Use Core Data instead of SwiftData for the database"
+  </Accordion>
+
+  <Accordion title="Can I use animations?">
+    Yes! SwiftUI has built-in animation support:
+    - "Add a bounce animation when the button is tapped"
+    - "Animate the transition between screens"
+    - "Add a loading spinner animation"
+
+    Custom animations, Lottie files, and more are possible.
+  </Accordion>
+
+  <Accordion title="How do I handle different screen sizes?">
+    SwiftUI handles most responsive layout automatically. For specific needs:
+    - "Make this layout responsive for all iPhones"
+    - "Use a different layout on larger screens"
+    - "Stack these items vertically on smaller phones"
+  </Accordion>
+
+  <Accordion title="Can I add in-app purchases?">
+    Yes, using StoreKit:
+    - "Add a premium upgrade as an in-app purchase"
+    - "Create a subscription for $4.99/month"
+
+    You'll need:
+    - Apple Developer account
+    - Products configured in App Store Connect
+    - Testing with sandbox accounts
+  </Accordion>
+
+  <Accordion title="Is the code clean and maintainable?">
+    Nativeline generates:
+    - Well-structured Swift code
+    - Appropriate separation of concerns
+    - Standard iOS patterns (MVVM typically)
+    - Comments where helpful
+
+    A professional developer could take over the codebase.
+  </Accordion>
+
+  <Accordion title="Can I version control my project with Git?">
+    Yes! The project folder is a standard file structure. You can:
+    - Initialize a Git repository
+    - Commit changes
+    - Push to GitHub/GitLab
+    - Collaborate with developers
+
+    Just navigate to your project folder and use standard Git commands.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Related FAQs
+
+<CardGroup cols={2}>
+  <Card title="Building Apps" icon="hammer" href="/faqs/building">
+    Creating features
+  </Card>
+  <Card title="Integrations" icon="plug" href="/faqs/integrations">
+    APIs and services
+  </Card>
+  <Card title="Code Editor" icon="code" href="/features/code-editor">
+    Pro plan feature
+  </Card>
+  <Card title="Troubleshooting" icon="wrench" href="/faqs/troubleshooting">
+    Fixing issues
+  </Card>
+</CardGroup>

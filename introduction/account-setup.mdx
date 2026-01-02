@@ -1,0 +1,239 @@
+---
+title: "Account Setup"
+description: "Create your Nativeline account and choose a plan"
+---
+
+# Account Setup
+
+Your Nativeline account lets you save projects, track usage, and access premium features. Here's how to get set up.
+
+## Creating an Account
+
+When you create your first app (or try to access account features), you'll be prompted to create an account.
+
+<Steps>
+  <Step title="Enter your email">
+    Type your email address in the signup form.
+  </Step>
+  <Step title="Check your inbox">
+    You'll receive an 8-digit verification code within a minute.
+  </Step>
+  <Step title="Enter the code">
+    Type the 8-digit code into Nativeline to verify your email.
+  </Step>
+  <Step title="You're in!">
+    Your account is created and ready to use.
+  </Step>
+</Steps>
+
+<Tip>
+  Check your spam folder if you don't see the verification email. It comes from nativeline.ai.
+</Tip>
+
+---
+
+## Choosing a Plan
+
+Nativeline uses a "bits" system to measure AI usage. Different plans give you different amounts of bits each month.
+
+### Understanding Bits
+
+Bits represent your AI usage budget. Here's roughly how they're consumed:
+
+| Action | Approximate Bits |
+|--------|------------------|
+| Simple change (color, text) | 10-50 bits |
+| New feature | 100-500 bits |
+| Complete new screen | 500-1,000 bits |
+| Complex feature with data | 1,000+ bits |
+
+For a detailed breakdown, see [Plans & Pricing](/introduction/plans-and-pricing).
+
+### Available Plans
+
+<CardGroup cols={2}>
+  <Card title="Builder — $25/month" icon="hammer">
+    **1,000 bits included**
+
+    - AI builds your app automatically
+    - AI fixes issues for you
+    - Unlimited projects
+    - Test in iOS Simulator
+    - Perfect for getting started
+  </Card>
+  <Card title="Pro — $50/month" icon="star">
+    **2,250 bits included**
+
+    Everything in Builder, plus:
+    - Full code editor access
+    - View and edit Swift code
+    - Detailed build information
+    - Most popular choice
+  </Card>
+  <Card title="Scale — $100-1,000/month" icon="rocket">
+    **4,800-50,000 bits**
+
+    Everything in Pro, plus:
+    - Customize your bit amount
+    - Priority support
+    - Early access to new features
+    - For serious builders
+  </Card>
+  <Card title="BYOK — $15/month" icon="key">
+    **Unlimited usage**
+
+    Bring Your Own API Key:
+    - Use your Anthropic API key
+    - Pay Anthropic directly for usage
+    - Full code editor access
+    - Best for heavy users
+  </Card>
+</CardGroup>
+
+### Which Plan Should I Choose?
+
+<AccordionGroup>
+  <Accordion title="I'm just getting started" icon="seedling">
+    Start with **Builder** ($25/month). It gives you enough bits to build a simple app and learn how Nativeline works. You can upgrade anytime if you need more.
+  </Accordion>
+
+  <Accordion title="I want to see and edit the code" icon="code">
+    Choose **Pro** ($50/month). The code editor lets you make quick tweaks yourself and learn Swift by seeing what the AI generates.
+  </Accordion>
+
+  <Accordion title="I'm building multiple apps or complex features" icon="layer-group">
+    Consider **Scale** ($100+/month). You can choose your exact bit amount based on your needs, and you get priority support.
+  </Accordion>
+
+  <Accordion title="I use AI heavily and want unlimited access" icon="infinity">
+    **BYOK** ($15/month) is for you. Get your own [Anthropic API key](https://console.anthropic.com), and you only pay for what you use directly to Anthropic.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Managing Your Account
+
+### Checking Your Usage
+
+Your remaining bits are displayed in the Nativeline app:
+- Look for the usage indicator in the toolbar
+- A warning appears when you've used 80% of your bits
+- Bits reset monthly on your billing date
+
+### Upgrading Your Plan
+
+To upgrade:
+1. Click on your profile or **Settings**
+2. Select **Plans** or **Subscription**
+3. Choose a new plan
+4. Confirm your upgrade
+
+Upgrades take effect immediately, and you'll receive a prorated credit for your current plan.
+
+### Downgrading Your Plan
+
+You can also downgrade:
+1. Go to **Settings → Plans**
+2. Select a lower tier plan
+3. Confirm the change
+
+Your current plan continues until your billing date, then the new tier begins.
+
+<Warning>
+  Downgrading from Pro or higher means losing code editor access. Make sure you don't have unsaved edits before downgrading.
+</Warning>
+
+### Canceling Your Subscription
+
+If you need to cancel:
+1. Go to **Settings → Subscription**
+2. Click **Cancel Subscription**
+3. Confirm cancellation
+
+Your access continues until the end of your current billing period. Your projects remain saved locally on your Mac.
+
+---
+
+## Account Security
+
+### Your Data
+
+- **Projects** are stored locally on your Mac in `~/Documents/Nativeline Projects/`
+- **Account info** is stored securely in our cloud
+- **Credentials** (like database passwords) are encrypted in your Mac's Keychain
+- **We never see your passwords** — they're encrypted locally
+
+### Signing Out
+
+To sign out:
+1. Click your profile
+2. Select **Sign Out**
+3. Confirm
+
+Signing out doesn't delete your local projects — they stay on your Mac.
+
+### Deleting Your Account
+
+To delete your account entirely:
+1. Contact support@nativeline.ai
+2. We'll verify your identity
+3. Your account and cloud data will be permanently deleted
+
+<Warning>
+  Account deletion is permanent and cannot be undone. Make sure to back up any projects you want to keep.
+</Warning>
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Verification code not arriving" icon="envelope">
+    If the email with your code isn't showing up:
+    1. Check your spam/junk folder
+    2. Wait a few minutes (can take up to 5 min)
+    3. Make sure you entered the correct email
+    4. Click "Resend code"
+    5. Check if your email provider blocks automated emails
+  </Accordion>
+
+  <Accordion title="Invalid verification code" icon="xmark">
+    If your code isn't working:
+    1. Make sure you're entering all 8 digits
+    2. Check that you're using the most recent code (if you requested multiple)
+    3. Request a new code and try again
+    4. Codes expire after 10 minutes
+  </Accordion>
+
+  <Accordion title="Can't log in" icon="lock">
+    If you're having trouble logging in:
+    1. Double-check your email address
+    2. Request a new verification code
+    3. Check your spam folder
+    4. Contact support@nativeline.ai if issues persist
+  </Accordion>
+
+  <Accordion title="Payment failed" icon="credit-card">
+    If your subscription payment didn't go through:
+    1. Check your card details are correct
+    2. Ensure the card isn't expired
+    3. Check with your bank for blocked transactions
+    4. Try a different payment method
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Next Steps
+
+With your account set up, you're ready to start building!
+
+<CardGroup cols={2}>
+  <Card title="Build Your First App" icon="rocket" href="/quick-start/your-first-app">
+    Create something amazing in 10 minutes
+  </Card>
+  <Card title="Chat Interface" icon="comments" href="/features/chat-interface">
+    Learn how to navigate your workspace
+  </Card>
+</CardGroup>

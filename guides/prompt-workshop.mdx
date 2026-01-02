@@ -1,0 +1,376 @@
+---
+title: "Prompt Writing Workshop"
+description: "Master the art of communicating with AI to build exactly what you want"
+---
+
+# Prompt Writing Workshop
+
+The quality of your prompts directly determines the quality of your apps. This guide teaches you how to communicate effectively with Nativeline's AI.
+
+## The Anatomy of a Good Prompt
+
+Every effective prompt has three elements:
+
+### 1. What (The Action)
+What do you want to happen?
+- "Add a button"
+- "Create a new screen"
+- "Fix the layout"
+
+### 2. Where (The Location)
+Where should it happen?
+- "on the home screen"
+- "below the title"
+- "in the settings tab"
+
+### 3. How (The Details)
+What should it look like or do?
+- "with a blue background and white text"
+- "that saves the user's preferences"
+- "with 16pt padding"
+
+---
+
+## Good vs. Bad Prompts
+
+<CardGroup cols={2}>
+  <Card title="❌ Too Vague" icon="cloud">
+    "Make the app look better"
+
+    **Problem:** The AI has to guess what "better" means to you. It might change colors you liked or add effects you don't want.
+  </Card>
+
+  <Card title="✅ Specific" icon="bullseye">
+    "Add 16pt padding to all cards, use 12pt rounded corners, and add a subtle shadow"
+
+    **Why it works:** Exact values, clear scope, predictable result.
+  </Card>
+</CardGroup>
+
+<CardGroup cols={2}>
+  <Card title="❌ Overwhelming" icon="bomb">
+    "Build me a complete social media app with posts, comments, likes, follows, profiles, messaging, notifications, and a discover feed"
+
+    **Problem:** Too many features at once leads to errors and confusion.
+  </Card>
+
+  <Card title="✅ Incremental" icon="stairs">
+    "Start with a feed of posts. Each post has a title, body, and author name. Users can scroll through posts."
+
+    **Why it works:** One focused feature. You can add comments, likes, etc. later.
+  </Card>
+</CardGroup>
+
+---
+
+## The WHAT-WHERE-HOW Framework
+
+Use this framework for consistent results:
+
+### Example 1: Adding a Button
+
+```
+Add a submit button [WHAT]
+at the bottom of the form [WHERE]
+that's full-width with a green background, white text, and 12pt rounded corners [HOW]
+```
+
+### Example 2: Creating a Screen
+
+```
+Create a settings screen [WHAT]
+accessible from the profile tab [WHERE]
+with toggle switches for notifications, dark mode, and sounds [HOW]
+```
+
+### Example 3: Fixing an Issue
+
+```
+Fix the text overlap [WHAT]
+on the task list items [WHERE]
+by adding proper spacing and truncating long titles with ellipsis [HOW]
+```
+
+---
+
+## Describing User Experiences
+
+Some of the best prompts describe what users should experience:
+
+### Instead of technical specs...
+
+❌ "Create a UIButton with a closure that increments a @State variable"
+
+### Describe the user experience...
+
+✅ "Add a button that counts taps. Show the count above the button. Each tap should feel responsive with a quick animation."
+
+The AI knows the technical implementation — your job is to describe the experience.
+
+---
+
+## Using Reference Images
+
+Images are incredibly powerful. You can:
+
+### Share Screenshots
+Paste a screenshot of an app you like:
+> "Make my list look like this screenshot — same spacing and style"
+
+### Share Mockups
+Sketch something in Figma or on paper:
+> "Here's my design mockup. Implement this exactly"
+
+### Share Examples
+Find a UI element you want:
+> "Add a card that looks like this example"
+
+<Tip>
+  A picture is worth a thousand tokens. Images dramatically reduce back-and-forth and bit usage.
+</Tip>
+
+---
+
+## Prompt Templates
+
+### Adding a Feature
+
+```
+Add [feature name] that lets users [user action].
+Show it [where in the app].
+When users [interact], it should [result].
+Style it with [visual details].
+```
+
+**Example:**
+```
+Add a favorites feature that lets users mark items as favorites.
+Show a heart icon on each item card.
+When users tap the heart, it should fill in and save the favorite.
+Style it with a red filled heart for favorites, gray outline for non-favorites.
+```
+
+### Fixing a Bug
+
+```
+There's a problem with [what's broken].
+What I expect: [expected behavior]
+What happens instead: [actual behavior]
+This occurs when [steps to reproduce].
+```
+
+**Example:**
+```
+There's a problem with the save button.
+What I expect: Tapping save should store my data and show a confirmation.
+What happens instead: Nothing happens when I tap it.
+This occurs when I fill out the form and tap the save button.
+```
+
+### Changing Design
+
+```
+Update the [element] to have:
+- [property 1]: [value]
+- [property 2]: [value]
+- [property 3]: [value]
+Keep everything else the same.
+```
+
+**Example:**
+```
+Update the header to have:
+- Background: dark blue (#1a365d)
+- Title font: 24pt, bold, white
+- Padding: 20pt top and bottom
+Keep everything else the same.
+```
+
+---
+
+## 50+ Example Prompts
+
+### UI Elements
+
+| Need | Prompt |
+|------|--------|
+| Button | "Add a rounded button with blue background that says 'Continue'" |
+| Text field | "Add an email input field with placeholder 'Enter your email'" |
+| Toggle | "Add a dark mode toggle switch in settings" |
+| Slider | "Add a volume slider from 0 to 100" |
+| Card | "Display items as cards with image, title, and subtitle" |
+| List | "Show a scrollable list of items with swipe-to-delete" |
+| Tab bar | "Add a tab bar with Home, Search, and Profile tabs" |
+| Navigation | "Add a back button that returns to the previous screen" |
+| Modal | "Show a confirmation dialog when deleting items" |
+| Alert | "Show an error alert when login fails" |
+
+### Data & Storage
+
+| Need | Prompt |
+|------|--------|
+| Save locally | "Save user preferences so they persist between app launches" |
+| Load data | "Load the saved items when the app opens" |
+| Delete data | "Add a 'Clear All' button that removes all saved items" |
+| Search | "Add a search bar that filters the list as I type" |
+| Sort | "Add buttons to sort by name, date, or priority" |
+| Filter | "Add filter chips for categories at the top" |
+
+### Visual Design
+
+| Need | Prompt |
+|------|--------|
+| Spacing | "Add 16pt padding around all content" |
+| Colors | "Use blue (#007AFF) as the primary color throughout" |
+| Fonts | "Use a larger, bolder font for headings" |
+| Shadows | "Add subtle shadows to all cards" |
+| Corners | "Round all corners to 12pt" |
+| Dark mode | "Support dark mode with appropriate colors" |
+| Animation | "Add a subtle bounce animation when items are added" |
+
+### Interactions
+
+| Need | Prompt |
+|------|--------|
+| Pull to refresh | "Add pull-to-refresh to update the list" |
+| Swipe | "Add swipe gestures to show action buttons" |
+| Long press | "Show a menu on long press" |
+| Drag and drop | "Let users reorder items by dragging" |
+| Pinch to zoom | "Add pinch-to-zoom on images" |
+| Haptics | "Add haptic feedback when actions complete" |
+
+### User Feedback
+
+| Need | Prompt |
+|------|--------|
+| Loading | "Show a loading spinner while data loads" |
+| Success | "Show a checkmark animation when saved successfully" |
+| Error | "Show inline error messages under invalid fields" |
+| Empty state | "Show a friendly message when the list is empty" |
+| Progress | "Show a progress bar while uploading" |
+
+---
+
+## Common Mistakes
+
+### 1. Being Too Technical
+
+❌ "Implement a @StateObject with a published array using MVVM architecture"
+
+✅ "Create a list that updates in real-time when items are added"
+
+**Why:** The AI handles architecture. Describe the behavior you want.
+
+### 2. Asking for Everything at Once
+
+❌ "Build a fitness app with workouts, meal plans, progress tracking, social features, Apple Watch integration, and gamification"
+
+✅ Start with: "Build a workout tracker where I can log exercises with name, sets, and reps"
+
+**Why:** Build incrementally. Add features one at a time.
+
+### 3. Not Providing Context
+
+❌ "Add a button"
+
+✅ "Add a 'Save Changes' button below the form that saves the edited profile information"
+
+**Why:** Context helps the AI place and style things appropriately.
+
+### 4. Ignoring Errors
+
+When builds fail, don't just say "fix it."
+
+✅ "The build is failing because the variable 'userName' isn't found. I think it should come from the login screen."
+
+**Why:** Your context helps the AI fix issues faster.
+
+---
+
+## Iterating Effectively
+
+You won't get perfection on the first try. Here's how to iterate:
+
+### Start Broad, Then Refine
+
+1. **First prompt:** "Add a profile section with user avatar and name"
+2. **Refinement:** "Make the avatar larger, about 80pt"
+3. **Refinement:** "Add a border around the avatar"
+4. **Refinement:** "Center everything horizontally"
+
+### Give Specific Feedback
+
+Instead of: "That's not right"
+
+Say: "The button is too small. Make it taller (50pt) and full-width"
+
+### Reference What Works
+
+"Keep the header exactly as it is, but change the body font to be larger"
+
+---
+
+## Efficiency Tips
+
+### Save Bits with Better Prompts
+
+| Expensive | Efficient |
+|-----------|-----------|
+| Multiple vague iterations | One specific request |
+| "Make it better" | "Add these exact changes" |
+| Building huge features at once | Building incrementally |
+| Not using images | Providing reference images |
+
+### The 30-Second Rule
+
+Before sending a prompt, take 30 seconds to:
+1. Add specific values (colors, sizes, spacing)
+2. Clarify where the change should happen
+3. Describe the expected outcome
+
+This small investment saves significant bits.
+
+---
+
+## Practice Exercise
+
+Try rewriting these vague prompts:
+
+<AccordionGroup>
+  <Accordion title="'Make the login screen'" icon="question">
+    **Better version:**
+    "Create a login screen with:
+    - Email and password text fields
+    - A 'Log In' button below the fields
+    - A 'Forgot Password?' link below the button
+    - App logo centered at the top
+    - Clean white background"
+  </Accordion>
+
+  <Accordion title="'Add some settings'" icon="question">
+    **Better version:**
+    "Create a settings screen with toggles for:
+    - Push notifications (default on)
+    - Dark mode (default off)
+    - Sound effects (default on)
+    Group them with a 'Preferences' header. Add a 'Log Out' button at the bottom."
+  </Accordion>
+
+  <Accordion title="'The app is broken'" icon="question">
+    **Better version:**
+    "The save button doesn't work. When I tap it after filling out the form, nothing happens. I expect it to save my data and show a confirmation. This started after adding the new profile picture feature."
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Advanced Prompting" icon="wand-magic-sparkles" href="/guides/advanced-prompting">
+    Complex features and multi-step requests
+  </Card>
+  <Card title="Using Images" icon="image" href="/features/using-images">
+    Leverage screenshots and mockups
+  </Card>
+</CardGroup>

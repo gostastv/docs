@@ -1,0 +1,484 @@
+---
+title: "Advanced Prompting"
+description: "Techniques for complex features and ambitious projects"
+---
+
+# Advanced Prompting
+
+Once you've mastered the basics, these techniques help you build more sophisticated features and complex apps.
+
+## Multi-Step Requests
+
+For complex features, break them into logical steps but communicate them together.
+
+### Structure
+
+```
+Build [feature] with the following:
+
+1. [First component/step]
+   - Detail about first step
+   - Another detail
+
+2. [Second component/step]
+   - Detail about second step
+
+3. [Third component/step]
+   - Detail about third step
+
+The flow should be: [describe how pieces connect]
+```
+
+### Example: Building a Checkout Flow
+
+```
+Build a checkout flow with the following:
+
+1. Cart review screen
+   - Show all items with images, names, quantities, prices
+   - Allow quantity adjustments
+   - Show subtotal, tax, and total
+
+2. Shipping screen
+   - Form for address (name, street, city, state, zip)
+   - Save address for future use
+   - Validate required fields
+
+3. Payment screen
+   - Integration with Stripe
+   - Show order summary
+   - Confirm button
+
+4. Confirmation screen
+   - Order number
+   - Estimated delivery
+   - "Continue Shopping" button
+
+The flow should be: Cart → Shipping → Payment → Confirmation
+with a back button on each screen and progress indicator at the top.
+```
+
+---
+
+## Feature Specifications
+
+For detailed features, provide a mini specification.
+
+### Template
+
+```
+Feature: [Name]
+
+Purpose: [What problem it solves]
+
+User flow:
+1. User does [action]
+2. App responds with [response]
+3. User can then [next action]
+
+Requirements:
+- [Requirement 1]
+- [Requirement 2]
+- [Requirement 3]
+
+Edge cases:
+- If [condition], then [behavior]
+- If [condition], then [behavior]
+
+Design:
+- [Visual requirement]
+- [Visual requirement]
+```
+
+### Example: User Profile Feature
+
+```
+Feature: User Profile
+
+Purpose: Let users view and edit their personal information
+
+User flow:
+1. User taps profile tab
+2. App shows their current profile info
+3. User taps "Edit" to modify
+4. User saves changes
+
+Requirements:
+- Display avatar, name, email, bio
+- Avatar can be changed from camera or library
+- Name and bio are editable
+- Email is shown but not editable
+- Changes save to Supabase
+
+Edge cases:
+- If no avatar, show initials
+- If save fails, show error and keep editing mode
+- If user cancels, restore previous values
+
+Design:
+- Avatar should be 80pt circle
+- Use card style for profile sections
+- Edit mode shows inline text fields
+```
+
+---
+
+## System Prompts
+
+For consistent behavior across features, establish patterns upfront.
+
+### Setting App-Wide Patterns
+
+```
+For this app, always follow these patterns:
+
+Design:
+- Use 16pt padding as standard spacing
+- All buttons should have 12pt corner radius
+- Primary color is #007AFF, secondary is #5856D6
+- Use SF Symbols for all icons
+
+Behavior:
+- Show loading states for all async operations
+- All destructive actions need confirmation
+- Save operations should show success feedback
+- Errors should display user-friendly messages
+
+Data:
+- All data should sync to Supabase
+- Support offline mode with local cache
+- Use SwiftData for local persistence
+```
+
+Now when you request features, the AI follows these patterns automatically.
+
+---
+
+## Comparative Prompting
+
+Reference existing patterns in your app.
+
+### Same Style
+
+```
+Add a "Following" tab that works exactly like the "Followers"
+tab — same layout, same interactions, just different data.
+```
+
+### Similar But Different
+
+```
+Add a notifications screen. Use the same list style as the
+messages screen, but each item shows:
+- Icon representing notification type
+- Title and description
+- Timestamp
+- Unread indicator (blue dot)
+```
+
+### Opposite/Contrasting
+
+```
+Add a "Compact View" toggle that transforms the current
+card-based layout into a dense list view with smaller items.
+```
+
+---
+
+## Conditional Features
+
+Describe features that behave differently in different situations.
+
+### Based on User State
+
+```
+The dashboard should show different content based on user type:
+
+If new user (no data):
+- Show onboarding prompt
+- Display sample data to demonstrate features
+- Show "Get Started" tutorial
+
+If active user:
+- Show their actual data
+- Display recent activity
+- Show personalized recommendations
+
+If power user (many items):
+- Enable bulk actions
+- Show analytics section
+- Enable advanced filters
+```
+
+### Based on Device/Context
+
+```
+Adapt the layout for different devices:
+
+iPhone:
+- Single column layout
+- Tab bar navigation
+- Compact info cards
+
+iPad:
+- Split view with sidebar
+- Master-detail navigation
+- Expanded info cards with more details
+```
+
+---
+
+## Animation Specifications
+
+For complex animations, be precise.
+
+### Sequence Animations
+
+```
+When the success screen appears:
+1. Checkmark icon scales in from 0 to 1 (0.3s, spring)
+2. Then "Success!" text fades in from below (0.2s)
+3. Then description text fades in (0.2s, 0.1s delay)
+4. Then buttons fade in (0.2s, 0.2s delay)
+```
+
+### Interactive Animations
+
+```
+The card should respond to gestures:
+- Drag horizontally to reveal action buttons
+- If dragged >50%, snap to reveal actions
+- If dragged <50%, spring back to original
+- While dragging, background color shifts from white to light red
+- Action buttons slide in from the right as card moves
+```
+
+---
+
+## Complex Data Relationships
+
+For apps with related data, explain the relationships.
+
+### Entity Relationships
+
+```
+Data model:
+
+User
+- id, email, name, avatar
+- has many Projects
+
+Project
+- id, name, description, created_at
+- belongs to User
+- has many Tasks
+- has many Collaborators (other Users)
+
+Task
+- id, title, status, due_date
+- belongs to Project
+- assigned to User (optional)
+
+When displaying:
+- Project view shows all its tasks grouped by status
+- User profile shows all their projects
+- Task detail shows project name and assignee
+```
+
+---
+
+## Error Handling Patterns
+
+Describe how errors should be handled app-wide.
+
+### Comprehensive Error Handling
+
+```
+Implement consistent error handling:
+
+Network errors:
+- Show "No connection" banner at top (not blocking)
+- Allow retry when connection returns
+- Cache last successful data for offline viewing
+
+Validation errors:
+- Show inline error under the field
+- Highlight field border in red
+- Clear error when field changes
+
+Server errors:
+- Show modal with "Something went wrong"
+- Include "Try Again" and "Contact Support" buttons
+- Log error details for debugging
+
+Authentication errors:
+- Redirect to login screen
+- Show "Session expired, please log in again"
+- Preserve intended destination for after login
+```
+
+---
+
+## Integration Specifications
+
+For external service integrations, be thorough.
+
+### API Integration
+
+```
+Integrate with the Weather API:
+
+Endpoint: api.weather.com/v1/current
+Auth: API key in header (X-API-Key)
+Request: GET with lat/long parameters
+
+Expected response:
+{
+  "temp": 72,
+  "condition": "sunny",
+  "humidity": 45,
+  ...
+}
+
+Error handling:
+- If 401: API key invalid, show setup instructions
+- If 429: Rate limited, wait and retry
+- If 500: Server error, show "Weather unavailable"
+
+Caching:
+- Cache responses for 10 minutes
+- Show cached data if network fails
+- Display "Last updated X minutes ago"
+```
+
+---
+
+## Refactoring Requests
+
+For improving existing code:
+
+### Code Organization
+
+```
+Refactor the ProfileView to be more maintainable:
+- Extract the avatar section into AvatarView
+- Extract the info fields into ProfileInfoSection
+- Create a ProfileViewModel for the data logic
+- Keep the main ProfileView clean and composed
+```
+
+### Performance Optimization
+
+```
+Optimize the feed loading:
+- Implement pagination (load 20 items at a time)
+- Add infinite scroll to load more
+- Cache images with proper memory management
+- Cancel in-flight requests when navigating away
+- Show skeleton loading states instead of spinners
+```
+
+---
+
+## Testing Scenarios
+
+Ask for specific scenarios to test:
+
+```
+Add test data for the following scenarios:
+
+Empty state:
+- New user with no items
+
+Light usage:
+- 3 items, one favorited
+
+Heavy usage:
+- 100+ items across 5 categories
+- 10 items favorited
+- Some with long titles (50+ characters)
+
+Edge cases:
+- Item with no image
+- Item with very long description
+- Item with special characters in title
+```
+
+---
+
+## Architecture Decisions
+
+For complex apps, make architecture explicit:
+
+```
+For this app, use this architecture:
+
+Views:
+- SwiftUI views for all UI
+- Keep views "dumb" — just display data
+- One view file per screen
+
+ViewModels:
+- One ViewModel per screen
+- Handle all business logic
+- Observable for state updates
+
+Models:
+- Plain structs for data
+- Codable for API/storage
+- Keep separate from ViewModels
+
+Services:
+- Singleton services for cross-cutting concerns
+- AuthService for authentication
+- DataService for Supabase operations
+- ImageService for media handling
+
+This separation makes it easier to:
+- Test individual components
+- Modify one layer without affecting others
+- Understand where logic lives
+```
+
+---
+
+## Pro Tips
+
+### Tip 1: Progressive Detail
+
+Start high-level, then drill down:
+```
+1. "Add user profiles" (basic)
+2. "Make profile avatars editable" (detail)
+3. "Crop avatar to circle, allow pinch-zoom when selecting" (fine detail)
+```
+
+### Tip 2: Reference Real Apps
+
+```
+Make the transition between tabs work like Instagram's —
+swipe horizontally between feed, search, and profile.
+```
+
+### Tip 3: Constraint-Based Design
+
+```
+The card must:
+- Never be wider than 400pt (even on iPad)
+- Always show at least the title (even if truncated)
+- Leave 16pt margin from screen edges
+- Stack vertically if content exceeds available height
+```
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Common Scenarios" icon="book" href="/guides/common-scenarios">
+    Solutions for specific situations
+  </Card>
+  <Card title="Prompt Workshop" icon="pen-fancy" href="/guides/prompt-workshop">
+    Fundamental prompting techniques
+  </Card>
+</CardGroup>

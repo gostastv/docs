@@ -1,0 +1,289 @@
+---
+title: "Weather App Tutorial"
+description: "Build a weather app with live data and location"
+---
+
+# Weather App Tutorial
+
+**⏱️ 45 minutes**
+
+Build a weather app that shows current conditions and forecasts. You'll learn about API integration, location services, and displaying real-time data.
+
+## What You'll Build
+
+A weather app that:
+- Shows current weather for your location
+- Displays temperature, conditions, and other details
+- Shows a multi-day forecast
+- Lets you search for other cities
+
+---
+
+## Before You Start
+
+This tutorial uses a weather API to get real data. You have two options:
+
+### Option A: Use WeatherKit (Recommended)
+Apple's built-in weather service. No API key needed, but requires iOS 16+ and works automatically.
+
+### Option B: Use OpenWeather API
+Free tier available at [openweathermap.org](https://openweathermap.org/api). Requires creating an account and getting an API key.
+
+For this tutorial, we'll use **WeatherKit** since it's simpler.
+
+---
+
+## Part 1: Create the App
+
+On the Nativeline home page, enter:
+
+```
+A weather app that shows the current weather for my location. Display temperature, weather condition (sunny, cloudy, etc.), and a 5-day forecast. Use Apple's WeatherKit.
+```
+
+### Complete the Wizard
+
+- **Who is this for?** — Just me
+- **Feel** — Modern & polished
+- **Priority** — Core functionality first
+- **Colors** — Ocean Blues (or your choice)
+- **Name** — Weather
+
+Wait for the build to complete.
+
+---
+
+## Part 2: Set Up Location Permission
+
+Your app needs permission to access location. Nativeline should have set this up, but let's verify:
+
+```
+Make sure the app requests location permission when it first opens. Show a loading state while getting weather data.
+```
+
+When you run the app in the Simulator:
+1. You'll see a permission popup for location
+2. Tap "Allow While Using App"
+3. The app should fetch weather for the Simulator's default location
+
+<Tip>
+  To change the Simulator's location: Features → Location → Custom Location (or choose a city)
+</Tip>
+
+---
+
+## Part 3: Improve the Current Weather Display
+
+Let's make the current weather look better:
+
+```
+Redesign the current weather section:
+- Large temperature display (72°F format)
+- Weather condition icon (sun, cloud, rain, etc.)
+- Condition text (Partly Cloudy)
+- High/low temperatures for today
+- "Feels like" temperature
+- Location name at the top
+```
+
+Your main weather display should now be informative and visually clear.
+
+---
+
+## Part 4: Add Weather Details
+
+Add more weather information:
+
+```
+Below the main temperature, add a horizontal row of weather details:
+- Humidity percentage
+- Wind speed and direction
+- UV index
+- Visibility
+
+Use icons for each and show the value below.
+```
+
+---
+
+## Part 5: Improve the Forecast
+
+Let's enhance the 5-day forecast:
+
+```
+Show the 5-day forecast as horizontal scrolling cards:
+- Each card shows the day name, weather icon, and high/low temps
+- Use a slightly different background for each card
+- Make today's card highlighted
+```
+
+Or for a different layout:
+
+```
+Show the 5-day forecast as a vertical list:
+- Day of week on the left
+- Weather icon in the middle
+- High temp / low temp on the right
+- Alternating row backgrounds
+```
+
+---
+
+## Part 6: Add City Search
+
+Let users check weather for other cities:
+
+```
+Add a search bar at the top that lets me search for cities. When I tap a city from the search results, show the weather for that location instead of my current location.
+```
+
+Test searching for cities like "New York," "London," or "Tokyo."
+
+---
+
+## Part 7: Add Pull to Refresh
+
+Let users manually refresh the weather:
+
+```
+Add pull-to-refresh to update the weather data. Show a loading indicator while refreshing.
+```
+
+Pull down in the Simulator to test it.
+
+---
+
+## Part 8: Add Background Based on Weather
+
+Make it visually dynamic:
+
+```
+Change the background gradient based on the current weather:
+- Sunny: Yellow to blue gradient
+- Cloudy: Gray gradient
+- Rainy: Dark blue to gray
+- Night: Dark purple to black
+
+Also adjust text colors for readability.
+```
+
+---
+
+## Part 9: Add Hourly Forecast (Optional)
+
+Show hour-by-hour weather:
+
+```
+Add an hourly forecast section between current weather and daily forecast. Show the next 12 hours as a horizontal scrolling row with:
+- Hour (3 PM)
+- Small weather icon
+- Temperature
+```
+
+---
+
+## Part 10: Add Weather Alerts (Optional)
+
+Display severe weather warnings:
+
+```
+If there are any weather alerts for the current location, show a warning banner at the top with the alert type and a button to read more details.
+```
+
+---
+
+## Final Result
+
+You now have a complete weather app with:
+- ✅ Current location weather
+- ✅ Temperature and conditions
+- ✅ 5-day forecast
+- ✅ Weather details (humidity, wind, etc.)
+- ✅ City search
+- ✅ Pull to refresh
+- ✅ Dynamic backgrounds
+- ✅ (Optional) Hourly forecast
+- ✅ (Optional) Weather alerts
+
+---
+
+## What You Learned
+
+| Concept | How It Was Used |
+|---------|-----------------|
+| **APIs** | Fetching weather data from WeatherKit |
+| **Location** | Getting device coordinates |
+| **Permissions** | Requesting location access |
+| **Async data** | Loading states and refreshing |
+| **Search** | City lookup and selection |
+| **Dynamic UI** | Backgrounds based on conditions |
+
+---
+
+## Using OpenWeather API Instead
+
+If you prefer OpenWeather (or WeatherKit isn't working):
+
+1. Sign up at [openweathermap.org](https://openweathermap.org)
+2. Get your free API key
+3. Tell Nativeline:
+
+```
+Use the OpenWeather API instead of WeatherKit. My API key is YOUR_KEY_HERE. Use the One Call API 3.0 endpoint for current weather and forecasts.
+```
+
+<Warning>
+  Never share your API key publicly. For a real app, you'd store this securely.
+</Warning>
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Weather data not loading" icon="cloud-xmark">
+    - Make sure location permission is granted
+    - Check that you're connected to the internet
+    - Try the Simulator's Features → Location menu
+    - Try asking: "Show a mock weather display with sample data to test the UI"
+  </Accordion>
+
+  <Accordion title="Location permission not appearing" icon="location-crosshairs">
+    The permission popup only shows once. To reset:
+    - Simulator → Device → Erase All Content and Settings
+    - Or ask: "Make sure we request location permission with a usage description"
+  </Accordion>
+
+  <Accordion title="Search not finding cities" icon="magnifying-glass">
+    "Use Apple's MapKit geocoding to search for cities by name"
+  </Accordion>
+
+  <Accordion title="WeatherKit not working" icon="sun">
+    WeatherKit requires iOS 16+. Make sure your Simulator is running iOS 16 or later, or switch to OpenWeather API.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Challenge: Extend Your App
+
+Try these on your own:
+
+1. **Widgets** — Create a home screen widget (advanced)
+2. **Favorites** — Save favorite cities
+3. **Notifications** — Alert when rain is expected
+4. **Units toggle** — Switch between °F and °C
+5. **Radar map** — Show weather radar for your area
+
+---
+
+## Next Tutorial
+
+<CardGroup cols={2}>
+  <Card title="Photo Gallery" icon="images" href="/quick-start/photo-gallery">
+    Learn to use camera and photo library
+  </Card>
+  <Card title="Notes App" icon="note-sticky" href="/quick-start/notes-app">
+    Learn cloud sync with Supabase
+  </Card>
+</CardGroup>

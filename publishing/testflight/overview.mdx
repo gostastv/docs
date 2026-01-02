@@ -1,0 +1,172 @@
+---
+title: "TestFlight Overview"
+description: "Beta test your app before launching"
+---
+
+# TestFlight
+
+TestFlight is Apple's official platform for beta testing iOS apps. It lets you share your app with testers before releasing publicly on the App Store.
+
+## What is TestFlight?
+
+TestFlight is a free app from Apple that allows:
+
+- **You** to upload beta versions of your app
+- **Testers** to install and test on their devices
+- **Feedback** to flow back to you before public launch
+
+---
+
+## Why Use TestFlight?
+
+### Find Bugs Early
+
+Real users on real devices catch issues you might miss:
+- Device-specific bugs
+- Edge cases in user flow
+- Performance issues
+- Usability problems
+
+### Validate Your App
+
+Before spending time on App Store submission:
+- Confirm core features work
+- Get user feedback on design
+- Refine the experience
+
+### Build Excitement
+
+Beta testers become your first fans:
+- They feel invested in the app
+- They'll leave early reviews
+- They spread word of mouth
+
+---
+
+## How It Works
+
+```
+Build App → Upload to App Store Connect → Invite Testers → Get Feedback
+                                                ↓
+                                    Testers install via TestFlight app
+```
+
+<Steps>
+  <Step title="Upload your build">
+    Nativeline uploads your app to App Store Connect
+  </Step>
+  <Step title="Invite testers">
+    Add tester emails or share a public link
+  </Step>
+  <Step title="Testers install">
+    They download TestFlight app, then install your app
+  </Step>
+  <Step title="Collect feedback">
+    Testers use the app and send feedback
+  </Step>
+  <Step title="Iterate">
+    Fix issues, upload new builds, repeat
+  </Step>
+</Steps>
+
+---
+
+## Tester Types
+
+### Internal Testers
+
+| Aspect | Details |
+|--------|---------|
+| Who | Members of your App Store Connect team |
+| Limit | Up to 100 testers |
+| Review | No Apple review required |
+| Access | Immediate after upload processing |
+
+**Best for:** Your own devices, team members, close collaborators
+
+### External Testers
+
+| Aspect | Details |
+|--------|---------|
+| Who | Anyone with an email address |
+| Limit | Up to 10,000 testers |
+| Review | First build requires brief Apple review |
+| Access | After review approval (~24-48 hours first time) |
+
+**Best for:** Wider beta testing, user feedback
+
+---
+
+## TestFlight Limits
+
+| Limit | Value |
+|-------|-------|
+| Internal testers | 100 |
+| External testers | 10,000 |
+| Tester groups | 195 |
+| Builds per version | Unlimited |
+| Build availability | 90 days |
+
+---
+
+## What Testers See
+
+When testers install via TestFlight:
+
+1. **App appears on home screen** — with a small orange dot indicator
+2. **Full app functionality** — works just like the real app
+3. **Feedback option** — can take screenshots and send feedback
+4. **Automatic updates** — new builds install automatically
+
+---
+
+## Build Expiration
+
+<Warning>
+  TestFlight builds expire after 90 days. Testers must update to a newer build to continue testing.
+</Warning>
+
+Plan to upload new builds regularly to keep testers active.
+
+---
+
+## TestFlight vs App Store
+
+| Aspect | TestFlight | App Store |
+|--------|------------|-----------|
+| Audience | Invited testers | Everyone |
+| Review | Faster (or none for internal) | Full review |
+| Purpose | Testing, feedback | Public release |
+| Updates | Automatic | User-controlled |
+| Expiration | 90 days | Never |
+| Payments | Cannot process | Full IAP support |
+
+---
+
+## Requirements
+
+To use TestFlight, you need:
+
+- ✅ Apple Developer Program membership ($99/year)
+- ✅ App uploaded to App Store Connect
+- ✅ Valid code signing certificates
+- ✅ Testers with iOS devices and TestFlight app
+
+---
+
+## Getting Started
+
+<CardGroup cols={2}>
+  <Card title="Setup Guide" icon="gear" href="/publishing/testflight/setup">
+    First-time configuration
+  </Card>
+  <Card title="Upload Builds" icon="upload" href="/publishing/testflight/uploading">
+    Get your app to TestFlight
+  </Card>
+  <Card title="Invite Testers" icon="user-plus" href="/publishing/testflight/testers">
+    Add and manage testers
+  </Card>
+  <Card title="Troubleshooting" icon="wrench" href="/publishing/testflight/troubleshooting">
+    Fix common issues
+  </Card>
+</CardGroup>

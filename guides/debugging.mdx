@@ -1,0 +1,329 @@
+---
+title: "Debugging Guide"
+description: "Complete walkthrough for understanding and fixing issues in your app"
+---
+
+# Debugging Guide
+
+Things will go wrong. Builds will fail. Features won't work as expected. This guide teaches you everything about debugging in Nativeline.
+
+## Understanding Build Errors
+
+When you see "Build Failed" in Nativeline, it means the Swift code couldn't compile. This is normal and happens to everyone.
+
+### What You'll See
+
+When a build fails:
+1. The chat shows an error message
+2. The error includes the file and line number
+3. The AI automatically analyzes the error
+4. A fix is proposed
+
+### Common Error Types
+
+| Error Type | What It Means |
+|------------|---------------|
+| **Syntax Error** | Typo or malformed code |
+| **Type Mismatch** | Wrong data type used |
+| **Missing Reference** | Something isn't found |
+| **Ambiguous Expression** | Code is unclear |
+| **Missing Import** | Framework not imported |
+
+---
+
+## The Automatic Fix Cycle
+
+Nativeline automatically attempts to fix build errors. Here's how it works:
+
+### The 3-Attempt Process
+
+```
+Build Fails
+    ↓
+Attempt 1: AI analyzes error, proposes fix
+    ↓
+Build Fails Again?
+    ↓
+Attempt 2: AI tries different approach
+    ↓
+Build Fails Again?
+    ↓
+Attempt 3: AI tries another approach
+    ↓
+Still Failing?
+    ↓
+Manual intervention needed (see below)
+```
+
+Most errors are fixed within 1-2 attempts. Complex issues may require all 3.
+
+### Watching the Process
+
+You can see what's happening:
+- The chat shows each attempt
+- The todo list shows current status
+- Tool cards show files being edited
+- Build status shows success or failure
+
+---
+
+## When Automatic Fixes Fail
+
+If the AI can't fix the error after 3 attempts, you need to intervene.
+
+### The Manual Fix Process
+
+<Steps>
+  <Step title="Press Run App">
+    Click the **Run App** button in the interface.
+  </Step>
+  <Step title="Wait for Popup">
+    A popup appears asking what you want to do.
+  </Step>
+  <Step title="Click Apply Fix">
+    Select **Apply Fix** to trigger another fix attempt with additional context.
+  </Step>
+  <Step title="Provide Context (Optional)">
+    You can add context about what you think is wrong to help the AI.
+  </Step>
+</Steps>
+
+### When to Provide Context
+
+Help the AI by explaining:
+- What you were trying to build
+- What worked before this error
+- What you think might be wrong
+- Any patterns you've noticed
+
+**Example:**
+> "I was adding a save button. The error mentions 'user' not found — I think the variable should be 'currentUser' from the login screen."
+
+---
+
+## Describing Problems Effectively
+
+How you describe issues dramatically affects fix success.
+
+### Bad Descriptions
+
+- ❌ "It's broken"
+- ❌ "Fix it"
+- ❌ "The build failed"
+
+### Good Descriptions
+
+- ✅ "The build fails with 'Cannot find User in scope' — I think it should use the UserProfile model instead"
+- ✅ "This error started after I added the camera feature. The issue seems to be in PhotoView.swift"
+- ✅ "The error says 'Type mismatch' — it's expecting a String but I'm passing an Int from the form"
+
+### The Bug Report Framework
+
+```
+What I was trying to do:
+[Brief description of the feature or change]
+
+What I expected to happen:
+[The expected behavior]
+
+What actually happened:
+[The error or unexpected behavior]
+
+When this started:
+[After which change or action]
+
+What I think might be wrong:
+[Your hypothesis, if any]
+```
+
+---
+
+## Using the Code Editor for Debugging
+
+**Pro plan or higher required**
+
+The Code Editor provides powerful debugging tools.
+
+### Viewing Build Errors
+
+1. Open the **Code Editor** tab
+2. Files with errors are highlighted
+3. Click to see the exact line with the problem
+4. The error message appears inline
+
+### Reading Runtime Logs
+
+When your app runs (even successfully), logs show what's happening:
+
+1. Open Code Editor → **Logs** tab
+2. Run your app
+3. Watch real-time output
+4. Look for `print()` statements or errors
+
+### Adding Debug Prints
+
+Ask the AI: "Add print statements to the saveData function so I can see what's happening"
+
+Or manually add them (Pro plan):
+```swift
+print("Save button tapped")
+print("Saving data: \(userData)")
+print("Save completed: \(success)")
+```
+
+---
+
+## Common Errors and Solutions
+
+### "Cannot find 'X' in scope"
+
+**What it means:** A variable, function, or type isn't found.
+
+**Solutions:**
+- Check for typos in the name
+- Make sure the variable is defined in this file
+- Check if an import is missing
+- Ask: "Where should [X] come from? I see it's not found."
+
+### "Type 'X' has no member 'Y'"
+
+**What it means:** You're trying to access something that doesn't exist on that type.
+
+**Solutions:**
+- Check the property name
+- Verify the type is correct
+- Ask: "What properties does [X] have? I'm trying to access [Y]."
+
+### "Cannot convert value of type 'X' to expected type 'Y'"
+
+**What it means:** Type mismatch — you're using the wrong type.
+
+**Solutions:**
+- Check if you need to convert the value
+- Verify the function signature
+- Ask: "Convert [variable] from [X] to [Y]"
+
+### "Missing argument for parameter"
+
+**What it means:** A function call is missing required parameters.
+
+**Solutions:**
+- Check the function definition
+- Add the missing parameter
+- Ask: "What parameters does [function] need?"
+
+### "Value of optional type 'X?' must be unwrapped"
+
+**What it means:** You're using an optional value without handling the nil case.
+
+**Solutions:**
+- Ask: "Safely unwrap [variable] with a default value"
+- Or: "Add nil checking before using [variable]"
+
+---
+
+## Debugging Runtime Issues
+
+Not all issues are build errors. Sometimes the app builds but doesn't work correctly.
+
+### App Crashes After Launch
+
+**Check:**
+- Are all required permissions granted?
+- Is network data loading correctly?
+- Are you accessing something that's nil?
+
+**Ask:** "The app crashes when I [action]. Add error handling and debug logs."
+
+### Feature Doesn't Work
+
+**Check:**
+- Is the button connected to the right action?
+- Is data being saved/loaded correctly?
+- Are state changes triggering UI updates?
+
+**Ask:** "The [feature] isn't working. Add debug output to trace what's happening."
+
+### Data Not Saving
+
+**Check:**
+- Is the save function being called?
+- Are there any silent errors?
+- Is local storage set up correctly?
+
+**Ask:** "Add logging to the save process so I can see if data is being saved correctly."
+
+---
+
+## Prevention: Building Without Errors
+
+Reduce debugging by building better:
+
+### 1. Build Incrementally
+
+Don't ask for everything at once. Add features one at a time, testing each.
+
+### 2. Be Specific
+
+Vague requests lead to unexpected implementations. Specific requests reduce errors.
+
+### 3. Test Early and Often
+
+Don't wait until you have 10 features to test. Check after each change.
+
+### 4. Start Simple
+
+Get the basic version working first, then enhance it.
+
+### 5. Use Reference Images
+
+When the AI can see what you want, it makes fewer mistakes.
+
+---
+
+## When to Start Fresh
+
+Sometimes it's faster to start over than to fix:
+
+### Signs You Should Start Fresh
+
+- The same error keeps returning
+- The AI is stuck in a loop
+- The code structure is fundamentally wrong
+- Multiple features are broken simultaneously
+
+### How to Start Fresh (Partially)
+
+"Delete the [feature] code and rebuild it from scratch"
+
+This removes the problematic code while keeping the rest of your app intact.
+
+### How to Start Fresh (Clean Slate)
+
+For the whole project:
+1. Create a new project
+2. Copy your working ideas over
+3. Build more carefully this time
+
+This is rare but sometimes the fastest path.
+
+---
+
+## Getting Help
+
+If you're stuck:
+
+<CardGroup cols={2}>
+  <Card title="How Do I..." icon="circle-question" href="/guides/how-do-i">
+    Quick answers to common questions
+  </Card>
+  <Card title="Discord Community" icon="discord" href="https://discord.gg/nativeline">
+    Get help from other users
+  </Card>
+</CardGroup>
+
+You can also contact support@nativeline.ai with:
+- Your macOS version
+- What you were trying to build
+- The error message (screenshot helps)
+- Steps to reproduce

@@ -1,0 +1,336 @@
+---
+title: "Optimizing AI Usage"
+description: "Get more done with fewer bits through smart building strategies"
+---
+
+# Optimizing AI Usage
+
+Bits measure your AI usage in Nativeline. Using them wisely means building more with less. This guide shares strategies for efficient building.
+
+## Understanding Bit Consumption
+
+Not all requests use the same number of bits.
+
+### What Uses More Bits
+
+- Vague requests that need multiple iterations
+- Complex features built all at once
+- Repeated error-fix cycles
+- Large code rewrites
+- Back-and-forth clarifications
+
+### What Uses Fewer Bits
+
+- Specific, clear requests
+- Features built incrementally
+- First-time success (fewer fix attempts)
+- Small, focused changes
+- Using reference images
+
+---
+
+## The Specificity Principle
+
+**The more specific your request, the fewer bits it uses.**
+
+### Expensive (Vague)
+
+```
+Make the app look better
+```
+→ AI guesses, you correct, repeat several times
+→ **300+ bits**
+
+### Efficient (Specific)
+
+```
+Add 16pt padding to all cards, 12pt rounded corners,
+and a subtle drop shadow (offset 0, blur 8, opacity 10%)
+```
+→ AI implements exactly what you want
+→ **50 bits**
+
+---
+
+## Build Incrementally
+
+Building one feature at a time is more efficient than requesting everything at once.
+
+### Expensive (All at Once)
+
+```
+Build a complete fitness app with workout tracking,
+meal plans, progress charts, social sharing,
+achievements, and calendar integration
+```
+→ Huge plan, many errors, lots of fixes
+→ **2,000+ bits**
+
+### Efficient (Step by Step)
+
+```
+1. Start with workout logging (name, sets, reps)
+2. Add exercise history view
+3. Add progress charts
+4. Add meal logging
+5. etc.
+```
+→ Each step builds on stable foundation
+→ **800-1,000 bits** total (same result)
+
+---
+
+## Use Reference Images
+
+A picture really is worth a thousand ~~words~~ tokens.
+
+### Without Image
+
+```
+I want a card layout where the image is on top,
+then the title below it in bold, then a subtitle
+in gray, and a price on the right side...
+```
+→ Multiple iterations to get it right
+→ **200+ bits**
+
+### With Image
+
+```
+Make my product cards look like this screenshot
+[attached image]
+```
+→ AI sees exactly what you want
+→ **80 bits**
+
+### How to Use Images
+
+1. Take a screenshot of any app/website you like
+2. Drag and drop it into the Nativeline chat
+3. Reference it in your prompt
+
+---
+
+## First-Time Success
+
+Getting it right the first time saves bits.
+
+### Before Sending a Prompt
+
+1. **Be specific** — Include exact values, colors, sizes
+2. **Be complete** — Mention all requirements upfront
+3. **Be clear** — Describe the user experience, not just the UI
+
+### The 30-Second Check
+
+Before sending, ask yourself:
+- Have I specified WHERE this should appear?
+- Have I specified HOW it should look?
+- Have I specified WHAT it should do?
+
+This small investment prevents expensive iterations.
+
+---
+
+## Leverage Pro Plan Features
+
+If you're on Pro plan, use the code editor for small changes.
+
+### AI-Efficient
+
+```
+Add a settings screen with notification toggle
+```
+Use AI for new features and complex logic.
+
+### Manual-Efficient
+
+Open the code editor and change:
+```swift
+.foregroundColor(.blue)  // change to .green
+.padding(16)              // change to 20
+Text("Save")              // change to "Submit"
+```
+
+Save your bits for things that actually need AI.
+
+---
+
+## Optimize Error Handling
+
+Errors consume bits. Reduce them.
+
+### Preventive Prompting
+
+```
+Add a save button that saves the form data.
+Include error handling if the save fails,
+and show a loading indicator while saving.
+```
+
+Asking for error handling upfront prevents errors later.
+
+### Quick Error Context
+
+When errors occur, provide helpful context immediately:
+
+```
+The error says 'user' not found. It should use
+'currentUser' from AuthManager.
+```
+
+Good context = faster fix = fewer bits.
+
+---
+
+## Batch Similar Changes
+
+If you need multiple similar changes, batch them:
+
+### Expensive (Separate Requests)
+
+```
+Change the home screen button to blue
+```
+then
+```
+Change the profile screen button to blue
+```
+then
+```
+Change the settings screen button to blue
+```
+→ **150+ bits** (3 separate operations)
+
+### Efficient (One Request)
+
+```
+Change all buttons across the app to use blue (#007AFF)
+as the primary color
+```
+→ **60 bits** (single operation)
+
+---
+
+## Know When to Start Fresh
+
+Sometimes restarting is more efficient than fixing.
+
+### Signs to Rebuild
+
+- Same error returning repeatedly
+- Multiple interconnected issues
+- Fundamental architecture problem
+- More than 5 fix attempts
+
+### Efficient Restart
+
+```
+/planclear
+Delete the [feature] code completely.
+Let's rebuild it with a simpler approach: [description]
+```
+
+A clean rebuild often uses fewer bits than endless fixes.
+
+---
+
+## Smart Plan Management
+
+### Don't Interrupt Plans
+
+Let the AI complete its current plan before adding new requests. Interruptions can leave things half-done.
+
+### Clear Plans When Pivoting
+
+If you're changing direction:
+```
+/planclear
+```
+
+Then start fresh. Don't let old plans interfere.
+
+### Review Before Execution
+
+When the AI shows its plan, review it:
+- Is this what you want?
+- Is it the simplest approach?
+- Should anything be different?
+
+Feedback before implementation is cheaper than fixes after.
+
+---
+
+## Bit Usage by Action
+
+### Low Bit Usage (10-50 bits)
+
+- Simple text changes
+- Color changes
+- Spacing adjustments
+- Single property changes
+
+### Medium Bit Usage (50-200 bits)
+
+- Adding a new component
+- Simple new features
+- Minor bug fixes
+- UI polish
+
+### High Bit Usage (200-500 bits)
+
+- New screens
+- Complex features
+- Integration with services
+- Major bug fixes
+
+### Very High Bit Usage (500+ bits)
+
+- Complete new features with data
+- Complex error debugging
+- Major refactors
+- Features requiring back-and-forth
+
+---
+
+## Tracking Your Usage
+
+### Monitor in Real-Time
+
+Check the bit counter in Nativeline's toolbar:
+- Current remaining bits
+- Usage trend
+- Reset date
+
+### Plan Your Sessions
+
+If you have 200 bits left:
+- ✅ Polish existing features
+- ✅ Make small fixes
+- ❌ Start a major new feature (save for after reset)
+
+---
+
+## Quick Reference
+
+| Strategy | Savings |
+|----------|---------|
+| Specific prompts | 50-70% |
+| Reference images | 40-60% |
+| Building incrementally | 30-50% |
+| Quick error context | 20-40% |
+| Manual edits (Pro) | 90% for small changes |
+| Batching similar changes | 30-50% |
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Prompt Workshop" icon="pen-fancy" href="/guides/prompt-workshop">
+    Master efficient prompting
+  </Card>
+  <Card title="Plans & Pricing" icon="credit-card" href="/introduction/plans-and-pricing">
+    Understand bit allocation
+  </Card>
+</CardGroup>

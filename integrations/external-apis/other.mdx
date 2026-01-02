@@ -1,0 +1,354 @@
+---
+title: "Other APIs"
+description: "Generic guide for integrating any REST API"
+---
+
+# Integrating Any API
+
+This guide covers how to integrate any REST API with your Nativeline app. Use this for services not specifically covered elsewhere.
+
+## Understanding REST APIs
+
+Most APIs follow REST conventions:
+
+```
+Your App  →  HTTP Request  →  API Server
+              (GET, POST)         ↓
+Your App  ←  JSON Response  ←  API Server
+```
+
+---
+
+## Finding APIs
+
+### Popular API Directories
+
+- [RapidAPI](https://rapidapi.com) — Thousands of APIs
+- [Public APIs](https://github.com/public-apis/public-apis) — Free public APIs
+- [APIs.guru](https://apis.guru) — OpenAPI directory
+
+### Common Categories
+
+- **Communication:** Twilio (SMS), SendGrid (Email)
+- **Social:** Twitter, Instagram, TikTok
+- **Data:** News APIs, Stock APIs
+- **Utilities:** URL shorteners, QR codes
+- **AI:** Stability AI, Replicate
+
+---
+
+## Typical Integration Steps
+
+<Steps>
+  <Step title="Find the API">
+    Identify the service that provides what you need
+  </Step>
+  <Step title="Read documentation">
+    Understand endpoints, parameters, and authentication
+  </Step>
+  <Step title="Get credentials">
+    Sign up and get your API key or tokens
+  </Step>
+  <Step title="Configure in Nativeline">
+    Tell the AI about the API and provide credentials
+  </Step>
+  <Step title="Make requests">
+    Build the features that use the API
+  </Step>
+</Steps>
+
+---
+
+## API Authentication Types
+
+### API Key (Header)
+
+Most common. Include key in request header:
+
+```
+Add [Service] API with key in Authorization header:
+Key: your-api-key-here
+```
+
+### API Key (Query Parameter)
+
+Some APIs want the key in the URL:
+
+```
+Add [Service] API with key as query parameter:
+Key: your-api-key-here
+```
+
+### Bearer Token
+
+Common for OAuth and modern APIs:
+
+```
+Add [Service] API with Bearer token:
+Token: your-token-here
+```
+
+### OAuth 2.0
+
+For user-authorized access (e.g., accessing user's social media):
+
+```
+Add OAuth authentication for [Service]:
+- Client ID: xxxxx
+- Client Secret: xxxxx
+- Redirect URL: your-app://callback
+```
+
+---
+
+## Making API Requests
+
+### GET Request
+
+Retrieve data:
+
+```
+Fetch the list of items from [API]:
+Endpoint: GET https://api.service.com/items
+```
+
+### POST Request
+
+Send data:
+
+```
+Send user data to [API]:
+Endpoint: POST https://api.service.com/users
+Body: { name, email }
+```
+
+### With Parameters
+
+```
+Search [API] with query parameters:
+Endpoint: GET https://api.service.com/search?q={query}&limit=10
+```
+
+---
+
+## Handling Responses
+
+### JSON Parsing
+
+Most APIs return JSON. Tell Nativeline the structure:
+
+```
+The API returns:
+{
+  "results": [
+    { "id": 1, "name": "Item 1" },
+    { "id": 2, "name": "Item 2" }
+  ],
+  "total": 100
+}
+
+Parse this and display the results in a list.
+```
+
+### Creating Models
+
+```
+Create a model for the API response:
+- Item has: id (Int), name (String), description (String?)
+- Response has: results (array of Items), total (Int)
+```
+
+---
+
+## Error Handling
+
+### Common HTTP Status Codes
+
+| Code | Meaning | Handle |
+|------|---------|--------|
+| 200 | Success | Process data |
+| 400 | Bad request | Check your parameters |
+| 401 | Unauthorized | Check API key |
+| 403 | Forbidden | Check permissions |
+| 404 | Not found | Resource doesn't exist |
+| 429 | Rate limited | Wait and retry |
+| 500 | Server error | Retry later |
+
+### Implementing Error Handling
+
+```
+Handle API errors:
+- 401: Show "Invalid API key"
+- 404: Show "Not found"
+- 429: Wait 30 seconds and retry
+- 500: Show "Service unavailable, try later"
+```
+
+---
+
+## Rate Limiting
+
+Most APIs limit requests:
+
+### Understanding Limits
+
+- **Requests per minute/hour/day**
+- **Check headers:** `X-RateLimit-Remaining`
+
+### Handling Rate Limits
+
+```
+If rate limited:
+- Show "Please wait" message
+- Wait for limit reset
+- Use exponential backoff
+- Cache responses to reduce calls
+```
+
+---
+
+## Caching
+
+Reduce API calls by caching:
+
+```
+Cache API responses:
+- Store response with timestamp
+- Use cached data if less than 5 minutes old
+- Refresh in background
+- Show cached data immediately while loading fresh data
+```
+
+---
+
+## Security Best Practices
+
+<AccordionGroup>
+  <Accordion title="Never expose API keys" icon="key">
+    Keys should be stored securely, not in source code or logs.
+  </Accordion>
+
+  <Accordion title="Use HTTPS only" icon="lock">
+    All API calls should use HTTPS to encrypt data in transit.
+  </Accordion>
+
+  <Accordion title="Validate responses" icon="check">
+    Don't assume API responses are always correct or safe.
+  </Accordion>
+
+  <Accordion title="Consider a proxy server" icon="server">
+    For sensitive APIs, route calls through your server to hide keys.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Example: News API
+
+```
+Integrate NewsAPI.org:
+
+1. API Key: your-news-api-key
+2. Endpoint: GET https://newsapi.org/v2/top-headlines
+3. Parameters: country=us, category=technology
+
+Display:
+- List of articles
+- Each shows: title, source, thumbnail
+- Tap to open in Safari
+```
+
+---
+
+## Example: Giphy API
+
+```
+Integrate Giphy:
+
+1. API Key: your-giphy-key
+2. Endpoint: GET https://api.giphy.com/v1/gifs/search
+3. Parameters: q={searchTerm}, limit=20
+
+Display:
+- Grid of GIF thumbnails
+- Tap to view full GIF
+- Share button
+```
+
+---
+
+## Example: Currency Conversion
+
+```
+Integrate ExchangeRate-API:
+
+1. API Key: your-key
+2. Endpoint: GET https://v6.exchangerate-api.com/v6/{key}/latest/USD
+
+Build:
+- Currency converter
+- Select from/to currencies
+- Enter amount
+- Show converted result
+- Cache rates for 1 hour
+```
+
+---
+
+## Testing APIs
+
+### Postman or Similar
+
+Test APIs outside your app first:
+1. Download [Postman](https://postman.com)
+2. Test endpoints manually
+3. Verify responses
+4. Then integrate into app
+
+### Nativeline Testing
+
+```
+Add a test screen that:
+- Makes a test API call
+- Logs the response
+- Shows success/failure
+```
+
+---
+
+## When APIs Don't Work
+
+### Debugging Steps
+
+1. Check API key is valid
+2. Verify endpoint URL
+3. Check request format
+4. Look at error response
+5. Test in Postman
+6. Check API documentation
+7. Contact API support
+
+### Common Issues
+
+| Issue | Solution |
+|-------|----------|
+| CORS errors | Usually not an issue for iOS apps |
+| Invalid JSON | Check API response format |
+| Timeout | Increase timeout, check network |
+| Wrong data | Verify endpoint and parameters |
+
+---
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="OpenAI" icon="robot" href="/integrations/external-apis/openai">
+    AI integration
+  </Card>
+  <Card title="Stripe" icon="credit-card" href="/integrations/external-apis/stripe">
+    Payment processing
+  </Card>
+  <Card title="Supabase" icon="database" href="/integrations/supabase/overview">
+    Backend services
+  </Card>
+</CardGroup>

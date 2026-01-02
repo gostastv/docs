@@ -1,0 +1,303 @@
+---
+title: "App Store Connect"
+description: "Set up your app's store listing"
+---
+
+# App Store Connect
+
+App Store Connect is Apple's portal for managing your App Store presence. Here's how to set up your app listing.
+
+## Accessing App Store Connect
+
+1. Go to [appstoreconnect.apple.com](https://appstoreconnect.apple.com)
+2. Sign in with your Apple Developer Apple ID
+3. Click "My Apps"
+
+---
+
+## Creating Your App (If Not Done)
+
+If you haven't created your app yet:
+
+<Steps>
+  <Step title="Click the + button">
+    In My Apps, click "+" then "New App"
+  </Step>
+  <Step title="Select platform">
+    Choose iOS
+  </Step>
+  <Step title="Enter app name">
+    This appears on the App Store (can be changed later)
+  </Step>
+  <Step title="Select primary language">
+    Your main language
+  </Step>
+  <Step title="Choose Bundle ID">
+    Must match your Nativeline project exactly
+  </Step>
+  <Step title="Enter SKU">
+    Any unique identifier for your reference (e.g., "myapp001")
+  </Step>
+  <Step title="Click Create">
+    Your app is now in App Store Connect
+  </Step>
+</Steps>
+
+---
+
+## App Information
+
+### General Information
+
+| Field | Description | Tips |
+|-------|-------------|------|
+| Name | App Store display name (30 chars) | Clear, memorable, unique |
+| Subtitle | Appears under name (30 chars) | Brief value proposition |
+| Category | Primary category | Choose most relevant |
+| Secondary Category | Optional | Can help discoverability |
+
+### Content Rights
+
+Confirm you have rights to all content in your app:
+- Original content you created
+- Licensed content with proper permissions
+- No copyrighted material without authorization
+
+---
+
+## App Privacy
+
+Apple requires detailed privacy disclosures:
+
+### Privacy Policy
+
+Provide URL to your privacy policy. It must:
+- Be accessible to all users
+- Be in the primary language of your app
+- Clearly explain what data you collect
+
+### App Privacy Details
+
+Answer questions about data collection:
+
+1. **Contact Info** — Name, email, phone, address
+2. **Health & Fitness** — Health, fitness data
+3. **Financial Info** — Payment info, credit score
+4. **Location** — Precise or coarse location
+5. **Contacts** — Address book
+6. **User Content** — Photos, videos, files
+7. **Browsing History** — Web browsing
+8. **Search History** — In-app searches
+9. **Identifiers** — User ID, device ID
+10. **Usage Data** — App analytics
+11. **Diagnostics** — Crash logs
+
+For each type, specify:
+- Whether it's linked to user identity
+- Whether it's used for tracking
+
+<Tip>
+  If your app only uses standard analytics (like Apple's), you likely only need to declare "Usage Data" and "Diagnostics" as not linked to identity.
+</Tip>
+
+---
+
+## Version Information
+
+### What's New
+
+For updates, describe what changed:
+- Bug fixes
+- New features
+- Improvements
+
+Example:
+```
+• Added dark mode support
+• Fixed issue with photo saving
+• Improved app performance
+```
+
+### Description
+
+Up to 4000 characters describing your app:
+
+**Structure:**
+1. Hook (what does it do?)
+2. Key features (bullet points)
+3. Social proof (if any)
+4. Call to action
+
+**Good Example:**
+```
+Take stunning photos and edit them with powerful filters — all from your iPhone.
+
+KEY FEATURES:
+• 50+ professional filters
+• One-tap enhancement
+• Share directly to social media
+• Save to camera roll
+
+Join millions of users who trust PhotoApp for their daily photos.
+
+Download free today!
+```
+
+### Keywords
+
+Up to 100 characters, comma-separated:
+
+**Tips:**
+- No spaces after commas
+- Don't repeat words from your name
+- Use singular forms
+- Think like a user searching
+
+**Example:** `photo,filter,camera,edit,enhance,portrait,selfie`
+
+### Promotional Text
+
+170 characters that can be changed anytime:
+
+Use for:
+- Limited promotions
+- Feature announcements
+- Seasonal messaging
+
+---
+
+## App Previews & Screenshots
+
+See [Screenshots & Preview](/publishing/app-store/screenshots) for detailed guidance.
+
+---
+
+## Age Rating
+
+Answer Apple's questionnaire about content:
+
+- Violence (cartoon, realistic, etc.)
+- Sexual content
+- Profanity
+- Drug/alcohol references
+- Gambling
+- Horror/fear themes
+- User-generated content
+
+Your answers determine the age rating (4+, 9+, 12+, 17+).
+
+<Warning>
+  Be honest. If your rating doesn't match your content, Apple will reject your app.
+</Warning>
+
+---
+
+## Pricing and Availability
+
+### Price
+
+Choose from Apple's price tiers or select Free.
+
+| Tier | USD | Note |
+|------|-----|------|
+| Free | $0 | Most common |
+| Tier 1 | $0.99 | Entry paid tier |
+| Tier 2 | $1.99 | |
+| Tier 3 | $2.99 | |
+| ... | | Up to $999.99 |
+
+### Availability
+
+Select countries/regions:
+- All (default)
+- Select specific ones
+- Consider language support
+
+### Pre-Order
+
+Optionally allow users to pre-order:
+- Set up to 180 days in advance
+- Users charged at launch
+- Generates early buzz
+
+---
+
+## Review Information
+
+### Contact Information
+
+Apple may contact you during review:
+- Email (required)
+- Phone (required)
+- Should be monitored during review period
+
+### Demo Account
+
+If your app requires login:
+- Provide test credentials
+- Ensure the account is active and works
+- Don't use production accounts with real data
+
+### Notes
+
+Explain anything Apple might find confusing:
+- Special testing instructions
+- Why you need certain permissions
+- How to access specific features
+
+---
+
+## App Clips (Optional)
+
+If your app has App Clips:
+- Upload the App Clip binary
+- Provide metadata for the clip
+- Set up the App Clip experience
+
+---
+
+## Submission Checklist
+
+Before submitting, verify:
+
+- [ ] App name finalized
+- [ ] Description is compelling and accurate
+- [ ] Keywords optimized (100 chars)
+- [ ] Screenshots uploaded for all sizes
+- [ ] Age rating questionnaire completed
+- [ ] Privacy policy URL works
+- [ ] Support URL works
+- [ ] Content rights confirmed
+- [ ] Privacy details completed
+- [ ] Build uploaded and selected
+- [ ] Demo account provided (if login required)
+
+---
+
+## Saving vs Submitting
+
+### Save for Later
+
+You can save incomplete listings and return later:
+- Click "Save" at top right
+- Come back anytime to continue
+
+### Ready to Submit
+
+When everything is complete:
+- All required fields filled
+- Build uploaded and processed
+- Ready to send for review
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Screenshots & Preview" icon="image" href="/publishing/app-store/screenshots">
+    Required visual assets
+  </Card>
+  <Card title="Submitting for Review" icon="paper-plane" href="/publishing/app-store/submission">
+    Send to Apple review
+  </Card>
+</CardGroup>

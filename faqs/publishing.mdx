@@ -1,0 +1,205 @@
+---
+title: "Publishing FAQs"
+description: "Questions about TestFlight and App Store"
+---
+
+# Publishing FAQs
+
+Questions about getting your app to users via TestFlight and the App Store.
+
+---
+
+<AccordionGroup>
+  <Accordion title="Do I need an Apple Developer account?">
+    **For testing on your own device:** No, but apps expire after 7 days.
+
+    **For TestFlight or App Store:** Yes, you need an Apple Developer Program membership ($99/year).
+
+    There's no way around this for distribution. It's an Apple requirement for all iOS apps.
+  </Accordion>
+
+  <Accordion title="How much does the Apple Developer account cost?">
+    $99 per year for individuals.
+
+    Organizations also pay $99/year but need a D-U-N-S number (free to obtain but takes 1-2 weeks).
+
+    The fee covers:
+    - TestFlight distribution
+    - App Store publishing
+    - Access to developer tools and betas
+    - 2 technical support incidents
+  </Accordion>
+
+  <Accordion title="What's the difference between TestFlight and App Store?">
+    | Aspect | TestFlight | App Store |
+    |--------|------------|-----------|
+    | Purpose | Beta testing | Public release |
+    | Audience | Invited testers | Everyone |
+    | Limit | 10,000 testers | Unlimited |
+    | Review | Quick/None | Full review |
+    | Expiration | 90 days | Never |
+
+    Start with TestFlight to test with real users before public launch.
+  </Accordion>
+
+  <Accordion title="How do I upload to TestFlight?">
+    1. Connect your Apple Developer account in Nativeline Settings
+    2. Create your app in App Store Connect
+    3. Click "Upload to TestFlight" in Nativeline
+    4. Wait for processing (10-30 minutes)
+    5. Invite testers in App Store Connect
+
+    See our [TestFlight Guide](/publishing/testflight/overview) for full details.
+  </Accordion>
+
+  <Accordion title="How long does App Store review take?">
+    Typical times:
+    - **TestFlight:** 10-30 minutes (internal), 24-48 hours (first external)
+    - **App Store:** 24-48 hours
+
+    Can be longer for:
+    - First submissions
+    - Complex apps
+    - Apps with in-app purchases
+    - During busy periods (holidays, WWDC)
+  </Accordion>
+
+  <Accordion title="Can my app get rejected?">
+    Yes. Apple reviews all apps against their guidelines. Common rejection reasons:
+
+    - App crashes or bugs
+    - Incomplete functionality
+    - Inaccurate description
+    - Privacy policy issues
+    - Using wrong payment system for digital goods
+
+    See our [Review Guidelines](/publishing/app-store/review-guidelines) to avoid rejection.
+  </Accordion>
+
+  <Accordion title="What happens if my app is rejected?">
+    1. Read Apple's feedback carefully
+    2. Fix each issue mentioned
+    3. Upload a new build (if code changes needed)
+    4. Reply to Apple explaining your fixes
+    5. Resubmit for review
+
+    Rejections are common and fixable. Most apps get approved on second or third try.
+  </Accordion>
+
+  <Accordion title="How many testers can I have on TestFlight?">
+    - **Internal testers:** Up to 100 (team members)
+    - **External testers:** Up to 10,000 (anyone with email)
+
+    Internal testers don't require Apple review. External testers need a quick beta review for the first build.
+  </Accordion>
+
+  <Accordion title="How do I invite testers to TestFlight?">
+    1. Go to App Store Connect → Your App → TestFlight
+    2. Click "+" to add testers
+    3. Enter email addresses
+    4. Testers receive invitation email
+    5. They install TestFlight app, then your app
+
+    Or use a public link that anyone can use to join.
+  </Accordion>
+
+  <Accordion title="Why do TestFlight builds expire?">
+    Apple limits TestFlight builds to 90 days to ensure:
+    - Testers use recent versions
+    - You're actively developing
+    - Security issues don't persist
+
+    Upload new builds regularly to keep testers engaged.
+  </Accordion>
+
+  <Accordion title="What screenshots do I need for the App Store?">
+    At minimum:
+    - iPhone 6.5" (1284 x 2778)
+    - iPhone 5.5" (1242 x 2208)
+
+    If supporting iPad:
+    - iPad Pro 12.9" (2048 x 2732)
+
+    You need 3-10 screenshots per device size.
+
+    See [Screenshots Guide](/publishing/app-store/screenshots) for tips.
+  </Accordion>
+
+  <Accordion title="Do I need a privacy policy?">
+    Yes. Apple requires every app to have a privacy policy URL.
+
+    Your privacy policy must:
+    - Be accessible on the web
+    - Explain what data you collect
+    - Explain how data is used
+    - Be in the app's primary language
+
+    Free generators exist online if you need help creating one.
+  </Accordion>
+
+  <Accordion title="Can I charge for my app?">
+    Yes! Options:
+    - **Paid upfront** — User pays to download
+    - **Freemium** — Free download, in-app purchases for premium
+    - **Subscription** — Recurring payments
+    - **Free with ads** — Monetize with advertising
+
+    Note: Apple takes 15-30% of App Store transactions.
+  </Accordion>
+
+  <Accordion title="What's the App Store's commission?">
+    - **30%** standard commission
+    - **15%** for subscriptions after first year
+    - **15%** for Small Business Program (under $1M revenue)
+
+    This applies to app purchases and in-app purchases.
+  </Accordion>
+
+  <Accordion title="How do I update my app after it's live?">
+    1. Make changes in Nativeline
+    2. Increment version/build number
+    3. Upload to App Store Connect
+    4. Submit for review
+    5. Once approved, release the update
+
+    Updates also go through review but typically faster than initial submissions.
+  </Accordion>
+
+  <Accordion title="Can I publish in specific countries only?">
+    Yes. In App Store Connect, you can:
+    - Select specific countries/regions
+    - Exclude certain countries
+    - Set different pricing by region
+
+    Consider language support when choosing regions.
+  </Accordion>
+
+  <Accordion title="What if I find a critical bug after publishing?">
+    1. Fix the bug in Nativeline
+    2. Increment build number
+    3. Upload and submit for review
+    4. Request expedited review (for critical issues)
+    5. Release update immediately when approved
+
+    For genuine emergencies, Apple may expedite review within 24 hours.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Related FAQs
+
+<CardGroup cols={2}>
+  <Card title="TestFlight Guide" icon="paper-plane" href="/publishing/testflight/overview">
+    Full TestFlight docs
+  </Card>
+  <Card title="App Store Guide" icon="app-store" href="/publishing/app-store/overview">
+    Full App Store docs
+  </Card>
+  <Card title="Troubleshooting" icon="wrench" href="/faqs/troubleshooting">
+    Fixing issues
+  </Card>
+  <Card title="General FAQs" icon="circle-question" href="/faqs/general">
+    Basic questions
+  </Card>
+</CardGroup>

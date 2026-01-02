@@ -1,0 +1,324 @@
+---
+title: "Reading App Logs"
+description: "Use logs to debug runtime issues and understand app behavior"
+---
+
+# Reading App Logs
+
+**Pro plan or higher required**
+
+Build errors show problems at compile time. But what about issues that happen while your app is running? That's where app logs come in.
+
+## What Are App Logs?
+
+Logs are messages your app produces while running. They show:
+- What code is executing
+- Values of variables
+- Errors that occur at runtime
+- User actions and their effects
+
+---
+
+## Accessing Logs in Nativeline
+
+<Steps>
+  <Step title="Open the Code Editor">
+    Click the **Code Editor** tab in the Nativeline interface.
+  </Step>
+  <Step title="Switch to Logs View">
+    Find and click the **Logs** tab or section within the Code Editor.
+  </Step>
+  <Step title="Run Your App">
+    Build and run your app. Logs appear in real-time.
+  </Step>
+  <Step title="Watch the Output">
+    As you interact with your app, logs show what's happening.
+  </Step>
+</Steps>
+
+---
+
+## Understanding Log Output
+
+### Basic Log Structure
+
+```
+2024-01-15 10:30:45.123 MyApp[12345:67890] Save button tapped
+2024-01-15 10:30:45.456 MyApp[12345:67890] Saving data: User(name: "John")
+2024-01-15 10:30:45.789 MyApp[12345:67890] Save completed successfully
+```
+
+Each line shows:
+- **Timestamp:** When it happened
+- **App name:** Which app
+- **Message:** The actual log content
+
+### Log Types
+
+| Type | Meaning |
+|------|---------|
+| **Info logs** | Normal operation, status updates |
+| **Warning logs** | Something unusual, but not critical |
+| **Error logs** | Something went wrong |
+| **Debug logs** | Developer debugging info |
+
+---
+
+## Adding Logs to Your App
+
+Ask the AI to add logging:
+
+### For Debugging a Specific Feature
+
+```
+Add print statements to the saveData function to show:
+- When the function starts
+- What data is being saved
+- Whether the save succeeded or failed
+```
+
+### For Tracking User Actions
+
+```
+Add logging for all button taps so I can see what users are doing
+```
+
+### For API/Network Issues
+
+```
+Add logging to show:
+- When API requests start
+- What data is being sent
+- What response comes back
+- Any errors that occur
+```
+
+---
+
+## Common Debugging Scenarios
+
+### Debugging "Nothing Happens" Issues
+
+Your button doesn't seem to work? Add logs:
+
+```
+Add a print statement at the start of the button's action
+to confirm it's being triggered
+```
+
+If the log appears: The button works, the issue is in the code after.
+If no log appears: The button isn't connected properly.
+
+### Debugging Data Issues
+
+Data not showing up?
+
+```
+Add logging to show:
+- When data is loaded
+- How many items were loaded
+- The actual content of the first item
+```
+
+Check the logs to see if data exists and what it contains.
+
+### Debugging Navigation Issues
+
+Screen not appearing?
+
+```
+Add logging when the navigation to [screen] is triggered
+and when [screen] appears
+```
+
+Follow the trail to see where it breaks.
+
+### Debugging Crash-Like Behavior
+
+App freezing or behaving strangely?
+
+```
+Add extensive logging throughout [feature] to trace exactly
+where the problem occurs
+```
+
+The last log before the freeze indicates where to look.
+
+---
+
+## Reading Swift Error Messages
+
+When Swift errors appear in logs, they often include useful info:
+
+### Optional Unwrapping Errors
+
+```
+Fatal error: Unexpectedly found nil while unwrapping an Optional value
+```
+
+**Meaning:** Your code tried to use a nil value that should have had a value.
+
+**Fix:** Ask the AI to add nil checking for the relevant variable.
+
+### Array Index Errors
+
+```
+Fatal error: Index out of range
+```
+
+**Meaning:** Accessing an array position that doesn't exist.
+
+**Fix:** Check array bounds before accessing, or verify the data exists.
+
+### Type Casting Errors
+
+```
+Could not cast value of type 'X' to 'Y'
+```
+
+**Meaning:** Tried to convert between incompatible types.
+
+**Fix:** Check the actual type and handle it appropriately.
+
+---
+
+## Effective Logging Strategies
+
+### 1. Log Entry and Exit
+
+```swift
+print("▶️ saveProfile started")
+// ... code ...
+print("✅ saveProfile completed")
+```
+
+This shows whether functions complete or exit early.
+
+### 2. Log Important Values
+
+```swift
+print("📊 User data: \(userData)")
+print("📊 Items count: \(items.count)")
+```
+
+See what your variables actually contain.
+
+### 3. Log Decision Points
+
+```swift
+if isLoggedIn {
+    print("🔓 User is logged in, showing profile")
+} else {
+    print("🔒 User not logged in, showing login")
+}
+```
+
+Understand which code paths execute.
+
+### 4. Use Distinctive Markers
+
+Using emojis or prefixes makes logs easier to scan:
+- `▶️` Start of function
+- `✅` Success
+- `❌` Error
+- `⚠️` Warning
+- `📊` Data values
+- `🔄` State changes
+
+---
+
+## Filtering and Searching Logs
+
+When there's a lot of output:
+
+### Search for Specific Text
+
+Look for your custom log messages or error keywords.
+
+### Filter by Feature
+
+If you're debugging the save feature, search for "save" in logs.
+
+### Filter by Error Level
+
+Look for "error", "failed", "nil", or "crash" to find problems.
+
+---
+
+## When to Use Logs vs Build Errors
+
+| Situation | Check |
+|-----------|-------|
+| App won't compile | Build errors in chat |
+| App compiles but crashes | Runtime logs |
+| App runs but feature doesn't work | Runtime logs |
+| UI looks wrong | Visual inspection + logs |
+| Data doesn't save | Logs showing save operations |
+| API not working | Logs showing requests/responses |
+
+---
+
+## Removing Debug Logs
+
+Before publishing your app, clean up debug logs:
+
+```
+Remove all the debug print statements we added for troubleshooting.
+Keep only important error logging.
+```
+
+Or for more control:
+
+```
+Replace debug print statements with proper logging that only
+shows in debug builds, not in production.
+```
+
+---
+
+## Advanced: Console.app
+
+For even more detailed debugging, you can use macOS's Console app:
+
+1. Open **Console.app** (in Applications → Utilities)
+2. Select your Simulator in the sidebar
+3. Run your app
+4. See comprehensive system logs
+
+This shows logs from iOS itself, not just your app.
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Logs aren't appearing" icon="terminal">
+    - Make sure your app is running
+    - Check you're on the Logs tab
+    - Try adding explicit print statements
+    - Restart the Simulator
+  </Accordion>
+
+  <Accordion title="Too many logs to read" icon="list">
+    - Add distinctive prefixes to your logs
+    - Search for specific terms
+    - Ask the AI to reduce logging: "Only log errors, not normal operations"
+  </Accordion>
+
+  <Accordion title="Don't have logs tab" icon="eye-slash">
+    The Logs feature requires Pro plan or higher. Check your subscription in Settings.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Debugging Guide" icon="bug" href="/guides/debugging">
+    Complete debugging walkthrough
+  </Card>
+  <Card title="Code Editor" icon="code" href="/features/code-editor">
+    Full Code Editor documentation
+  </Card>
+</CardGroup>

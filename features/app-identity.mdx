@@ -1,0 +1,222 @@
+---
+title: "App Identity"
+description: "Configure your app's name, icon, and identifiers"
+---
+
+# App Identity
+
+App Identity settings control how your app identifies itself — the name users see, the icon on their home screen, and the unique identifiers that distinguish your app.
+
+## Accessing App Identity
+
+1. Open your project
+2. Click **Settings** in the sidebar
+3. Select **App Identity** (or look under General)
+
+---
+
+## Display Name
+
+The name shown under your app icon and in iOS Settings.
+
+### Requirements
+
+- Maximum 30 characters (11 visible under icon)
+- No special characters that could cause issues
+- Should be unique and memorable
+
+### Tips
+
+- Keep it short — long names get truncated
+- Make it recognizable
+- Consider searchability in the App Store
+
+### Changing the Name
+
+1. Settings → App Identity → Display Name
+2. Enter new name
+3. Save
+
+Changes appear immediately in the Simulator and when you rebuild.
+
+---
+
+## App Icon
+
+The icon users see on their home screen, in Settings, and throughout iOS.
+
+### Requirements
+
+- **Size:** 1024×1024 pixels
+- **Format:** PNG
+- **No transparency** — use a solid background
+- **No alpha channel** — Apple rejects icons with transparency
+
+### Guidelines
+
+- Simple, recognizable design
+- Works at small sizes (the icon is shown at various sizes)
+- Consistent with iOS design language
+- No photos or screenshots of other apps
+
+### Uploading an Icon
+
+1. Settings → App Identity → App Icon
+2. Click upload or drag image
+3. Preview appears showing various sizes
+4. Save
+
+<Tip>
+  Use tools like [App Icon Generator](https://appicon.co) to create properly sized assets from a single image.
+</Tip>
+
+---
+
+## Version Number
+
+The public version of your app (e.g., 1.0, 1.1, 2.0).
+
+### Format
+
+`major.minor.patch` — for example: `1.2.3`
+
+- **Major:** Significant updates (2.0)
+- **Minor:** New features (1.1)
+- **Patch:** Bug fixes (1.0.1)
+
+### When to Update
+
+- Before each TestFlight upload
+- Before App Store submission
+- When releasing significant changes
+
+### Changing Version
+
+1. Settings → App Identity → Version
+2. Enter new version (e.g., "1.1")
+3. Save
+
+---
+
+## Build Number
+
+Internal number for tracking builds. Must increase with each upload.
+
+### Format
+
+Any positive integer: 1, 2, 3, ... or 100, 101, 102...
+
+### When to Update
+
+- Every time you upload to TestFlight
+- Every time you submit to App Store
+- Apple requires each build number to be unique
+
+### Strategy
+
+Common approaches:
+- Simple increment: 1, 2, 3, 4...
+- Date-based: 20240115 (YYYYMMDD)
+- Combined: Version + build (1001, 1002, 1003...)
+
+---
+
+## Bundle Identifier
+
+A unique identifier for your app in Apple's ecosystem.
+
+### Format
+
+Reverse domain notation: `com.yourname.appname`
+
+Examples:
+- `com.johndoe.todolist`
+- `com.mycompany.weatherapp`
+- `io.startup.fitnesstrack`
+
+### Requirements
+
+- Must be unique worldwide
+- Only letters, numbers, periods, and hyphens
+- Usually matches your domain (if you have one)
+- Cannot be changed after App Store submission
+
+### Choosing a Bundle ID
+
+If you don't have a domain, use a personal format:
+- `com.yourname.appname`
+- `io.yourname.appname`
+
+<Warning>
+  Choose carefully — Bundle IDs can't be changed once your app is on the App Store.
+</Warning>
+
+---
+
+## Team ID
+
+If you have an Apple Developer account, your Team ID links your app to your account.
+
+### Where to Find It
+
+1. [Apple Developer Portal](https://developer.apple.com)
+2. Account → Membership → Team ID
+
+### When It's Needed
+
+- TestFlight uploads
+- App Store submission
+- Capabilities requiring entitlements
+
+---
+
+## Quick Reference
+
+| Setting | Where It Appears | When to Change |
+|---------|------------------|----------------|
+| Display Name | Home screen, iOS Settings | When you want a new name |
+| App Icon | Home screen, everywhere | New branding, refresh |
+| Version | App Store, Settings | Each release |
+| Build Number | TestFlight, internal | Every upload |
+| Bundle ID | Nowhere visible | Never (after release) |
+
+---
+
+## Common Tasks
+
+<AccordionGroup>
+  <Accordion title="Change app name for rebranding" icon="signature">
+    1. Settings → App Identity → Display Name
+    2. Enter new name
+    3. Save and rebuild
+    4. For App Store, also update listing in App Store Connect
+  </Accordion>
+
+  <Accordion title="Prepare for TestFlight upload" icon="rocket">
+    Before uploading:
+    1. Update Version if it's a new release
+    2. Always increment Build Number
+    3. Verify App Icon looks good
+    4. Check Bundle ID matches your developer account
+  </Accordion>
+
+  <Accordion title="Fix rejected icon (transparency)" icon="image">
+    1. Open your icon in image editor
+    2. Ensure no transparency (alpha channel)
+    3. Export as PNG without alpha
+    4. Re-upload to Nativeline
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="TestFlight Setup" icon="rocket" href="/publishing/testflight/setup">
+    Prepare for beta distribution
+  </Card>
+  <Card title="App Store Submission" icon="store" href="/publishing/app-store/submission">
+    Publishing requirements
+  </Card>
+</CardGroup>

@@ -1,0 +1,218 @@
+---
+title: "External APIs Overview"
+description: "Integrate third-party services into your app"
+---
+
+# External APIs
+
+External APIs let you add specialized functionality to your app — AI capabilities, payment processing, weather data, and more.
+
+## What Are External APIs?
+
+APIs (Application Programming Interfaces) let your app communicate with external services:
+
+```
+Your App → HTTP Request → External Service
+                              ↓
+Your App ← Response Data ← External Service
+```
+
+---
+
+## Available Integrations
+
+<CardGroup cols={2}>
+  <Card title="OpenAI / ChatGPT" icon="robot" href="/integrations/external-apis/openai">
+    Add AI chat, text generation, and completion features
+  </Card>
+  <Card title="Stripe Payments" icon="credit-card" href="/integrations/external-apis/stripe">
+    Accept payments and manage subscriptions
+  </Card>
+  <Card title="Maps & Location" icon="map" href="/integrations/external-apis/maps">
+    Apple Maps, directions, and geocoding
+  </Card>
+  <Card title="Weather APIs" icon="cloud-sun" href="/integrations/external-apis/weather">
+    WeatherKit and OpenWeather data
+  </Card>
+  <Card title="Other APIs" icon="puzzle-piece" href="/integrations/external-apis/other">
+    Generic guide for any API
+  </Card>
+</CardGroup>
+
+---
+
+## How API Integration Works
+
+### 1. Get API Credentials
+
+Most APIs require authentication:
+- **API Key** — A secret string identifying your app
+- **OAuth** — User-authorized access (for user data)
+
+### 2. Configure in App
+
+Tell Nativeline about the API:
+```
+Add OpenAI integration with API key: sk-xxxxx
+```
+
+### 3. Make Requests
+
+The AI handles the technical details. You describe what you want:
+```
+When user taps "Generate", send their text to OpenAI
+and display the response.
+```
+
+---
+
+## API Security
+
+<Warning>
+  Never expose API keys in your code or share them publicly. Keys give access to your account and can incur charges.
+</Warning>
+
+### Nativeline Security
+
+Nativeline stores API keys securely:
+- Encrypted in macOS Keychain
+- Not committed to source code
+- Not visible in compiled app (properly)
+
+### Best Practices
+
+- Use environment variables when possible
+- Rotate keys if exposed
+- Set spending limits in API dashboards
+- Consider server-side proxies for production
+
+---
+
+## Common API Patterns
+
+### Request-Response
+
+Most APIs follow this pattern:
+
+```swift
+// 1. Build request with data
+let request = OpenAIRequest(prompt: userInput)
+
+// 2. Send to API
+let response = try await openAI.complete(request)
+
+// 3. Use the response
+displayResult(response.text)
+```
+
+### Handling Errors
+
+APIs can fail — handle errors gracefully:
+
+```
+Handle API errors:
+- Network errors: Show "Check your connection"
+- Rate limits: Show "Please wait and try again"
+- Invalid key: Show "Configuration error"
+```
+
+### Loading States
+
+Show progress while waiting for responses:
+
+```
+While waiting for the API response:
+- Show loading indicator
+- Disable the send button
+- Show progress text like "Thinking..."
+```
+
+---
+
+## Free vs Paid APIs
+
+### Typically Free
+
+- Apple Maps (built-in)
+- WeatherKit (with Apple Developer account)
+- Many APIs have free tiers
+
+### Typically Paid (with free tiers)
+
+| API | Free Tier |
+|-----|-----------|
+| OpenAI | $5 credit for new accounts |
+| Stripe | Free until you process payments |
+| Google Maps | $200/month credit |
+| OpenWeather | 1,000 calls/day |
+
+### Cost Considerations
+
+- Monitor usage in API dashboards
+- Set spending limits
+- Cache responses to reduce calls
+- Use rate limiting in your app
+
+---
+
+## Choosing the Right API
+
+### For AI Features
+→ [OpenAI](/integrations/external-apis/openai)
+
+Best for: Chat bots, text generation, content creation, summarization
+
+### For Payments
+→ [Stripe](/integrations/external-apis/stripe)
+
+Best for: One-time payments, subscriptions, marketplace payouts
+
+### For Maps & Location
+→ [Apple Maps](/integrations/external-apis/maps)
+
+Best for: Maps display, directions, place search, geocoding
+
+### For Weather
+→ [WeatherKit or OpenWeather](/integrations/external-apis/weather)
+
+Best for: Current conditions, forecasts, historical data
+
+### For Anything Else
+→ [Generic API Guide](/integrations/external-apis/other)
+
+Works with any REST API
+
+---
+
+## Getting Started
+
+<Steps>
+  <Step title="Choose your API">
+    Pick the service that provides what you need
+  </Step>
+  <Step title="Create an account">
+    Sign up at the provider's website
+  </Step>
+  <Step title="Get your API key">
+    Usually found in settings or developer dashboard
+  </Step>
+  <Step title="Configure in Nativeline">
+    Add the key and tell the AI to use it
+  </Step>
+  <Step title="Build your feature">
+    Describe what you want to accomplish
+  </Step>
+</Steps>
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="OpenAI Integration" icon="robot" href="/integrations/external-apis/openai">
+    Add AI capabilities
+  </Card>
+  <Card title="Stripe Payments" icon="credit-card" href="/integrations/external-apis/stripe">
+    Accept payments
+  </Card>
+</CardGroup>

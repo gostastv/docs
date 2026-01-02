@@ -1,0 +1,237 @@
+---
+title: "Todo App Tutorial"
+description: "Build a task manager with local storage"
+---
+
+# Todo App Tutorial
+
+**⏱️ 30 minutes**
+
+Build a complete task manager with adding, completing, and persisting tasks. You'll learn about lists, forms, state management, and local data storage.
+
+## What You'll Build
+
+A todo app that:
+- Shows a list of tasks
+- Lets you add new tasks
+- Mark tasks as complete
+- Delete tasks
+- Saves everything locally (persists between app launches)
+
+---
+
+## Part 1: Create the App
+
+### Start a New Project
+
+On the Nativeline home page, enter this description:
+
+```
+A todo list app where I can add tasks, mark them complete with a checkbox, and delete them. Tasks should be saved so they're still there when I reopen the app.
+```
+
+### Complete the Wizard
+
+- **Who is this for?** — Just me
+- **Feel** — Simple & clean
+- **Priority** — Core functionality first
+- **Colors** — Choose any palette
+- **Name** — Todo List
+
+Wait for the initial build to complete.
+
+---
+
+## Part 2: Review What You Have
+
+Your app should have:
+- A list view (possibly empty)
+- A way to add tasks
+- Basic styling
+
+Explore the Simulator. Try adding a task if the UI is ready.
+
+<Tip>
+  The initial version might not be exactly what you imagined. That's normal! We'll refine it step by step.
+</Tip>
+
+---
+
+## Part 3: Add Task Input
+
+If your app doesn't have a good way to add tasks, let's improve it:
+
+```
+Add a text field at the top with a placeholder "Add a new task..." and an "Add" button next to it. When I tap Add or press return, it should add the task to the list and clear the text field.
+```
+
+Test it:
+1. Type a task
+2. Tap Add
+3. See it appear in the list
+
+---
+
+## Part 4: Add Checkboxes
+
+Let's add the ability to complete tasks:
+
+```
+Add a checkbox circle to the left of each task. When I tap it, the checkbox fills in and the task text gets a strikethrough. Completed tasks should stay in the list but look different.
+```
+
+Test completing a few tasks. They should visually change to show they're done.
+
+---
+
+## Part 5: Add Delete Functionality
+
+Now let's add the ability to remove tasks:
+
+```
+Add swipe-to-delete on each task. When I swipe left, show a red Delete button. Tapping it removes the task from the list.
+```
+
+Alternatively, you could ask for a delete button:
+
+```
+Add a trash icon button on the right side of each task that deletes it when tapped.
+```
+
+Test deleting a task.
+
+---
+
+## Part 6: Make It Persistent
+
+Right now, tasks disappear when you close the app. Let's fix that:
+
+```
+Save all tasks locally using SwiftData so they persist between app launches. Tasks should be there when I close and reopen the app.
+```
+
+Test persistence:
+1. Add a few tasks
+2. Press Cmd+Shift+H to go to home screen in Simulator
+3. Reopen the app
+4. Your tasks should still be there!
+
+---
+
+## Part 7: Polish the Design
+
+Let's make it look professional:
+
+```
+Polish the design:
+- Add padding around the list
+- Make task rows have a white background with rounded corners and subtle shadow
+- Add a header that says "My Tasks" in large bold text
+- Show a count of incomplete tasks under the header like "3 tasks remaining"
+```
+
+---
+
+## Part 8: Add Task Details (Optional)
+
+Want to go further? Add due dates:
+
+```
+Add optional due dates to tasks:
+- Tap a task to open a detail view
+- In the detail view, show a date picker to set a due date
+- Display the due date under the task title in the list
+- Show overdue tasks in red
+```
+
+---
+
+## Part 9: Add Categories (Optional)
+
+Organize tasks with categories:
+
+```
+Add categories to tasks:
+- Categories: Work, Personal, Shopping, Other
+- Show a small colored dot next to each task indicating its category
+- Add a filter at the top to show only tasks from a specific category
+```
+
+---
+
+## Final Result
+
+You now have a fully functional todo app with:
+- ✅ Task creation
+- ✅ Completion with visual feedback
+- ✅ Deletion
+- ✅ Local persistence
+- ✅ Polished design
+- ✅ (Optional) Due dates
+- ✅ (Optional) Categories
+
+---
+
+## What You Learned
+
+This tutorial taught you:
+
+| Concept | How It Was Used |
+|---------|-----------------|
+| **Lists** | Displaying multiple tasks |
+| **Forms** | Text field for input |
+| **State** | Tracking completion status |
+| **Persistence** | Saving with SwiftData |
+| **Gestures** | Swipe to delete |
+| **Styling** | Shadows, rounded corners, colors |
+
+---
+
+## Tips & Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Tasks aren't saving" icon="database">
+    Make sure you asked for SwiftData or local persistence. Try:
+    "Save tasks using SwiftData so they persist when the app is closed"
+  </Accordion>
+
+  <Accordion title="Swipe to delete isn't working" icon="hand-pointer">
+    Some implementations might not have swipe. You can ask:
+    "Use the standard iOS swipe-to-delete gesture on the list"
+  </Accordion>
+
+  <Accordion title="The design looks cramped" icon="expand">
+    Ask for more spacing:
+    "Add 16pt padding around the list and 12pt spacing between tasks"
+  </Accordion>
+
+  <Accordion title="I want to edit tasks" icon="pencil">
+    Add editing functionality:
+    "Let me tap a task to edit its title in a sheet"
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Challenge: Extend Your App
+
+Try adding these features on your own:
+
+1. **Search** — Add a search bar to filter tasks
+2. **Priority levels** — High, Medium, Low with colors
+3. **Sorting** — Sort by date, priority, or alphabetically
+4. **Statistics** — Show how many tasks you've completed this week
+5. **Themes** — Let users choose between light and dark mode
+
+---
+
+## Next Tutorial
+
+<CardGroup cols={2}>
+  <Card title="Weather App" icon="cloud-sun" href="/quick-start/weather-app">
+    Learn to work with APIs and location
+  </Card>
+  <Card title="Photo Gallery" icon="images" href="/quick-start/photo-gallery">
+    Learn to use camera and photo library
+  </Card>
+</CardGroup>

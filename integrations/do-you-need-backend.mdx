@@ -1,0 +1,286 @@
+---
+title: "Do You Need a Backend?"
+description: "Help deciding if your app needs cloud services"
+---
+
+# Do You Need a Backend?
+
+Not every app needs a backend or cloud services. This guide helps you decide what your app actually needs.
+
+## Quick Decision Flow
+
+```
+Does your app need user accounts?
+├── Yes → You need Supabase (Auth + Database)
+└── No
+    ├── Does data need to sync across devices?
+    │   ├── Yes → You need Supabase
+    │   └── No
+    │       ├── Does data need to persist when app is deleted?
+    │       │   ├── Yes → Consider Supabase or iCloud
+    │       │   └── No → Local storage is fine (SwiftData)
+    │       └── Do you need external data (weather, AI, etc.)?
+    │           ├── Yes → You need specific APIs
+    │           └── No → No backend needed!
+```
+
+---
+
+## When You DON'T Need a Backend
+
+### Apps That Work Completely Offline
+
+These apps store everything locally:
+- Personal calculators
+- Unit converters
+- Simple note apps (single device)
+- Timers and stopwatches
+- Single-player games
+- Personal habit trackers (single device)
+- Shopping lists (single device)
+
+### Built-in iOS Features
+
+These features don't require external services:
+- Camera and Photos
+- Calendar integration (via iOS Calendar)
+- Contacts (via iOS Contacts)
+- Reminders (via iOS Reminders)
+- HealthKit data (stored by iOS)
+- Core Location (GPS)
+- Local notifications
+
+---
+
+## When You DO Need a Backend
+
+### User Accounts
+
+If your app needs:
+- Signup / Login
+- User profiles
+- Private user data
+- Social features
+
+**Solution:** Supabase Authentication
+
+### Cloud Data Storage
+
+If your app needs:
+- Data that syncs between devices
+- Data accessible from web/other platforms
+- Data stored even if app is deleted
+- Shared data between users
+
+**Solution:** Supabase Database
+
+### File Uploads
+
+If your app needs:
+- Profile photo uploads
+- User-generated content (images, documents)
+- Media sharing between users
+
+**Solution:** Supabase Storage
+
+### Real-Time Features
+
+If your app needs:
+- Live chat
+- Collaborative editing
+- Live activity feeds
+- Instant notifications of changes
+
+**Solution:** Supabase Realtime
+
+### External Data or Functionality
+
+| Need | Solution |
+|------|----------|
+| AI / ChatGPT features | OpenAI API |
+| Payment processing | Stripe |
+| Weather data | WeatherKit or OpenWeather |
+| Email sending | SendGrid, Mailgun |
+| SMS sending | Twilio |
+| Push notifications | Apple APNS (via Supabase or Firebase) |
+
+---
+
+## Local Storage vs Cloud Storage
+
+### Local Storage (SwiftData)
+
+**Pros:**
+- Works offline
+- Fast (no network latency)
+- Free (no external service)
+- Private (data stays on device)
+
+**Cons:**
+- Lost if app is deleted
+- Single device only
+- No sharing between users
+
+**Best for:**
+- Personal productivity apps
+- Single-device tools
+- Offline-first apps
+
+### Cloud Storage (Supabase)
+
+**Pros:**
+- Syncs across devices
+- Survives app deletion
+- Can share between users
+- Accessible from web
+
+**Cons:**
+- Requires internet
+- Has network latency
+- Costs money at scale
+- More complex
+
+**Best for:**
+- Social apps
+- Multi-device sync
+- Apps with user accounts
+- Collaborative features
+
+### Hybrid Approach
+
+Many apps use both:
+1. Store locally for speed
+2. Sync to cloud for backup/multi-device
+3. Work offline, sync when online
+
+---
+
+## Cost Considerations
+
+### Free Options
+
+| Service | Free Tier |
+|---------|-----------|
+| Supabase | 500MB database, 1GB storage, 50K auth users |
+| OpenWeather | 1,000 calls/day |
+| WeatherKit | 500K calls/month |
+| Firebase | Generous free tier |
+
+### When You'll Pay
+
+You'll exceed free tiers when:
+- Thousands of active users
+- Storing lots of images/files
+- Heavy API usage
+- Enterprise-level needs
+
+For most indie apps, free tiers are sufficient.
+
+---
+
+## Common App Types and What They Need
+
+### Personal Journal App
+
+**Features:** Write entries, add photos, search history
+
+**Needs:**
+- Local storage for entries (SwiftData) ✅
+- Photo storage (local or Supabase Storage)
+- No user accounts needed
+- **Backend: Optional** (only if you want cloud sync)
+
+### Social Recipe App
+
+**Features:** Share recipes, follow users, comment
+
+**Needs:**
+- User accounts (Supabase Auth) ✅
+- Recipe database (Supabase Database) ✅
+- Photo uploads (Supabase Storage) ✅
+- Real-time comments (Supabase Realtime) ✅
+- **Backend: Required**
+
+### Weather App
+
+**Features:** Show current weather, forecast, locations
+
+**Needs:**
+- Weather API (WeatherKit or OpenWeather) ✅
+- Location services (built-in) ✅
+- Save favorite locations (local) ✅
+- **Backend: Just weather API**
+
+### AI Writing Assistant
+
+**Features:** Help write content, suggest improvements
+
+**Needs:**
+- OpenAI API ✅
+- Local storage for drafts ✅
+- **Backend: Just OpenAI API**
+
+### Fitness Tracker
+
+**Features:** Log workouts, track progress, goals
+
+**Needs:**
+- Local storage (SwiftData) ✅
+- HealthKit integration (built-in) ✅
+- Optional cloud sync (Supabase)
+- **Backend: Optional**
+
+---
+
+## Making Your Decision
+
+### Start Simple
+
+1. Build your app with local storage first
+2. Get core features working
+3. Add cloud features if needed
+
+### Add Cloud Features When
+
+- Users ask for multi-device sync
+- You need user accounts
+- You want social features
+- Data loss concerns (cloud backup)
+
+### Questions to Ask
+
+1. Does my app work if the user has no internet?
+2. Do users expect their data on multiple devices?
+3. Do users interact with each other?
+4. Is user data valuable enough to need cloud backup?
+
+---
+
+## Still Unsure?
+
+### Start Local, Add Cloud Later
+
+Most apps can start with local storage and add Supabase later. This approach:
+- Gets you to market faster
+- Validates your idea first
+- Adds complexity only when needed
+
+### Just Use Supabase
+
+If you think you might need any cloud features:
+- Supabase has a generous free tier
+- Better to set it up early
+- Easier than migrating later
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="I need cloud features" icon="cloud" href="/integrations/supabase/overview">
+    Learn about Supabase
+  </Card>
+  <Card title="I just need APIs" icon="plug" href="/integrations/external-apis/overview">
+    Integrate external APIs
+  </Card>
+</CardGroup>

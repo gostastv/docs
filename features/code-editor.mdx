@@ -5,11 +5,13 @@ description: "View and edit Swift code directly (Pro plan feature)"
 
 # Code Editor
 
-The Code Editor is a Pro plan feature that lets you see and edit the actual Swift code of your app. It's perfect for learning, making quick tweaks, and understanding what the AI creates.
+The Code Editor lets you see and edit the actual Swift code of your app. It's perfect for learning, making quick tweaks, and understanding what the AI creates.
 
 <Note>
-  The Code Editor is available on **Pro**, **Scale**, and **BYOK** plans. [Upgrade your plan](/getting-started/account-setup) to access this feature.
+  The Code Editor is available on **Pro**, **Scale**, and **BYOK** plans. [Upgrade your plan](/introduction/plans-and-pricing) to access this feature.
 </Note>
+
+---
 
 ## When to Use the Code Editor
 
@@ -23,7 +25,7 @@ Watch the AI generate code, then explore it in the editor. You'll learn:
 
 ### Quick Tweaks
 
-Sometimes it's faster to edit code directly:
+Sometimes it's faster to edit directly:
 - Changing a color value
 - Adjusting spacing
 - Fixing a typo in text
@@ -33,21 +35,24 @@ Sometimes it's faster to edit code directly:
 
 When something isn't working:
 - Read the code to understand what's happening
+- Add print statements
 - Check for obvious issues
 - See exactly what the AI generated
 
-### Customization
+### Reading Logs
 
-Make precise changes the AI might not understand:
-- Complex animations
-- Custom algorithms
-- Fine-tuned performance optimizations
+View runtime output:
+- Print statements
+- Error messages
+- App behavior traces
+
+---
 
 ## The Code Editor Interface
 
 ### File Browser
 
-On the left side, you'll see your project's file structure:
+On the left, your project's file structure:
 
 ```
 YourApp/
@@ -63,43 +68,47 @@ YourApp/
 └── App.swift
 ```
 
-Click any file to open it in the editor.
+Click any file to open it.
 
-### Code Editor Panel
+### Editor Panel
 
-The main area shows your code with:
-- **Syntax highlighting** - Swift keywords, strings, and types are color-coded
-- **Line numbers** - For easy navigation and reference
-- **Search** - Find text in the current file
-- **Auto-indentation** - Code stays properly formatted
+The main area shows code with:
+- **Syntax highlighting** — Colors for keywords, strings, types
+- **Line numbers** — For navigation and reference
+- **Search** — Find text (Cmd+F)
+- **Auto-indentation** — Code stays formatted
 
-### Console Panel
+### Logs Panel
 
-At the bottom, view:
+At the bottom (toggle to show):
 - Build output and errors
-- Print statements for debugging
-- Compiler warnings
+- Print statements from your code
+- Runtime logs
+
+---
 
 ## File Organization
 
-Nativeline organizes your code into standard Swift project structure:
+Nativeline organizes code into standard Swift structure:
 
 | Folder | Contents |
 |--------|----------|
 | **Views/** | SwiftUI views (screens and components) |
 | **Models/** | Data structures and types |
 | **Services/** | API calls, database access, utilities |
-| **Resources/** | Images, fonts, and other assets |
+| **Resources/** | Images, fonts, assets |
+
+---
 
 ## Making Edits
 
-### Simple Changes
+### Editing Workflow
 
-1. Navigate to the file in the browser
-2. Click to open it
-3. Make your changes directly
+1. Navigate to the file
+2. Click to open
+3. Make changes
 4. Save (Cmd+S)
-5. Nativeline automatically rebuilds
+5. App rebuilds automatically
 
 ### Example: Changing a Color
 
@@ -139,11 +148,13 @@ Button("Sumbit")
 Button("Submit")
 ```
 
+---
+
 ## Understanding Swift Code
 
 ### Views (SwiftUI)
 
-Most of your app's UI is in SwiftUI views:
+Most UI is in SwiftUI views:
 
 ```swift
 struct HomeView: View {
@@ -161,14 +172,14 @@ struct HomeView: View {
 ```
 
 **Key concepts:**
-- `struct HomeView: View` - Defines a view
-- `var body: some View` - What the view displays
-- `VStack`, `HStack`, `ZStack` - Layout containers
-- Modifiers like `.font()`, `.padding()` - Styling
+- `struct HomeView: View` — Defines a view
+- `var body: some View` — What it displays
+- `VStack`, `HStack`, `ZStack` — Layout containers
+- Modifiers like `.font()`, `.padding()` — Styling
 
 ### Models (Data)
 
-Data structures define your app's types:
+Data structures:
 
 ```swift
 struct Task: Identifiable {
@@ -179,9 +190,9 @@ struct Task: Identifiable {
 }
 ```
 
-### Observable State
+### State Management
 
-State management using `@Observable`:
+Using `@Observable`:
 
 ```swift
 @Observable
@@ -194,44 +205,110 @@ class TaskManager {
 }
 ```
 
+---
+
+## Reading Logs
+
+### Accessing Logs
+
+1. Open Code Editor
+2. Find the Logs panel/tab
+3. Run your app
+4. Watch output appear
+
+### Adding Log Statements
+
+Ask the AI:
+```
+Add print statements to the save function to trace what's happening
+```
+
+Or add manually:
+```swift
+print("Save button tapped")
+print("Saving data: \(userData)")
+```
+
+### Log Types
+
+| Log | Meaning |
+|-----|---------|
+| Build output | Compilation status |
+| Errors | What went wrong |
+| Print statements | Your debug output |
+| Runtime warnings | iOS system messages |
+
+See [Reading App Logs](/guides/app-logs) for more details.
+
+---
+
 ## Best Practices
 
 ### Do
 
-<Check>
-  - Save frequently (Cmd+S)
-  - Make small, incremental changes
-  - Test after each change
-  - Use the AI for complex changes
-  - Keep backups of working code
-</Check>
+- ✅ Save frequently (Cmd+S)
+- ✅ Make small, incremental changes
+- ✅ Test after each change
+- ✅ Use AI for complex changes
+- ✅ Learn from the generated code
 
 ### Don't
 
-<Warning>
-  - Make massive changes without testing
-  - Delete code you don't understand
-  - Ignore compiler errors
-  - Forget to save before rebuilding
-</Warning>
+- ❌ Make massive changes without testing
+- ❌ Delete code you don't understand
+- ❌ Ignore compiler errors
+- ❌ Forget to save before rebuilding
+
+---
 
 ## When Code Changes Don't Work
 
 If your edits cause build errors:
 
-1. **Check the error message** in the console
-2. **Undo your change** (Cmd+Z) if you can't fix it
-3. **Ask the AI** - "Fix this error: [paste error message]"
+1. **Check the error** in the Logs or chat
+2. **Undo** (Cmd+Z) if you can't fix it
+3. **Ask the AI:** "Fix this error: [paste error]"
 4. **Rebuild** after fixing
 
 ### Common Swift Errors
 
 | Error | Cause | Fix |
 |-------|-------|-----|
-| Missing `}` | Unbalanced braces | Add the missing brace |
-| Type mismatch | Wrong data type | Check variable types |
-| Unknown identifier | Typo or missing import | Check spelling, add import |
-| Missing `return` | Function needs return value | Add return statement |
+| Missing `}` | Unbalanced braces | Add missing brace |
+| Type mismatch | Wrong data type | Check types |
+| Unknown identifier | Typo or missing import | Check spelling |
+| Missing `return` | Function needs return | Add return statement |
+
+---
+
+## Code Editor vs AI Chat
+
+| Use Code Editor | Use AI Chat |
+|-----------------|-------------|
+| Fixing typos | Creating new features |
+| Changing values | Adding screens |
+| Adjusting colors | Complex logic |
+| Learning the code | Major refactoring |
+| Quick tweaks | Design changes |
+
+### Combining Both
+
+<Steps>
+  <Step title="Use AI for the big picture">
+    "Create a settings screen with toggle options"
+  </Step>
+  <Step title="Review the generated code">
+    Open in Code Editor to understand what was created
+  </Step>
+  <Step title="Make small tweaks yourself">
+    Adjust colors, padding, or text directly
+  </Step>
+  <Step title="Use AI for complex changes">
+    "Add an animation when toggles change"
+  </Step>
+</Steps>
+
+---
 
 ## Keyboard Shortcuts
 
@@ -244,35 +321,15 @@ If your edits cause build errors:
 | Cmd+G | Find next |
 | Cmd+/ | Toggle comment |
 
-## Combining AI and Manual Edits
+---
 
-The best workflow combines both:
+## Related
 
-<Steps>
-  <Step title="Ask the AI for the big picture">
-    "Create a settings screen with toggle options"
-  </Step>
-  <Step title="Review the generated code">
-    Open the file in the editor to see what was created
-  </Step>
-  <Step title="Make small tweaks yourself">
-    Adjust colors, padding, or text directly
-  </Step>
-  <Step title="Use AI for complex changes">
-    "Add an animation when toggles change"
-  </Step>
-</Steps>
-
-## Code Editor vs AI Chat
-
-| Use Code Editor | Use AI Chat |
-|-----------------|-------------|
-| Fixing typos | Creating new features |
-| Changing colors/values | Adding screens |
-| Adjusting spacing | Complex logic |
-| Learning the code | Major refactoring |
-| Quick tweaks | Design changes |
-
-<Card title="Publish to TestFlight" icon="rocket" href="/features/testflight">
-  Ready to share your app? Deploy to TestFlight
-</Card>
+<CardGroup cols={2}>
+  <Card title="Reading App Logs" icon="terminal" href="/guides/app-logs">
+    Detailed guide to debugging with logs
+  </Card>
+  <Card title="Keyboard Shortcuts" icon="keyboard" href="/features/keyboard-shortcuts">
+    All available shortcuts
+  </Card>
+</CardGroup>

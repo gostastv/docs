@@ -14,86 +14,167 @@
       "dark": "#141414"
     }
   },
-  "topbarLinks": [
-    {
-      "name": "Download",
-      "url": "https://nativeline.ai"
-    }
+  "tabs": [
+    { "name": "Introduction", "url": "introduction" },
+    { "name": "Quick Start", "url": "quick-start" },
+    { "name": "Guides", "url": "guides" },
+    { "name": "Features", "url": "features" },
+    { "name": "Integrations", "url": "integrations" },
+    { "name": "Publishing", "url": "publishing" },
+    { "name": "FAQs", "url": "faqs" }
   ],
-  "topbarCtaButton": {
-    "name": "Get Started",
-    "url": "https://nativeline.ai"
-  },
   "anchors": [
     {
-      "name": "Community",
+      "name": "Discord Community",
       "icon": "discord",
       "url": "https://discord.gg/nativeline"
-    },
+    }
+  ],
+  "topbarLinks": [
     {
       "name": "Support",
-      "icon": "envelope",
       "url": "mailto:support@nativeline.ai"
     }
   ],
+  "topbarCtaButton": {
+    "name": "Go to App",
+    "url": "https://nativeline.ai"
+  },
   "navigation": [
     {
-      "group": "Getting Started",
+      "group": "Introduction",
       "pages": [
-        "introduction",
-        "getting-started/installation",
-        "getting-started/create-first-app",
-        "getting-started/account-setup"
+        "introduction/welcome",
+        "introduction/plans-and-pricing",
+        "introduction/installation",
+        "introduction/account-setup",
+        "introduction/system-requirements",
+        "introduction/updating"
       ]
     },
     {
-      "group": "Building Apps",
+      "group": "Quick Start",
       "pages": [
-        "building-apps/chat-interface",
-        "building-apps/writing-prompts",
-        "building-apps/using-images",
-        "building-apps/testing-simulator"
+        "quick-start/overview",
+        "quick-start/your-first-app",
+        "quick-start/todo-app",
+        "quick-start/weather-app",
+        "quick-start/photo-gallery",
+        "quick-start/notes-app"
+      ]
+    },
+    {
+      "group": "Guides",
+      "pages": [
+        "guides/overview",
+        "guides/prompt-workshop",
+        "guides/how-do-i",
+        "guides/debugging",
+        "guides/working-with-plans",
+        "guides/fixing-build-errors",
+        "guides/app-logs",
+        "guides/optimizing-usage",
+        "guides/common-scenarios",
+        "guides/advanced-prompting"
       ]
     },
     {
       "group": "Features",
       "pages": [
-        "features/project-settings",
-        "features/database",
-        "features/external-apis",
+        "features/overview",
+        "features/chat-interface",
+        "features/using-images",
+        "features/ai-memory",
+        {
+          "group": "Project Settings",
+          "pages": [
+            "features/project-settings",
+            "features/app-identity",
+            "features/permissions",
+            "features/capabilities",
+            "features/appearance"
+          ]
+        },
+        "features/simulator",
         "features/code-editor",
-        "features/testflight"
+        "features/keyboard-shortcuts"
       ]
     },
     {
-      "group": "Understanding Nativeline",
+      "group": "Integrations",
       "pages": [
-        "understanding-nativeline/how-ai-works",
-        "understanding-nativeline/context-files",
-        "understanding-nativeline/plans-and-tasks",
-        "understanding-nativeline/bits-pricing"
+        "integrations/overview",
+        "integrations/do-you-need-backend",
+        {
+          "group": "Supabase",
+          "pages": [
+            "integrations/supabase/overview",
+            "integrations/supabase/setup",
+            "integrations/supabase/authentication",
+            "integrations/supabase/database",
+            "integrations/supabase/storage",
+            "integrations/supabase/realtime"
+          ]
+        },
+        {
+          "group": "External APIs",
+          "pages": [
+            "integrations/external-apis/overview",
+            "integrations/external-apis/openai",
+            "integrations/external-apis/stripe",
+            "integrations/external-apis/maps",
+            "integrations/external-apis/weather",
+            "integrations/external-apis/other"
+          ]
+        }
       ]
     },
     {
-      "group": "Troubleshooting",
+      "group": "Publishing",
       "pages": [
-        "troubleshooting/common-issues",
-        "troubleshooting/build-errors",
-        "troubleshooting/simulator-issues",
-        "troubleshooting/database-issues"
+        "publishing/overview",
+        "publishing/apple-developer-account",
+        "publishing/certificates-profiles",
+        {
+          "group": "TestFlight",
+          "pages": [
+            "publishing/testflight/overview",
+            "publishing/testflight/setup",
+            "publishing/testflight/uploading",
+            "publishing/testflight/testers",
+            "publishing/testflight/troubleshooting"
+          ]
+        },
+        {
+          "group": "App Store",
+          "pages": [
+            "publishing/app-store/overview",
+            "publishing/app-store/app-store-connect",
+            "publishing/app-store/screenshots",
+            "publishing/app-store/review-guidelines",
+            "publishing/app-store/submission",
+            "publishing/app-store/after-approval"
+          ]
+        }
       ]
     },
     {
-      "group": "Advanced",
+      "group": "FAQs",
       "pages": [
-        "advanced/best-practices",
-        "advanced/keyboard-shortcuts",
-        "advanced/glossary"
+        "faqs/general",
+        "faqs/getting-started",
+        "faqs/building",
+        "faqs/billing",
+        "faqs/integrations",
+        "faqs/publishing",
+        "faqs/troubleshooting",
+        "faqs/technical",
+        "faqs/account"
       ]
     }
   ],
   "footerSocials": {
     "twitter": "https://twitter.com/nativeline",
-    "github": "https://github.com/nativeline"
+    "discord": "https://discord.gg/nativeline"
   }
 }

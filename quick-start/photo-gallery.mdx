@@ -1,0 +1,274 @@
+---
+title: "Photo Gallery Tutorial"
+description: "Build a photo gallery with camera access"
+---
+
+# Photo Gallery Tutorial
+
+**⏱️ 30 minutes**
+
+Build a photo gallery app that captures photos and displays them beautifully. You'll learn about camera access, photo library permissions, and image handling.
+
+## What You'll Build
+
+A photo gallery app that:
+- Takes photos with the camera
+- Selects photos from the library
+- Displays photos in a grid
+- Opens photos in full screen
+- Saves photos locally
+
+---
+
+## Part 1: Create the App
+
+On the Nativeline home page, enter:
+
+```
+A photo gallery app where I can take photos with the camera or choose from my photo library. Display all photos in a grid, and tap to view full screen.
+```
+
+### Complete the Wizard
+
+- **Who is this for?** — Just me
+- **Feel** — Modern & polished
+- **Priority** — Core functionality first
+- **Colors** — Any palette (photos will be the focus)
+- **Name** — Photo Gallery
+
+Wait for the build to complete.
+
+---
+
+## Part 2: Set Up Permissions
+
+Photos and camera require permissions. Let's make sure they're configured:
+
+```
+Make sure the app requests camera and photo library permissions when needed. Add appropriate permission descriptions explaining why we need access.
+```
+
+The app should now request permissions when you try to take or select photos.
+
+<Note>
+  In the Simulator, you can't use the actual camera, but you can select from the photo library. The camera will work on a real device via TestFlight.
+</Note>
+
+---
+
+## Part 3: Improve the Photo Grid
+
+Let's make the gallery look professional:
+
+```
+Display photos in a 3-column grid with small gaps between photos. Photos should be square and fill the screen edge-to-edge. Add a subtle animation when new photos are added.
+```
+
+---
+
+## Part 4: Add Photo Buttons
+
+Make it easy to add photos:
+
+```
+Add a floating "+" button in the bottom right corner. When tapped, show an action sheet with two options:
+- "Take Photo" (opens camera)
+- "Choose from Library" (opens photo picker)
+```
+
+---
+
+## Part 5: Add Full Screen View
+
+Let users view photos in detail:
+
+```
+When I tap a photo in the grid, open it full screen with:
+- Black background
+- Photo fills the width, centered vertically
+- Pinch to zoom
+- Swipe left/right to see other photos
+- X button to close
+```
+
+---
+
+## Part 6: Add Photo Deletion
+
+Let users remove photos:
+
+```
+In the full screen view, add a trash button that deletes the photo after confirming. Show an alert asking "Delete this photo?" with Cancel and Delete options.
+```
+
+---
+
+## Part 7: Make Photos Persistent
+
+Save photos so they survive app restarts:
+
+```
+Save all photos locally so they persist when the app is closed and reopened. Store them in the app's documents directory.
+```
+
+Test persistence:
+1. Add a few photos
+2. Close and reopen the app
+3. Photos should still be there
+
+---
+
+## Part 8: Add Empty State
+
+Handle the case when there are no photos:
+
+```
+When the gallery is empty, show a friendly message:
+- A camera icon
+- "No photos yet"
+- "Tap + to add your first photo"
+```
+
+---
+
+## Part 9: Add Photo Info (Optional)
+
+Show metadata for each photo:
+
+```
+In the full screen view, add an info button that shows:
+- Date photo was added
+- Photo dimensions
+- File size
+```
+
+---
+
+## Part 10: Add Albums (Optional)
+
+Organize photos into albums:
+
+```
+Add the ability to create albums:
+- Tab bar with "All Photos" and "Albums"
+- Albums tab shows list of albums
+- Tap to create new album with a name
+- Long press photos in grid to select and add to album
+```
+
+---
+
+## Part 11: Add Photo Editing (Optional)
+
+Basic photo editing:
+
+```
+In full screen view, add an edit button that opens editing options:
+- Rotate left/right
+- Crop to square
+- Apply filters (black & white, sepia, vivid)
+Save edits back to the photo.
+```
+
+---
+
+## Final Result
+
+You now have a complete photo gallery with:
+- ✅ Camera capture
+- ✅ Photo library selection
+- ✅ Grid display
+- ✅ Full screen viewing with zoom
+- ✅ Photo deletion
+- ✅ Local persistence
+- ✅ Empty state
+- ✅ (Optional) Photo info
+- ✅ (Optional) Albums
+- ✅ (Optional) Editing
+
+---
+
+## What You Learned
+
+| Concept | How It Was Used |
+|---------|-----------------|
+| **Camera** | Capturing photos |
+| **Photo Picker** | Selecting from library |
+| **Permissions** | Camera & photo access |
+| **Grids** | Displaying images in columns |
+| **Gestures** | Pinch to zoom, swipe |
+| **File Storage** | Saving images locally |
+| **Action Sheets** | Option menus |
+
+---
+
+## Testing Tips
+
+### In the Simulator
+
+The Simulator doesn't have a real camera, but you can:
+- Select from the sample photo library
+- Drag images from your Mac onto the Simulator to add them to the library
+
+### On a Real Device
+
+To test the camera, you'll need to:
+1. Deploy to TestFlight (see [Publishing](/publishing/overview))
+2. Install on your iPhone
+3. Test camera functionality there
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Camera option not working in Simulator" icon="camera">
+    The Simulator can't access a real camera. The camera option will work when you test on a real device. For now, use "Choose from Library" instead.
+  </Accordion>
+
+  <Accordion title="No photos in the Simulator library" icon="images">
+    Add sample photos to the Simulator:
+    - Drag images from Finder onto the Simulator window
+    - They'll be saved to the photo library
+  </Accordion>
+
+  <Accordion title="Photos not persisting" icon="database">
+    Make sure you asked for local persistence:
+    "Save photos to the app's documents directory so they persist"
+  </Accordion>
+
+  <Accordion title="Grid looks wrong" icon="grid">
+    Specify exact layout:
+    "Use a LazyVGrid with 3 flexible columns and 2pt spacing"
+  </Accordion>
+
+  <Accordion title="Permission denied" icon="lock">
+    Reset permissions in Simulator:
+    Device → Erase All Content and Settings
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Challenge: Extend Your App
+
+Try these on your own:
+
+1. **Sharing** — Share photos to other apps
+2. **Favorites** — Mark photos as favorites with a heart
+3. **Search by date** — Filter photos by when they were taken
+4. **Slideshow** — Auto-play through photos
+5. **Cloud backup** — Sync to Supabase storage
+
+---
+
+## Next Tutorial
+
+<CardGroup cols={2}>
+  <Card title="Notes App" icon="note-sticky" href="/quick-start/notes-app">
+    Learn cloud sync with Supabase
+  </Card>
+  <Card title="Weather App" icon="cloud-sun" href="/quick-start/weather-app">
+    Learn API integration
+  </Card>
+</CardGroup>

@@ -1,0 +1,308 @@
+---
+title: "Supabase Storage"
+description: "Upload and manage files and images"
+---
+
+# Supabase Storage
+
+Supabase Storage lets you upload files, images, and documents. Perfect for user avatars, photo uploads, and any file your app needs to store.
+
+## Prerequisites
+
+- [Supabase connected](/integrations/supabase/setup)
+- Basic understanding of file handling
+
+---
+
+## Storage Concepts
+
+### Buckets
+
+Buckets are containers for your files — like folders at the top level.
+
+Examples:
+- `avatars` — User profile photos
+- `uploads` — User-uploaded content
+- `documents` — PDFs and files
+
+### Objects
+
+Objects are the actual files inside buckets. Each has:
+- A unique path (e.g., `avatars/user123.jpg`)
+- Metadata (size, type, etc.)
+- Access permissions
+
+---
+
+## Creating a Bucket
+
+### In Supabase Dashboard
+
+1. Go to **Storage** in sidebar
+2. Click **Create a new bucket**
+3. Name it (e.g., `avatars`)
+4. Choose public or private
+
+### Public vs Private
+
+| Type | Use Case | Access |
+|------|----------|--------|
+| **Public** | Profile photos, shared media | Anyone with URL |
+| **Private** | User documents, sensitive files | Requires auth |
+
+---
+
+## Uploading Files
+
+### Basic Upload
+
+Ask Nativeline:
+
+```
+Add profile photo upload:
+- Let user pick from camera or photo library
+- Upload to Supabase Storage 'avatars' bucket
+- Save the URL to the user's profile
+```
+
+### Upload Code Pattern
+
+```swift
+// Upload image
+let imageData = image.jpegData(compressionQuality: 0.8)!
+let path = "\(userId)/avatar.jpg"
+
+try await supabase.storage
+  .from("avatars")
+  .upload(path: path, data: imageData, options: .init(
+    contentType: "image/jpeg"
+  ))
+```
+
+---
+
+## Organizing Files
+
+### By User
+
+```
+avatars/
+├── user-123/
+│   └── avatar.jpg
+├── user-456/
+│   └── avatar.jpg
+```
+
+### By Content Type
+
+```
+uploads/
+├── images/
+│   └── photo-1.jpg
+├── documents/
+│   └── report.pdf
+```
+
+---
+
+## Getting File URLs
+
+### Public Buckets
+
+```swift
+// Get public URL (no auth needed to access)
+let url = supabase.storage
+  .from("avatars")
+  .getPublicURL(path: "user-123/avatar.jpg")
+```
+
+### Private Buckets
+
+```swift
+// Get signed URL (temporary, authenticated)
+let url = try await supabase.storage
+  .from("private-docs")
+  .createSignedURL(path: "user-123/document.pdf", expiresIn: 3600)
+```
+
+---
+
+## Downloading Files
+
+```swift
+// Download file data
+let data = try await supabase.storage
+  .from("avatars")
+  .download(path: "user-123/avatar.jpg")
+
+// Convert to image
+let image = UIImage(data: data)
+```
+
+---
+
+## Deleting Files
+
+```swift
+// Delete single file
+try await supabase.storage
+  .from("avatars")
+  .remove(paths: ["user-123/avatar.jpg"])
+
+// Delete multiple files
+try await supabase.storage
+  .from("uploads")
+  .remove(paths: ["file1.jpg", "file2.jpg"])
+```
+
+---
+
+## Storage Security
+
+### Bucket Policies
+
+Like RLS for database, set policies for storage:
+
+**Allow users to upload to their own folder:**
+```sql
+CREATE POLICY "Users upload own avatars"
+ON storage.objects FOR INSERT
+WITH CHECK (
+  bucket_id = 'avatars' AND
+  auth.uid()::text = (storage.foldername(name))[1]
+);
+```
+
+**Allow anyone to view public avatars:**
+```sql
+CREATE POLICY "Public avatar access"
+ON storage.objects FOR SELECT
+USING (bucket_id = 'avatars');
+```
+
+### Setting Policies in Dashboard
+
+1. Storage → Select bucket
+2. Policies tab
+3. Add new policy
+4. Choose template or write custom
+
+---
+
+## Common Use Cases
+
+### Profile Photo Upload
+
+```
+Add a profile photo feature:
+- Tap avatar to change
+- Option for camera or library
+- Crop to square
+- Upload to 'avatars' bucket
+- Update profile with new URL
+- Show loading indicator
+```
+
+### Document Upload
+
+```
+Add document upload:
+- User can attach files to tasks
+- Support PDF, images
+- Store in 'attachments' bucket
+- Show download button
+- Handle errors
+```
+
+### Image Gallery
+
+```
+Create a photo gallery:
+- User uploads photos
+- Store in 'gallery' bucket
+- Display in grid
+- Tap to view full screen
+- Swipe to delete
+```
+
+---
+
+## File Size and Types
+
+### Limits
+
+- Default max file size: 50 MB
+- Can be increased in settings
+
+### Accepted Types
+
+By default, all types are accepted. You can restrict in bucket settings.
+
+### Compression
+
+```
+Before uploading images, compress them to reduce size:
+- Use JPEG compression 80%
+- Resize large images to max 1024px
+```
+
+---
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Compress images before upload" icon="compress">
+    Large images use storage and bandwidth. Compress and resize before uploading.
+  </Accordion>
+
+  <Accordion title="Use unique file names" icon="fingerprint">
+    Include user ID and timestamp to avoid conflicts:
+    `user-123/1704067200-photo.jpg`
+  </Accordion>
+
+  <Accordion title="Set appropriate bucket policies" icon="lock">
+    Private buckets need policies. Public buckets are open — use carefully.
+  </Accordion>
+
+  <Accordion title="Handle upload failures" icon="triangle-exclamation">
+    Show progress, handle errors gracefully, allow retry.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Upload failing" icon="cloud-arrow-up">
+    - Check bucket exists
+    - Verify policies allow upload
+    - Check file size limits
+    - Ensure user is authenticated (for private buckets)
+  </Accordion>
+
+  <Accordion title="Can't access file" icon="lock">
+    - Public bucket? Use `getPublicURL`
+    - Private bucket? Use `createSignedURL`
+    - Check RLS policies
+  </Accordion>
+
+  <Accordion title="Slow uploads" icon="clock">
+    - Compress images before upload
+    - Use appropriate quality settings
+    - Check network connection
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Realtime" icon="bolt" href="/integrations/supabase/realtime">
+    Live updates when data changes
+  </Card>
+  <Card title="Database" icon="table" href="/integrations/supabase/database">
+    Store file metadata in tables
+  </Card>
+</CardGroup>

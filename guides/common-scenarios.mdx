@@ -1,0 +1,452 @@
+---
+title: "Common Scenarios"
+description: "Solutions for specific situations you'll encounter"
+---
+
+# Common Scenarios
+
+Real solutions for real situations. Find your scenario and get the answer.
+
+---
+
+## UI & Layout Issues
+
+<AccordionGroup>
+  <Accordion title="Text is getting cut off" icon="text-slash">
+    **The problem:** Long text doesn't fit and gets truncated.
+
+    **Solutions:**
+
+    For truncation with ellipsis:
+    ```
+    Truncate long text with "..." and show full text when tapped
+    ```
+
+    For wrapping:
+    ```
+    Let long text wrap to multiple lines instead of truncating
+    ```
+
+    For scrolling:
+    ```
+    Make the text area scrollable for long content
+    ```
+  </Accordion>
+
+  <Accordion title="Items overlap or are misaligned" icon="objects-column">
+    **The problem:** UI elements are positioned incorrectly.
+
+    **Solutions:**
+
+    Be specific about spacing:
+    ```
+    Add 16pt spacing between all elements in the form.
+    Ensure nothing overlaps.
+    ```
+
+    Use proper layout:
+    ```
+    Align all form labels to the left edge and all
+    input fields to have matching leading edges.
+    ```
+  </Accordion>
+
+  <Accordion title="Content goes under the notch or home indicator" icon="mobile">
+    **The problem:** Content appears in unsafe areas of the screen.
+
+    **Solution:**
+    ```
+    Respect safe areas on all screens. Content should not
+    appear under the notch, dynamic island, or home indicator.
+    ```
+  </Accordion>
+
+  <Accordion title="Keyboard covers input fields" icon="keyboard">
+    **The problem:** Can't see what you're typing because the keyboard is in the way.
+
+    **Solution:**
+    ```
+    When the keyboard appears, scroll or adjust the view so
+    the active text field is visible above the keyboard.
+    ```
+  </Accordion>
+
+  <Accordion title="List items look crowded" icon="list">
+    **The problem:** Items in a list are too close together.
+
+    **Solution:**
+    ```
+    Add 12pt vertical padding inside each list item.
+    Add 8pt spacing between list items.
+    Use a subtle separator or slight background difference between items.
+    ```
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Data & Storage Issues
+
+<AccordionGroup>
+  <Accordion title="Data disappears when app closes" icon="database">
+    **The problem:** Nothing is saved between sessions.
+
+    **Solution:**
+    ```
+    Save [data type] using SwiftData so it persists when
+    the app is closed and reopened.
+    ```
+
+    For simple settings:
+    ```
+    Save user preferences using UserDefaults.
+    ```
+  </Accordion>
+
+  <Accordion title="Can't delete items" icon="trash">
+    **The problem:** No way to remove data.
+
+    **Solutions:**
+
+    Swipe to delete:
+    ```
+    Add swipe-to-delete gesture on list items.
+    Show confirmation before deleting.
+    ```
+
+    Delete button:
+    ```
+    Add a trash button to each item that deletes it after confirmation.
+    ```
+  </Accordion>
+
+  <Accordion title="Data loads slowly" icon="spinner">
+    **The problem:** App feels sluggish loading data.
+
+    **Solutions:**
+
+    Add loading state:
+    ```
+    Show a loading spinner while data is being fetched.
+    ```
+
+    Load progressively:
+    ```
+    Load the first 20 items immediately, then load more as the user scrolls.
+    ```
+  </Accordion>
+
+  <Accordion title="Search doesn't work well" icon="magnifying-glass">
+    **The problem:** Search results aren't helpful.
+
+    **Solution:**
+    ```
+    Search should filter by [title/name] and [description/content].
+    Search as the user types (debounced).
+    Show "No results for [query]" when nothing matches.
+    ```
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Navigation Issues
+
+<AccordionGroup>
+  <Accordion title="Can't go back to previous screen" icon="arrow-left">
+    **The problem:** No back button or back gesture.
+
+    **Solution:**
+    ```
+    Add a back button in the top-left that returns to the previous screen.
+    Also enable the swipe-from-edge gesture to go back.
+    ```
+  </Accordion>
+
+  <Accordion title="Tab bar doesn't show on all screens" icon="bars-staggered">
+    **The problem:** Tab bar disappears on certain screens.
+
+    **Solution:**
+    ```
+    Keep the tab bar visible on all main screens.
+    Only hide it for modal presentations and detail views.
+    ```
+  </Accordion>
+
+  <Accordion title="Modal/sheet won't dismiss" icon="xmark">
+    **The problem:** Can't close a popup or sheet.
+
+    **Solution:**
+    ```
+    Add a close button (X) in the top-right corner of the modal.
+    Also allow swiping down to dismiss.
+    ```
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Performance Issues
+
+<AccordionGroup>
+  <Accordion title="App is slow or laggy" icon="gauge-simple">
+    **The problem:** UI isn't responsive.
+
+    **Solutions:**
+
+    For list performance:
+    ```
+    Use lazy loading for the list. Only render items
+    that are visible on screen.
+    ```
+
+    For image performance:
+    ```
+    Resize and cache images. Don't load full-resolution
+    images for thumbnails.
+    ```
+
+    General:
+    ```
+    Move heavy work off the main thread.
+    Show loading indicators for async operations.
+    ```
+  </Accordion>
+
+  <Accordion title="First build takes forever" icon="clock">
+    **The problem:** Initial build is very slow.
+
+    **This is normal.** First builds take 30-60 seconds because Xcode compiles everything. Subsequent builds are much faster (5-15 seconds).
+
+    If it's consistently slow:
+    - Close other applications
+    - Ensure sufficient disk space (10GB+)
+    - Restart your Mac
+  </Accordion>
+
+  <Accordion title="Simulator is slow" icon="mobile-screen">
+    **The problem:** App runs slowly in Simulator.
+
+    **Solutions:**
+    - Use a simpler device (iPhone SE vs iPhone 15 Pro Max)
+    - Close other Simulators
+    - The Simulator is always slower than real devices — test on TestFlight for true performance
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Supabase/Cloud Issues
+
+<AccordionGroup>
+  <Accordion title="Can't connect to Supabase" icon="plug">
+    **The problem:** Connection fails.
+
+    **Checklist:**
+    1. Verify project URL (ends in `.supabase.co`)
+    2. Use the `anon` key, not `service_role`
+    3. Check if project is initialized (takes ~2 min after creation)
+    4. Ensure internet connection
+
+    **Tell the AI:**
+    ```
+    I'm getting connection errors to Supabase.
+    My URL is [url] and I'm using the anon key.
+    Can you verify the connection setup?
+    ```
+  </Accordion>
+
+  <Accordion title="Data not saving to cloud" icon="cloud-arrow-up">
+    **The problem:** Local changes don't sync.
+
+    **Check:**
+    1. RLS policies allow inserts
+    2. User is authenticated (if required)
+    3. Required fields have values
+
+    **Tell the AI:**
+    ```
+    Data isn't saving to Supabase. I've checked RLS policies
+    and the user is authenticated. Can you add error logging
+    to see what's happening?
+    ```
+  </Accordion>
+
+  <Accordion title="Authentication not working" icon="user-lock">
+    **The problem:** Sign up or login fails.
+
+    **Check in Supabase:**
+    1. Authentication → Users: is the user created?
+    2. Authentication → Settings: is email confirmation enabled?
+    3. For testing, you can disable email confirmation
+
+    **Tell the AI:**
+    ```
+    Authentication is failing. The error is [error].
+    Show me what's happening and add proper error messages.
+    ```
+  </Accordion>
+
+  <Accordion title="Real-time updates not working" icon="bolt">
+    **The problem:** Changes don't sync between devices.
+
+    **Check:**
+    1. Real-time is enabled in Supabase (default: on)
+    2. Subscriptions are set up correctly
+    3. RLS policies allow selects
+
+    **Tell the AI:**
+    ```
+    Real-time updates aren't working. When I change data
+    in Supabase dashboard, the app doesn't update.
+    ```
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## API Integration Issues
+
+<AccordionGroup>
+  <Accordion title="API returns error" icon="triangle-exclamation">
+    **The problem:** External API calls fail.
+
+    **Tell the AI:**
+    ```
+    The API call is failing. Add logging to show:
+    - The request URL and parameters
+    - The response status code
+    - The error message
+    ```
+
+    Common causes:
+    - Invalid API key
+    - Wrong endpoint URL
+    - Missing required parameters
+    - Rate limiting
+  </Accordion>
+
+  <Accordion title="Data format is wrong" icon="file-code">
+    **The problem:** API returns data but it doesn't display correctly.
+
+    **Tell the AI:**
+    ```
+    Log the raw API response so I can see the data structure.
+    The data isn't displaying correctly.
+    ```
+
+    Then:
+    ```
+    The API returns data like this: [structure].
+    Update the model to match this format.
+    ```
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Media & Files
+
+<AccordionGroup>
+  <Accordion title="Camera not working" icon="camera">
+    **Note:** Camera doesn't work in Simulator. You must test on a real device via TestFlight.
+
+    **If permission issues:**
+    ```
+    Make sure camera permission is requested with a
+    clear usage description.
+    ```
+  </Accordion>
+
+  <Accordion title="Images not loading" icon="image">
+    **The problem:** Images don't display.
+
+    **For local images:**
+    ```
+    Check that images are in the asset catalog and
+    using the correct names.
+    ```
+
+    **For remote images:**
+    ```
+    Use AsyncImage for loading remote images.
+    Show a placeholder while loading.
+    Handle the error case if the image fails to load.
+    ```
+  </Accordion>
+
+  <Accordion title="Large images causing issues" icon="file-image">
+    **The problem:** App slows down or crashes with large images.
+
+    **Solution:**
+    ```
+    Resize images to appropriate display size before storing.
+    Use thumbnails for lists and grids.
+    Load full-resolution only when viewing full screen.
+    ```
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## App Behavior
+
+<AccordionGroup>
+  <Accordion title="App crashes on launch" icon="bomb">
+    **Possible causes:**
+    1. Missing required data
+    2. Force unwrapping a nil value
+    3. Permissions not configured
+
+    **Tell the AI:**
+    ```
+    The app crashes immediately on launch.
+    Add a try-catch around initialization code
+    and log any errors that occur.
+    ```
+  </Accordion>
+
+  <Accordion title="Nothing happens when I tap a button" icon="hand-pointer">
+    **Possible causes:**
+    1. Button action not connected
+    2. Action throws an error silently
+    3. UI is blocking the button
+
+    **Tell the AI:**
+    ```
+    The [button] doesn't do anything when tapped.
+    Add a print statement to confirm the tap registers,
+    then check what happens in the action.
+    ```
+  </Accordion>
+
+  <Accordion title="State doesn't update the UI" icon="refresh">
+    **The problem:** Data changes but UI stays the same.
+
+    **Tell the AI:**
+    ```
+    When [data] changes, the UI doesn't update.
+    Make sure the state is properly observed and
+    the view refreshes when it changes.
+    ```
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Still Stuck?
+
+<CardGroup cols={2}>
+  <Card title="Debugging Guide" icon="bug" href="/guides/debugging">
+    Comprehensive debugging walkthrough
+  </Card>
+  <Card title="How Do I..." icon="circle-question" href="/guides/how-do-i">
+    Quick answers to common questions
+  </Card>
+  <Card title="FAQs" icon="list" href="/faqs/troubleshooting">
+    More troubleshooting Q&A
+  </Card>
+  <Card title="Discord" icon="discord" href="https://discord.gg/nativeline">
+    Get help from the community
+  </Card>
+</CardGroup>

@@ -1,0 +1,257 @@
+---
+title: "Supabase Overview"
+description: "The easiest way to add cloud features to your app"
+---
+
+# Supabase Overview
+
+Supabase is an open-source backend-as-a-service that provides everything you need for cloud-powered apps: authentication, database, storage, and real-time features.
+
+## What is Supabase?
+
+Supabase gives you:
+- **Authentication** — User signup/login
+- **Database** — PostgreSQL database for your data
+- **Storage** — File and image uploads
+- **Realtime** — Live data subscriptions
+
+All accessible through a simple API that works perfectly with Nativeline.
+
+---
+
+## Why Supabase?
+
+### Perfect for Nativeline
+
+Nativeline has built-in Supabase support:
+- Easy connection setup
+- AI understands Supabase patterns
+- Automatic code generation
+- Secure credential storage
+
+### Generous Free Tier
+
+Get started without paying:
+- 500 MB database
+- 1 GB file storage
+- 50,000 monthly active users
+- Unlimited API requests
+
+Most indie apps never exceed these limits.
+
+### Open Source
+
+- No vendor lock-in
+- Self-host if you want
+- Active community
+- Transparent pricing
+
+---
+
+## What You Can Build
+
+### Apps with User Accounts
+
+- Signup with email/password
+- Social login (coming soon)
+- Password reset
+- Session management
+
+### Apps with Cloud Data
+
+- Store any data type
+- Query and filter
+- Relationships between data
+- Full-text search
+
+### Apps with File Uploads
+
+- Profile photos
+- User-generated content
+- Documents and PDFs
+- Audio and video
+
+### Apps with Live Features
+
+- Real-time chat
+- Live feeds
+- Collaborative editing
+- Instant notifications
+
+---
+
+## Supabase Architecture
+
+```
+┌─────────────────────────────────────────────────┐
+│                  Your App                        │
+│               (Nativeline iOS)                   │
+└─────────────────────┬───────────────────────────┘
+                      │ API Calls
+                      ▼
+┌─────────────────────────────────────────────────┐
+│              Supabase Cloud                      │
+│                                                  │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐       │
+│  │   Auth   │  │ Database │  │ Storage  │       │
+│  │          │  │(Postgres)│  │ (Files)  │       │
+│  └──────────┘  └──────────┘  └──────────┘       │
+│                                                  │
+│  ┌──────────┐  ┌──────────┐                     │
+│  │ Realtime │  │Edge Func │                     │
+│  │          │  │(Optional)│                     │
+│  └──────────┘  └──────────┘                     │
+└─────────────────────────────────────────────────┘
+```
+
+---
+
+## Key Concepts
+
+### Project
+
+A Supabase project is your isolated backend environment. Each project has its own:
+- Database
+- Storage buckets
+- Auth configuration
+- API keys
+
+### API Keys
+
+Two types of keys:
+- **anon key** — Safe for client apps, respects Row Level Security
+- **service_role key** — Full access, server-only, never in app
+
+Nativeline uses the anon key, which is safe to include in your app.
+
+### Row Level Security (RLS)
+
+Controls who can see and modify data. Essential for multi-user apps.
+
+Example: "Users can only see their own tasks"
+
+```sql
+CREATE POLICY "Users see own tasks"
+ON tasks FOR SELECT
+USING (auth.uid() = user_id);
+```
+
+---
+
+## Free vs Paid
+
+### Free Tier Includes
+
+| Feature | Limit |
+|---------|-------|
+| Database | 500 MB |
+| Storage | 1 GB |
+| Auth users | 50,000 MAU |
+| API requests | Unlimited |
+| Realtime | Yes |
+| Support | Community |
+
+### When to Upgrade
+
+Consider Pro ($25/month) when you need:
+- More storage
+- Larger database
+- Daily backups
+- Email support
+- More projects
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- A Supabase account (free)
+- A Nativeline project
+
+### Quick Start Steps
+
+1. Create Supabase account at [supabase.com](https://supabase.com)
+2. Create a new project
+3. Get your project URL and anon key
+4. Connect in Nativeline
+
+<Card title="Setup Guide" icon="rocket" href="/integrations/supabase/setup">
+  Step-by-step Supabase setup
+</Card>
+
+---
+
+## Common Use Cases
+
+### User Authentication
+
+Let users create accounts and log in:
+- Email/password signup
+- Session management
+- Password reset
+- Profile data
+
+[Authentication Guide →](/integrations/supabase/authentication)
+
+### Data Storage
+
+Store your app's data in the cloud:
+- Create tables for your data
+- Query and filter
+- Relationships (one-to-many, etc.)
+- Full-text search
+
+[Database Guide →](/integrations/supabase/database)
+
+### File Storage
+
+Upload and serve files:
+- User profile photos
+- Document uploads
+- Media files
+- Public or private access
+
+[Storage Guide →](/integrations/supabase/storage)
+
+### Real-Time Updates
+
+Get instant updates when data changes:
+- Chat messages appearing instantly
+- Live activity feeds
+- Collaborative editing
+- Notifications
+
+[Realtime Guide →](/integrations/supabase/realtime)
+
+---
+
+## Supabase vs Alternatives
+
+| Feature | Supabase | Firebase | AWS Amplify |
+|---------|----------|----------|-------------|
+| Open source | ✅ | ❌ | ❌ |
+| PostgreSQL | ✅ | ❌ | ✅ |
+| Free tier | Generous | Generous | Limited |
+| Self-host | ✅ | ❌ | ❌ |
+| Learning curve | Easy | Easy | Medium |
+| iOS support | Great | Great | Good |
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Setup Guide" icon="gear" href="/integrations/supabase/setup">
+    Connect Supabase to your app
+  </Card>
+  <Card title="Authentication" icon="lock" href="/integrations/supabase/authentication">
+    Add user accounts
+  </Card>
+  <Card title="Database" icon="table" href="/integrations/supabase/database">
+    Store and query data
+  </Card>
+  <Card title="Storage" icon="folder" href="/integrations/supabase/storage">
+    Upload files
+  </Card>
+</CardGroup>

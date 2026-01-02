@@ -1,0 +1,169 @@
+---
+title: "Integrations Overview"
+description: "Connect your app to external services and APIs"
+---
+
+# Integrations
+
+Take your app beyond local functionality by connecting to external services. Store data in the cloud, add AI capabilities, process payments, and more.
+
+## Do You Need Integrations?
+
+Not every app needs external services. Here's a quick decision guide:
+
+| Your App Needs | Integration Required |
+|----------------|---------------------|
+| Save data on device only | No integration needed |
+| User accounts & login | Yes - Supabase Auth |
+| Cloud data storage | Yes - Supabase Database |
+| Data sync across devices | Yes - Supabase |
+| AI features (ChatGPT, etc.) | Yes - OpenAI API |
+| Accept payments | Yes - Stripe |
+| Maps and directions | Built-in Apple Maps |
+| Weather data | Yes - Weather API |
+
+[Detailed decision guide →](/integrations/do-you-need-backend)
+
+---
+
+## Available Integrations
+
+### Supabase (Recommended Backend)
+
+The easiest way to add cloud features to your Nativeline app.
+
+<CardGroup cols={2}>
+  <Card title="Supabase Overview" icon="database" href="/integrations/supabase/overview">
+    What is Supabase and when to use it
+  </Card>
+  <Card title="Setup Guide" icon="gear" href="/integrations/supabase/setup">
+    Connect Supabase to your app
+  </Card>
+  <Card title="Authentication" icon="lock" href="/integrations/supabase/authentication">
+    User signup, login, and sessions
+  </Card>
+  <Card title="Database" icon="table" href="/integrations/supabase/database">
+    Store and query your data
+  </Card>
+  <Card title="Storage" icon="folder" href="/integrations/supabase/storage">
+    Upload files and images
+  </Card>
+  <Card title="Realtime" icon="bolt" href="/integrations/supabase/realtime">
+    Live updates and subscriptions
+  </Card>
+</CardGroup>
+
+### External APIs
+
+Connect to third-party services for specialized functionality.
+
+<CardGroup cols={2}>
+  <Card title="API Overview" icon="plug" href="/integrations/external-apis/overview">
+    How to add external APIs
+  </Card>
+  <Card title="OpenAI / ChatGPT" icon="robot" href="/integrations/external-apis/openai">
+    Add AI capabilities
+  </Card>
+  <Card title="Stripe Payments" icon="credit-card" href="/integrations/external-apis/stripe">
+    Accept payments
+  </Card>
+  <Card title="Maps & Location" icon="map" href="/integrations/external-apis/maps">
+    Apple Maps, directions, geocoding
+  </Card>
+  <Card title="Weather APIs" icon="cloud-sun" href="/integrations/external-apis/weather">
+    WeatherKit and OpenWeather
+  </Card>
+  <Card title="Other APIs" icon="puzzle-piece" href="/integrations/external-apis/other">
+    Generic API integration guide
+  </Card>
+</CardGroup>
+
+---
+
+## Integration Complexity
+
+| Integration | Difficulty | Setup Time |
+|-------------|------------|------------|
+| Apple Maps | Easy | 5 minutes |
+| WeatherKit | Easy | 10 minutes |
+| Supabase Auth | Medium | 20 minutes |
+| Supabase Database | Medium | 30 minutes |
+| OpenAI API | Medium | 15 minutes |
+| Stripe Payments | Complex | 1-2 hours |
+
+---
+
+## Getting Started
+
+### For Most Apps: Start with Supabase
+
+If you need any of these, Supabase is your best choice:
+- User accounts
+- Cloud data storage
+- File uploads
+- Real-time features
+
+<Card title="Supabase Setup" icon="rocket" href="/integrations/supabase/setup">
+  Step-by-step guide to connect Supabase
+</Card>
+
+### For Specific Features
+
+- **AI Chat/Completion** → [OpenAI Integration](/integrations/external-apis/openai)
+- **Payments** → [Stripe Integration](/integrations/external-apis/stripe)
+- **Weather Data** → [Weather APIs](/integrations/external-apis/weather)
+- **Maps** → [Maps & Location](/integrations/external-apis/maps)
+
+---
+
+## Common Integration Patterns
+
+### User Data App
+
+```
+User signs up → Supabase Auth
+User data stored → Supabase Database
+Profile photos → Supabase Storage
+```
+
+### AI-Powered App
+
+```
+User input → Your app
+API call → OpenAI
+Response → Your app displays
+```
+
+### E-Commerce App
+
+```
+Product data → Supabase Database
+Checkout → Stripe
+Order confirmation → Push notification
+```
+
+---
+
+## Security Considerations
+
+<Warning>
+  Never store API keys in your code. Use secure methods:
+  - Store in iOS Keychain
+  - Use environment variables
+  - Consider server-side proxies for sensitive APIs
+</Warning>
+
+Nativeline helps you store credentials securely. When you connect services, API keys are stored in your Mac's Keychain, encrypted locally.
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Do I Need a Backend?" icon="server" href="/integrations/do-you-need-backend">
+    Decision guide with flowchart
+  </Card>
+  <Card title="Supabase Overview" icon="database" href="/integrations/supabase/overview">
+    Learn about Supabase
+  </Card>
+</CardGroup>

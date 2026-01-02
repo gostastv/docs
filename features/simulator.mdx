@@ -1,0 +1,268 @@
+---
+title: "iOS Simulator"
+description: "Test your app instantly without a physical device"
+---
+
+# iOS Simulator
+
+The iOS Simulator lets you test your app on a virtual iPhone or iPad on your Mac. It's your primary tool for seeing your app in action.
+
+## What is the Simulator?
+
+The Simulator is a virtual iOS device running on your Mac. It:
+
+- Runs your actual compiled app
+- Simulates iPhone/iPad hardware
+- Supports most iOS features
+- Updates instantly as you build
+
+---
+
+## How It Works with Nativeline
+
+1. You make changes via chat
+2. Nativeline rebuilds your app
+3. App automatically launches in Simulator
+4. You test and iterate
+
+The Simulator appears alongside your Nativeline workspace, giving you instant feedback.
+
+---
+
+## Interacting with the Simulator
+
+### Basic Interactions
+
+| Action | How to Do It |
+|--------|--------------|
+| Tap | Click |
+| Scroll | Click and drag, or two-finger swipe |
+| Swipe | Click and drag |
+| Long press | Click and hold |
+| Pinch/zoom | Option + drag |
+| Rotate | Cmd+Left/Right Arrow |
+| Shake | Device → Shake |
+
+### Text Input
+
+Click a text field and type with your keyboard. The Simulator uses your Mac's keyboard.
+
+### Home Screen
+
+- **Home button:** Cmd+Shift+H
+- **Home (iPhone X+):** Drag up from bottom
+
+---
+
+## Changing Devices
+
+You can test on different iPhone/iPad models:
+
+### In Nativeline
+
+Look for device selection in the toolbar or settings.
+
+### In Simulator
+
+1. File → Open Simulator
+2. Choose a device type
+
+### Why Different Devices?
+
+| Device | Best For Testing |
+|--------|------------------|
+| iPhone SE | Small screens, compact layouts |
+| iPhone 15 | Standard size, typical user |
+| iPhone 15 Pro Max | Large screens, edge cases |
+| iPad | Tablet layouts |
+
+---
+
+## Simulator Features
+
+### Location Simulation
+
+Test location features without moving:
+
+1. Features → Location
+2. Choose: City Bicycle Ride, Freeway Drive, Custom Location
+
+Or set a specific location:
+1. Features → Location → Custom Location
+2. Enter latitude/longitude
+
+### Screenshots
+
+Save screenshots of your app:
+- **Cmd+S** while Simulator is focused
+- Saved to Desktop by default
+
+### Screen Recording
+
+Record your app in action:
+1. File → Record Screen
+2. Interact with your app
+3. Stop recording
+4. Video saved to Desktop
+
+### Dark Mode Toggle
+
+Quick appearance switch:
+- Features → Toggle Appearance
+- Or: Settings app → Display & Brightness
+
+### Keyboard Toggle
+
+Show/hide the software keyboard:
+- Cmd+K
+- Or: I/O → Keyboard → Toggle Software Keyboard
+
+---
+
+## First Launch
+
+The first time the Simulator boots:
+
+- Takes 30-60 seconds
+- Downloads iOS components
+- Creates virtual device
+
+Subsequent launches are much faster (~5-10 seconds).
+
+---
+
+## What the Simulator Can't Do
+
+Some features require a real device:
+
+| Not Available | Alternative |
+|---------------|-------------|
+| Actual camera | Use photo library |
+| Real GPS | Simulated locations |
+| Face ID sensor | Simulated Face ID (Features menu) |
+| Actual push notifications | Local notifications work |
+| Apple Pay | Simulated in sandbox |
+| Real performance | Test on device for speed |
+
+For these features, deploy to TestFlight and test on a real iPhone.
+
+---
+
+## Performance Considerations
+
+### Simulator vs Real Device
+
+The Simulator is:
+- **Faster** for some things (uses Mac's powerful CPU)
+- **Slower** for others (graphics aren't optimized)
+- **Not accurate** for performance testing
+
+Always test on a real device before publishing.
+
+### Improving Simulator Performance
+
+If the Simulator is slow:
+1. Use a simpler device (iPhone SE instead of Pro Max)
+2. Close other Simulators
+3. Close other heavy apps
+4. Restart the Simulator
+
+---
+
+## Common Simulator Tasks
+
+<AccordionGroup>
+  <Accordion title="Reset to clean state" icon="rotate-right">
+    Device → Erase All Content and Settings
+
+    This clears:
+    - All app data
+    - All permissions
+    - All settings
+
+    Useful for testing first-launch experience.
+  </Accordion>
+
+  <Accordion title="Add photos to test with" icon="image">
+    Drag image files from Finder onto the Simulator window. They're added to the Photos app.
+  </Accordion>
+
+  <Accordion title="Simulate slow network" icon="wifi">
+    Use Network Link Conditioner (part of Additional Tools for Xcode):
+    1. System Preferences → Network Link Conditioner
+    2. Choose a profile (3G, Edge, etc.)
+    3. Turn on
+
+    Or test network handling in code.
+  </Accordion>
+
+  <Accordion title="Test different iOS versions" icon="layer-group">
+    Xcode → Settings → Platforms → Download other iOS versions
+
+    Then create Simulators with those versions.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Simulator won't launch" icon="mobile-screen-button">
+    - Check Xcode is installed (Nativeline installs automatically)
+    - Restart Nativeline
+    - Open Xcode → Window → Devices and Simulators to check Simulator health
+    - Try: sudo killall -9 com.apple.CoreSimulator.CoreSimulatorService
+  </Accordion>
+
+  <Accordion title="App not appearing after build" icon="eye-slash">
+    - Check build succeeded (look for errors in chat)
+    - Simulator might be behind other windows
+    - Check other Spaces/Desktops
+    - The app might need to be manually launched from Simulator home screen
+  </Accordion>
+
+  <Accordion title="Simulator is very slow" icon="gauge-simple">
+    - Close other applications
+    - Use a simpler device
+    - Restart Simulator (Device → Restart)
+    - Restart your Mac
+  </Accordion>
+
+  <Accordion title="Keyboard not showing" icon="keyboard">
+    Press Cmd+K to toggle software keyboard, or:
+    I/O → Keyboard → Toggle Software Keyboard
+  </Accordion>
+
+  <Accordion title="Can't type in text fields" icon="keyboard-off">
+    - Click the text field first
+    - Make sure hardware keyboard is enabled:
+      I/O → Keyboard → Connect Hardware Keyboard
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Simulator Shortcuts
+
+| Shortcut | Action |
+|----------|--------|
+| Cmd+Shift+H | Home |
+| Cmd+Left/Right | Rotate |
+| Cmd+K | Toggle keyboard |
+| Cmd+S | Screenshot |
+| Cmd+R | Reboot |
+| Cmd+Shift+A | Toggle slow animations |
+
+---
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="TestFlight" icon="rocket" href="/publishing/testflight/overview">
+    Test on real devices
+  </Card>
+  <Card title="Debugging Guide" icon="bug" href="/guides/debugging">
+    Troubleshoot issues
+  </Card>
+</CardGroup>

@@ -1,0 +1,283 @@
+---
+title: "Supabase Authentication"
+description: "Add user signup, login, and session management"
+---
+
+# Supabase Authentication
+
+Add user accounts to your app with Supabase Auth. Users can sign up, log in, reset passwords, and maintain sessions across app launches.
+
+## Prerequisites
+
+- [Supabase connected](/integrations/supabase/setup)
+- Your Nativeline project
+
+---
+
+## Setting Up Auth
+
+Tell Nativeline what you need:
+
+```
+Add user authentication with Supabase:
+- Email/password signup
+- Email/password login
+- Password reset
+- Session persistence (stay logged in)
+```
+
+Nativeline will create:
+- Auth service/manager
+- Login screen
+- Signup screen
+- Session handling
+
+---
+
+## Authentication Flow
+
+### Signup Flow
+
+```
+User enters email + password
+    ↓
+App calls Supabase signUp()
+    ↓
+Supabase creates user
+    ↓
+(Optional) Email verification
+    ↓
+User is logged in
+```
+
+### Login Flow
+
+```
+User enters email + password
+    ↓
+App calls Supabase signIn()
+    ↓
+Supabase validates credentials
+    ↓
+Session token returned
+    ↓
+User is logged in
+```
+
+### Session Persistence
+
+Supabase handles session tokens automatically:
+- Tokens stored securely
+- Auto-refresh before expiry
+- User stays logged in across app launches
+
+---
+
+## Creating Auth Screens
+
+### Signup Screen
+
+```
+Create a signup screen with:
+- Email field with validation
+- Password field (minimum 6 characters)
+- Confirm password field
+- "Create Account" button
+- Link to "Already have an account? Log in"
+- Show errors inline under fields
+```
+
+### Login Screen
+
+```
+Create a login screen with:
+- Email field
+- Password field
+- "Log In" button
+- "Forgot Password?" link
+- Link to "Don't have an account? Sign up"
+- Show error message if login fails
+```
+
+### Password Reset
+
+```
+Add a forgot password screen:
+- Email field
+- "Send Reset Link" button
+- Success message after sending
+- Link back to login
+```
+
+---
+
+## Handling Auth State
+
+### Check if User is Logged In
+
+```
+When the app starts, check if the user is logged in.
+If logged in, go to the home screen.
+If not logged in, show the login screen.
+```
+
+### Get Current User
+
+```
+Show the current user's email on the profile screen
+```
+
+### Sign Out
+
+```
+Add a sign out button that:
+- Logs the user out of Supabase
+- Returns to the login screen
+- Clears local session data
+```
+
+---
+
+## Email Verification (Optional)
+
+By default, Supabase can require email verification:
+
+### Enable in Supabase Dashboard
+
+1. Authentication → Settings
+2. Toggle "Enable email confirmations"
+3. Customize email template if desired
+
+### Handle in App
+
+```
+After signup, show a message:
+"Please check your email to verify your account"
+```
+
+### Disable for Testing
+
+For development, you can disable email confirmation:
+1. Supabase Dashboard → Authentication → Settings
+2. Disable "Enable email confirmations"
+
+---
+
+## Protecting Data with User IDs
+
+### Associate Data with Users
+
+When saving data, include the user's ID:
+
+```
+When creating a new task, save the current user's ID with it
+so each user only sees their own tasks.
+```
+
+### Row Level Security
+
+In Supabase, create policies so users only see their data:
+
+```sql
+-- Users can only see their own tasks
+CREATE POLICY "Users see own tasks"
+ON tasks FOR SELECT
+USING (auth.uid() = user_id);
+
+-- Users can only create tasks for themselves
+CREATE POLICY "Users create own tasks"
+ON tasks FOR INSERT
+WITH CHECK (auth.uid() = user_id);
+```
+
+---
+
+## Handling Auth Errors
+
+### Common Errors
+
+| Error | Cause | Solution |
+|-------|-------|----------|
+| Invalid email | Bad format | Validate email format |
+| Weak password | Too short | Require 6+ characters |
+| User exists | Duplicate signup | Show "Account exists, try logging in" |
+| Invalid credentials | Wrong password | Show "Incorrect email or password" |
+| Too many requests | Rate limited | Show "Please wait and try again" |
+
+### Error Handling in App
+
+```
+Handle authentication errors gracefully:
+- Show specific error messages
+- Don't reveal if email exists (security)
+- Allow retry after errors
+```
+
+---
+
+## Auth Best Practices
+
+<AccordionGroup>
+  <Accordion title="Validate on client AND server" icon="check-double">
+    Validate inputs before sending to Supabase. But also rely on Supabase's server-side validation — don't trust client validation alone.
+  </Accordion>
+
+  <Accordion title="Use secure password requirements" icon="lock">
+    Require at least 6 characters (Supabase default). Consider:
+    - Minimum 8 characters
+    - Mix of letters and numbers
+    - Password strength indicator
+  </Accordion>
+
+  <Accordion title="Handle sessions properly" icon="key">
+    Let Supabase handle token refresh automatically. Don't store passwords locally. Clear sessions on logout.
+  </Accordion>
+
+  <Accordion title="Don't expose user existence" icon="eye-slash">
+    When login fails, say "Invalid email or password" — not "User not found." This prevents account enumeration attacks.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Testing Auth
+
+### In Simulator
+
+1. Create a test account
+2. Verify login works
+3. Close and reopen app (should stay logged in)
+4. Test logout
+5. Test password reset flow
+
+### Reset Test Users
+
+In Supabase Dashboard:
+1. Authentication → Users
+2. Find test user
+3. Delete or modify as needed
+
+---
+
+## Advanced: Social Auth (Future)
+
+Supabase supports social logins (Google, Apple, GitHub). These require additional setup:
+
+- Apple: Requires Apple Developer account
+- Google: Requires Google Cloud setup
+- OAuth: Various providers
+
+Contact Nativeline support for guidance on social auth setup.
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Database" icon="table" href="/integrations/supabase/database">
+    Store user data in tables
+  </Card>
+  <Card title="Storage" icon="folder" href="/integrations/supabase/storage">
+    Upload user profile photos
+  </Card>
+</CardGroup>

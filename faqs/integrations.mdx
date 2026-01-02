@@ -1,0 +1,193 @@
+---
+title: "Integrations FAQs"
+description: "Questions about Supabase, APIs, and external services"
+---
+
+# Integrations FAQs
+
+Questions about connecting external services to your apps.
+
+---
+
+<AccordionGroup>
+  <Accordion title="Do I need a backend for my app?">
+    Not always. You need a backend if you want:
+    - User accounts that sync across devices
+    - Data shared between users
+    - Cloud storage for files
+    - Push notifications
+    - Admin dashboards
+
+    If your app only stores data locally on the device, you don't need a backend.
+
+    See our [Do You Need a Backend?](/integrations/do-you-need-backend) guide.
+  </Accordion>
+
+  <Accordion title="What is Supabase?">
+    Supabase is a backend-as-a-service that provides:
+    - **Database** — Store your data in the cloud
+    - **Authentication** — User signup/login
+    - **File Storage** — Upload images, files
+    - **Realtime** — Live updates
+
+    It's free to start and scales with your needs. Nativeline has built-in Supabase integration.
+  </Accordion>
+
+  <Accordion title="How do I connect Supabase?">
+    1. Create an account at [supabase.com](https://supabase.com)
+    2. Create a new project
+    3. Copy your Project URL and anon key
+    4. In Nativeline Settings → Integrations, paste the credentials
+    5. Ask the AI to use Supabase for your features
+
+    See our [Supabase Setup Guide](/integrations/supabase/setup) for step-by-step instructions.
+  </Accordion>
+
+  <Accordion title="Is Supabase free?">
+    Supabase has a generous free tier:
+    - 500MB database
+    - 1GB file storage
+    - Unlimited API requests
+    - 2 free projects
+
+    This is enough for most personal apps and prototypes. Paid plans are available as you scale.
+  </Accordion>
+
+  <Accordion title="Can I use Firebase instead of Supabase?">
+    Nativeline is optimized for Supabase, which is recommended. Firebase can work but requires more manual configuration and the AI may be less helpful with Firebase-specific code.
+
+    For the smoothest experience, use Supabase.
+  </Accordion>
+
+  <Accordion title="How do I add user authentication?">
+    With Supabase connected:
+    1. Enable the auth providers you want in Supabase dashboard
+    2. Ask the AI: "Add login and signup screens using Supabase"
+    3. The AI will create the necessary screens and logic
+
+    Supported methods:
+    - Email/password
+    - Magic link (email)
+    - Apple Sign In
+    - Google Sign In
+
+    See [Authentication Guide](/integrations/supabase/authentication) for details.
+  </Accordion>
+
+  <Accordion title="How do I store data in the cloud?">
+    With Supabase:
+    1. Create a table in Supabase dashboard
+    2. Tell the AI about your data structure
+    3. Ask the AI to save/fetch data from Supabase
+
+    Example: "Store user recipes in Supabase with name, ingredients, and instructions fields."
+  </Accordion>
+
+  <Accordion title="Can I use my own server?">
+    Yes, though it requires more effort:
+    - Tell the AI your API endpoints
+    - Describe the expected request/response formats
+    - The AI will generate networking code
+
+    This is more advanced and may require some troubleshooting.
+  </Accordion>
+
+  <Accordion title="How do I integrate OpenAI/ChatGPT?">
+    1. Get an API key from [platform.openai.com](https://platform.openai.com)
+    2. Tell the AI: "Add OpenAI integration with my key: sk-xxxxx"
+    3. Describe what you want: chatbot, content generator, etc.
+
+    See our [OpenAI Integration Guide](/integrations/external-apis/openai) for full details.
+  </Accordion>
+
+  <Accordion title="Can I accept payments?">
+    Yes, using Stripe:
+    1. Create a Stripe account
+    2. Get your API keys
+    3. Ask the AI to add Stripe payment integration
+
+    Note: For digital goods sold within the app, Apple requires using In-App Purchases (which take 15-30% commission).
+
+    See our [Stripe Guide](/integrations/external-apis/stripe) for details.
+  </Accordion>
+
+  <Accordion title="How do I add maps to my app?">
+    Apple MapKit is built into iOS:
+    - Ask the AI: "Add a map showing the user's location"
+    - The AI will use Apple's native mapping framework
+    - No API key needed
+
+    See [Maps & Location](/integrations/external-apis/maps) for more features.
+  </Accordion>
+
+  <Accordion title="Can I add weather data?">
+    Yes! Two options:
+    - **WeatherKit** (Apple's service) — Free tier, easy to use
+    - **OpenWeather** — Requires API key, more customization
+
+    Ask the AI: "Add weather display for the user's location using WeatherKit"
+
+    See [Weather APIs](/integrations/external-apis/weather) for setup.
+  </Accordion>
+
+  <Accordion title="How do I add push notifications?">
+    Push notifications require:
+    1. Apple Developer account
+    2. Push notification capability enabled
+    3. A backend to send notifications (like Supabase or your own server)
+
+    Ask the AI: "Set up push notifications for my app"
+
+    Note: You can test with local notifications without a server.
+  </Accordion>
+
+  <Accordion title="Can I integrate any API?">
+    Yes, most REST APIs can be integrated:
+    1. Get API documentation from the provider
+    2. Get your API key/credentials
+    3. Tell the AI about the API endpoints you need
+    4. Describe what you want to do with the data
+
+    The AI can generate networking code for most APIs.
+  </Accordion>
+
+  <Accordion title="My API calls aren't working. What's wrong?">
+    Common issues:
+    - **Wrong URL** — Check the endpoint address
+    - **Missing/wrong API key** — Verify credentials
+    - **Network permissions** — iOS needs permission for network
+    - **CORS** — Not usually an issue for native apps
+    - **Rate limiting** — Slow down requests
+
+    Check the build output for specific error messages.
+  </Accordion>
+
+  <Accordion title="How do I secure my API keys?">
+    Best practices:
+    - Never commit keys to public repositories
+    - For very sensitive APIs, route through your own server
+    - Supabase Row Level Security protects user data
+    - Use environment-specific keys (test vs production)
+
+    For client-side apps, keys are exposed in the binary. For truly sensitive operations, use a server-side proxy.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Related FAQs
+
+<CardGroup cols={2}>
+  <Card title="Building Apps" icon="hammer" href="/faqs/building">
+    Creating features
+  </Card>
+  <Card title="Technical" icon="code" href="/faqs/technical">
+    Code questions
+  </Card>
+  <Card title="Supabase Overview" icon="database" href="/integrations/supabase/overview">
+    Full Supabase docs
+  </Card>
+  <Card title="External APIs" icon="plug" href="/integrations/external-apis/overview">
+    Third-party integrations
+  </Card>
+</CardGroup>

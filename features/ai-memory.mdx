@@ -1,0 +1,294 @@
+---
+title: "AI Memory"
+description: "How Nativeline remembers your project and gets smarter over time"
+---
+
+# AI Memory
+
+Nativeline's AI remembers your project — what you've built, your preferences, and the patterns you use. This memory makes the AI smarter and more helpful over time.
+
+## What the AI Remembers
+
+### Project Structure
+
+The AI knows:
+- What files exist in your project
+- How your app is organized
+- What screens and features you have
+- The relationships between components
+
+### Conversation History
+
+The AI remembers:
+- What you've asked for
+- Previous design decisions
+- Problems you've encountered
+- Solutions that worked
+
+### Code Patterns
+
+The AI learns:
+- Your preferred coding style
+- Design patterns you use
+- Naming conventions
+- How you structure features
+
+### Design Preferences
+
+The AI notices:
+- Colors you like
+- Spacing patterns
+- Typography choices
+- Layout preferences
+
+---
+
+## How Memory Helps
+
+### Consistency
+
+The AI maintains consistent style across your app:
+
+```
+"Add a settings screen"
+```
+
+Without memory: Generic settings screen
+With memory: Settings screen matching your app's existing style
+
+### Context
+
+The AI understands references to existing features:
+
+```
+"Make the profile screen work like the settings screen"
+```
+
+The AI knows what both screens look like and can match the pattern.
+
+### Continuity
+
+Come back tomorrow, and the AI remembers where you left off:
+
+```
+"Continue with the checkout feature"
+```
+
+The AI recalls the checkout context and picks up where it stopped.
+
+---
+
+## The .nativeline Folder
+
+Your project contains a hidden `.nativeline` folder that stores:
+
+```
+.nativeline/
+├── memory.json      # Project context and patterns
+├── conversation/    # Chat history
+└── plans/           # Active and completed plans
+```
+
+<Warning>
+  Don't delete the `.nativeline` folder unless you want to reset the AI's memory. Your code will remain, but the AI will need to re-learn your project.
+</Warning>
+
+---
+
+## Building Memory Effectively
+
+### Be Consistent
+
+Using consistent terminology helps the AI learn:
+
+- Always call it "the header" (not sometimes "top bar")
+- Use the same names for concepts
+- Reference features by their names
+
+### Correct Early
+
+If the AI gets something wrong, correct it:
+
+```
+"That's not quite right. In this app, cards should always
+have 16pt padding and rounded corners."
+```
+
+The AI remembers these corrections.
+
+### Establish Patterns
+
+Set patterns explicitly:
+
+```
+"For all forms in this app, use:
+- 16pt spacing between fields
+- Blue submit buttons
+- Error messages below the field in red"
+```
+
+Future forms will follow these patterns automatically.
+
+---
+
+## Memory and Plans
+
+Plans are part of AI memory. When you:
+
+- Start a plan: AI remembers the goal and progress
+- Continue a plan: AI picks up from last completed step
+- Clear a plan (`/planclear`): Plan cleared, but project memory remains
+
+### Resuming Work
+
+```
+"Continue where we left off"
+```
+
+The AI checks:
+1. Is there an active plan? Continue that.
+2. What was being built? Resume that context.
+3. What patterns have been established? Apply them.
+
+---
+
+## When Memory Causes Issues
+
+### Stuck Patterns
+
+Sometimes the AI keeps trying the same approach:
+
+**Solution:** Be explicit about wanting something different:
+```
+"Try a completely different approach this time.
+Don't use the pattern from before."
+```
+
+### Wrong Assumptions
+
+If the AI assumes something incorrect:
+
+**Solution:** Correct it directly:
+```
+"Actually, I want the buttons to be different on this screen.
+Don't follow the previous pattern here."
+```
+
+### Conflicting Information
+
+If you've given contradictory instructions over time:
+
+**Solution:** Clarify the current state:
+```
+"To be clear: all buttons in the app should now be blue.
+Ignore any previous instructions about button colors."
+```
+
+---
+
+## Resetting Memory
+
+### Clearing the Plan
+
+To start fresh with a new approach:
+```
+/planclear
+```
+
+This clears the current plan but keeps project memory.
+
+### Clearing Conversation
+
+Clear the conversation history in settings. This:
+- Removes chat history
+- Keeps your code
+- AI re-learns from existing code
+
+### Full Reset (Advanced)
+
+To completely reset AI memory:
+1. Close Nativeline
+2. Delete the `.nativeline` folder in your project
+3. Reopen the project
+
+The AI will analyze your code fresh and build new memory.
+
+---
+
+## Memory Across Sessions
+
+### What Persists
+
+- Project structure knowledge
+- Conversation history
+- Active plans
+- Learned patterns
+
+### What's Recalculated
+
+Each session, the AI:
+- Re-reads your current code
+- Updates its understanding
+- Incorporates any manual changes
+
+This means manual code changes (via Code Editor or Xcode) are automatically incorporated.
+
+---
+
+## Privacy and Data
+
+### Local Storage
+
+Memory is stored locally on your Mac:
+- In your project's `.nativeline` folder
+- Not uploaded to cloud
+- Deleted when you delete the project
+
+### What's Sent to AI
+
+When you send a message:
+- Your current message
+- Relevant context from memory
+- Current code being modified
+
+Code is processed by the AI but not stored on Anthropic's servers.
+
+---
+
+## Tips for Working with Memory
+
+<AccordionGroup>
+  <Accordion title="Start sessions with context" icon="play">
+    Begin each session by reminding the AI what you're working on:
+    "I'm continuing work on the checkout feature"
+  </Accordion>
+
+  <Accordion title="Name things consistently" icon="tag">
+    Use the same names for features and elements throughout your conversations.
+  </Accordion>
+
+  <Accordion title="Correct mistakes immediately" icon="pencil">
+    When the AI gets something wrong, correct it right away so it learns.
+  </Accordion>
+
+  <Accordion title="Establish patterns early" icon="shapes">
+    Define your design patterns at the start: "All buttons should be..."
+  </Accordion>
+
+  <Accordion title="Use /planclear strategically" icon="broom">
+    Clear plans when you want a fresh approach, but know your established patterns will persist.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Working with Plans" icon="list-check" href="/guides/working-with-plans">
+    How plans work with AI memory
+  </Card>
+  <Card title="Chat Interface" icon="comments" href="/features/chat-interface">
+    Communicating with the AI
+  </Card>
+</CardGroup>

@@ -1,0 +1,258 @@
+---
+title: "Chat Interface"
+description: "Your command center for building iOS apps"
+---
+
+# Chat Interface
+
+The chat interface is where you spend most of your time in Nativeline. It's your command center for building, testing, and refining your iOS app.
+
+## Workspace Overview
+
+When you open a project, you'll see the main workspace:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  Toolbar (project name, bits, settings, account)                │
+├────────────────┬────────────────────────────────────────────────┤
+│                │                                                │
+│   Sidebar      │              Main Area                         │
+│                │                                                │
+│   - Chat       │   ┌──────────────────────────────────────┐     │
+│   - Settings   │   │  Conversation History                │     │
+│   - Database   │   │                                      │     │
+│   - Deploy     │   │  Your messages → (right)             │     │
+│                │   │  ← AI responses (left)               │     │
+│                │   │  Tool cards, todo lists              │     │
+│                │   │                                      │     │
+│                │   └──────────────────────────────────────┘     │
+│                │                                                │
+│                │   ┌──────────────────────────────────────┐     │
+│                │   │  Message Input                       │     │
+│                │   └──────────────────────────────────────┘     │
+└────────────────┴────────────────────────────────────────────────┘
+```
+
+---
+
+## Sidebar Tabs
+
+### Chat Tab
+Your primary workspace. Communicate with the AI to build your app.
+
+### Settings Tab
+Configure your app's identity, permissions, and capabilities. See [Project Settings](/features/project-settings).
+
+### Database Tab
+View and manage your Supabase database tables (if connected). See [Supabase](/integrations/supabase/overview).
+
+### Deploy Tab
+Publish your app to TestFlight for beta testing. See [Publishing](/publishing/overview).
+
+---
+
+## The Conversation Area
+
+### Your Messages (Right Side)
+
+When you send a message, it appears on the right:
+- Your text
+- Any attached images
+- Timestamp
+
+### AI Responses (Left Side)
+
+The AI's responses include:
+
+**Text Explanations**
+The AI explains what it's doing, answers questions, or asks for clarification.
+
+**Tool Cards**
+When the AI creates or edits files:
+```
+📝 Edit File
+ContentView.swift
+Added login button with blue background
+```
+
+**Todo Lists**
+For complex requests, a checklist shows:
+- Steps to complete (⏳)
+- Current task (🔄)
+- Completed items (✅)
+
+**Build Status**
+Indicators showing:
+- Building... (compiling)
+- Success (app running)
+- Error (build failed)
+
+---
+
+## Sending Messages
+
+### Basic Input
+
+Type your message and:
+- **Enter** — Send message
+- **Shift+Enter** — New line
+- **Cmd+Enter** — Quick send
+
+### Attaching Images
+
+Drag and drop images into the chat:
+- Up to **5 images** per message
+- Formats: PNG, JPG, JPEG, GIF, WebP, HEIC
+
+See [Using Images](/features/using-images) for best practices.
+
+---
+
+## Message Best Practices
+
+<Tip>
+  **Be specific.** Instead of "make it better," try "increase the button height to 50pt and add a subtle shadow."
+</Tip>
+
+<Tip>
+  **One thing at a time.** Ask for one feature or change per message for best results.
+</Tip>
+
+<Tip>
+  **Reference what exists.** Say "change the blue header" instead of "change the header" so the AI knows exactly what you mean.
+</Tip>
+
+---
+
+## Understanding AI Responses
+
+### When Things Work
+
+You'll see:
+1. Todo list with items being checked off
+2. Tool cards showing files being created/edited
+3. App rebuilding in the Simulator
+4. Success message when complete
+
+### When Errors Occur
+
+Build failures are handled automatically:
+1. AI detects the error
+2. Shows what went wrong
+3. Proposes a fix
+4. Applies fix and rebuilds
+
+Don't panic — errors are normal. See [Debugging Guide](/guides/debugging) for details.
+
+### When AI Needs Clarification
+
+The AI may ask questions:
+- "Did you mean the header at the top or the section title?"
+- "What color for the button?"
+- "Should this save locally or to the cloud?"
+
+Answer naturally to continue.
+
+---
+
+## The Simulator Preview
+
+The iOS Simulator shows your app running live:
+
+- **Instant feedback** — See changes as builds complete
+- **Real interaction** — Tap, scroll, use your app
+- **Error visibility** — Spot crashes and UI issues
+
+Watch the build status:
+- **Building...** — App compiling
+- **Success** — App running
+- **Error** — Build failed
+
+---
+
+## Conversation Management
+
+### Scrolling History
+
+Your conversation is saved. Scroll up to see:
+- Previous requests
+- What the AI built
+- Earlier iterations
+
+### Clearing the Plan
+
+To start fresh with a new approach:
+```
+/planclear
+```
+
+This clears the current plan but preserves your code.
+
+### Starting Fresh Conversation
+
+If the conversation gets too long:
+1. Clear conversation option in menu
+2. Confirm
+3. Your code is preserved — only chat history clears
+
+<Note>
+  Clearing conversation doesn't delete your app. Only the chat history is cleared.
+</Note>
+
+---
+
+## Keyboard Shortcuts
+
+| Action | Shortcut |
+|--------|----------|
+| Send message | Enter |
+| New line | Shift+Enter |
+| Quick send | Cmd+Enter |
+| Stop AI | Escape |
+
+See [Keyboard Shortcuts](/features/keyboard-shortcuts) for the complete list.
+
+---
+
+## The Code Preview
+
+When the AI writes code, you can watch in real-time. This helps you:
+- Understand what's being created
+- Catch issues early
+- Learn Swift by watching
+
+---
+
+## Tips for Effective Building
+
+### Start Simple
+
+Begin with core functionality. Add polish later.
+
+### Test Frequently
+
+Check after each change. Catching issues early saves time.
+
+### Use Images
+
+Visual references reduce iterations. See [Using Images](/features/using-images).
+
+### Give Feedback
+
+If something isn't right, tell the AI:
+- "That's not what I meant..."
+- "Make it more..."
+- "Change the color to..."
+
+---
+
+## Related Features
+
+<CardGroup cols={2}>
+  <Card title="Using Images" icon="image" href="/features/using-images">
+    Show the AI what you want
+  </Card>
+  <Card title="Prompt Workshop" icon="pen-fancy" href="/guides/prompt-workshop">
+    Master effective prompting
+  </Card>
+</CardGroup>

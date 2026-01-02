@@ -1,0 +1,298 @@
+---
+title: "Supabase Database"
+description: "Store and query data in PostgreSQL"
+---
+
+# Supabase Database
+
+Supabase provides a full PostgreSQL database for storing your app's data. Create tables, write queries, and let your data scale.
+
+## Prerequisites
+
+- [Supabase connected](/integrations/supabase/setup)
+- Basic understanding of your data needs
+
+---
+
+## Creating Tables
+
+### In Supabase Dashboard
+
+1. Go to **Table Editor** in sidebar
+2. Click **Create a new table**
+3. Name your table (e.g., `tasks`)
+4. Add columns
+
+### Via Nativeline
+
+You can also ask Nativeline:
+
+```
+Create a Supabase table for tasks with:
+- id (auto-generated UUID)
+- user_id (links to auth users)
+- title (text, required)
+- is_completed (boolean, default false)
+- created_at (timestamp, auto)
+```
+
+---
+
+## Common Column Types
+
+| Type | Use For | Example |
+|------|---------|---------|
+| `uuid` | Unique IDs | Primary key, foreign keys |
+| `text` | Strings | Names, descriptions |
+| `int4/int8` | Numbers | Counts, quantities |
+| `bool` | True/false | Is completed, is active |
+| `timestamptz` | Dates/times | Created at, due date |
+| `jsonb` | Complex data | Settings, metadata |
+| `float8` | Decimals | Prices, coordinates |
+
+---
+
+## Example: Tasks Table
+
+```sql
+CREATE TABLE tasks (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID REFERENCES auth.users(id) NOT NULL,
+  title TEXT NOT NULL,
+  description TEXT,
+  is_completed BOOLEAN DEFAULT false,
+  due_date TIMESTAMPTZ,
+  created_at TIMESTAMPTZ DEFAULT now(),
+  updated_at TIMESTAMPTZ DEFAULT now()
+);
+```
+
+---
+
+## Row Level Security (RLS)
+
+<Warning>
+  Always enable RLS on tables with user data. Without it, anyone with your API key can read everything!
+</Warning>
+
+### Enable RLS
+
+1. Table Editor → Select table
+2. Toggle "RLS" to enabled
+3. Add policies
+
+### Common Policies
+
+**Users see only their data:**
+```sql
+CREATE POLICY "Users view own tasks"
+ON tasks FOR SELECT
+USING (auth.uid() = user_id);
+```
+
+**Users create own data:**
+```sql
+CREATE POLICY "Users create own tasks"
+ON tasks FOR INSERT
+WITH CHECK (auth.uid() = user_id);
+```
+
+**Users update own data:**
+```sql
+CREATE POLICY "Users update own tasks"
+ON tasks FOR UPDATE
+USING (auth.uid() = user_id);
+```
+
+**Users delete own data:**
+```sql
+CREATE POLICY "Users delete own tasks"
+ON tasks FOR DELETE
+USING (auth.uid() = user_id);
+```
+
+---
+
+## CRUD Operations
+
+### Create (Insert)
+
+```
+Add a function to create a new task with the given title.
+Save it to Supabase with the current user's ID.
+```
+
+### Read (Select)
+
+```
+Load all tasks for the current user from Supabase.
+Order them by created_at, newest first.
+```
+
+### Update
+
+```
+Add a function to mark a task as complete.
+Update the is_completed field in Supabase.
+```
+
+### Delete
+
+```
+Add a function to delete a task from Supabase.
+Show confirmation before deleting.
+```
+
+---
+
+## Querying Data
+
+### Basic Queries
+
+```swift
+// All tasks for current user (handled by RLS)
+let tasks = try await supabase
+  .from("tasks")
+  .select()
+  .execute()
+
+// Filter by completion status
+let incomplete = try await supabase
+  .from("tasks")
+  .select()
+  .eq("is_completed", value: false)
+  .execute()
+
+// Order by date
+let ordered = try await supabase
+  .from("tasks")
+  .select()
+  .order("due_date", ascending: true)
+  .execute()
+```
+
+### Filtering Options
+
+| Method | Use | Example |
+|--------|-----|---------|
+| `.eq()` | Equals | `eq("status", "active")` |
+| `.neq()` | Not equals | `neq("status", "deleted")` |
+| `.gt()` | Greater than | `gt("price", 100)` |
+| `.lt()` | Less than | `lt("age", 30)` |
+| `.gte()` | Greater or equal | `gte("rating", 4)` |
+| `.like()` | Pattern match | `like("name", "%John%")` |
+| `.in()` | In array | `in("status", ["active", "pending"])` |
+| `.is()` | Is null/bool | `is("deleted_at", nil)` |
+
+---
+
+## Relationships
+
+### One-to-Many
+
+Tasks belong to a category:
+
+```sql
+CREATE TABLE categories (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID REFERENCES auth.users(id),
+  name TEXT NOT NULL
+);
+
+CREATE TABLE tasks (
+  ...
+  category_id UUID REFERENCES categories(id),
+  ...
+);
+```
+
+### Querying with Relationships
+
+```swift
+// Get tasks with category names
+let tasks = try await supabase
+  .from("tasks")
+  .select("*, categories(name)")
+  .execute()
+```
+
+---
+
+## Handling Errors
+
+### Common Database Errors
+
+| Error | Cause | Solution |
+|-------|-------|----------|
+| RLS policy violation | No matching policy | Check your policies |
+| Foreign key violation | Referenced row missing | Ensure referenced data exists |
+| Not null violation | Required field empty | Provide all required fields |
+| Unique violation | Duplicate value | Check for existing records |
+
+### Error Handling in App
+
+```
+Handle database errors gracefully:
+- Show user-friendly error messages
+- Log detailed errors for debugging
+- Retry on network errors
+```
+
+---
+
+## Performance Tips
+
+<AccordionGroup>
+  <Accordion title="Add indexes for frequent queries" icon="magnifying-glass">
+    If you often query by a column (like `user_id`), add an index:
+    ```sql
+    CREATE INDEX tasks_user_id_idx ON tasks(user_id);
+    ```
+  </Accordion>
+
+  <Accordion title="Select only needed columns" icon="filter">
+    Instead of `select("*")`, specify columns:
+    ```swift
+    .select("id, title, is_completed")
+    ```
+  </Accordion>
+
+  <Accordion title="Use pagination for large datasets" icon="list">
+    ```swift
+    .range(from: 0, to: 19) // First 20 items
+    ```
+  </Accordion>
+
+  <Accordion title="Cache locally for speed" icon="database">
+    Store frequently-accessed data locally and sync with Supabase.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Testing Database Operations
+
+### In Supabase Dashboard
+
+1. Table Editor → Select table
+2. View, add, edit, delete rows manually
+3. Great for testing and debugging
+
+### Via SQL Editor
+
+1. SQL Editor in Supabase sidebar
+2. Write and run queries directly
+3. Test policies and queries
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Storage" icon="folder" href="/integrations/supabase/storage">
+    Upload files and images
+  </Card>
+  <Card title="Realtime" icon="bolt" href="/integrations/supabase/realtime">
+    Live data updates
+  </Card>
+</CardGroup>

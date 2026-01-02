@@ -1,0 +1,284 @@
+---
+title: "TestFlight Troubleshooting"
+description: "Fix common TestFlight issues"
+---
+
+# TestFlight Troubleshooting
+
+Running into issues with TestFlight? Here are solutions to the most common problems.
+
+## Upload Issues
+
+### "Invalid Binary" Error
+
+**Symptoms:** Upload succeeds but email says "Invalid Binary"
+
+**Common causes and fixes:**
+
+| Cause | Fix |
+|-------|-----|
+| Missing app icon | Add 1024x1024 PNG icon in Settings → App Identity |
+| Wrong provisioning | Reset signing certificates in Settings → Signing |
+| Duplicate build number | Increment build number and re-upload |
+| Missing Info.plist keys | Let Nativeline regenerate the project |
+
+### Upload Gets Stuck
+
+**Symptoms:** Progress bar doesn't move for extended time
+
+**Fixes:**
+1. Wait at least 30 minutes (large apps take time)
+2. Check internet connection
+3. Cancel and retry
+4. Try during off-peak hours
+5. Restart Nativeline and try again
+
+### "Unable to Upload"
+
+**Symptoms:** Upload fails immediately
+
+**Check:**
+- [ ] Signed into App Store Connect in Nativeline
+- [ ] Developer Program is active (not expired)
+- [ ] Internet connection is stable
+- [ ] App exists in App Store Connect with matching Bundle ID
+
+---
+
+## Processing Issues
+
+### Stuck on "Processing"
+
+**Symptoms:** Build shows "Processing" for hours
+
+**Normal:** Processing can take 30 minutes to 2 hours
+
+**If longer:**
+1. Check [Apple System Status](https://developer.apple.com/system-status/)
+2. Wait up to 24 hours (rare cases)
+3. Upload a new build with incremented number
+
+### "Missing Compliance"
+
+**Symptoms:** Build processed but shows "Missing Compliance"
+
+**Fix:**
+1. In App Store Connect, click on the build
+2. Answer the export compliance question
+3. Typically: Yes, uses HTTPS only → Select exempt
+
+**Permanent fix:**
+Ask Nativeline:
+```
+Set export compliance to no custom encryption
+```
+
+This adds the key to Info.plist so you don't have to answer each time.
+
+### "Build Invalid"
+
+**Symptoms:** Email says build is invalid with specific error
+
+**Common errors:**
+
+| Error | Solution |
+|-------|----------|
+| ITMS-90683: Missing Purpose String | Add usage descriptions in Settings → Permissions |
+| ITMS-90024: Info.plist error | Regenerate project files |
+| ITMS-90096: Bundle ID mismatch | Match Bundle ID in Nativeline and App Store Connect |
+| ITMS-90171: Invalid certificate | Reset certificates in Settings → Signing |
+
+---
+
+## Tester Issues
+
+### "Unable to Accept Invitation"
+
+**Symptoms:** Tester can't accept the TestFlight invitation
+
+**Fixes:**
+1. Ensure tester has TestFlight app installed
+2. Tester should update iOS to latest version
+3. Have them check spam folder for invitation
+4. Resend the invitation
+5. Try adding them to a different group
+
+### "App Not Installing"
+
+**Symptoms:** Tester accepts but app won't install
+
+**Fixes:**
+1. Check if device meets minimum iOS version
+2. Ensure enough storage space on device
+3. Have tester restart TestFlight app
+4. Remove and re-add tester
+
+### "Cannot See New Build"
+
+**Symptoms:** You uploaded a new build but testers don't see it
+
+**Check:**
+1. Build finished processing (not still in "Processing")
+2. Build is added to tester's group
+3. Automatic distribution is enabled for the group
+4. Tester should manually refresh TestFlight app
+
+### Invitation Emails Not Arriving
+
+**Symptoms:** Testers never receive invitation
+
+**Fixes:**
+1. Check spam/junk folders
+2. Verify email address is correct
+3. Try a different email address
+4. Apple's email can be slow — wait 30 minutes
+5. Use public link instead
+
+---
+
+## External Review Issues
+
+### Review Taking Too Long
+
+**Symptoms:** External review takes more than 48 hours
+
+**Normal:** First reviews can take 24-48 hours, sometimes longer
+
+**Options:**
+1. Wait — most clear within 72 hours
+2. Check for emails from Apple requesting info
+3. Contact Apple Developer Support if urgent
+
+### Review Rejected
+
+**Symptoms:** External review was rejected
+
+**Common reasons:**
+- App crashes on launch
+- Missing required functionality
+- Privacy policy issues
+- Placeholder content
+
+**Fix:**
+1. Read the rejection reason carefully
+2. Fix the issues
+3. Upload new build with incremented number
+4. Submit for review again
+
+---
+
+## App Crashes for Testers
+
+### Gathering Information
+
+When testers report crashes:
+
+1. **Check TestFlight Crashes**
+   - App Store Connect → TestFlight → Crashes
+   - View crash logs and frequency
+
+2. **Ask Testers for Details**
+   - What were they doing?
+   - What device/iOS version?
+   - Does it happen every time?
+
+3. **Review Console Logs** (Pro feature)
+   - Open Code Editor in Nativeline
+   - Check Logs tab for error messages
+
+### Common Crash Causes
+
+| Symptom | Likely Cause | Fix |
+|---------|--------------|-----|
+| Crashes on launch | Missing permission or capability | Add required permissions |
+| Crashes when tapping button | Nil pointer or missing data | Add nil checks |
+| Crashes with specific data | Edge case | Handle the specific scenario |
+| Crashes on old iOS | API compatibility | Check minimum iOS version |
+
+---
+
+## Build Expiration
+
+### Builds About to Expire
+
+**Symptoms:** 90-day limit approaching
+
+**Fix:**
+Upload a new build before expiration. Testers will be notified to update.
+
+### Build Already Expired
+
+**Symptoms:** Testers can't use the app anymore
+
+**Fix:**
+Upload a new build immediately. Testers need to update through TestFlight.
+
+---
+
+## Certificate Issues
+
+### "No Valid Signing Certificate"
+
+**Symptoms:** Can't create a distribution build
+
+**Fixes:**
+1. Go to Settings → Signing
+2. Click "Reset Certificates"
+3. Let Nativeline create new ones
+4. Try uploading again
+
+### "Provisioning Profile Expired"
+
+**Symptoms:** Build fails due to profile issues
+
+**Fixes:**
+1. Reset signing in Nativeline Settings
+2. Ensure Developer Program is active (not expired)
+3. Regenerate profiles in Apple Developer portal if using manual signing
+
+---
+
+## Quick Fixes Checklist
+
+When things aren't working:
+
+- [ ] Developer Program is active and not expired
+- [ ] Signed into correct Apple ID in Nativeline
+- [ ] Bundle ID matches between Nativeline and App Store Connect
+- [ ] Build number is higher than all previous builds
+- [ ] App icon is present (1024x1024 PNG)
+- [ ] Internet connection is stable
+- [ ] Apple's systems are operational (check system status)
+
+---
+
+## Getting More Help
+
+### Check Apple's System Status
+
+[developer.apple.com/system-status](https://developer.apple.com/system-status/)
+
+Outages affect:
+- App Store Connect
+- TestFlight
+- Certificate services
+
+### Contact Apple Developer Support
+
+1. Go to [developer.apple.com/contact](https://developer.apple.com/contact)
+2. Select "App Store Connect & TestFlight"
+3. Describe your issue
+4. Attach screenshots if relevant
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="App Store Overview" icon="app-store" href="/publishing/app-store/overview">
+    Ready for public launch
+  </Card>
+  <Card title="Certificates & Profiles" icon="certificate" href="/publishing/certificates-profiles">
+    Fix signing issues
+  </Card>
+</CardGroup>

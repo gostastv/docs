@@ -1,0 +1,283 @@
+---
+title: "Inviting Testers"
+description: "Share your app with beta testers"
+---
+
+# Inviting Testers
+
+Once your build is on TestFlight, it's time to invite testers. This guide covers both internal and external testing.
+
+## Internal vs External Testers
+
+| Aspect | Internal | External |
+|--------|----------|----------|
+| Who | App Store Connect team members | Anyone with an email |
+| Limit | 100 | 10,000 |
+| Apple review | Not required | Required (first build only) |
+| Access speed | Immediate | 24-48 hours (first time) |
+
+---
+
+## Internal Testers
+
+### Who Can Be Internal Testers?
+
+Only people who are part of your App Store Connect team with roles like:
+- Admin
+- App Manager
+- Developer
+- Marketing
+
+### Adding Internal Testers
+
+<Steps>
+  <Step title="Go to Users and Access">
+    In App Store Connect, click "Users and Access"
+  </Step>
+  <Step title="Add new user">
+    Click "+" to add a new team member
+  </Step>
+  <Step title="Enter details">
+    - First name, last name
+    - Email address (must be Apple ID)
+    - Select role
+  </Step>
+  <Step title="Grant TestFlight access">
+    In TestFlight tab → Internal Testing → Add the user
+  </Step>
+</Steps>
+
+### Enabling for Internal Testers
+
+1. Go to TestFlight → Internal Testing
+2. Check the checkbox next to each internal tester
+3. They'll receive an email invitation
+
+<Tip>
+  Internal testers get access to builds immediately after processing. No additional review required.
+</Tip>
+
+---
+
+## External Testers
+
+### Adding Individual Testers
+
+<Steps>
+  <Step title="Go to TestFlight">
+    Select your app → TestFlight tab
+  </Step>
+  <Step title="Create or select a group">
+    Click "+" next to External Groups or select existing group
+  </Step>
+  <Step title="Add testers">
+    Click "+" next to Testers
+  </Step>
+  <Step title="Enter email addresses">
+    Add emails one at a time or paste a list
+  </Step>
+  <Step title="Send invitations">
+    Click "Add" to send invitations
+  </Step>
+</Steps>
+
+### Using Public Links
+
+For wider distribution, use a public link:
+
+1. Create an external group
+2. Enable "Public Link"
+3. Copy and share the link
+
+Anyone with the link can join (up to 10,000 total external testers).
+
+<Warning>
+  Public links can be shared freely. Only use for apps you want anyone to test.
+</Warning>
+
+---
+
+## External Review (First Time)
+
+The first build for external testers requires Apple review:
+
+### What Apple Checks
+
+- App doesn't crash on launch
+- Basic functionality works
+- No obvious guideline violations
+
+### What to Provide
+
+- **Beta App Description:** Brief description for testers
+- **Feedback Email:** Where testers send feedback
+- **Contact Info:** For Apple to reach you if needed
+- **Notes:** Anything Apple should know
+
+### Review Timeline
+
+- Usually 24-48 hours
+- Can be faster or slower depending on volume
+
+### After Approval
+
+Subsequent builds for the same version typically don't need re-review unless:
+- You significantly change the app's functionality
+- You add new features that might need review
+- Apple requests it
+
+---
+
+## Managing Tester Groups
+
+### Creating Groups
+
+Organize testers by purpose:
+
+- **Friends & Family** — Close contacts for early testing
+- **Power Users** — Experienced testers
+- **Focus Group** — Specific demographic
+- **Bug Hunters** — Technical testers
+
+### Group Settings
+
+Each group can have:
+- Automatic distribution (new builds sent automatically)
+- Specific build assignment
+- Custom "What to Test" instructions
+
+### Removing Testers
+
+1. Go to the tester in TestFlight
+2. Click "Remove" or "Delete"
+3. They lose access immediately
+
+---
+
+## What Testers Experience
+
+### Invitation Email
+
+Testers receive an email from Apple with:
+- App name
+- Your custom message (if provided)
+- "View in TestFlight" button
+
+### Installing Your App
+
+1. Tester downloads TestFlight app (if not already installed)
+2. Clicks "Accept" on your invitation
+3. Installs your app
+4. App appears on home screen with orange dot
+
+### Updates
+
+When you upload a new build:
+- Testers see "Update Available" in TestFlight
+- With automatic distribution, it may auto-update
+- They can always roll back to previous builds
+
+---
+
+## Gathering Feedback
+
+### Built-in Feedback
+
+Testers can:
+1. Take a screenshot in your app
+2. Shake device or tap TestFlight notification
+3. Write feedback and send
+
+You receive feedback in App Store Connect → TestFlight → Feedback.
+
+### Crash Reports
+
+When the app crashes:
+- TestFlight collects crash data
+- View in App Store Connect → TestFlight → Crashes
+- Helps identify issues to fix
+
+### External Feedback Channels
+
+Consider also using:
+- A feedback form in your app
+- Discord or Slack channel
+- Google Form or Typeform
+- Direct email
+
+---
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Start small, then expand" icon="chart-line">
+    Begin with close contacts who'll give honest feedback. Expand to larger groups after fixing initial issues.
+  </Accordion>
+
+  <Accordion title="Communicate with testers" icon="comments">
+    Let testers know when new builds are available and what changed. They'll test more actively if they feel involved.
+  </Accordion>
+
+  <Accordion title="Respond to feedback" icon="reply">
+    Even a simple "Thanks, we're looking into it" encourages more feedback.
+  </Accordion>
+
+  <Accordion title="Set expectations" icon="clipboard-list">
+    Tell testers what you want them to focus on. General "use the app" feedback is less actionable than specific questions.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Tester Requirements
+
+Testers need:
+
+- iOS device (iPhone or iPad)
+- iOS 13.0 or later (for TestFlight)
+- TestFlight app (free from App Store)
+- Apple ID
+- Your invitation
+
+<Note>
+  Testers don't need a developer account. Just a regular Apple ID.
+</Note>
+
+---
+
+## Invitation Messages
+
+Customize your invitation message:
+
+### Good Invitation Example
+
+```
+Thanks for testing MyApp!
+
+This beta version includes our new photo filters.
+Please try creating a few photos and let us know
+if you encounter any issues.
+
+Focus areas:
+- Photo saving
+- Filter performance
+- Any crashes
+
+Send feedback directly through TestFlight or
+email us at beta@myapp.com
+
+Thanks for your help!
+```
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Troubleshooting" icon="wrench" href="/publishing/testflight/troubleshooting">
+    Fix common issues
+  </Card>
+  <Card title="App Store Submission" icon="app-store" href="/publishing/app-store/overview">
+    Ready for public launch
+  </Card>
+</CardGroup>

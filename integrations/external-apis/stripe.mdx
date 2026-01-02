@@ -1,0 +1,326 @@
+---
+title: "Stripe Payments"
+description: "Accept payments and subscriptions in your app"
+---
+
+# Stripe Payments
+
+Stripe lets you accept payments in your iOS app. Process one-time purchases, set up subscriptions, and manage customers.
+
+<Warning>
+  Payment integration is complex and has legal/financial implications. Test thoroughly before going live. Consider consulting with a developer or accountant.
+</Warning>
+
+## What You Can Build
+
+- **One-time Payments** — Single purchases
+- **Subscriptions** — Recurring billing
+- **In-App Purchases** — Digital content
+- **Marketplace** — Split payments
+
+---
+
+## Prerequisites
+
+- Stripe account (free to create)
+- Apple Developer account (for real device testing)
+- Understanding of your pricing model
+
+---
+
+## Important Considerations
+
+### Apple's Rules
+
+For digital goods and services (like app features or subscriptions), Apple requires you to use In-App Purchases, not Stripe directly.
+
+**Use Stripe for:**
+- Physical goods
+- Services delivered outside the app
+- Business-to-business transactions
+
+**Use Apple In-App Purchase for:**
+- Premium app features
+- Digital subscriptions
+- Virtual currency/items
+
+### PCI Compliance
+
+Stripe handles credit card data, so you stay PCI compliant. Never store card numbers in your app.
+
+---
+
+## Setting Up Stripe
+
+<Steps>
+  <Step title="Create Stripe account">
+    Go to [stripe.com](https://stripe.com) and sign up
+  </Step>
+  <Step title="Get API keys">
+    Dashboard → Developers → API keys
+    - Use **Test mode** keys during development
+    - Switch to **Live mode** keys for production
+  </Step>
+  <Step title="Configure in Nativeline">
+    ```
+    Add Stripe integration with:
+    - Publishable key: pk_test_xxxxx
+    - Secret key: sk_test_xxxxx (for server-side, if needed)
+    ```
+  </Step>
+</Steps>
+
+---
+
+## Test vs Live Mode
+
+### Test Mode
+
+- Use `pk_test_` and `sk_test_` keys
+- Use test card numbers
+- No real money processed
+- Perfect for development
+
+### Test Card Numbers
+
+| Card | Number | Use |
+|------|--------|-----|
+| Successful | 4242 4242 4242 4242 | Normal success |
+| Declined | 4000 0000 0000 0002 | Test decline |
+| Requires auth | 4000 0025 0000 3155 | Test 3D Secure |
+
+### Live Mode
+
+- Use `pk_live_` and `sk_live_` keys
+- Real money processed
+- Only after thorough testing
+
+---
+
+## Basic Payment Flow
+
+### Collect Payment
+
+```
+Create a checkout flow:
+1. User selects product/amount
+2. Show payment sheet with Stripe
+3. User enters card details
+4. Process payment
+5. Show confirmation or error
+```
+
+### Using Stripe Payment Sheet
+
+The easiest integration uses Stripe's pre-built UI:
+
+```
+Use Stripe Payment Sheet for the checkout:
+- Shows Apple Pay if available
+- Shows card input
+- Handles all validation
+- Professional appearance
+```
+
+---
+
+## Implementation Approaches
+
+### Client-Side Only (Simple)
+
+For simple use cases:
+1. Create PaymentIntent on Stripe dashboard
+2. Confirm payment from app
+
+**Limitation:** Less secure, limited functionality
+
+### Client + Server (Recommended)
+
+More secure and flexible:
+1. Your server creates PaymentIntent
+2. App receives client secret
+3. App confirms payment
+4. Server receives webhook confirmation
+
+<Note>
+  Server-side component typically requires additional development beyond Nativeline. Consider services like Firebase Functions or Supabase Edge Functions.
+</Note>
+
+---
+
+## Common Scenarios
+
+### Single Purchase
+
+```
+Create a simple purchase flow:
+- Product card shows price ($9.99)
+- "Buy Now" button
+- Stripe Payment Sheet opens
+- On success, unlock the feature
+- Save purchase status to Supabase
+```
+
+### Subscription
+
+```
+Add subscription management:
+- Show subscription plans (monthly/yearly)
+- "Subscribe" opens Stripe
+- On success, update user's subscription status
+- Check subscription status on app launch
+- Handle subscription expiration
+```
+
+### Tipping / Variable Amount
+
+```
+Create a tip screen:
+- Preset buttons ($5, $10, $20)
+- Custom amount input
+- Payment with Stripe
+- Thank you message
+```
+
+---
+
+## Apple Pay
+
+Stripe supports Apple Pay for faster checkout:
+
+```
+Enable Apple Pay in the Stripe Payment Sheet
+```
+
+Requirements:
+- Apple Developer account
+- Merchant ID configured in Stripe
+- Device with Apple Pay capability
+
+---
+
+## Webhooks
+
+For reliable payment confirmation, use webhooks:
+
+1. Stripe sends event to your server
+2. Server updates your database
+3. App reflects the change
+
+```
+Set up Stripe webhooks to notify when:
+- Payment succeeds
+- Payment fails
+- Subscription renews
+- Subscription cancels
+```
+
+---
+
+## Security Best Practices
+
+<AccordionGroup>
+  <Accordion title="Never log or store card numbers" icon="credit-card">
+    Stripe handles all card data. Your app never sees the actual card number.
+  </Accordion>
+
+  <Accordion title="Verify payments server-side" icon="server">
+    Don't trust client-side confirmations alone. Use webhooks to verify.
+  </Accordion>
+
+  <Accordion title="Use test mode during development" icon="flask">
+    Always develop with test keys. Only switch to live for production.
+  </Accordion>
+
+  <Accordion title="Validate amounts server-side" icon="shield">
+    Users can modify client code. Always verify amounts on your server.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Error Handling
+
+### Common Errors
+
+| Error | User Message |
+|-------|--------------|
+| Card declined | "Your card was declined. Please try another card." |
+| Insufficient funds | "Insufficient funds. Please try another card." |
+| Expired card | "Your card has expired. Please update your card." |
+| Network error | "Connection error. Please try again." |
+
+### Handling in App
+
+```
+Handle Stripe errors gracefully:
+- Show user-friendly messages
+- Allow retry
+- Log errors for debugging
+- Never show raw error codes to users
+```
+
+---
+
+## Refunds
+
+Process refunds from Stripe Dashboard:
+1. Payments → Find payment
+2. Click "Refund"
+3. Full or partial refund
+
+For automated refunds, use Stripe API from your server.
+
+---
+
+## Testing Checklist
+
+Before going live:
+
+- [ ] Successful payment completes
+- [ ] Declined card shows error
+- [ ] Network failure handled
+- [ ] Loading states shown
+- [ ] Confirmation displayed
+- [ ] Purchase recorded in database
+- [ ] Refund process works
+- [ ] Subscription renewal works
+- [ ] Cancellation handled
+
+---
+
+## Going Live
+
+<Steps>
+  <Step title="Complete Stripe account setup">
+    Add business details, bank account for payouts
+  </Step>
+  <Step title="Test thoroughly in test mode">
+    Cover all scenarios
+  </Step>
+  <Step title="Switch to live keys">
+    Update API keys in your app/server
+  </Step>
+  <Step title="Process a real test payment">
+    Use your own card for a small amount
+  </Step>
+  <Step title="Refund the test payment">
+    Verify refund works
+  </Step>
+  <Step title="Monitor closely after launch">
+    Watch Stripe dashboard for issues
+  </Step>
+</Steps>
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Maps & Location" icon="map" href="/integrations/external-apis/maps">
+    Add mapping features
+  </Card>
+  <Card title="Other APIs" icon="puzzle-piece" href="/integrations/external-apis/other">
+    Generic API guide
+  </Card>
+</CardGroup>

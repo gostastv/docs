@@ -1,0 +1,314 @@
+---
+title: "Troubleshooting FAQs"
+description: "Solutions to common issues"
+---
+
+# Troubleshooting FAQs
+
+Solutions to the most common problems you might encounter.
+
+---
+
+## Installation Issues
+
+<AccordionGroup>
+  <Accordion title="Nativeline won't open">
+    **Try these steps:**
+    1. Check you have macOS 15.1 or later
+    2. Right-click the app, choose "Open" to bypass Gatekeeper
+    3. Go to System Settings → Privacy & Security → Allow Nativeline
+    4. Restart your Mac and try again
+    5. Re-download from nativeline.ai
+  </Accordion>
+
+  <Accordion title="Xcode installation failed">
+    **If Xcode install gets stuck:**
+    1. Check internet connection
+    2. Ensure at least 30GB free space
+    3. Restart Nativeline — it should resume
+    4. Check System Settings → Software Update for pending updates
+    5. Try installing Xcode manually from App Store, then reopen Nativeline
+  </Accordion>
+
+  <Accordion title="'Mac not supported' error">
+    You need macOS 15.1 (Sequoia) or later.
+
+    To update:
+    1. System Settings → General → Software Update
+    2. Download and install the latest macOS
+    3. Some older Macs may not support macOS 15
+
+    Check Apple's compatibility list for your Mac model.
+  </Accordion>
+
+  <Accordion title="Not enough storage space">
+    Nativeline + Xcode requires about 30GB.
+
+    To free space:
+    1. Empty Trash
+    2. Delete old Downloads
+    3. Use Storage Management (Apple menu → About This Mac → Storage → Manage)
+    4. Remove unused apps
+    5. Clear system caches
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Building Issues
+
+<AccordionGroup>
+  <Accordion title="Build keeps failing">
+    **If the app won't build:**
+    1. Check the error message in the build output
+    2. Let the AI try to fix it (up to 3 attempts)
+    3. Describe the error to the AI in your own words
+    4. Try: `/planclear` to reset and start fresh
+    5. As last resort, create a new project and rebuild
+
+    See our [Debugging Guide](/guides/debugging) for detailed steps.
+  </Accordion>
+
+  <Accordion title="AI tried 3 times but couldn't fix the error">
+    When automatic fixing fails:
+    1. Click "Run App" button
+    2. Wait for the popup asking about fixing
+    3. Click "Apply Fix"
+    4. If still failing, describe the problem differently
+    5. Try: "Let's try a completely different approach"
+  </Accordion>
+
+  <Accordion title="Simulator not showing">
+    **If iOS Simulator doesn't appear:**
+    1. Wait a moment — first launch takes time
+    2. Check Dock for Simulator icon
+    3. Nativeline menu → Window → Show Simulator
+    4. Restart Nativeline
+    5. Open Xcode → Open Developer Tool → Simulator to test directly
+  </Accordion>
+
+  <Accordion title="Simulator shows wrong/old content">
+    **To reset the Simulator:**
+    1. In Simulator: Device → Erase All Content and Settings
+    2. Wait for reset to complete
+    3. Click "Run App" in Nativeline
+    4. Fresh build should install
+
+    This clears all cached app data.
+  </Accordion>
+
+  <Accordion title="App crashes on launch">
+    Common causes:
+    - Missing permission descriptions (add in Settings → Permissions)
+    - Invalid initial state
+    - Missing data the app expects
+
+    **Debug:**
+    1. Check build output for crash log
+    2. Tell the AI: "The app crashes on launch. Here's the error: [paste error]"
+    3. The AI will analyze and fix
+  </Accordion>
+
+  <Accordion title="Changes aren't appearing">
+    **After AI makes changes:**
+    1. Wait for the AI to finish completely
+    2. Look for "Run App" button or wait for auto-run
+    3. Watch for build output
+    4. Check Simulator after build succeeds
+
+    If still not appearing, erase Simulator content and rebuild.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## AI Issues
+
+<AccordionGroup>
+  <Accordion title="AI isn't understanding what I want">
+    **Tips for better results:**
+    1. Be more specific — include details
+    2. Break into smaller requests
+    3. Try rephrasing your request
+    4. Share a screenshot of what you want
+    5. Say "That's not right, I wanted X instead"
+
+    See [Prompt Writing Workshop](/guides/prompt-workshop) for techniques.
+  </Accordion>
+
+  <Accordion title="AI keeps making the same mistake">
+    **When AI is stuck in a loop:**
+    1. Type `/planclear` to clear the current plan
+    2. Say "Let's try a completely different approach"
+    3. Be more specific about what's wrong
+    4. Break the task into smaller pieces
+    5. Provide examples or reference images
+  </Accordion>
+
+  <Accordion title="AI seems slow">
+    Possible reasons:
+    - Complex request taking time
+    - Server load (try again later)
+    - Large project context being processed
+
+    The AI shows a loading indicator while working. Complex tasks take more time.
+  </Accordion>
+
+  <Accordion title="'Out of bits' error">
+    You've used your monthly bit allocation.
+
+    **Options:**
+    - Wait for monthly reset
+    - Upgrade to a higher plan
+    - Use BYOK feature (Pro plan) with your own API key
+
+    Check your usage in Settings → Account.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Account Issues
+
+<AccordionGroup>
+  <Accordion title="Can't log in">
+    **Try these steps:**
+    1. Verify email address is correct
+    2. Check for 8-digit code in spam folder
+    3. Click "Resend Code" and wait 2-3 minutes
+    4. Try a different email address
+    5. Contact support@nativeline.ai
+  </Accordion>
+
+  <Accordion title="Verification code not arriving">
+    **Email issues:**
+    1. Check spam/junk folder
+    2. Wait 2-3 minutes (can be delayed)
+    3. Add nativeline.ai to your contacts
+    4. Click "Resend Code" in the app
+    5. Try a different email (Gmail, iCloud work well)
+  </Accordion>
+
+  <Accordion title="Subscription not showing">
+    **If you paid but don't have access:**
+    1. Close and reopen Nativeline
+    2. Go to Settings → Account → Restore Purchases
+    3. Check the subscription is active in your Apple ID settings
+    4. Wait a few minutes and try again
+    5. Contact support with your receipt
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Publishing Issues
+
+<AccordionGroup>
+  <Accordion title="Upload to TestFlight failed">
+    **Common causes:**
+    1. Check internet connection
+    2. Verify Apple Developer account is connected
+    3. Ensure Bundle ID matches App Store Connect
+    4. Check for missing app icon (1024x1024)
+    5. Try resetting signing certificates in Settings
+
+    See [TestFlight Troubleshooting](/publishing/testflight/troubleshooting) for more.
+  </Accordion>
+
+  <Accordion title="Build stuck in 'Processing'">
+    Apple processing can take 10-30 minutes, sometimes longer.
+
+    **If longer than 2 hours:**
+    1. Check [Apple System Status](https://developer.apple.com/system-status/)
+    2. Upload a new build with incremented number
+    3. Wait up to 24 hours before contacting Apple
+  </Accordion>
+
+  <Accordion title="App rejected by App Store">
+    **Handle rejection:**
+    1. Read the rejection reason carefully
+    2. Fix each issue mentioned
+    3. Upload new build if code changes needed
+    4. Reply in Resolution Center
+    5. Resubmit for review
+
+    See [Review Guidelines](/publishing/app-store/review-guidelines) to avoid common rejections.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Performance Issues
+
+<AccordionGroup>
+  <Accordion title="Nativeline is slow">
+    **To improve performance:**
+    1. Close other heavy applications
+    2. Restart Nativeline
+    3. Restart your Mac
+    4. Check Activity Monitor for resource usage
+    5. Ensure enough free storage (at least 10GB)
+  </Accordion>
+
+  <Accordion title="Mac is running hot">
+    Building apps uses significant CPU. This is normal, but:
+    1. Work in a well-ventilated area
+    2. Close unnecessary apps
+    3. Take breaks between heavy build sessions
+    4. Check that fans are working (Activity Monitor)
+  </Accordion>
+
+  <Accordion title="Builds taking too long">
+    **Speed up builds:**
+    1. Close other applications
+    2. Quit and reopen Nativeline occasionally
+    3. First build is always slowest
+    4. Incremental builds are faster
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Still Stuck?
+
+### Check the Guides
+
+- [Debugging Guide](/guides/debugging) — Deep dive into fixing issues
+- [How Do I...](/guides/how-do-i) — Quick answers for common actions
+- [Fixing Build Errors](/guides/fixing-build-errors) — When automatic fixes fail
+
+### Contact Support
+
+Email: **support@nativeline.ai**
+
+Include:
+- What you were doing
+- What happened
+- What you expected
+- Any error messages
+- Screenshots if helpful
+
+### Join the Community
+
+- [Discord](https://discord.gg/nativeline) — Get help from other users
+- Search for similar issues others have solved
+- Share your solution to help others
+
+---
+
+## Related FAQs
+
+<CardGroup cols={2}>
+  <Card title="Building Apps" icon="hammer" href="/faqs/building">
+    AI and building questions
+  </Card>
+  <Card title="Technical" icon="code" href="/faqs/technical">
+    Code and Swift questions
+  </Card>
+  <Card title="Publishing" icon="app-store" href="/faqs/publishing">
+    TestFlight and App Store
+  </Card>
+  <Card title="Account" icon="user" href="/faqs/account">
+    Account and security
+  </Card>
+</CardGroup>

@@ -1,0 +1,219 @@
+---
+title: "TestFlight Setup"
+description: "Configure your app for TestFlight beta testing"
+---
+
+# TestFlight Setup
+
+This guide walks you through setting up TestFlight for the first time. After this, uploading subsequent builds is quick and easy.
+
+## Prerequisites
+
+Before starting, ensure you have:
+
+- [ ] Apple Developer Program membership (active)
+- [ ] Apple Developer account connected to Nativeline
+- [ ] Your app with a unique Bundle ID
+- [ ] App icon (1024x1024 PNG)
+
+---
+
+## Step 1: Create App in App Store Connect
+
+Before uploading, your app must exist in App Store Connect.
+
+<Steps>
+  <Step title="Open App Store Connect">
+    Go to [appstoreconnect.apple.com](https://appstoreconnect.apple.com) and sign in
+  </Step>
+  <Step title="Navigate to Apps">
+    Click "My Apps" from the main dashboard
+  </Step>
+  <Step title="Create new app">
+    Click the "+" button → "New App"
+  </Step>
+  <Step title="Fill in app details">
+    - **Platform:** iOS
+    - **Name:** Your app's display name
+    - **Primary Language:** Your main language
+    - **Bundle ID:** Must match your Nativeline project
+    - **SKU:** Any unique identifier (e.g., "myapp-001")
+  </Step>
+  <Step title="Create">
+    Click "Create" to register your app
+  </Step>
+</Steps>
+
+<Tip>
+  The Bundle ID must exactly match what's in your Nativeline project Settings → App Identity → Bundle Identifier.
+</Tip>
+
+---
+
+## Step 2: Configure App Store Connect
+
+### Basic Information
+
+Once your app is created, add basic info:
+
+1. **App Information**
+   - Category (e.g., Productivity, Entertainment)
+   - Content Rights
+   - Age Rating
+
+2. **Pricing and Availability**
+   - Price (Free or select a price tier)
+   - Availability (which countries)
+
+<Note>
+  You don't need to complete the full App Store listing for TestFlight. Just the basics.
+</Note>
+
+### Privacy Policy
+
+Apple requires a privacy policy URL for all apps:
+
+1. Create a privacy policy (many free generators online)
+2. Host it somewhere (your website, Notion page, etc.)
+3. Add the URL in App Store Connect → App Information → Privacy Policy URL
+
+---
+
+## Step 3: Configure TestFlight
+
+### Navigate to TestFlight
+
+In App Store Connect:
+1. Click on your app
+2. Select "TestFlight" tab
+
+### Set Up Test Information
+
+For external testing, you'll need:
+
+- **Beta App Description:** What testers should know
+- **Beta App Review Information:** Contact info for Apple review
+- **What to Test:** Instructions for testers
+
+### Create a Tester Group (Optional)
+
+Organize testers into groups:
+
+1. Click "+" next to "External Groups"
+2. Name your group (e.g., "Beta Testers")
+3. Add testers to this group later
+
+---
+
+## Step 4: Connect Nativeline to App Store Connect
+
+### Enable App Store Connect Integration
+
+In Nativeline:
+
+1. Open your project
+2. Go to **Settings → Publishing**
+3. Click **Connect to App Store Connect**
+4. Sign in with your Apple Developer Apple ID
+5. Select your team (if multiple)
+
+### Verify Connection
+
+Once connected, you should see:
+- Your team name
+- Your app listed
+- "Ready to upload" status
+
+---
+
+## Step 5: Prepare Your App
+
+### Finalize Your App
+
+Before uploading, ensure:
+
+- [ ] App is working and tested in Simulator
+- [ ] No obvious crashes or bugs
+- [ ] Version number is set (e.g., 1.0.0)
+- [ ] Build number is set (e.g., 1)
+
+### Update Version Information
+
+In Nativeline Settings → App Identity:
+
+| Field | Description | Example |
+|-------|-------------|---------|
+| Version | User-facing version | 1.0.0 |
+| Build | Increments with each upload | 1, 2, 3... |
+
+<Note>
+  Build numbers must always increase. If you upload build 5, your next upload must be 6 or higher.
+</Note>
+
+---
+
+## Step 6: Upload Your First Build
+
+<Steps>
+  <Step title="Open Upload Panel">
+    In Nativeline, click the **Upload** button or go to Settings → Publishing
+  </Step>
+  <Step title="Select TestFlight">
+    Choose "Upload to TestFlight"
+  </Step>
+  <Step title="Review settings">
+    Confirm version, build number, and signing configuration
+  </Step>
+  <Step title="Start upload">
+    Click "Upload" and wait for the process to complete
+  </Step>
+  <Step title="Wait for processing">
+    App Store Connect processes your build (10-30 minutes)
+  </Step>
+</Steps>
+
+---
+
+## What Happens After Upload
+
+### Processing
+
+Apple processes your build:
+- Validates the binary
+- Checks for required assets
+- Scans for issues
+
+You'll see status in App Store Connect:
+- "Processing" → Wait
+- "Ready to Submit" → You can add testers
+
+### If Processing Fails
+
+Check for:
+- Missing app icon
+- Invalid provisioning
+- Bundle ID mismatch
+
+---
+
+## Post-Setup Checklist
+
+After completing setup:
+
+- [ ] App exists in App Store Connect
+- [ ] Bundle ID matches between Nativeline and App Store Connect
+- [ ] First build uploaded and processed
+- [ ] Build shows "Ready to Submit" in TestFlight tab
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Upload Builds" icon="upload" href="/publishing/testflight/uploading">
+    Learn the upload process
+  </Card>
+  <Card title="Invite Testers" icon="user-plus" href="/publishing/testflight/testers">
+    Add your first testers
+  </Card>
+</CardGroup>

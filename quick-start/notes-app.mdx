@@ -1,0 +1,335 @@
+---
+title: "Notes App Tutorial"
+description: "Build a notes app with Supabase cloud sync"
+---
+
+# Notes App Tutorial
+
+**⏱️ 45 minutes**
+
+Build a notes app with user accounts and cloud synchronization. You'll learn about authentication, cloud databases, and real-time sync using Supabase.
+
+## What You'll Build
+
+A notes app that:
+- Has user sign up and login
+- Creates, edits, and deletes notes
+- Syncs notes to the cloud
+- Works across devices (same account = same notes)
+
+---
+
+## Before You Start
+
+This tutorial requires a Supabase account (free tier available).
+
+### Set Up Supabase
+
+1. Go to [supabase.com](https://supabase.com) and create a free account
+2. Create a new project (any name, choose a region near you)
+3. Wait for the project to initialize (~2 minutes)
+4. Note your project URL and anon key (Settings → API)
+
+<Tip>
+  Keep the Supabase dashboard open — you'll need it throughout this tutorial.
+</Tip>
+
+---
+
+## Part 1: Create the App
+
+On the Nativeline home page, enter:
+
+```
+A notes app with user authentication. Users can sign up with email/password, log in, and create personal notes. Notes sync to Supabase cloud database so they're available on any device.
+```
+
+### Complete the Wizard
+
+- **Who is this for?** — Anyone (public app)
+- **Feel** — Simple & clean
+- **Priority** — Core functionality first
+- **Colors** — Your choice
+- **Name** — Cloud Notes
+
+---
+
+## Part 2: Connect Supabase
+
+Tell Nativeline about your Supabase project:
+
+```
+Connect to my Supabase project:
+- URL: YOUR_SUPABASE_URL
+- Anon Key: YOUR_ANON_KEY
+
+Set up authentication with email/password sign up and login.
+```
+
+Replace `YOUR_SUPABASE_URL` and `YOUR_ANON_KEY` with your actual values from the Supabase dashboard.
+
+<Warning>
+  The anon key is safe to include in apps — it only allows operations that your Row Level Security policies permit. Never share your service_role key.
+</Warning>
+
+---
+
+## Part 3: Create the Notes Table
+
+We need a database table to store notes. In your Supabase dashboard:
+
+1. Go to **Table Editor**
+2. Click **Create a new table**
+3. Name: `notes`
+4. Add columns:
+   - `id` (uuid, primary key) — auto-generated
+   - `user_id` (uuid, not null) — links to auth.users
+   - `title` (text)
+   - `content` (text)
+   - `created_at` (timestamptz, default: now())
+   - `updated_at` (timestamptz, default: now())
+
+5. Enable Row Level Security (RLS)
+
+### Add RLS Policies
+
+In the Supabase dashboard, go to Authentication → Policies and add:
+
+**Select policy (users can read their own notes):**
+```sql
+CREATE POLICY "Users can view own notes" ON notes
+FOR SELECT USING (auth.uid() = user_id);
+```
+
+**Insert policy (users can create notes):**
+```sql
+CREATE POLICY "Users can create own notes" ON notes
+FOR INSERT WITH CHECK (auth.uid() = user_id);
+```
+
+**Update policy (users can edit their own notes):**
+```sql
+CREATE POLICY "Users can update own notes" ON notes
+FOR UPDATE USING (auth.uid() = user_id);
+```
+
+**Delete policy (users can delete their own notes):**
+```sql
+CREATE POLICY "Users can delete own notes" ON notes
+FOR DELETE USING (auth.uid() = user_id);
+```
+
+Now tell Nativeline:
+
+```
+I've created a 'notes' table in Supabase with columns: id (uuid), user_id (uuid), title (text), content (text), created_at, updated_at. I've enabled RLS so users can only access their own notes.
+```
+
+---
+
+## Part 4: Build the Auth Flow
+
+Let's create the login and signup screens:
+
+```
+Create authentication screens:
+- A welcome screen with "Sign Up" and "Log In" buttons
+- Sign up form with email, password, and confirm password
+- Log in form with email and password
+- Show loading state during authentication
+- Handle errors with user-friendly messages
+```
+
+Test the flow:
+1. Try signing up with an email
+2. You should be logged in and see the notes list
+3. Log out and try logging back in
+
+---
+
+## Part 5: Build the Notes List
+
+Create the main notes interface:
+
+```
+After login, show a list of the user's notes:
+- Each note shows title and preview of content
+- Tap a note to open and edit it
+- Floating "+" button to create new note
+- Pull to refresh to sync with cloud
+- Show "No notes yet" when empty
+```
+
+---
+
+## Part 6: Create Note Editor
+
+Build the editing experience:
+
+```
+Create a note editor screen:
+- Large title field at top
+- Text area for note content below
+- Auto-save as the user types (debounced)
+- Show "Saving..." indicator when syncing
+- Back button to return to list
+```
+
+---
+
+## Part 7: Add Note Deletion
+
+Let users delete notes:
+
+```
+Add swipe-to-delete on notes in the list. Show a confirmation alert before deleting. Delete from both local state and Supabase.
+```
+
+---
+
+## Part 8: Add Real-time Sync
+
+Make notes update in real-time:
+
+```
+Subscribe to Supabase real-time updates for the notes table. When notes are added, updated, or deleted on another device, reflect those changes immediately in the app.
+```
+
+Test this by:
+1. Opening your Supabase dashboard → Table Editor → notes
+2. Editing a note directly in Supabase
+3. Watching it update in the app
+
+---
+
+## Part 9: Add Search
+
+Help users find notes:
+
+```
+Add a search bar at the top of the notes list. Filter notes by title and content as the user types. Show "No results" when nothing matches.
+```
+
+---
+
+## Part 10: Polish the Design
+
+Make it look professional:
+
+```
+Polish the notes app:
+- Notes list items have a subtle shadow and rounded corners
+- Title uses a bold, larger font
+- Show relative timestamps ("2 hours ago", "Yesterday")
+- Add a profile button that shows email and logout option
+- Use a consistent color scheme throughout
+```
+
+---
+
+## Final Result
+
+You now have a cloud-synced notes app with:
+- ✅ User registration and login
+- ✅ Create, read, update, delete notes
+- ✅ Cloud sync via Supabase
+- ✅ Real-time updates
+- ✅ Search functionality
+- ✅ Polished UI
+
+---
+
+## What You Learned
+
+| Concept | How It Was Used |
+|---------|-----------------|
+| **Authentication** | Email/password signup and login |
+| **Database** | Supabase tables and queries |
+| **Row Level Security** | Protecting user data |
+| **Real-time** | Live sync between devices |
+| **CRUD Operations** | Create, read, update, delete |
+| **State Management** | Auth state and data sync |
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Can't connect to Supabase" icon="plug">
+    - Double-check your project URL (ends in .supabase.co)
+    - Make sure you're using the anon key, not the service_role key
+    - Check if your Supabase project is still initializing
+  </Accordion>
+
+  <Accordion title="Sign up not working" icon="user-plus">
+    - Check Supabase Authentication → Users to see if user was created
+    - Check if email confirmation is required (Authentication → Settings)
+    - For testing, you can disable email confirmation
+  </Accordion>
+
+  <Accordion title="Notes not saving" icon="database">
+    - Check Supabase Table Editor for errors
+    - Verify RLS policies are set correctly
+    - Make sure user_id is being set when creating notes
+  </Accordion>
+
+  <Accordion title="Real-time not updating" icon="bolt">
+    - Real-time requires Supabase Realtime to be enabled (it's on by default)
+    - Check the browser console in Supabase for errors
+    - Try refreshing the app
+  </Accordion>
+
+  <Accordion title="Permission denied errors" icon="lock">
+    Your RLS policies might be incorrect. In Supabase:
+    1. Go to Authentication → Policies
+    2. Verify each policy uses `auth.uid() = user_id`
+    3. Make sure RLS is enabled on the table
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Understanding the Architecture
+
+```
+┌─────────────────┐         ┌─────────────────┐
+│                 │         │                 │
+│   Your App      │ ◄─────► │   Supabase      │
+│   (iOS)         │   API   │   (Cloud)       │
+│                 │         │                 │
+└─────────────────┘         └─────────────────┘
+                                    │
+                    ┌───────────────┼───────────────┐
+                    │               │               │
+                    ▼               ▼               ▼
+               ┌─────────┐   ┌───────────┐   ┌──────────┐
+               │  Auth   │   │  Database │   │ Realtime │
+               │ (Users) │   │  (Notes)  │   │ (Sync)   │
+               └─────────┘   └───────────┘   └──────────┘
+```
+
+---
+
+## Challenge: Extend Your App
+
+Try these on your own:
+
+1. **Rich text** — Add formatting (bold, italic, lists)
+2. **Folders** — Organize notes into folders
+3. **Sharing** — Share notes with other users
+4. **Markdown** — Support markdown preview
+5. **Offline mode** — Work offline and sync when back online
+6. **Attachments** — Add images to notes using Supabase Storage
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Supabase Deep Dive" icon="database" href="/integrations/supabase/overview">
+    Learn more about Supabase integration
+  </Card>
+  <Card title="Publish to TestFlight" icon="rocket" href="/publishing/overview">
+    Share your app with real users
+  </Card>
+</CardGroup>

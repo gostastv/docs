@@ -1,0 +1,284 @@
+---
+title: "Account & Security FAQs"
+description: "Questions about your account, data, and privacy"
+---
+
+# Account & Security FAQs
+
+Questions about account management, data security, and privacy.
+
+---
+
+## Account Management
+
+<AccordionGroup>
+  <Accordion title="How do I create an account?">
+    1. Open Nativeline
+    2. Click "Create Account" or "Sign Up"
+    3. Enter your email address
+    4. Check your email for an 8-digit verification code
+    5. Enter the code in Nativeline
+    6. You're in!
+
+    We use email-only authentication — no passwords to remember.
+  </Accordion>
+
+  <Accordion title="How do I log in on a new device?">
+    1. Download Nativeline on your new Mac
+    2. Click "Sign In"
+    3. Enter your email address
+    4. Get the 8-digit code from your email
+    5. Enter the code
+    6. Access your account
+
+    Your projects are stored locally, so you'll need to transfer them or sync via your own methods.
+  </Accordion>
+
+  <Accordion title="Can I use multiple Macs?">
+    Yes. You can sign into Nativeline on multiple Macs with the same account.
+
+    Note: Projects are stored locally on each Mac. To share projects:
+    - Use iCloud Drive
+    - Use Git/GitHub
+    - Manually copy project folders
+  </Accordion>
+
+  <Accordion title="How do I change my email?">
+    Currently, changing your account email requires contacting support:
+    - Email support@nativeline.ai
+    - Include your current email
+    - Include your new email
+    - We'll help you migrate
+
+    A self-service option may be added in the future.
+  </Accordion>
+
+  <Accordion title="How do I delete my account?">
+    To delete your account:
+    1. Cancel any active subscription first
+    2. Email support@nativeline.ai requesting deletion
+    3. Confirm you want all data removed
+    4. Account will be deleted within 30 days
+
+    This cannot be undone. Export any projects you want to keep first.
+  </Accordion>
+
+  <Accordion title="What happens if I forget my email?">
+    Try these steps:
+    1. Check old emails for messages from Nativeline
+    2. Check which email is used in your Apple ID subscriptions
+    3. Contact support@nativeline.ai with your name and approximate signup date
+
+    We can help you recover access.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Data & Privacy
+
+<AccordionGroup>
+  <Accordion title="Where is my data stored?">
+    **Your projects:**
+    - Stored locally on your Mac
+    - In `~/Documents/Nativeline Projects/`
+    - Not uploaded to our servers
+
+    **Your account info:**
+    - Email address and subscription status
+    - Stored securely on our servers
+    - Minimal data collection
+
+    **AI interactions:**
+    - Sent to AI providers for processing
+    - Not stored long-term
+    - Used only for the current session
+  </Accordion>
+
+  <Accordion title="Does Nativeline see my code?">
+    When you use the AI:
+    - Your code is sent to AI providers (Anthropic, OpenAI)
+    - This is necessary for the AI to help you
+    - Code is processed and not stored long-term
+
+    We don't look at your code ourselves. The AI providers have their own privacy policies.
+  </Accordion>
+
+  <Accordion title="Can I use Nativeline offline?">
+    Partially. You can:
+    - Browse your existing projects
+    - View code (Pro plan)
+    - Run apps in Simulator (if already built)
+
+    You cannot:
+    - Use AI features (requires internet)
+    - Upload to TestFlight
+
+    AI features require an internet connection.
+  </Accordion>
+
+  <Accordion title="What does Nativeline collect about me?">
+    We collect minimal data:
+    - Email address (for authentication)
+    - Subscription status
+    - Basic usage metrics (how often you use features)
+
+    We don't collect:
+    - Your project code (unless using AI, then it's processed temporarily)
+    - Personal browsing data
+    - Location data
+    - Contact information
+  </Accordion>
+
+  <Accordion title="Do you sell my data?">
+    No. We don't sell your data to third parties. Your information is used only to provide the Nativeline service.
+  </Accordion>
+
+  <Accordion title="What about AI provider privacy?">
+    When using AI features, your prompts and code are sent to:
+    - Anthropic (Claude models)
+    - OpenAI (if using BYOK with OpenAI key)
+
+    These providers:
+    - Process your data to generate responses
+    - Have their own privacy policies
+    - Generally don't train on API usage
+
+    See their policies:
+    - [Anthropic Privacy Policy](https://www.anthropic.com/privacy)
+    - [OpenAI Privacy Policy](https://openai.com/policies/privacy-policy)
+  </Accordion>
+
+  <Accordion title="How is my payment info protected?">
+    Nativeline uses Apple's payment system:
+    - We never see your full card number
+    - Payments are processed by Apple
+    - Apple's security protects your payment info
+    - We only receive confirmation of subscription status
+  </Accordion>
+
+  <Accordion title="Is my code encrypted?">
+    - **In transit:** Yes, all connections use HTTPS/TLS
+    - **On your Mac:** No additional encryption (use FileVault for disk encryption)
+    - **On our servers:** We don't store your code
+
+    Your projects are local files. Mac's built-in FileVault encrypts your disk.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Security
+
+<AccordionGroup>
+  <Accordion title="How secure is email authentication?">
+    Email verification is secure:
+    - 8-digit codes are random and expire quickly
+    - Codes are single-use
+    - Your email inbox is the second factor
+    - No passwords that can be stolen
+
+    Ensure your email account itself is secure (use 2FA on your email).
+  </Accordion>
+
+  <Accordion title="Should I use a strong email password?">
+    Yes! Since your Nativeline account uses your email:
+    - Use a strong, unique password for your email
+    - Enable two-factor authentication on your email
+    - Your email security is your Nativeline security
+  </Accordion>
+
+  <Accordion title="Can someone access my projects?">
+    Your projects are on your Mac. To protect them:
+    - Use a strong Mac password
+    - Enable FileVault disk encryption
+    - Lock your Mac when away
+    - Back up important projects
+
+    If someone has access to your Mac, they could access your projects.
+  </Accordion>
+
+  <Accordion title="How do I protect my API keys?">
+    For API keys (OpenAI, Supabase, etc.):
+    - Store in Settings → Integrations (not in code comments)
+    - Don't commit to public Git repositories
+    - Use different keys for test vs production
+    - Rotate keys if you suspect compromise
+  </Accordion>
+
+  <Accordion title="What if my Mac is stolen?">
+    If your Mac is lost or stolen:
+    1. Use Find My Mac to locate or remotely wipe
+    2. If FileVault was enabled, data is encrypted
+    3. Change passwords for any accounts on that Mac
+    4. Contact support if you need to secure your Nativeline account
+  </Accordion>
+
+  <Accordion title="Is Nativeline safe to use on shared computers?">
+    Not recommended. On shared computers:
+    - Others could access your projects
+    - Others could access your account while logged in
+    - Sensitive API keys could be exposed
+
+    Use Nativeline on your personal Mac. Always log out if you must use a shared computer.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Backups
+
+<AccordionGroup>
+  <Accordion title="How do I back up my projects?">
+    **Manual backup:**
+    - Copy project folders to external drive
+    - Upload to cloud storage (Dropbox, Google Drive, iCloud)
+
+    **Automatic backup:**
+    - Enable Time Machine on your Mac
+    - Projects are included in regular backups
+
+    **Version control:**
+    - Initialize Git in project folder
+    - Push to GitHub/GitLab
+    - Best for ongoing work
+  </Accordion>
+
+  <Accordion title="What if I lose my project files?">
+    If you didn't back up:
+    - Check Time Machine for previous versions
+    - Look in iCloud Drive or other cloud services
+    - Projects might be recoverable if recently deleted
+
+    Unfortunately, we cannot recover projects since they're stored locally.
+  </Accordion>
+
+  <Accordion title="Can I sync projects across Macs?">
+    Options for syncing:
+    - **iCloud Drive:** Store project folder in iCloud
+    - **Git:** Push/pull via GitHub
+    - **External drive:** Manually copy
+    - **Cloud storage:** Dropbox, Google Drive
+
+    Be careful with simultaneous editing — use version control.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Billing FAQs" icon="credit-card" href="/faqs/billing">
+    Subscription questions
+  </Card>
+  <Card title="Getting Started" icon="flag-checkered" href="/faqs/getting-started">
+    Setup questions
+  </Card>
+  <Card title="Troubleshooting" icon="wrench" href="/faqs/troubleshooting">
+    Fixing issues
+  </Card>
+  <Card title="General FAQs" icon="circle-question" href="/faqs/general">
+    Basic questions
+  </Card>
+</CardGroup>

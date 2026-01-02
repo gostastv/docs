@@ -1,0 +1,342 @@
+---
+title: "Maps & Location"
+description: "Add maps, directions, and location features"
+---
+
+# Maps & Location
+
+Add interactive maps, directions, place search, and location tracking using Apple's built-in frameworks.
+
+## What You Can Build
+
+- **Map Display** — Show maps with markers
+- **User Location** — Track where users are
+- **Directions** — Route calculation and navigation
+- **Place Search** — Find locations by name
+- **Geocoding** — Convert addresses to coordinates
+
+---
+
+## Built-In vs External
+
+### Apple MapKit (Built-In)
+
+**Pros:**
+- No API key needed
+- Free (included in iOS)
+- Privacy-focused
+- Native performance
+
+**Cons:**
+- iOS only
+- Limited customization
+- No Street View
+
+### Google Maps (External)
+
+**Pros:**
+- More detailed in some areas
+- Street View
+- Cross-platform
+
+**Cons:**
+- Requires API key
+- Has usage costs
+- More setup
+
+**Recommendation:** Start with Apple MapKit. It covers most needs and is easier to set up.
+
+---
+
+## Displaying a Map
+
+### Basic Map
+
+```
+Add a map that shows the user's current location
+with a blue dot indicator.
+```
+
+### Map with Markers
+
+```
+Show a map with markers for each location in my list.
+Each marker should show the location name when tapped.
+```
+
+### Customizing the Map
+
+```
+Configure the map to:
+- Show standard view (not satellite)
+- Enable user location
+- Allow zooming and panning
+- Start centered on San Francisco
+```
+
+---
+
+## User Location
+
+### Requesting Permission
+
+```
+Request location permission when the map loads.
+Show an explanation of why we need location.
+```
+
+Permission is required to access location:
+- **When In Use** — Only while app is open
+- **Always** — Even in background (rarely needed)
+
+### Getting Current Location
+
+```
+Get the user's current location and show it on the map.
+Add a button to re-center on their location.
+```
+
+### Tracking Location
+
+```
+Track the user's location as they move.
+Update the map to follow them.
+Show their path as a line.
+```
+
+---
+
+## Place Search
+
+### Search by Name
+
+```
+Add a search bar that finds places:
+- User types a query (e.g., "coffee shops")
+- Show results in a list below
+- Tap result to show on map
+```
+
+### Search Nearby
+
+```
+Search for restaurants within 1 mile of the user.
+Show results as markers on the map.
+```
+
+---
+
+## Directions
+
+### Getting Directions
+
+```
+Add directions from user's location to a selected place:
+- Calculate the route
+- Show the path on the map
+- Display distance and estimated time
+```
+
+### Multiple Routes
+
+```
+Show multiple route options:
+- Fastest route
+- Alternative routes
+- User can tap to select
+```
+
+### Turn-by-Turn Instructions
+
+```
+Show turn-by-turn directions as a list:
+- Each step with instruction
+- Distance for each segment
+- Scroll to highlight current step
+```
+
+---
+
+## Geocoding
+
+### Address to Coordinates
+
+```
+Convert an address to map coordinates:
+- User enters address
+- Convert to latitude/longitude
+- Show marker on map
+```
+
+### Coordinates to Address
+
+```
+Convert tapped location to address:
+- User taps on map
+- Get the street address
+- Display in a popup
+```
+
+---
+
+## Map Annotations
+
+### Custom Markers
+
+```
+Use custom icons for map markers:
+- Restaurants: fork and knife icon
+- Shops: shopping bag icon
+- User location: blue dot
+```
+
+### Marker Details
+
+```
+When user taps a marker:
+- Show detail card with name and address
+- "Get Directions" button
+- "Call" button if phone number available
+```
+
+### Clustering
+
+```
+When there are many markers close together,
+group them into clusters showing the count.
+Tap to zoom into the cluster.
+```
+
+---
+
+## Common Use Cases
+
+### Store Locator
+
+```
+Create a store locator:
+- Show all store locations on map
+- List view below the map
+- Search by city or zip
+- Filter by features (24hr, drive-thru)
+- Tap for directions
+```
+
+### Delivery Tracking
+
+```
+Build delivery tracking:
+- Show driver location (live)
+- Show destination
+- Draw route between them
+- Update ETA as driver moves
+```
+
+### Location Check-In
+
+```
+Add location check-in:
+- Detect when user is near a place
+- Prompt to "check in"
+- Record the check-in with timestamp
+```
+
+---
+
+## Location Settings
+
+### Accuracy Levels
+
+| Level | Use Case | Battery |
+|-------|----------|---------|
+| Best | Precise tracking | High |
+| Kilometer | City-level | Medium |
+| Three Kilometers | Region | Low |
+
+```
+Use kilometer accuracy to save battery while
+still showing relevant nearby places.
+```
+
+### Background Location
+
+<Warning>
+  Background location drains battery and requires special justification for App Store approval. Only use if truly necessary.
+</Warning>
+
+---
+
+## Privacy Considerations
+
+### Permission Best Practices
+
+- Only request location when needed
+- Use "When In Use" unless you need background
+- Explain why you need location
+- Work gracefully without location
+
+### Handling Denied Permission
+
+```
+If location is denied:
+- Show a friendly message
+- Let users enter location manually
+- Show button to open Settings
+```
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Map not showing" icon="map">
+    - Check internet connection
+    - Verify map region is set
+    - Check if map view is sized correctly
+  </Accordion>
+
+  <Accordion title="Location not working" icon="location-crosshairs">
+    - Is permission granted?
+    - Simulator: Set location in Features menu
+    - Real device: Check Privacy settings
+  </Accordion>
+
+  <Accordion title="Search returning no results" icon="magnifying-glass">
+    - Check the query isn't empty
+    - Try broader search terms
+    - Verify network connection
+  </Accordion>
+
+  <Accordion title="Directions failing" icon="route">
+    - Start and end points valid?
+    - Route possible by selected mode?
+    - Network connection available?
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Testing Location
+
+### In Simulator
+
+Set simulated locations:
+- Features → Location → Custom Location
+- Or choose preset (City Run, Freeway Drive)
+
+### On Device
+
+Real device uses actual GPS. Walk around to test tracking.
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Weather APIs" icon="cloud-sun" href="/integrations/external-apis/weather">
+    Add weather to location features
+  </Card>
+  <Card title="Supabase" icon="database" href="/integrations/supabase/overview">
+    Store location data in the cloud
+  </Card>
+</CardGroup>

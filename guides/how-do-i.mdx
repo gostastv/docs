@@ -1,0 +1,347 @@
+---
+title: "How Do I..."
+description: "Quick answers to the most common Nativeline questions"
+---
+
+# How Do I...
+
+Your quick reference for common actions. Find what you need, get the answer, and keep building.
+
+---
+
+## Plans & Tasks
+
+<AccordionGroup>
+  <Accordion title="How do I clear a plan?" icon="broom">
+    Type `/planclear` in the chat.
+
+    This clears the current plan and lets you start fresh. Your code remains unchanged — only the plan is cleared.
+  </Accordion>
+
+  <Accordion title="How do I resume a plan?" icon="play">
+    Just say "continue" or "keep going" in the chat.
+
+    The AI remembers where it left off and picks up from there.
+  </Accordion>
+
+  <Accordion title="How do I start completely fresh?" icon="refresh">
+    1. Type `/planclear` to clear the current plan
+    2. Then describe what you want to do next
+
+    Your code stays intact, but the AI approaches your new request without being influenced by the old plan.
+  </Accordion>
+
+  <Accordion title="How do I see what the AI is doing?" icon="eye">
+    Watch the todo list in the chat interface.
+
+    The AI shows its current tasks as it works. Green checkmarks mean completed, spinning dots mean in progress.
+  </Accordion>
+
+  <Accordion title="How do I stop the AI mid-task?" icon="stop">
+    Click the **Stop** button in the chat interface, or press **Escape**.
+
+    The AI will stop after completing its current action. Any code written will remain.
+  </Accordion>
+
+  <Accordion title="How do I give feedback on what the AI built?" icon="comment">
+    Just tell it what's wrong or what you'd like changed:
+
+    - "That's not quite right, I wanted..."
+    - "Change the color to blue instead"
+    - "Make it bigger"
+    - "Undo that and try a different approach"
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Debugging & Errors
+
+<AccordionGroup>
+  <Accordion title="What happens after the AI fails 3 times?" icon="rotate-right">
+    After 3 automatic fix attempts:
+
+    1. Press the **Run App** button
+    2. Wait for the popup to appear
+    3. Click **Apply Fix**
+
+    This triggers a manual fix cycle with additional context from you.
+  </Accordion>
+
+  <Accordion title="How do I see the actual error?" icon="code">
+    Look in the chat — the build error is displayed there. It shows the error message and usually the file/line where it occurred.
+
+    On Pro plans, you can also see detailed logs in the Code Editor.
+  </Accordion>
+
+  <Accordion title="How do I read app logs?" icon="terminal">
+    **Pro plan required**
+
+    1. Open the **Code Editor** tab
+    2. Switch to the **Logs** view
+    3. Run your app
+    4. Logs appear in real-time
+
+    Great for debugging runtime issues, not just build errors.
+  </Accordion>
+
+  <Accordion title="How do I fix a stuck build?" icon="circle-xmark">
+    Try these in order:
+
+    1. Describe the issue in your own words to the AI
+    2. Type `/planclear` and re-explain what you want
+    3. Close and reopen the project
+    4. As last resort: delete the problematic code and ask the AI to rebuild it
+  </Accordion>
+
+  <Accordion title="How do I undo what the AI did?" icon="rotate-left">
+    Say: "Undo that last change" or "Revert what you just did"
+
+    The AI can undo its recent work. For older changes, you may need to manually revert or ask it to "remove the [feature] you added earlier."
+  </Accordion>
+
+  <Accordion title="How do I make the AI try a different approach?" icon="shuffle">
+    Say: "Try a different approach" or "That didn't work, try another way"
+
+    Be specific if you can: "Try using a List instead of a ScrollView" or "Try a simpler implementation"
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Building & Testing
+
+<AccordionGroup>
+  <Accordion title="How do I run my app?" icon="play">
+    Your app runs automatically after each successful build. You'll see it in the iOS Simulator on the right side of the screen.
+
+    To manually trigger: press the **Run App** button or use the keyboard shortcut.
+  </Accordion>
+
+  <Accordion title="How do I test on different iPhone sizes?" icon="mobile">
+    In the Simulator:
+    1. Go to **Window → Device** (or use the Hardware menu)
+    2. Select a different device (iPhone SE, iPhone 15 Pro Max, etc.)
+
+    Or in Nativeline, you may have device selection options.
+  </Accordion>
+
+  <Accordion title="How do I reset the Simulator?" icon="trash">
+    In the Simulator menu:
+    **Device → Erase All Content and Settings**
+
+    This resets the Simulator to factory state, clearing all app data and permissions.
+  </Accordion>
+
+  <Accordion title="How do I enter test data?" icon="keyboard">
+    Just type directly in the Simulator. Click text fields and type.
+
+    For testing quickly: "Add some sample data so I can test how the list looks with multiple items"
+  </Accordion>
+
+  <Accordion title="Why is the first build slow?" icon="clock">
+    First build compiles the entire Xcode project from scratch. This takes 30-60 seconds.
+
+    Subsequent builds are incremental and much faster (5-15 seconds).
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Settings & Configuration
+
+<AccordionGroup>
+  <Accordion title="How do I change my app's name?" icon="signature">
+    Go to **Settings → App Identity** (or Project Settings).
+
+    Change the display name there. This affects:
+    - Name under the app icon
+    - Name in the Simulator
+    - Name on the App Store (if published)
+  </Accordion>
+
+  <Accordion title="How do I change the app icon?" icon="image">
+    Go to **Settings → App Identity** and upload a new icon image.
+
+    For best results: 1024x1024 PNG, no transparency.
+  </Accordion>
+
+  <Accordion title="How do I add a permission?" icon="lock">
+    Go to **Settings → Permissions**.
+
+    Enable the permissions you need (Camera, Location, Photo Library, etc.). Nativeline automatically adds the required usage descriptions.
+
+    Or ask the AI: "Add camera permission to the app"
+  </Accordion>
+
+  <Accordion title="How do I enable a capability?" icon="wand-magic-sparkles">
+    Go to **Settings → Capabilities**.
+
+    Enable features like Push Notifications, Sign in with Apple, HealthKit, etc.
+
+    Some capabilities require an Apple Developer account.
+  </Accordion>
+
+  <Accordion title="How do I switch to dark mode?" icon="moon">
+    Go to **Settings → Appearance**.
+
+    You can set light, dark, or system-follows modes.
+
+    Or ask the AI: "Make the app support dark mode with appropriate colors"
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Data & Storage
+
+<AccordionGroup>
+  <Accordion title="How do I add cloud storage?" icon="cloud">
+    Connect Supabase in your project settings:
+
+    1. Create a Supabase account at supabase.com
+    2. Get your project URL and anon key
+    3. Tell the AI: "Connect to Supabase with URL: [your-url] and key: [your-key]"
+
+    See [Supabase integration](/integrations/supabase/overview) for full details.
+  </Accordion>
+
+  <Accordion title="How do I save data locally?" icon="database">
+    Ask the AI: "Save [data] locally using SwiftData so it persists when the app is closed"
+
+    SwiftData is Apple's modern local storage solution.
+  </Accordion>
+
+  <Accordion title="How do I delete all app data?" icon="trash">
+    In the Simulator:
+    1. **Device → Erase All Content and Settings** (full reset)
+    2. Or delete just your app: long press → Delete App
+
+    This clears all local storage for your app.
+  </Accordion>
+
+  <Accordion title="Where are my projects saved?" icon="folder">
+    Projects are stored locally at:
+    ```
+    ~/Documents/Nativeline Projects/
+    ```
+
+    Each project has its own folder with the project name.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Code & Editing
+
+<AccordionGroup>
+  <Accordion title="How do I see the code?" icon="code">
+    **Pro plan or higher required**
+
+    Click the **Code Editor** tab to view all Swift code. You can browse files, read code, and make edits.
+  </Accordion>
+
+  <Accordion title="How do I edit the code myself?" icon="pencil">
+    **Pro plan or higher required**
+
+    1. Open the Code Editor
+    2. Select a file
+    3. Make your changes
+    4. Save (Cmd+S)
+    5. The app will rebuild
+
+    Small tweaks (colors, text, spacing) are often faster to do yourself.
+  </Accordion>
+
+  <Accordion title="How do I learn Swift from my code?" icon="graduation-cap">
+    **Pro plan or higher required**
+
+    Read the generated code in the Code Editor. See how the AI implements features.
+
+    Ask: "Explain what this file does" or "How does the [feature] work?"
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Publishing
+
+<AccordionGroup>
+  <Accordion title="How do I test on a real iPhone?" icon="mobile-screen">
+    Deploy to TestFlight:
+    1. Set up an Apple Developer account ($99/year)
+    2. Configure certificates (Nativeline helps with this)
+    3. Upload to TestFlight
+    4. Install TestFlight on your iPhone
+    5. Test your app
+
+    See [Publishing](/publishing/overview) for the complete guide.
+  </Accordion>
+
+  <Accordion title="How do I submit to the App Store?" icon="store">
+    After testing via TestFlight:
+    1. Create your App Store listing in App Store Connect
+    2. Add screenshots and descriptions
+    3. Submit for review
+
+    See [App Store submission](/publishing/app-store/overview) for details.
+  </Accordion>
+
+  <Accordion title="How do I share my app with friends?" icon="share">
+    Use TestFlight:
+    1. Upload your app to TestFlight
+    2. Add your friends' emails as testers
+    3. They install TestFlight and join your beta
+    4. They can now use your app
+
+    TestFlight is free, but you need an Apple Developer account ($99/year).
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Account & Billing
+
+<AccordionGroup>
+  <Accordion title="How do I check my bit usage?" icon="gauge">
+    Look for the usage indicator in Nativeline's toolbar. It shows your remaining bits and resets on your billing date.
+  </Accordion>
+
+  <Accordion title="How do I upgrade my plan?" icon="arrow-up">
+    1. Go to **Settings → Plans**
+    2. Select a higher tier
+    3. Confirm the upgrade
+
+    New bits are added immediately. You're charged a prorated amount.
+  </Accordion>
+
+  <Accordion title="How do I cancel my subscription?" icon="xmark">
+    1. Go to **Settings → Subscription**
+    2. Click **Cancel Subscription**
+    3. Confirm
+
+    Access continues until your billing date. Projects stay on your Mac.
+  </Accordion>
+
+  <Accordion title="How do I use my own API key (BYOK)?" icon="key">
+    1. Get an API key from [console.anthropic.com](https://console.anthropic.com)
+    2. Go to **Settings → Plans**
+    3. Select BYOK
+    4. Enter your API key
+
+    You pay $15/month to Nativeline + actual API usage to Anthropic.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Still Can't Find It?
+
+<CardGroup cols={2}>
+  <Card title="Debugging Guide" icon="bug" href="/guides/debugging">
+    In-depth debugging walkthrough
+  </Card>
+  <Card title="FAQs" icon="circle-question" href="/faqs/general">
+    More Q&A organized by topic
+  </Card>
+</CardGroup>

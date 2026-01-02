@@ -1,0 +1,202 @@
+---
+title: "Supabase Setup"
+description: "Step-by-step guide to connect Supabase to your Nativeline app"
+---
+
+# Supabase Setup
+
+This guide walks you through creating a Supabase project and connecting it to your Nativeline app.
+
+## Prerequisites
+
+- Nativeline installed with a project
+- Email address for Supabase account
+
+---
+
+## Step 1: Create Supabase Account
+
+<Steps>
+  <Step title="Go to Supabase">
+    Visit [supabase.com](https://supabase.com) and click **Start your project**.
+  </Step>
+  <Step title="Sign up">
+    Create an account with:
+    - GitHub (recommended)
+    - Or email/password
+  </Step>
+  <Step title="Verify email">
+    If using email, verify via the confirmation link.
+  </Step>
+</Steps>
+
+---
+
+## Step 2: Create a Project
+
+<Steps>
+  <Step title="Click 'New Project'">
+    From the dashboard, click **New Project**.
+  </Step>
+  <Step title="Enter project details">
+    - **Name:** Your app name (e.g., "My Todo App")
+    - **Database Password:** Generate a strong password (save this!)
+    - **Region:** Choose closest to your users
+  </Step>
+  <Step title="Wait for setup">
+    Takes ~2 minutes to provision your project.
+  </Step>
+</Steps>
+
+<Warning>
+  Save your database password somewhere secure. You'll need it if you ever connect directly to the database.
+</Warning>
+
+---
+
+## Step 3: Get Your Credentials
+
+Once your project is ready:
+
+<Steps>
+  <Step title="Go to Settings">
+    Click the **Settings** icon (gear) in the sidebar.
+  </Step>
+  <Step title="Click API">
+    Select **API** from the settings menu.
+  </Step>
+  <Step title="Copy credentials">
+    You need two things:
+    - **Project URL:** `https://xxxxx.supabase.co`
+    - **anon public key:** A long string starting with `eyJ...`
+  </Step>
+</Steps>
+
+<Note>
+  The anon key is safe to use in your app. It respects Row Level Security policies. Never use the `service_role` key in client apps.
+</Note>
+
+---
+
+## Step 4: Connect to Nativeline
+
+In your Nativeline chat:
+
+```
+Connect to Supabase with:
+- URL: https://your-project-id.supabase.co
+- Key: your-anon-key-here
+```
+
+Or go to **Settings → Database** and enter your credentials there.
+
+Nativeline will:
+1. Save your credentials securely
+2. Set up the Supabase client
+3. Be ready to use Supabase features
+
+---
+
+## Step 5: Verify Connection
+
+Test that everything works:
+
+```
+Create a simple test to verify Supabase is connected properly.
+Try to read from Supabase and log the result.
+```
+
+You should see a successful connection message in your build output.
+
+---
+
+## Project Structure After Setup
+
+Nativeline creates Supabase-related files:
+
+```
+YourApp/
+├── Services/
+│   └── SupabaseService.swift    # Supabase client
+├── Models/
+│   └── (your data models)
+└── ...
+```
+
+---
+
+## Common Setup Issues
+
+<AccordionGroup>
+  <Accordion title="Invalid API key" icon="key">
+    - Make sure you're using the **anon** key, not service_role
+    - Check for extra spaces when copying
+    - Verify the key matches your project URL
+  </Accordion>
+
+  <Accordion title="Project not found" icon="magnifying-glass">
+    - Double-check the project URL
+    - Ensure the project finished initializing
+    - URL should be `https://xxxxx.supabase.co` (not dashboard URL)
+  </Accordion>
+
+  <Accordion title="Connection timeout" icon="clock">
+    - Check your internet connection
+    - Project might still be initializing (wait 2-3 minutes)
+    - Try refreshing Supabase dashboard
+  </Accordion>
+
+  <Accordion title="CORS errors" icon="shield">
+    Supabase allows requests from anywhere by default. If you see CORS errors:
+    - Verify you're using the correct URL
+    - Check Supabase dashboard for any restrictions
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Security Best Practices
+
+### Use Row Level Security
+
+Always enable RLS on your tables:
+
+1. In Supabase dashboard → Table Editor
+2. Click on your table
+3. Enable "RLS" toggle
+4. Add policies
+
+Without RLS, anyone with your anon key can read all data!
+
+### Secure Credentials
+
+Nativeline stores your credentials in:
+- macOS Keychain (encrypted)
+- Not in your source code
+
+Never commit credentials to git or share them publicly.
+
+### Minimal Permissions
+
+Only enable the Supabase features you need. Don't enable Storage if you're only using Auth.
+
+---
+
+## What's Next?
+
+Now that Supabase is connected, add features:
+
+<CardGroup cols={2}>
+  <Card title="Add User Authentication" icon="lock" href="/integrations/supabase/authentication">
+    Signup and login
+  </Card>
+  <Card title="Create Database Tables" icon="table" href="/integrations/supabase/database">
+    Store your data
+  </Card>
+  <Card title="Add File Storage" icon="folder" href="/integrations/supabase/storage">
+    Upload images and files
+  </Card>
+  <Card title="Enable Realtime" icon="bolt" href="/integrations/supabase/realtime">
+    Live data updates
+  </Card>
+</CardGroup>

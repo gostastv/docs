@@ -1,0 +1,320 @@
+---
+title: "Using Images"
+description: "Show the AI what you want with visual references"
+---
+
+# Using Images
+
+A picture is worth a thousand words — and tokens. Visual references help the AI understand exactly what you want, reducing iterations and getting better results faster.
+
+## Why Use Images?
+
+### Without Images
+
+```
+Create a card with the title at the top, then an image below it,
+then some description text, then a price on the right side,
+and a favorite button that's a heart icon in the corner...
+```
+
+→ Multiple iterations to get it right
+
+### With Images
+
+```
+Make my cards look like this [attached screenshot]
+```
+
+→ AI sees exactly what you want, often gets it first try
+
+---
+
+## What to Attach
+
+### Screenshots from Other Apps
+
+Find an app with a UI element you like:
+1. Screenshot it
+2. Drag into Nativeline chat
+3. "Make my [element] look like this"
+
+### Design Mockups
+
+Create mockups in:
+- **Figma** — Professional design tool
+- **Sketch** — Mac design app
+- **Canva** — Easy online design
+- **Paper sketches** — Take a photo
+
+### Reference Images
+
+Any image that shows what you want:
+- UI patterns from websites
+- Style guides
+- Color palettes
+- Icon examples
+
+### Sketches and Wireframes
+
+Hand-drawn sketches work great:
+1. Sketch your layout on paper
+2. Take a photo
+3. "Implement this layout"
+
+---
+
+## How to Attach Images
+
+### Drag and Drop
+
+1. Find the image file
+2. Drag it onto the Nativeline chat
+3. It attaches to your message
+
+### Copy and Paste
+
+1. Copy an image (Cmd+C)
+2. Paste in the chat (Cmd+V)
+
+### Screenshot Directly
+
+1. Take a screenshot (Cmd+Shift+4)
+2. Drag the saved file to chat
+3. Or copy and paste directly
+
+---
+
+## Image Guidelines
+
+### Supported Formats
+
+- PNG
+- JPG / JPEG
+- GIF
+- WebP
+- HEIC
+
+### Size Limits
+
+- Up to **5 images** per message
+- Images are automatically optimized
+
+### Best Practices
+
+<Tip>
+  **Crop to the relevant area.** Don't show your entire screen — focus on the specific element.
+</Tip>
+
+<Tip>
+  **Highlight what matters.** Use annotations or arrows to point out specific details.
+</Tip>
+
+<Tip>
+  **Show context when needed.** If the element's position matters, include surrounding areas.
+</Tip>
+
+---
+
+## Effective Image Prompts
+
+### Be Specific About What to Copy
+
+**Vague:**
+```
+Make it look like this [image]
+```
+
+**Specific:**
+```
+Copy the card layout from this image:
+- Same spacing and proportions
+- Similar shadow style
+- Keep the price position
+
+But use my app's blue color scheme instead of their green.
+```
+
+### Reference Multiple Images
+
+```
+For the navigation, use this style [image 1]
+For the cards, use this layout [image 2]
+For the colors, follow this palette [image 3]
+```
+
+### Describe Differences
+
+```
+Make it look like this screenshot, but:
+- Use rounded corners instead of square
+- Add more padding
+- Remove the subtitle
+```
+
+---
+
+## Common Use Cases
+
+### Copying a Layout
+
+```
+Implement this layout exactly [screenshot]
+```
+
+### Matching a Style
+
+```
+Use this visual style for my entire app [style reference]
+- Same button shapes
+- Similar spacing
+- This shadow intensity
+```
+
+### Fixing a Visual Bug
+
+```
+This is what I'm seeing [screenshot of bug]
+I expected it to look like this [mockup of correct version]
+```
+
+### Showing Desired Interaction
+
+```
+When the user swipes, I want this animation [GIF/video]
+```
+
+### Showing Current State + Desired State
+
+```
+Here's how it currently looks [current screenshot]
+Here's how I want it to look [mockup]
+```
+
+---
+
+## Screenshots from Simulator
+
+Take screenshots of your own app to reference:
+
+### How to Screenshot Simulator
+
+1. Click on the Simulator
+2. Press **Cmd+S** to save screenshot
+3. Or **Cmd+Shift+4** to select area
+
+### Why Screenshot Your Own App
+
+- "Keep the header exactly like this, but change the body"
+- "This part works — make the other screens match"
+- "The spacing is perfect here — use this throughout"
+
+---
+
+## Annotating Images
+
+### Simple Annotations
+
+Use Preview (Mac) or any image editor:
+- **Circles** — Highlight specific elements
+- **Arrows** — Point to details
+- **Text** — Add labels or notes
+- **Boxes** — Outline areas of interest
+
+### When to Annotate
+
+- Multiple elements in one screenshot
+- Subtle details that might be missed
+- Showing what to change vs. keep
+
+---
+
+## Multiple Images in One Message
+
+You can attach up to 5 images per message:
+
+```
+Here's the header style I want [image 1]
+Here's the card style [image 2]
+Here's the color palette [image 3]
+
+Create a dashboard with:
+- Header using style from image 1
+- Data displayed as cards like image 2
+- Colors from image 3
+```
+
+---
+
+## What Images Can't Do
+
+### Not for Long Text
+
+Don't use images of text. Type text directly — it's easier for the AI to process.
+
+### Not for Code
+
+If you want to show code, paste it as text rather than a screenshot.
+
+### Not for Everything
+
+Sometimes words are clearer:
+- "Make the button 50pt tall" is clearer than an image
+- "Change the color to #007AFF" is more precise
+
+Use images for **visual design**, use words for **specific values**.
+
+---
+
+## Example Workflow
+
+<Steps>
+  <Step title="Find inspiration">
+    Screenshot a UI you like from another app or website.
+  </Step>
+  <Step title="Attach to chat">
+    Drag the image into Nativeline.
+  </Step>
+  <Step title="Describe what you want">
+    "Create a profile card like this image, but with our app's colors"
+  </Step>
+  <Step title="Review and refine">
+    If something's off: "The spacing should be tighter, like this [annotated image]"
+  </Step>
+</Steps>
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Image not attaching" icon="paperclip">
+    - Check file format (PNG, JPG, etc.)
+    - Try drag-and-drop instead of paste
+    - Ensure file isn't corrupted
+  </Accordion>
+
+  <Accordion title="AI not understanding the image" icon="circle-question">
+    - Crop to show only relevant parts
+    - Add text description alongside the image
+    - Annotate to highlight specific elements
+  </Accordion>
+
+  <Accordion title="Result doesn't match image" icon="not-equal">
+    - Be more specific about what to copy
+    - Describe what to keep vs. change
+    - Attach comparison images
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Prompt Workshop" icon="pen-fancy" href="/guides/prompt-workshop">
+    Combine images with effective prompts
+  </Card>
+  <Card title="Chat Interface" icon="comments" href="/features/chat-interface">
+    How to use the chat for building
+  </Card>
+</CardGroup>

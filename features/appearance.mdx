@@ -1,0 +1,248 @@
+---
+title: "Appearance"
+description: "Configure light mode, dark mode, and visual settings"
+---
+
+# Appearance
+
+Appearance settings control how your app looks in different system modes — light mode, dark mode, or following the user's system preference.
+
+## Accessing Appearance Settings
+
+1. Open your project
+2. Go to **Settings** → **Appearance**
+
+---
+
+## Appearance Modes
+
+### Light Mode
+
+Your app always uses light colors regardless of system setting.
+
+- Light backgrounds
+- Dark text
+- Consistent across all devices
+
+### Dark Mode
+
+Your app always uses dark colors regardless of system setting.
+
+- Dark backgrounds
+- Light text
+- Good for media apps, reading apps
+
+### System (Automatic)
+
+Your app follows the user's iOS setting.
+
+- Switches when user changes system mode
+- Most users expect this behavior
+- **Recommended for most apps**
+
+---
+
+## Setting Appearance Mode
+
+### In Nativeline
+
+1. Settings → Appearance
+2. Select: Light, Dark, or System
+3. Save
+
+### Via Chat
+
+```
+Make the app follow the system appearance setting
+```
+
+or
+
+```
+Force the app to always use dark mode
+```
+
+---
+
+## Designing for Both Modes
+
+If you use System mode, your app needs to look good in both light and dark.
+
+### System Colors
+
+Use iOS system colors that adapt automatically:
+
+| Color | Light Mode | Dark Mode |
+|-------|------------|-----------|
+| `.background` | White | Black |
+| `.secondaryBackground` | Light gray | Dark gray |
+| `.label` | Black | White |
+| `.secondaryLabel` | Gray | Light gray |
+| `.accent` | Your accent color | Same |
+
+### Ask the AI
+
+```
+Make sure all colors in the app adapt properly to dark mode.
+Use system colors where possible.
+```
+
+### Checking Both Modes
+
+In the Simulator:
+1. Open Settings app
+2. Display & Brightness
+3. Switch between Light and Dark
+4. See your app update
+
+Or: Features → Toggle Appearance (in Simulator menu)
+
+---
+
+## Accent Color
+
+Your app's primary color used for:
+- Buttons
+- Links
+- Selection highlights
+- Tint color throughout
+
+### Setting Accent Color
+
+1. Settings → Appearance → Accent Color
+2. Choose color or enter hex value
+3. Save
+
+### Via Chat
+
+```
+Use #007AFF (blue) as the app's accent color
+```
+
+---
+
+## Status Bar
+
+The status bar shows time, battery, signal. You can control its style:
+
+### Light Content
+
+White text/icons — use with dark backgrounds
+
+### Dark Content
+
+Black text/icons — use with light backgrounds
+
+### Default
+
+Follows the appearance mode
+
+### Setting Status Bar Style
+
+```
+Use light status bar content throughout the app
+```
+
+---
+
+## Designing Dark Mode
+
+### Do
+
+- ✅ Use pure black sparingly (can cause smearing on OLED)
+- ✅ Use dark grays (#1C1C1E, #2C2C2E) for surfaces
+- ✅ Reduce contrast for comfortable viewing
+- ✅ Test in dark mode regularly
+
+### Don't
+
+- ❌ Use light colors that don't adapt
+- ❌ Forget about images (they may need variants)
+- ❌ Ignore elevation (cards should be slightly lighter)
+- ❌ Use pure white text (too harsh)
+
+---
+
+## Images in Dark Mode
+
+Some images need different versions:
+
+### Problem Images
+
+- Logos with light backgrounds
+- Icons that assume light mode
+- Screenshots of light UI
+
+### Solutions
+
+**Option 1: Transparent backgrounds**
+```
+Make all icons use transparent backgrounds so they work on any color
+```
+
+**Option 2: Provide both versions**
+```
+Add dark mode variants of the logo and important images
+```
+
+**Option 3: Color inversion**
+For simple graphics, you can invert colors in dark mode.
+
+---
+
+## Testing Appearance
+
+### Quick Toggle
+
+In Simulator: Features → Toggle Appearance
+
+### Sustained Testing
+
+Live with your app in dark mode for a while. Issues become obvious through regular use.
+
+### Common Issues
+
+| Issue | Solution |
+|-------|----------|
+| Text invisible | Use system colors |
+| Images look wrong | Add dark mode variants |
+| Too bright in dark mode | Reduce whites, use dark grays |
+| Too dim in light mode | Ensure sufficient contrast |
+
+---
+
+## Appearance Best Practices
+
+<AccordionGroup>
+  <Accordion title="Use System colors" icon="palette">
+    SwiftUI's semantic colors (`.background`, `.label`, etc.) adapt automatically. Use them instead of hard-coded colors.
+  </Accordion>
+
+  <Accordion title="Test both modes equally" icon="circle-half-stroke">
+    Don't build in light mode and "check" dark mode later. Alternate regularly during development.
+  </Accordion>
+
+  <Accordion title="Consider your audience" icon="users">
+    Some apps are better in fixed mode:
+    - Reading apps → User preference
+    - Photo apps → Dark mode (better for viewing)
+    - Business apps → Often light mode
+  </Accordion>
+
+  <Accordion title="Elevation matters in dark mode" icon="layer-group">
+    In dark mode, "higher" surfaces should be slightly lighter. Cards on a background should be visible through subtle brightness differences, not borders.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Project Settings" icon="gear" href="/features/project-settings">
+    All settings overview
+  </Card>
+  <Card title="Using Images" icon="image" href="/features/using-images">
+    Images and visual references
+  </Card>
+</CardGroup>

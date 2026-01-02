@@ -1,0 +1,225 @@
+---
+title: "System Requirements"
+description: "What you need to run Nativeline"
+---
+
+# System Requirements
+
+Nativeline runs on any modern Mac. Here's what you need.
+
+## Minimum Requirements
+
+<CardGroup cols={2}>
+  <Card title="macOS 15.1+" icon="apple">
+    **Sequoia or later**
+
+    Check your version:  → About This Mac
+  </Card>
+  <Card title="Internet Connection" icon="wifi">
+    **Required for AI features**
+
+    Needed for building, dependency downloads, and updates
+  </Card>
+</CardGroup>
+
+## Recommended Specs
+
+While Nativeline runs on any Mac meeting the minimum requirements, here's what works best:
+
+| Component | Minimum | Recommended |
+|-----------|---------|-------------|
+| **macOS** | 15.1 (Sequoia) | Latest version |
+| **Processor** | Any Apple Silicon or Intel | Apple Silicon (M1/M2/M3) |
+| **RAM** | 8GB | 16GB+ |
+| **Storage** | 20GB free | 50GB+ free |
+| **Internet** | Any connection | Stable broadband |
+
+### Storage Breakdown
+
+Nativeline needs disk space for:
+
+| Component | Size |
+|-----------|------|
+| Nativeline app | ~200MB |
+| Xcode (auto-installed) | ~12GB |
+| iOS Simulator | ~5GB |
+| Your projects | Varies |
+| **Total recommended** | **20GB minimum** |
+
+<Tip>
+  Apple Silicon Macs (M1, M2, M3) offer the best performance for building and running the iOS Simulator.
+</Tip>
+
+---
+
+## Supported Macs
+
+Nativeline works on any Mac that can run macOS 15.1 (Sequoia):
+
+### Apple Silicon Macs (Recommended)
+- MacBook Air (M1, 2020 and later)
+- MacBook Pro (M1, 2020 and later)
+- Mac mini (M1, 2020 and later)
+- Mac Studio (M1 Max/Ultra, 2022 and later)
+- Mac Pro (M2 Ultra, 2023 and later)
+- iMac (M1, 2021 and later)
+
+### Intel Macs
+- MacBook Air (2020)
+- MacBook Pro (2018 and later)
+- Mac mini (2018 and later)
+- Mac Pro (2019 and later)
+- iMac (2019 and later)
+- iMac Pro (2017)
+
+<Note>
+  Intel Macs work but may be slower for builds and Simulator performance. Apple Silicon is recommended for the best experience.
+</Note>
+
+---
+
+## Checking Your System
+
+### macOS Version
+
+1. Click the Apple menu () in the top-left corner
+2. Select **About This Mac**
+3. Your macOS version is displayed
+
+If you're on an older version, update via **System Settings → General → Software Update**.
+
+### Available Storage
+
+1. Click the Apple menu ()
+2. Select **About This Mac**
+3. Click **More Info**
+4. Select **Storage** in the sidebar
+
+You need at least 20GB free for Nativeline and its dependencies.
+
+### Processor Type
+
+1. Click the Apple menu ()
+2. Select **About This Mac**
+3. Look for "Chip" (Apple Silicon) or "Processor" (Intel)
+
+---
+
+## What Gets Installed Automatically
+
+When you first launch Nativeline, it automatically installs everything needed to build iOS apps:
+
+### Xcode (~12GB)
+Apple's complete development environment. Nativeline downloads and installs this automatically.
+
+### Command Line Tools
+Build utilities required for compiling Swift code.
+
+### iOS Simulator
+Virtual iPhones and iPads for testing your apps without a physical device.
+
+<Note>
+  First launch takes 15-30 minutes depending on your internet speed due to the Xcode download. This only happens once.
+</Note>
+
+---
+
+## What You DON'T Need
+
+Nativeline handles everything for you. You don't need:
+
+- ❌ Previous programming experience
+- ❌ Xcode installed manually
+- ❌ Command line knowledge
+- ❌ Apple Developer account (until publishing)
+- ❌ Physical iPhone or iPad (Simulator is included)
+
+---
+
+## Network Requirements
+
+Nativeline requires internet access for:
+
+- **AI features** — All building happens via cloud AI
+- **First launch** — Downloading Xcode and dependencies
+- **Updates** — App and dependency updates
+- **Account** — Authentication and subscription
+
+### Firewall & VPN
+
+If you're on a corporate network or using a VPN:
+- Ensure access to `nativeline.ai`
+- Ensure access to Apple's servers for Xcode downloads
+- Ensure access to `anthropic.com` (for BYOK users)
+
+---
+
+## Performance Tips
+
+### For Faster Builds
+
+1. **Use Apple Silicon** — M1/M2/M3 Macs build significantly faster
+2. **Close unused apps** — Free up RAM for the build process
+3. **Use SSD storage** — All modern Macs have SSDs, but external drives may be slower
+4. **Keep macOS updated** — Latest versions include performance improvements
+
+### For Better Simulator Performance
+
+1. **Choose simpler devices** — iPhone SE runs faster than iPhone 15 Pro Max
+2. **Close other Simulators** — Only run one at a time
+3. **Restart occasionally** — Fresh simulator boots run better
+
+### For Stable AI Connection
+
+1. **Use wired internet if possible** — More stable than WiFi for long sessions
+2. **Avoid saturated networks** — Other heavy downloads can cause timeouts
+3. **Check connection before long sessions** — Ensure stable connectivity
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="My Mac is too old for macOS 15.1" icon="laptop">
+    Unfortunately, Nativeline requires macOS 15.1 (Sequoia) which has specific hardware requirements. Check Apple's compatibility list for your Mac model.
+
+    Options:
+    - Consider upgrading to a newer Mac
+    - Check if your Mac supports macOS 15.1 but just needs updating
+  </Accordion>
+
+  <Accordion title="I don't have enough disk space" icon="hard-drive">
+    Free up 20GB+ by:
+    1. Empty Trash
+    2. Remove unused apps
+    3. Clear Downloads folder
+    4. Use  → About This Mac → Storage → Manage for recommendations
+    5. Move large files to external storage
+  </Accordion>
+
+  <Accordion title="Builds are very slow" icon="gauge-simple">
+    Improve build performance:
+    1. Close other applications
+    2. Restart your Mac
+    3. Ensure sufficient free storage (10GB+)
+    4. Check Activity Monitor for CPU/memory usage
+    5. Consider upgrading RAM if using Intel Mac with 8GB
+  </Accordion>
+
+  <Accordion title="Internet connection issues" icon="wifi">
+    If you're having connectivity problems:
+    1. Test your connection with other sites
+    2. Try a different network
+    3. Disable VPN temporarily
+    4. Check firewall settings
+    5. Contact your IT department if on corporate network
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Ready to Install?
+
+<Card title="Installation Guide" icon="download" href="/introduction/installation">
+  Download and set up Nativeline in minutes
+</Card>

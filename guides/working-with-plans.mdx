@@ -1,0 +1,311 @@
+---
+title: "Working with Plans"
+description: "Understand how AI plans work and manage them effectively"
+---
+
+# Working with Plans
+
+When you ask Nativeline to build something, the AI creates a plan — a step-by-step approach to implementing your request. Understanding plans helps you work more effectively.
+
+## What is a Plan?
+
+A plan is the AI's strategy for completing your request. It breaks down your request into specific tasks.
+
+### Example
+
+You say: "Add a profile screen with user avatar, name, and settings"
+
+The AI creates a plan:
+1. Create ProfileView.swift
+2. Add avatar image component
+3. Add name display
+4. Add settings section with toggles
+5. Connect to navigation
+6. Test and refine
+
+### Viewing the Plan
+
+You can see the plan in the chat as a todo list:
+- ⏳ Pending tasks
+- 🔄 Current task (in progress)
+- ✅ Completed tasks
+
+---
+
+## How Plans Work
+
+### Automatic Planning
+
+When you describe what you want, the AI:
+1. Analyzes your request
+2. Breaks it into logical steps
+3. Shows the plan in the chat
+4. Executes each step in order
+5. Marks tasks complete as it goes
+
+### Plan Persistence
+
+Plans persist between sessions:
+- Close Nativeline, reopen — the plan is still there
+- Come back tomorrow — pick up where you left off
+- The AI remembers the current state
+
+---
+
+## The /planclear Command
+
+**`/planclear`** clears the current plan and lets you start fresh.
+
+### When to Use /planclear
+
+- You want to work on something different
+- The current plan is stuck or going in the wrong direction
+- You've changed your mind about what you want
+- The AI keeps trying to complete a task you no longer need
+
+### How to Use It
+
+Just type in the chat:
+```
+/planclear
+```
+
+The AI will:
+1. Clear the current plan
+2. Confirm it's been cleared
+3. Wait for your next request
+
+### What /planclear Does NOT Do
+
+- Does NOT undo any code changes
+- Does NOT delete your files
+- Does NOT reset your project
+
+It only clears the plan — your code stays exactly as it is.
+
+---
+
+## Resuming Work
+
+### Coming Back to a Plan
+
+If you had a plan in progress and return later, you can:
+
+**Option 1: Continue where you left off**
+```
+continue
+```
+or
+```
+keep going
+```
+
+**Option 2: Start fresh**
+```
+/planclear
+```
+Then describe what you want to do instead.
+
+### What if the Plan is Stuck?
+
+If the AI keeps trying and failing:
+
+1. Try: "Let's try a different approach to [the stuck task]"
+2. Or: `/planclear` and re-describe what you want
+3. Or: Provide more specific guidance about what's going wrong
+
+---
+
+## Plan Best Practices
+
+### 1. Let the AI Plan
+
+You don't need to tell the AI exactly what files to create or what code to write. Just describe the feature and let it plan.
+
+**Don't:**
+```
+Create a file called ProfileView.swift with a struct that has an @State variable for the username and use a VStack with a TextField...
+```
+
+**Do:**
+```
+Add a profile screen where users can edit their username and email
+```
+
+### 2. Review the Plan Before Execution
+
+When the AI shows its plan, you can:
+- **Approve:** Just let it proceed
+- **Modify:** "Actually, don't include email, just username"
+- **Reject:** "That's not quite what I want, let me explain differently"
+
+### 3. Keep Plans Focused
+
+One clear request = one focused plan.
+
+**Too broad:**
+```
+Build my whole app with user profiles, posts, comments, likes, messaging, and notifications
+```
+
+**Just right:**
+```
+Start with user profiles where people can set their name and avatar
+```
+
+After that works, add the next feature.
+
+### 4. Don't Interrupt Mid-Plan (Usually)
+
+Let the AI complete its current task before adding new requests. Interrupting can lead to half-finished work.
+
+However, if you see it going wrong, it's fine to say:
+```
+Stop, that's not what I meant. Let me clarify...
+```
+
+---
+
+## Working with Long Plans
+
+For complex features, plans might have many steps.
+
+### Tracking Progress
+
+Watch the todo list to see:
+- How many tasks remain
+- What's currently being worked on
+- What's already complete
+
+### If Something Breaks Mid-Plan
+
+If a build fails in the middle of a plan:
+1. The AI will attempt to fix it
+2. After fixing, it continues with the remaining tasks
+3. You don't need to restart the whole plan
+
+### Taking Breaks
+
+You can close Nativeline at any point:
+1. Progress is saved
+2. When you return, you can continue or clear
+
+---
+
+## Common Scenarios
+
+### "I want to change direction"
+
+```
+/planclear
+```
+Then describe your new direction.
+
+### "I want to add to the current plan"
+
+Wait for the current plan to complete, then:
+```
+Now also add [new feature]
+```
+
+### "The plan keeps failing on one step"
+
+```
+Let's skip that step for now and continue with the rest.
+Come back to [problematic step] later.
+```
+
+Or:
+```
+/planclear
+Let's take a simpler approach to [feature]
+```
+
+### "I don't understand what the plan is doing"
+
+```
+Explain what you're doing and why
+```
+
+The AI will describe its approach in plain English.
+
+### "The plan is too complicated"
+
+```
+/planclear
+Let's do a simpler version first: just [basic version]
+```
+
+Start simple, add complexity later.
+
+---
+
+## Plan Memory
+
+The AI remembers:
+- The current plan and its status
+- What it's already tried
+- Previous conversation context
+- Your project's structure and patterns
+
+This memory helps it:
+- Avoid repeating failed approaches
+- Build consistently with existing code
+- Remember your preferences
+
+### The .nativeline Folder
+
+Your project contains a hidden `.nativeline` folder with:
+- AI memory about your project
+- Conversation history
+- Current plan state
+
+Don't delete this folder unless you want to reset the AI's memory.
+
+---
+
+## Troubleshooting Plans
+
+<AccordionGroup>
+  <Accordion title="Plan won't clear" icon="broom">
+    Make sure you type exactly: `/planclear`
+
+    It should work immediately. If not, try closing and reopening the project.
+  </Accordion>
+
+  <Accordion title="AI keeps working on old plan" icon="rotate">
+    1. Type `/planclear` explicitly
+    2. Wait for confirmation
+    3. Then start your new request
+  </Accordion>
+
+  <Accordion title="Plan is too ambitious" icon="mountain">
+    Clear it and start smaller:
+    ```
+    /planclear
+    Let's start with just [the core feature]. We'll add more later.
+    ```
+  </Accordion>
+
+  <Accordion title="AI forgot what it was doing" icon="brain">
+    Try:
+    ```
+    What was the plan? Can you summarize where we are?
+    ```
+
+    Or start fresh if needed.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Debugging Guide" icon="bug" href="/guides/debugging">
+    Handle errors in your plans
+  </Card>
+  <Card title="Prompt Workshop" icon="pen-fancy" href="/guides/prompt-workshop">
+    Write better prompts for better plans
+  </Card>
+</CardGroup>

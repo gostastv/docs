@@ -1,0 +1,285 @@
+---
+title: "Certificates & Profiles"
+description: "Understanding code signing for iOS apps"
+---
+
+# Certificates & Profiles
+
+Code signing is how Apple verifies that your app comes from you and hasn't been tampered with. Nativeline handles most of this automatically, but understanding the basics helps when troubleshooting.
+
+## The Simple Version
+
+```
+Your App + Certificate + Profile = Signed App
+         (who you are)  (what's allowed)
+```
+
+Apple requires every app to be signed before it can run on a device or be distributed.
+
+---
+
+## Why Code Signing Exists
+
+1. **Identity** — Proves you made the app
+2. **Integrity** — Ensures the app hasn't been modified
+3. **Authorization** — Controls what the app can do
+
+---
+
+## Key Concepts
+
+### Certificates
+
+A certificate proves your identity as a developer.
+
+| Type | Purpose |
+|------|---------|
+| Development | Run apps on your devices during development |
+| Distribution | Distribute via TestFlight and App Store |
+
+### Provisioning Profiles
+
+A profile links your certificate to your app and specifies:
+- Which app (by Bundle ID)
+- Which capabilities (push, Sign in with Apple, etc.)
+- Which devices (for development)
+
+### Bundle ID
+
+A unique identifier for your app, like `com.yourname.appname`. This must be consistent across all profiles.
+
+---
+
+## How Nativeline Handles This
+
+### Automatic Management
+
+Nativeline can manage code signing automatically:
+
+1. Creates certificates when needed
+2. Generates provisioning profiles
+3. Signs your app before uploading
+
+To use automatic signing:
+```
+Settings → Signing → Automatic
+```
+
+### Manual Management
+
+For advanced users or specific requirements:
+
+1. Create certificates in Apple Developer portal
+2. Create provisioning profiles manually
+3. Import into Nativeline
+
+---
+
+## Setting Up (First Time)
+
+<Steps>
+  <Step title="Connect Apple Developer Account">
+    In Nativeline, go to Settings → Account → Connect Apple Developer
+  </Step>
+  <Step title="Sign in with Apple ID">
+    Use the Apple ID associated with your Developer account
+  </Step>
+  <Step title="Enable automatic signing">
+    Let Nativeline manage certificates and profiles
+  </Step>
+  <Step title="Select your team">
+    If you're part of multiple teams, choose the correct one
+  </Step>
+</Steps>
+
+---
+
+## Understanding Profile Types
+
+### Development Profile
+
+- For testing on your devices
+- Includes specific device IDs
+- Can test all app capabilities
+
+### App Store Profile
+
+- For TestFlight and App Store distribution
+- No device restrictions
+- Used for final distribution builds
+
+### Ad Hoc Profile
+
+- For distributing outside App Store (up to 100 devices)
+- Requires specific device IDs
+- Rarely needed with TestFlight available
+
+---
+
+## Common Scenarios
+
+### Building for Simulator
+
+No code signing required. Simulator uses your Mac's identity.
+
+### Testing on Your iPhone
+
+Requires:
+- Development certificate
+- Development provisioning profile
+- Your device registered in Apple Developer portal
+
+### Uploading to TestFlight
+
+Requires:
+- Distribution certificate
+- App Store provisioning profile
+
+---
+
+## Troubleshooting
+
+### "No signing certificate found"
+
+**Cause:** Certificate missing or expired
+
+**Fix:**
+1. Go to Settings → Signing
+2. Click "Reset Certificates"
+3. Let Nativeline create new ones
+
+### "Provisioning profile doesn't match"
+
+**Cause:** Bundle ID mismatch
+
+**Fix:**
+1. Check Bundle ID in Settings → App Identity
+2. Ensure it matches what's in Apple Developer portal
+3. Regenerate profile if needed
+
+### "Profile doesn't include capability"
+
+**Cause:** App uses a capability not in the profile
+
+**Fix:**
+1. Enable the capability in Apple Developer portal
+2. Regenerate the provisioning profile
+3. Rebuild your app
+
+### "Certificate has been revoked"
+
+**Cause:** Someone revoked your certificate
+
+**Fix:**
+1. Go to Settings → Signing
+2. Reset certificates
+3. Rebuild your app
+
+---
+
+## Certificate Limits
+
+Apple limits the number of certificates:
+
+| Type | Limit |
+|------|-------|
+| Development | 2 per team |
+| Distribution | 3 per team |
+
+<Warning>
+  Revoking a distribution certificate affects ALL apps signed with it. Be careful in team environments.
+</Warning>
+
+---
+
+## Device Registration
+
+For development testing, devices must be registered:
+
+### Automatic Registration
+
+When you connect your iPhone and run from Nativeline, it can register automatically.
+
+### Manual Registration
+
+1. Get device UDID (from Finder when connected)
+2. Add in Apple Developer portal → Devices
+3. Regenerate provisioning profile
+
+### Device Limits
+
+- Up to 100 devices per type per year
+- Resets when you renew your Developer account
+- Can remove devices once per year
+
+---
+
+## Team Considerations
+
+### Multiple Team Members
+
+If working with a team:
+- Each developer has their own development certificate
+- Share distribution certificates carefully
+- Use role-based access in App Store Connect
+
+### Multiple Macs
+
+Each Mac needs:
+- The certificate installed
+- Access to the private key
+- Provisioning profiles downloaded
+
+---
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Use automatic signing" icon="wand-magic-sparkles">
+    Let Nativeline handle code signing unless you have specific requirements. It prevents most common issues.
+  </Accordion>
+
+  <Accordion title="Backup certificates" icon="download">
+    Export certificates from Keychain Access and store securely. Losing your distribution certificate means regenerating profiles.
+  </Accordion>
+
+  <Accordion title="Don't share certificates freely" icon="lock">
+    Distribution certificates give access to upload builds for your apps. Only share with trusted team members.
+  </Accordion>
+
+  <Accordion title="Check expiration dates" icon="calendar">
+    Certificates and profiles expire. Renew before they expire to avoid distribution interruptions.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Expiration
+
+### Certificate Expiration
+
+- Development: 1 year
+- Distribution: 1 year
+
+When expired:
+- Cannot create new builds with that certificate
+- Existing apps continue working
+- Create new certificate to continue
+
+### Profile Expiration
+
+- Profiles expire when the certificate they use expires
+- Or when the Developer Program membership lapses
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="TestFlight Setup" icon="paper-plane" href="/publishing/testflight/setup">
+    Configure for beta testing
+  </Card>
+  <Card title="App Store Submission" icon="app-store" href="/publishing/app-store/submission">
+    Submit your app
+  </Card>
+</CardGroup>

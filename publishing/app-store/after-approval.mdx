@@ -1,0 +1,354 @@
+---
+title: "After Approval"
+description: "What happens after your app is approved"
+---
+
+# After Approval
+
+Congratulations! Your app is approved. Here's what comes next.
+
+## Release Your App
+
+If you selected manual release, it's time to go live:
+
+<Steps>
+  <Step title="Go to App Store Connect">
+    Navigate to your app
+  </Step>
+  <Step title="Check status">
+    Should show "Pending Developer Release"
+  </Step>
+  <Step title="Click Release This Version">
+    In the version section, click "Release This Version"
+  </Step>
+  <Step title="Confirm">
+    Your app will appear on the App Store within 24 hours
+  </Step>
+</Steps>
+
+<Note>
+  After clicking release, it can take up to 24 hours for your app to appear in App Store search. Often it's much faster.
+</Note>
+
+---
+
+## First 24 Hours
+
+### Verify Your Listing
+
+Once live, check:
+- [ ] App appears in App Store search
+- [ ] Screenshots display correctly
+- [ ] Description is accurate
+- [ ] Links work (website, support)
+- [ ] Pricing is correct
+
+### Download and Test
+
+Download from the App Store and verify:
+- App installs correctly
+- Core functionality works
+- Any server connections work
+- No first-launch issues
+
+### Monitor for Issues
+
+Watch for:
+- Crash reports in App Store Connect
+- Early user feedback
+- Rating drops
+- Support requests
+
+---
+
+## App Analytics
+
+### App Store Connect Analytics
+
+Access via App Store Connect → Analytics:
+
+#### Metrics Available
+
+| Metric | What It Shows |
+|--------|---------------|
+| Impressions | How often your app is shown |
+| Product Page Views | Who visited your listing |
+| App Units | Downloads (excluding updates) |
+| Sessions | How often app is opened |
+| Retention | Users who return |
+| Crash Rate | Crashes per session |
+
+#### Understanding the Funnel
+
+```
+Impressions → Product Page Views → Downloads
+    ↓              ↓                   ↓
+  People who    People who         People who
+  saw you       clicked            installed
+```
+
+### Key Insights
+
+**Conversion Rate:**
+Downloads ÷ Product Page Views = How well your listing converts
+
+**Sources:**
+See where downloads come from:
+- App Store Search
+- App Store Browse
+- Web Referral
+- App Referral
+
+---
+
+## Responding to Reviews
+
+### Why Reviews Matter
+
+- Affect App Store ranking
+- Influence potential users
+- Provide feedback for improvements
+
+### Best Practices
+
+**Do:**
+- Respond promptly (within 24-48 hours)
+- Thank users for positive reviews
+- Address concerns in negative reviews
+- Offer to help with issues
+
+**Don't:**
+- Get defensive
+- Argue with users
+- Copy/paste generic responses
+- Ignore negative reviews
+
+### Example Responses
+
+**Positive Review:**
+```
+Thank you so much for the kind words! We're glad you're
+enjoying the app. Stay tuned for exciting updates!
+```
+
+**Negative Review (bug report):**
+```
+We're sorry you experienced this issue. We've identified
+the bug and it's fixed in our next update. Thank you for
+bringing this to our attention!
+```
+
+**Negative Review (feature request):**
+```
+Thank you for the feedback! This is a great suggestion
+and we've added it to our roadmap. Keep the ideas coming!
+```
+
+---
+
+## Pushing Updates
+
+### When to Update
+
+- Bug fixes (prioritize critical issues)
+- New features
+- Performance improvements
+- iOS version compatibility
+- User-requested improvements
+
+### Update Process
+
+<Steps>
+  <Step title="Make changes in Nativeline">
+    Update your app as needed
+  </Step>
+  <Step title="Increment version/build">
+    Update version for new features
+    Always increment build number
+  </Step>
+  <Step title="Test thoroughly">
+    Use TestFlight for testing
+  </Step>
+  <Step title="Upload new build">
+    Same process as initial upload
+  </Step>
+  <Step title="Submit for review">
+    Updates go through review (usually faster)
+  </Step>
+</Steps>
+
+### Update Review Times
+
+Updates typically review faster than initial submissions:
+- Most: Same day
+- Complex changes: 24-48 hours
+
+---
+
+## Marketing Your App
+
+### App Store Optimization (ASO)
+
+Improve discoverability:
+
+**Keywords:**
+- Research competitor keywords
+- Use all 100 characters
+- Test and iterate
+
+**Screenshots:**
+- A/B test different styles
+- Highlight best features first
+- Keep updated with new features
+
+**Description:**
+- Front-load important information
+- Use clear formatting
+- Update for new features
+
+### External Marketing
+
+**Social Media:**
+- Share on your channels
+- Show the app in action
+- Encourage users to share
+
+**Press:**
+- Create a press kit
+- Reach out to relevant blogs
+- Share with influencers in your niche
+
+**Your Network:**
+- Ask friends and family to download
+- Request honest reviews
+- Word of mouth is powerful
+
+---
+
+## Handling Problems
+
+### Crashes Increasing
+
+If crash rate rises after update:
+1. Check App Store Connect crash reports
+2. Identify the cause
+3. Prepare hotfix build
+4. Submit with expedited review request if critical
+
+### Negative Reviews Surge
+
+If you see sudden negative reviews:
+1. Identify the cause (usually a bug)
+2. Respond to reviews acknowledging the issue
+3. Push fix quickly
+4. Update review responses after fix
+
+### App Ranking Dropping
+
+If downloads decline:
+1. Review recent changes
+2. Check competitor activity
+3. Refresh screenshots/description
+4. Consider promotional pricing
+
+---
+
+## Monetization
+
+### If Free with Ads
+
+- Monitor ad revenue in your ad platform
+- Track user engagement with ads
+- Optimize ad placement
+
+### If Paid
+
+- Monitor sales in App Store Connect
+- Consider promotional pricing
+- Watch for piracy
+
+### If Subscription/IAP
+
+- Track conversion rates
+- Monitor cancellations
+- Optimize pricing
+
+---
+
+## Long-Term Success
+
+<AccordionGroup>
+  <Accordion title="Regular updates" icon="arrows-rotate">
+    Apps that update regularly rank better and retain users. Even small improvements show you're active.
+  </Accordion>
+
+  <Accordion title="Listen to users" icon="ear-listen">
+    Reviews and feedback are gold. Users tell you exactly what they want. Use it.
+  </Accordion>
+
+  <Accordion title="Fix bugs quickly" icon="bug">
+    Nothing kills an app faster than bugs. Prioritize stability over new features.
+  </Accordion>
+
+  <Accordion title="Stay current with iOS" icon="mobile">
+    Update for new iOS versions. Users on latest iOS expect apps to work well.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Managing Multiple Versions
+
+### TestFlight + App Store
+
+You can have:
+- TestFlight for beta testing next version
+- App Store with current live version
+
+Both can run simultaneously.
+
+### Version Numbers
+
+Use semantic versioning:
+```
+MAJOR.MINOR.PATCH
+1.0.0 → 1.0.1 (bug fix)
+1.0.1 → 1.1.0 (new feature)
+1.1.0 → 2.0.0 (major change)
+```
+
+---
+
+## Annual Maintenance
+
+### Yearly Tasks
+
+- Renew Apple Developer membership
+- Update privacy policy if data practices change
+- Review and update app for latest iOS
+- Refresh screenshots and description
+- Check for deprecated APIs
+
+### Developer Program Renewal
+
+Apple sends reminders before your $99 renewal:
+- 30 days before
+- 7 days before
+- Day of expiration
+
+If you miss renewal, your apps remain on the App Store but you can't submit updates.
+
+---
+
+## Celebrate!
+
+You did it. Your app is on the App Store. That's a real achievement.
+
+<CardGroup cols={2}>
+  <Card title="Back to Publishing" icon="arrow-left" href="/publishing/overview">
+    Publishing overview
+  </Card>
+  <Card title="Troubleshooting" icon="wrench" href="/faqs/troubleshooting">
+    Get help with issues
+  </Card>
+</CardGroup>

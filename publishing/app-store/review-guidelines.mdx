@@ -1,0 +1,348 @@
+---
+title: "App Review Guidelines"
+description: "What Apple looks for when reviewing your app"
+---
+
+# App Review Guidelines
+
+Apple reviews every app before it goes on the App Store. Understanding what they look for helps you avoid rejection.
+
+## The Five Principles
+
+Apple organizes guidelines around five themes:
+
+### 1. Safety
+
+Your app must be safe for users:
+- No harmful or objectionable content
+- User privacy respected
+- No dangerous physical activities encouraged
+
+### 2. Performance
+
+Your app must work well:
+- No crashes or bugs
+- Accurate metadata
+- Complete functionality
+
+### 3. Business
+
+Fair business practices:
+- Clear pricing
+- No misleading claims
+- Proper use of Apple's payment systems
+
+### 4. Design
+
+Quality user experience:
+- Follow Human Interface Guidelines
+- Intuitive navigation
+- Accessible to all users
+
+### 5. Legal
+
+Compliance with laws:
+- No copyright infringement
+- No illegal activities
+- Proper licensing
+
+---
+
+## Most Common Rejection Reasons
+
+### 1. Crashes and Bugs
+
+**Issue:** App crashes during use or review
+
+**Prevention:**
+- Test thoroughly on real devices
+- Test all user flows
+- Test edge cases (no internet, low storage)
+- Use TestFlight feedback to find issues
+
+### 2. Broken Links
+
+**Issue:** Links in app or metadata don't work
+
+**Check:**
+- Privacy policy URL
+- Support URL
+- Website links
+- Deep links within app
+
+### 3. Placeholder Content
+
+**Issue:** "Lorem ipsum" or "coming soon" in app
+
+**Prevention:**
+- Remove all placeholder text
+- Disable or hide incomplete features
+- Only submit when app is complete
+
+### 4. Inaccurate Description
+
+**Issue:** Description doesn't match what app does
+
+**Prevention:**
+- Describe actual features
+- Don't overpromise
+- Update description when features change
+
+### 5. Insufficient Functionality
+
+**Issue:** App doesn't do enough to be useful
+
+**Prevention:**
+- Ensure core value proposition works
+- Don't submit "hello world" apps
+- Have at least one complete feature set
+
+---
+
+## Privacy Requirements
+
+Apple takes privacy seriously:
+
+### Required Privacy Disclosures
+
+For any data you collect:
+1. Declare in App Store Connect
+2. Include in privacy policy
+3. Request user permission where needed
+
+### Permission Requests
+
+When asking for permissions:
+- Explain why you need it (usage description)
+- Request only when relevant
+- Accept "no" gracefully
+
+### Data Usage
+
+If you collect data:
+- Tell users what you collect
+- Tell users how it's used
+- Tell users who it's shared with
+
+---
+
+## Design Requirements
+
+### Human Interface Guidelines
+
+Follow Apple's design patterns:
+- Standard navigation patterns
+- Appropriate use of system features
+- Consistent with iOS look and feel
+
+### Accessibility
+
+Apps should be usable by everyone:
+- VoiceOver support
+- Dynamic Type support
+- Sufficient color contrast
+
+### App Completeness
+
+No half-finished apps:
+- All buttons must work
+- All screens must be complete
+- No "under construction" areas
+
+---
+
+## Content Restrictions
+
+### Prohibited Content
+
+- Pornography or explicit sexual content
+- Violence for shock value
+- Discrimination or hate speech
+- Illegal activities
+- False information that could cause harm
+
+### Regulated Content
+
+Some content requires age restrictions:
+- Alcohol/tobacco references
+- Gambling
+- Horror/fear themes
+- Medical/health information
+
+---
+
+## In-App Purchases
+
+### When Required
+
+Apple's IAP system is required for:
+- Digital content consumption (within app)
+- Premium features/subscriptions
+- Virtual goods/currency
+- Unlocking functionality
+
+### When Not Required
+
+External payment allowed for:
+- Physical goods
+- Services consumed outside app
+- Business-to-business apps
+
+<Warning>
+  Using external payments for digital content can result in app rejection or removal.
+</Warning>
+
+---
+
+## Metadata Guidelines
+
+### App Name
+
+- No prices
+- No excessive keywords
+- Not misleading
+- Not too similar to existing apps
+
+### Description
+
+- Must be accurate
+- No irrelevant content
+- No other platform mentions
+- No pricing (use App Store pricing)
+
+### Screenshots
+
+- Must be from the actual app
+- No device frames showing competitor devices
+- Must represent actual app functionality
+- No fake reviews or endorsements
+
+---
+
+## Specific Content Types
+
+### Kids Category
+
+Extra requirements for apps targeting children:
+- No external links
+- No advertising
+- Stricter privacy (no data collection)
+- Age-appropriate content
+
+### Health and Medical
+
+Apps with health claims need:
+- Accurate information
+- Disclaimers where appropriate
+- Compliance with medical regulations
+
+### Financial Apps
+
+Apps handling money need:
+- Security measures
+- Clear disclosures
+- Regulatory compliance
+
+---
+
+## Review Process
+
+### Timeline
+
+- Most reviews: 24-48 hours
+- Can be faster or slower
+- First submissions may take longer
+
+### Communication
+
+If Apple needs information:
+- Check email regularly during review
+- Respond promptly to questions
+- Provide demo accounts if requested
+
+### Expedited Reviews
+
+For critical issues:
+- Request at [developer.apple.com/contact](https://developer.apple.com/contact)
+- Only for genuine emergencies
+- Not for convenience
+
+---
+
+## Handling Rejections
+
+### If Rejected
+
+1. **Read the rejection carefully** — Apple provides specific reasons
+2. **Fix the issues** — Address each point
+3. **Resubmit** — With a new build if needed
+
+### Metadata Rejection
+
+If only metadata was rejected:
+- Fix text/screenshots/links
+- Resubmit without new build
+- Usually faster resolution
+
+### Appeal Process
+
+If you believe rejection was wrong:
+- Reply to the rejection email
+- Explain your position clearly
+- Provide evidence if applicable
+- Don't be confrontational
+
+---
+
+## Pre-Submission Checklist
+
+<AccordionGroup>
+  <Accordion title="Functionality" icon="check">
+    - [ ] All features work
+    - [ ] No crashes on main flows
+    - [ ] Edge cases handled
+    - [ ] Works offline (if applicable)
+  </Accordion>
+
+  <Accordion title="Content" icon="file-alt">
+    - [ ] No placeholder text
+    - [ ] All content is appropriate
+    - [ ] Age rating is correct
+    - [ ] No copyrighted material without license
+  </Accordion>
+
+  <Accordion title="Privacy" icon="shield">
+    - [ ] Privacy policy is accurate
+    - [ ] App privacy details completed
+    - [ ] Permission requests explained
+    - [ ] Data handling disclosed
+  </Accordion>
+
+  <Accordion title="Metadata" icon="list">
+    - [ ] Description is accurate
+    - [ ] Screenshots show actual app
+    - [ ] All links work
+    - [ ] Contact info is correct
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Further Reading
+
+- [Full App Store Review Guidelines](https://developer.apple.com/app-store/review/guidelines/)
+- [Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/)
+- [App Store Product Page](https://developer.apple.com/app-store/product-page/)
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Submit for Review" icon="paper-plane" href="/publishing/app-store/submission">
+    Ready to submit
+  </Card>
+  <Card title="After Approval" icon="rocket" href="/publishing/app-store/after-approval">
+    What happens next
+  </Card>
+</CardGroup>

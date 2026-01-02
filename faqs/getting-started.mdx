@@ -1,0 +1,148 @@
+---
+title: "Getting Started FAQs"
+description: "Questions about installation and first steps"
+---
+
+# Getting Started FAQs
+
+Questions about installing Nativeline and getting your first app running.
+
+---
+
+<AccordionGroup>
+  <Accordion title="What Mac do I need?">
+    Nativeline requires:
+    - **macOS 15.1 (Sequoia)** or later
+    - Any Mac with **Apple Silicon** (M1, M2, M3, M4 chips) or **Intel**
+    - At least **30GB free storage** (for Xcode and tools)
+    - **8GB RAM** minimum (16GB recommended)
+
+    Not sure what you have? Click the Apple menu → About This Mac.
+  </Accordion>
+
+  <Accordion title="How do I install Nativeline?">
+    1. Download from [nativeline.ai](https://nativeline.ai)
+    2. Open the downloaded file
+    3. Drag Nativeline to your Applications folder
+    4. Open Nativeline from Applications
+
+    On first launch, Nativeline will automatically install Xcode and other required tools. This can take 15-30 minutes depending on your internet speed.
+  </Accordion>
+
+  <Accordion title="Why does the first launch take so long?">
+    Nativeline automatically installs the iOS development tools on first launch:
+    - **Xcode** — Apple's development environment (~15GB)
+    - **Command Line Tools** — Additional development utilities
+    - **iOS Simulator** — For testing your apps
+
+    This is a one-time process. Subsequent launches are quick.
+  </Accordion>
+
+  <Accordion title="Do I need to install Xcode myself?">
+    No. Nativeline automatically installs Xcode for you during the first launch. Just make sure you have enough storage space (at least 30GB free) and a stable internet connection.
+
+    If you already have Xcode installed, Nativeline will use your existing installation.
+  </Accordion>
+
+  <Accordion title="How do I create an account?">
+    1. Open Nativeline
+    2. Click "Create Account"
+    3. Enter your email address
+    4. Check your email for an 8-digit verification code
+    5. Enter the code in Nativeline
+    6. You're in!
+
+    We use email-only authentication for simplicity and security.
+  </Accordion>
+
+  <Accordion title="I didn't receive the verification code">
+    Try these steps:
+    1. Check your spam/junk folder
+    2. Wait 2-3 minutes (email can be delayed)
+    3. Click "Resend Code" in Nativeline
+    4. Make sure you typed your email correctly
+
+    If still having issues, contact support@nativeline.ai.
+  </Accordion>
+
+  <Accordion title="How do I create my first app?">
+    1. Click "New Project"
+    2. Give your project a name
+    3. Type a description of what you want to build
+    4. Press Enter and watch the AI work!
+
+    Start simple. Try: "Create a counter app with plus and minus buttons."
+  </Accordion>
+
+  <Accordion title="Where are my projects saved?">
+    Projects are saved in:
+    ```
+    ~/Documents/Nativeline Projects/
+    ```
+
+    Each project is a folder containing:
+    - Swift source code
+    - Asset files
+    - Configuration files
+    - Everything needed to build the app
+  </Accordion>
+
+  <Accordion title="Can I open an existing project?">
+    Yes. Go to File → Open Project and navigate to your project folder.
+
+    You can also:
+    - Double-click a .xcodeproj file
+    - Drag a project folder onto the Nativeline icon
+  </Accordion>
+
+  <Accordion title="What happens if my Mac goes to sleep during installation?">
+    The installation will pause but should resume when your Mac wakes up. If it seems stuck:
+    1. Restart Nativeline
+    2. The installation should continue where it left off
+    3. If needed, Nativeline will re-download any corrupted files
+  </Accordion>
+
+  <Accordion title="I'm getting a 'Mac not supported' error">
+    This means your macOS version is too old. You need macOS 15.1 (Sequoia) or later.
+
+    To update:
+    1. Open System Settings
+    2. Go to General → Software Update
+    3. Download and install the latest macOS
+
+    Note: Some older Macs may not support macOS 15. Check Apple's compatibility list.
+  </Accordion>
+
+  <Accordion title="How do I switch between projects?">
+    - File → Open Recent to see recent projects
+    - File → Open Project to browse
+    - Close current project first to avoid confusion
+
+    Each project opens in a separate window.
+  </Accordion>
+
+  <Accordion title="Can I work on multiple projects at once?">
+    Yes, but we recommend focusing on one project at a time. Each project runs its own Simulator and uses system resources.
+
+    For best performance, close projects you're not actively working on.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Related FAQs
+
+<CardGroup cols={2}>
+  <Card title="General FAQs" icon="circle-question" href="/faqs/general">
+    What is Nativeline?
+  </Card>
+  <Card title="Building Apps" icon="hammer" href="/faqs/building">
+    Creating apps with AI
+  </Card>
+  <Card title="Troubleshooting" icon="wrench" href="/faqs/troubleshooting">
+    Fixing common issues
+  </Card>
+  <Card title="Technical" icon="code" href="/faqs/technical">
+    Code and development questions
+  </Card>
+</CardGroup>

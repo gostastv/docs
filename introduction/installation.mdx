@@ -1,0 +1,180 @@
+---
+title: "Installation"
+description: "Get Nativeline up and running on your Mac"
+---
+
+# Installing Nativeline
+
+Getting started with Nativeline takes just a few minutes. Download, install, and you're ready to build.
+
+## Before You Start
+
+<CardGroup cols={2}>
+  <Card title="macOS 15.1+" icon="apple">
+    Sequoia or later required. Check via  → About This Mac.
+  </Card>
+  <Card title="Internet Connection" icon="wifi">
+    Required for AI features and downloading dependencies.
+  </Card>
+</CardGroup>
+
+That's it. Nativeline automatically installs everything else you need on first launch — including Xcode, iOS Simulator, and all development tools.
+
+---
+
+## Download and Install
+
+<Steps>
+  <Step title="Visit nativeline.ai">
+    Go to [nativeline.ai](https://nativeline.ai) and click the **Download** button.
+  </Step>
+  <Step title="Open the DMG">
+    Once downloaded, double-click the `.dmg` file to open it.
+  </Step>
+  <Step title="Drag to Applications">
+    Drag the Nativeline icon to your Applications folder.
+  </Step>
+  <Step title="Launch Nativeline">
+    Open Nativeline from your Applications folder or Spotlight (Cmd+Space, type "Nativeline").
+  </Step>
+</Steps>
+
+<Tip>
+  If you see a security warning saying the app is from an unidentified developer, right-click the app and select "Open" to bypass Gatekeeper for the first launch.
+</Tip>
+
+---
+
+## First Launch
+
+When you open Nativeline for the first time, everything you need is installed automatically.
+
+### Automatic Setup
+
+Nativeline downloads and installs all required development tools:
+
+- **Xcode** — Apple's developer tools (~12GB)
+- **Command Line Tools** — Build utilities
+- **iOS Simulator** — For testing your apps
+
+This happens automatically in the background. You'll see progress indicators as components are installed.
+
+<Note>
+  First launch takes longer due to downloading Xcode (~12GB). Make sure you have a stable internet connection and at least 20GB of free disk space.
+</Note>
+
+### What You'll See
+
+1. **Progress indicators** as Xcode downloads
+2. **Brief welcome animation** introducing Nativeline
+3. **Home page** when setup is complete
+
+Once setup finishes, you're ready to start building.
+
+---
+
+## The Home Page
+
+After setup, you'll land on the Home Page where you can:
+
+- **Create a new app** — Start a fresh project
+- **Open existing projects** — Continue where you left off
+- **Access account settings** — Manage your plan and preferences
+
+<Frame>
+  <img src="/images/home-page.png" alt="Nativeline home page" />
+</Frame>
+
+---
+
+## Troubleshooting Installation
+
+<AccordionGroup>
+  <Accordion title="'Nativeline can't be opened because it is from an unidentified developer'" icon="shield">
+    This is a macOS security feature. To open anyway:
+    1. Right-click (or Control-click) on the Nativeline app
+    2. Select **Open** from the menu
+    3. Click **Open** in the dialog that appears
+
+    You only need to do this once.
+  </Accordion>
+
+  <Accordion title="Automatic installation is stuck" icon="clock">
+    If the automatic setup seems stuck:
+    1. Check your internet connection — Xcode is a ~12GB download
+    2. Make sure you have at least 20GB free disk space
+    3. Restart Nativeline and let it retry
+    4. Contact support@nativeline.ai if it continues to fail
+  </Accordion>
+
+  <Accordion title="App crashes on launch" icon="bomb">
+    Try these steps:
+    1. Make sure you're running macOS 15.1 or later
+    2. Delete and re-download the app from [nativeline.ai](https://nativeline.ai)
+    3. Check Console.app for error messages
+    4. Contact support@nativeline.ai with the crash report
+  </Accordion>
+
+  <Accordion title="Xcode download keeps failing" icon="download">
+    If Xcode fails to download:
+    1. Check your internet connection
+    2. Try a wired connection if possible (large download)
+    3. Ensure you have 20GB+ free space
+    4. Restart your Mac and try again
+    5. Contact support if persistent
+  </Accordion>
+
+  <Accordion title="Not enough disk space" icon="hard-drive">
+    Nativeline requires about 20GB of free space for Xcode and the iOS Simulator. Free up space by:
+    1. Emptying Trash
+    2. Removing unused applications
+    3. Clearing Downloads folder
+    4. Using Storage Management (Apple Menu →  About This Mac → Storage → Manage)
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Keeping Nativeline Updated
+
+Nativeline regularly receives updates with new features, improvements, and bug fixes.
+
+### Checking for Updates
+
+To manually check for updates:
+
+1. Click **Nativeline** in the menu bar
+2. Select **Check for Updates...**
+3. If an update is available, click **Install Update**
+4. Nativeline will restart with the new version
+
+### Automatic Update Checking
+
+By default, Nativeline checks for updates automatically when you launch the app. You can adjust this in preferences.
+
+### Viewing Your Version
+
+To see which version you're running:
+
+1. Click **Nativeline** in the menu bar
+2. Select **About Nativeline**
+3. Your version number is displayed
+
+<Tip>
+  Keep Nativeline updated to get the latest AI improvements and features.
+</Tip>
+
+---
+
+## What's Next?
+
+You're all set up! Now it's time to create an account and build your first app.
+
+<CardGroup cols={2}>
+  <Card title="Create Your Account" icon="user-plus" href="/introduction/account-setup">
+    Sign up and choose a plan
+  </Card>
+  <Card title="Build Your First App" icon="rocket" href="/quick-start/your-first-app">
+    Create something amazing in 10 minutes
+  </Card>
+</CardGroup>

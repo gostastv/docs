@@ -1,0 +1,324 @@
+---
+title: "OpenAI Integration"
+description: "Add AI chat and text generation to your app"
+---
+
+# OpenAI Integration
+
+Add powerful AI capabilities to your app using OpenAI's GPT models. Create chatbots, generate content, analyze text, and more.
+
+## What You Can Build
+
+- **AI Chat** — Conversational interfaces
+- **Content Generation** — Write text, summarize, translate
+- **Q&A Bots** — Answer questions about your content
+- **Creative Tools** — Story writing, brainstorming
+- **Analysis** — Sentiment analysis, categorization
+
+---
+
+## Prerequisites
+
+- OpenAI account with API access
+- API key from OpenAI dashboard
+- Credit balance (new accounts get $5 free)
+
+---
+
+## Getting Your API Key
+
+<Steps>
+  <Step title="Create OpenAI account">
+    Go to [platform.openai.com](https://platform.openai.com) and sign up
+  </Step>
+  <Step title="Navigate to API keys">
+    Click your profile → View API Keys
+  </Step>
+  <Step title="Create new key">
+    Click "Create new secret key"
+  </Step>
+  <Step title="Copy and save">
+    Copy the key immediately — it won't be shown again!
+  </Step>
+</Steps>
+
+<Warning>
+  Keep your API key secret! Anyone with your key can make API calls charged to your account.
+</Warning>
+
+---
+
+## Setting Up in Nativeline
+
+Tell Nativeline about your API:
+
+```
+Add OpenAI integration with my API key: sk-xxxxx
+```
+
+Or configure via settings if available.
+
+---
+
+## Building an AI Chat
+
+### Basic Chat Interface
+
+```
+Create an AI chat interface:
+- Text input at bottom
+- Messages list above
+- User messages on right (blue)
+- AI responses on left (gray)
+- Loading indicator while waiting
+- Send button and keyboard return to send
+```
+
+### Connecting to OpenAI
+
+```
+When user sends a message:
+1. Add their message to the chat
+2. Show loading indicator
+3. Send to OpenAI with conversation history
+4. Display the AI response
+5. Hide loading indicator
+```
+
+---
+
+## OpenAI Models
+
+| Model | Best For | Speed | Cost |
+|-------|----------|-------|------|
+| `gpt-4o` | Complex tasks, reasoning | Medium | Higher |
+| `gpt-4o-mini` | Simple tasks, chat | Fast | Lower |
+| `gpt-3.5-turbo` | Basic chat, cost-sensitive | Fast | Lowest |
+
+### Choosing a Model
+
+```
+Use gpt-4o-mini for the chat feature (fast and affordable)
+```
+
+---
+
+## API Parameters
+
+### Temperature
+
+Controls randomness (0 = focused, 1 = creative):
+
+```
+Use temperature 0.7 for creative writing
+Use temperature 0.3 for factual Q&A
+```
+
+### Max Tokens
+
+Limits response length:
+
+```
+Limit responses to 500 tokens to keep them concise
+```
+
+### System Prompt
+
+Sets the AI's behavior:
+
+```
+Add a system prompt:
+"You are a helpful cooking assistant. Answer questions about recipes,
+ingredients, and cooking techniques. Be concise and friendly."
+```
+
+---
+
+## Example Use Cases
+
+### Chatbot
+
+```
+Create a customer service chatbot that:
+- Greets users
+- Answers FAQs about [your topic]
+- Asks clarifying questions
+- Suggests related topics
+```
+
+### Content Generator
+
+```
+Build a blog post generator:
+- User enters topic
+- Select tone (professional, casual, humorous)
+- Generate outline first
+- Then expand each section
+- Allow regeneration of sections
+```
+
+### Summarizer
+
+```
+Add a summarize feature:
+- User pastes long text
+- Tap "Summarize"
+- Show condensed version
+- Option for bullet points vs paragraph
+```
+
+### Writing Assistant
+
+```
+Create a writing assistant:
+- Text editor for user's draft
+- "Improve" button to polish text
+- "Expand" button to add detail
+- "Simplify" button for clarity
+```
+
+---
+
+## Handling Conversations
+
+### Maintaining Context
+
+Include conversation history for context:
+
+```
+Send the full conversation history to OpenAI so it
+understands the context of the conversation.
+```
+
+### Trimming History
+
+For long conversations, trim old messages:
+
+```
+Keep the last 10 messages in history to stay within
+token limits while maintaining context.
+```
+
+---
+
+## Error Handling
+
+### Common Errors
+
+| Error | Cause | Solution |
+|-------|-------|----------|
+| Invalid API key | Wrong or expired key | Check key in OpenAI dashboard |
+| Rate limited | Too many requests | Wait and retry with backoff |
+| Insufficient quota | Out of credits | Add credits in OpenAI billing |
+| Context too long | Too many tokens | Trim conversation history |
+
+### Handling in App
+
+```
+Handle OpenAI errors gracefully:
+- Rate limit: "Please wait a moment"
+- Network error: "Check your connection"
+- Other errors: "Something went wrong, try again"
+Show retry button after errors.
+```
+
+---
+
+## Cost Management
+
+### Monitoring Usage
+
+Check usage at [platform.openai.com/usage](https://platform.openai.com/usage)
+
+### Reducing Costs
+
+- Use `gpt-4o-mini` instead of `gpt-4o`
+- Set max tokens limit
+- Cache common responses
+- Trim conversation history
+
+### Setting Limits
+
+In OpenAI dashboard:
+1. Settings → Billing → Usage limits
+2. Set monthly budget
+3. Get notified before exceeding
+
+---
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Write good system prompts" icon="pen">
+    Clear system prompts improve results:
+    - Define the AI's role
+    - Specify tone and style
+    - Set boundaries
+    - Include examples
+  </Accordion>
+
+  <Accordion title="Handle rate limits" icon="gauge-high">
+    Implement exponential backoff:
+    - Wait 1 second, retry
+    - If fails, wait 2 seconds
+    - Then 4, 8, etc.
+  </Accordion>
+
+  <Accordion title="Show loading states" icon="spinner">
+    API calls take time. Show:
+    - Loading indicator
+    - "Thinking..." message
+    - Disable send button
+  </Accordion>
+
+  <Accordion title="Validate inputs" icon="check">
+    Check user input before sending:
+    - Not empty
+    - Within length limits
+    - No obvious abuse
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Advanced: Streaming
+
+For longer responses, stream tokens as they arrive:
+
+```
+Stream the AI response so text appears word by word
+instead of waiting for the complete response.
+```
+
+This provides better UX for longer generations.
+
+---
+
+## DALL-E (Image Generation)
+
+OpenAI also offers image generation:
+
+```
+Add image generation:
+- User enters description
+- Generate image with DALL-E
+- Display the result
+- Option to save or regenerate
+```
+
+<Note>
+  DALL-E has separate pricing. Check OpenAI pricing page for current rates.
+</Note>
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Stripe Payments" icon="credit-card" href="/integrations/external-apis/stripe">
+    Monetize your AI features
+  </Card>
+  <Card title="Other APIs" icon="puzzle-piece" href="/integrations/external-apis/other">
+    Generic API integration guide
+  </Card>
+</CardGroup>

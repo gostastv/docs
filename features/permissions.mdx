@@ -1,0 +1,274 @@
+---
+title: "Permissions"
+description: "Control what device features your app can access"
+---
+
+# Permissions
+
+iOS apps must ask for permission to access certain device features. This protects user privacy and gives them control over their data.
+
+## How Permissions Work
+
+1. You enable a permission in Nativeline settings
+2. You provide a **usage description** (why your app needs it)
+3. When your app tries to use the feature, iOS shows a prompt
+4. User grants or denies access
+5. Your app respects their choice
+
+---
+
+## Available Permissions
+
+### Camera
+
+**Use for:** Taking photos, recording video, QR scanning
+
+**Usage description example:**
+> "This app needs camera access to take photos for your profile."
+
+### Photo Library
+
+**Use for:** Selecting existing photos, saving images
+
+**Usage description example:**
+> "This app needs access to your photos to let you choose images for posts."
+
+### Location
+
+**Two types:**
+- **When In Use:** Only while app is open
+- **Always:** Even in background (rare, requires justification)
+
+**Usage description example:**
+> "This app uses your location to show nearby restaurants."
+
+### Microphone
+
+**Use for:** Voice recording, audio messages, voice notes
+
+**Usage description example:**
+> "This app needs microphone access to record voice notes."
+
+### Contacts
+
+**Use for:** Importing contacts, finding friends
+
+**Usage description example:**
+> "This app accesses your contacts to help you find friends who also use the app."
+
+### Calendar
+
+**Use for:** Reading/writing calendar events
+
+**Usage description example:**
+> "This app needs calendar access to add events for your scheduled tasks."
+
+### Reminders
+
+**Use for:** Reading/writing reminders
+
+**Usage description example:**
+> "This app needs reminders access to sync your tasks with iOS Reminders."
+
+### Motion & Fitness
+
+**Use for:** Step counting, workout tracking
+
+**Usage description example:**
+> "This app tracks your steps to calculate your daily activity."
+
+### Bluetooth
+
+**Use for:** Connecting to Bluetooth devices
+
+**Usage description example:**
+> "This app uses Bluetooth to connect to your fitness tracker."
+
+### Face ID / Touch ID
+
+**Use for:** Biometric authentication
+
+**Usage description example:**
+> "This app uses Face ID to securely unlock your data."
+
+### Tracking (App Tracking Transparency)
+
+**Use for:** Tracking users across apps/websites
+
+**Usage description example:**
+> "This app uses tracking to show you relevant ads."
+
+<Note>
+  Most apps don't need tracking permission. Only enable if you're using advertising SDKs that require it.
+</Note>
+
+---
+
+## Enabling Permissions
+
+### In Nativeline
+
+1. Open your project
+2. Go to **Settings** → **Permissions**
+3. Toggle on the permissions you need
+4. Enter a usage description for each
+
+### Via Chat
+
+You can also ask the AI:
+
+```
+Add camera permission to the app with the description
+"Take photos to share with friends"
+```
+
+---
+
+## Writing Good Usage Descriptions
+
+### Do
+
+- ✅ Explain the specific feature that needs the permission
+- ✅ Be clear and concise
+- ✅ Describe the benefit to the user
+
+### Don't
+
+- ❌ Be vague: "This app needs access"
+- ❌ Be technical: "Required for AVCaptureSession"
+- ❌ Sound demanding: "You must allow access"
+
+### Examples
+
+| Permission | Bad | Good |
+|------------|-----|------|
+| Camera | "Camera access needed" | "Take photos to add to your recipes" |
+| Location | "Location required" | "Find restaurants near you" |
+| Photos | "Photo access" | "Select photos to share in your posts" |
+
+---
+
+## Permission States
+
+Users can grant or deny permissions:
+
+| State | Meaning | What to Do |
+|-------|---------|------------|
+| **Not Determined** | Haven't asked yet | First request will prompt |
+| **Authorized** | User said yes | Feature works normally |
+| **Denied** | User said no | Show explanation, guide to Settings |
+| **Restricted** | Device-level restriction | Feature unavailable |
+
+### Handling Denied Permissions
+
+If a user denies permission:
+
+1. Explain why the feature needs the permission
+2. Provide a button to open Settings
+3. Let them change their mind
+
+Ask the AI:
+```
+When camera permission is denied, show a message explaining
+why we need it and a button to open Settings.
+```
+
+---
+
+## Testing Permissions
+
+### In Simulator
+
+Most permissions work in the Simulator:
+- Photo Library (has sample photos)
+- Location (can set custom location)
+- Notifications
+
+Some require a real device:
+- Camera (Simulator has no camera)
+- Face ID (use "Features → Face ID" menu to simulate)
+
+### Resetting Permissions
+
+To test the permission prompt again:
+
+**Simulator:**
+Device → Erase All Content and Settings
+
+**Real device:**
+Settings → General → Transfer or Reset → Reset → Reset Location & Privacy
+
+---
+
+## Common Permission Combinations
+
+### Photo App
+
+- Camera (take photos)
+- Photo Library (select/save photos)
+
+### Social App
+
+- Camera (profile photos, posts)
+- Photo Library (upload existing photos)
+- Contacts (find friends)
+- Notifications (alerts)
+
+### Fitness App
+
+- Location (track routes)
+- Motion & Fitness (step counting)
+- HealthKit (via Capabilities)
+
+### Navigation App
+
+- Location (always, for background navigation)
+- Notifications (arrival alerts)
+
+---
+
+## Permission Best Practices
+
+<AccordionGroup>
+  <Accordion title="Only request what you need" icon="shield">
+    Don't enable permissions "just in case." Users are suspicious of apps requesting unnecessary access.
+  </Accordion>
+
+  <Accordion title="Request at the right time" icon="clock">
+    Request permissions when the user tries to use the feature, not at app launch. Context helps users understand why.
+  </Accordion>
+
+  <Accordion title="Handle denial gracefully" icon="hand">
+    Don't make the app unusable if a permission is denied. Provide alternatives or explain what's limited.
+  </Accordion>
+
+  <Accordion title="Explain before asking" icon="comment">
+    For sensitive permissions, show your own explanation before triggering the system prompt. Users are more likely to accept when they understand.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## App Store Requirements
+
+Apple reviews permission usage. They may reject apps that:
+
+- Request unnecessary permissions
+- Have vague usage descriptions
+- Don't actually use the permissions they request
+- Access data without clear user benefit
+
+Make sure every permission has a legitimate, user-facing feature.
+
+---
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Capabilities" icon="wand-magic-sparkles" href="/features/capabilities">
+    Advanced features like HealthKit
+  </Card>
+  <Card title="Project Settings" icon="gear" href="/features/project-settings">
+    All settings overview
+  </Card>
+</CardGroup>

@@ -1,0 +1,196 @@
+---
+title: "Building Apps FAQs"
+description: "Questions about creating apps with AI"
+---
+
+# Building Apps FAQs
+
+Questions about using the AI to build your apps.
+
+---
+
+<AccordionGroup>
+  <Accordion title="How do I tell the AI what I want?">
+    Just type in plain English! Be specific about:
+    - What the feature should do
+    - What it should look like
+    - How users should interact with it
+
+    **Good prompt:** "Add a profile screen with the user's photo, name, and email. Include an 'Edit Profile' button that opens an edit form."
+
+    **Less effective:** "Make it better"
+
+    See our [Prompt Writing Workshop](/guides/prompt-workshop) for detailed guidance.
+  </Accordion>
+
+  <Accordion title="How specific do I need to be?">
+    The more specific, the better. Instead of:
+    - ❌ "Add a list"
+    - ✅ "Add a scrolling list of recipes with an image, title, and cooking time for each"
+
+    Think about what you would tell a human developer. Include:
+    - What you want
+    - Where it should appear
+    - How it should behave
+    - Any specific styling
+  </Accordion>
+
+  <Accordion title="Can I share images or screenshots with the AI?">
+    Yes! You can:
+    - Paste screenshots of designs you like
+    - Share mockups or wireframes
+    - Show examples of apps for inspiration
+    - Share error screenshots for debugging
+
+    Drag images directly into the chat or use Cmd+V to paste.
+  </Accordion>
+
+  <Accordion title="Why did the AI misunderstand me?">
+    Common reasons:
+    - Prompt was too vague
+    - Request conflicted with existing code
+    - Technical limitation the AI didn't explain
+
+    **Fix:** Be more specific, or try rephrasing. Say "That's not what I meant. I wanted X instead of Y."
+  </Accordion>
+
+  <Accordion title="How do I undo what the AI did?">
+    Several options:
+    1. Tell the AI: "Undo that last change"
+    2. Be specific: "Remove the feature you just added"
+    3. Describe what you want instead
+
+    The AI maintains history and can reverse changes.
+  </Accordion>
+
+  <Accordion title="What is a 'plan' and why does the AI make one?">
+    For complex requests, the AI creates a plan—a todo list of steps it will follow. This helps you:
+    - See what the AI intends to do
+    - Catch misunderstandings before work begins
+    - Track progress on multi-step features
+
+    You can use `/planclear` to clear the current plan and start fresh.
+  </Accordion>
+
+  <Accordion title="What does /planclear do?">
+    The `/planclear` command clears the AI's current plan, allowing you to:
+    - Start fresh if the AI is going in the wrong direction
+    - Reset after a complex feature is complete
+    - Clear outdated context
+
+    Type `/planclear` in the chat and press Enter.
+  </Accordion>
+
+  <Accordion title="How do I continue where I left off?">
+    The AI remembers your project context. Just say:
+    - "Continue" — Resumes the last plan
+    - "What were we working on?" — Gets a summary
+    - Start a new request — Begins fresh
+
+    Project memory persists across sessions.
+  </Accordion>
+
+  <Accordion title="Why is the Simulator showing an old version?">
+    The Simulator might have cached data. Try:
+    1. In Simulator: Device → Erase All Content and Settings
+    2. Rebuild by clicking "Run App"
+    3. Wait for the fresh build to install
+
+    Also make sure the latest build was successful.
+  </Accordion>
+
+  <Accordion title="Why is my app not updating when I make changes?">
+    Changes don't appear until you rebuild. After the AI makes changes:
+    1. Wait for it to finish
+    2. Click "Run App" or wait for auto-run
+    3. Check the Simulator for updates
+
+    If still not updating, try erasing Simulator content.
+  </Accordion>
+
+  <Accordion title="Can the AI make my app faster?">
+    Yes! Ask it to:
+    - "Optimize the performance of [feature]"
+    - "The app feels slow when [action]. Make it faster."
+    - "Reduce the loading time for [screen]"
+
+    Be specific about what feels slow.
+  </Accordion>
+
+  <Accordion title="Can the AI fix bugs?">
+    Yes. The AI can:
+    - Analyze errors automatically
+    - Attempt to fix bugs (up to 3 automatic attempts)
+    - Accept your description of issues
+
+    For bugs, describe:
+    - What happens
+    - What should happen
+    - Steps to reproduce
+
+    See our [Debugging Guide](/guides/debugging) for more.
+  </Accordion>
+
+  <Accordion title="What happens when the AI can't fix a bug?">
+    After 3 automatic fix attempts:
+    1. Press "Run App"
+    2. A popup appears asking if you want to fix
+    3. Click "Apply Fix" to try again
+
+    You can also:
+    - Describe the problem in your own words
+    - Try a different approach
+    - Ask the AI to revert and try something else
+  </Accordion>
+
+  <Accordion title="How do I add a backend to my app?">
+    For data that needs to sync across devices or persist in the cloud, use Supabase:
+
+    1. Create a Supabase account
+    2. Connect it in Settings
+    3. Ask the AI to add features using Supabase
+
+    See our [Supabase](/integrations/supabase/overview) documentation for detailed guides.
+  </Accordion>
+
+  <Accordion title="Can I integrate external APIs?">
+    Yes! You can integrate:
+    - OpenAI for AI features
+    - Stripe for payments
+    - Weather APIs
+    - Any REST API
+
+    Tell the AI: "Integrate [API name] to [what you want to do]" and provide your API key.
+  </Accordion>
+
+  <Accordion title="What's the best way to build a complex feature?">
+    Break it into smaller pieces:
+
+    1. Describe the overall goal
+    2. Let the AI create a plan
+    3. Review the plan before proceeding
+    4. Build incrementally
+    5. Test each piece before moving on
+
+    Complex features are more successful when built step by step.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Related FAQs
+
+<CardGroup cols={2}>
+  <Card title="Troubleshooting" icon="wrench" href="/faqs/troubleshooting">
+    Fixing common issues
+  </Card>
+  <Card title="Technical" icon="code" href="/faqs/technical">
+    Code and Swift questions
+  </Card>
+  <Card title="Integrations" icon="plug" href="/faqs/integrations">
+    APIs and services
+  </Card>
+  <Card title="Billing" icon="credit-card" href="/faqs/billing">
+    Bits and plans
+  </Card>
+</CardGroup>

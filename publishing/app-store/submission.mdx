@@ -1,0 +1,319 @@
+---
+title: "Submitting for Review"
+description: "Send your app to Apple for review"
+---
+
+# Submitting for Review
+
+You've prepared everything. Now it's time to submit your app to Apple for review.
+
+## Pre-Submission Checklist
+
+Before clicking submit, verify:
+
+### Build
+- [ ] Build uploaded and processed in App Store Connect
+- [ ] Build number is correct
+- [ ] No processing errors
+
+### App Information
+- [ ] App name finalized
+- [ ] Subtitle set (optional but recommended)
+- [ ] Category selected
+- [ ] Content rights confirmed
+
+### Privacy
+- [ ] Privacy policy URL works and is accessible
+- [ ] App Privacy details completed
+- [ ] All data collection disclosed
+
+### Media
+- [ ] Screenshots for all required device sizes
+- [ ] Screenshots are accurate and compelling
+- [ ] App preview video uploaded (optional)
+
+### Metadata
+- [ ] Description complete and accurate
+- [ ] Keywords set (up to 100 characters)
+- [ ] Age rating questionnaire completed
+- [ ] Support URL works
+
+### Review Information
+- [ ] Contact email monitored
+- [ ] Contact phone number valid
+- [ ] Demo account provided (if login required)
+- [ ] Review notes explain anything unusual
+
+---
+
+## Submitting Your App
+
+<Steps>
+  <Step title="Open App Store Connect">
+    Go to [appstoreconnect.apple.com](https://appstoreconnect.apple.com) and select your app
+  </Step>
+  <Step title="Select App Store tab">
+    Navigate to the main App Store submission page
+  </Step>
+  <Step title="Select your build">
+    In the Build section, click "+" and select your processed build
+  </Step>
+  <Step title="Review all sections">
+    Scroll through and verify everything is complete (green checkmarks)
+  </Step>
+  <Step title="Click Submit for Review">
+    At the top right, click "Submit for Review"
+  </Step>
+  <Step title="Answer final questions">
+    - Export compliance (usually HTTPS exemption)
+    - Content rights confirmation
+    - Advertising identifier usage
+  </Step>
+  <Step title="Confirm submission">
+    Click "Submit" to send to Apple
+  </Step>
+</Steps>
+
+---
+
+## After Submission
+
+### Status Changes
+
+Your app will show these statuses:
+
+| Status | Meaning |
+|--------|---------|
+| Waiting for Review | In Apple's queue |
+| In Review | Apple is actively reviewing |
+| Pending Developer Release | Approved, waiting for you |
+| Ready for Sale | Live on App Store |
+| Rejected | Issues to address |
+| Metadata Rejected | Only metadata issues |
+
+### Timeline
+
+Typical timeline after submission:
+- **Waiting for Review:** Hours to 1-2 days
+- **In Review:** Minutes to hours
+- **Total:** Usually 24-48 hours
+
+<Note>
+  Review times vary. First submissions, complex apps, and apps with IAP may take longer.
+</Note>
+
+### Stay Reachable
+
+During review:
+- Monitor email (including spam folder)
+- Keep phone available (rare, but Apple may call)
+- Be ready to respond quickly to questions
+
+---
+
+## Release Options
+
+### Automatic Release
+
+After approval, app goes live immediately.
+
+**Pros:**
+- Fastest to market
+- No additional action needed
+
+**Cons:**
+- No control over timing
+- Can't coordinate with marketing
+
+### Manual Release
+
+After approval, you choose when to release.
+
+**Pros:**
+- Control timing
+- Coordinate with announcements
+- Final quality check
+
+**Cons:**
+- Requires action
+- Approval expires after 30 days
+
+### Scheduled Release
+
+Set a specific date and time.
+
+**Pros:**
+- Plan marketing around exact date
+- No manual action needed at release time
+
+**Cons:**
+- Must be approved before scheduled date
+- Less flexibility if plans change
+
+To set release option:
+1. Before submission, in Version Release section
+2. Select your preference
+3. Set date if scheduling
+
+---
+
+## Common Questions
+
+<AccordionGroup>
+  <Accordion title="Can I update after submitting?" icon="edit">
+    No. Once submitted, you can't edit. You'd need to reject your submission, make changes, and resubmit.
+  </Accordion>
+
+  <Accordion title="How do I check status?" icon="clock">
+    In App Store Connect → My Apps → Your App. Status shows at the top of the page.
+  </Accordion>
+
+  <Accordion title="What if I find a bug after submitting?" icon="bug">
+    If minor, wait for review. If critical, reject your submission, fix, and resubmit with new build.
+  </Accordion>
+
+  <Accordion title="Can I expedite review?" icon="rocket">
+    Only for critical situations. Request at developer.apple.com/contact. Use sparingly.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## If You're Rejected
+
+### Don't Panic
+
+Rejection is common, especially for first submissions. It's fixable.
+
+### Read the Feedback
+
+Apple provides specific rejection reasons. Read carefully and address each point.
+
+### Types of Rejection
+
+**Binary Rejected:**
+- Issue with the app itself
+- Requires new build
+- More significant fixes
+
+**Metadata Rejected:**
+- Issue with listing only
+- No new build needed
+- Usually quick to fix
+
+### Fixing and Resubmitting
+
+<Steps>
+  <Step title="Understand the issue">
+    Read Apple's feedback completely
+  </Step>
+  <Step title="Make fixes">
+    Address each point specifically
+  </Step>
+  <Step title="Upload new build (if needed)">
+    For binary rejection, upload fix
+  </Step>
+  <Step title="Reply to rejection">
+    In App Store Connect, respond to Apple explaining your fixes
+  </Step>
+  <Step title="Resubmit">
+    Click "Submit for Review" again
+  </Step>
+</Steps>
+
+---
+
+## Responding to App Review
+
+### Through Resolution Center
+
+In App Store Connect → Your App → Resolution Center:
+- View rejection details
+- Reply to Apple
+- Ask questions if unclear
+
+### Tips for Responses
+
+**Do:**
+- Be polite and professional
+- Explain exactly what you fixed
+- Provide additional context if needed
+- Ask for clarification if rejection is unclear
+
+**Don't:**
+- Be confrontational
+- Argue without fixing
+- Ignore the feedback
+- Make excuses
+
+### Example Response
+
+```
+Thank you for your feedback. I've addressed the issues:
+
+1. Crash on login (2.1): Fixed null pointer exception in
+   authentication flow. Tested on all supported devices.
+
+2. Missing privacy disclosure (5.1.1): Added camera permission
+   disclosure to App Privacy section and updated privacy policy.
+
+Build 15 contains these fixes. Please let me know if you need
+any additional information.
+```
+
+---
+
+## Expedited Review Request
+
+For genuine emergencies only:
+
+### Valid Reasons
+- Critical bug affecting users
+- Security vulnerability
+- Time-sensitive legal issue
+- Major event tie-in (be cautious)
+
+### How to Request
+1. Go to [developer.apple.com/contact](https://developer.apple.com/contact)
+2. Select "App Review"
+3. Choose "Request Expedited Review"
+4. Explain your situation
+
+<Warning>
+  Overusing expedited review requests can harm future requests. Reserve for genuine emergencies.
+</Warning>
+
+---
+
+## Submission Success Tips
+
+<AccordionGroup>
+  <Accordion title="Test thoroughly first" icon="vial">
+    Most rejections are for bugs or crashes. TestFlight with external testers catches most issues.
+  </Accordion>
+
+  <Accordion title="Be accurate in metadata" icon="check">
+    Description, screenshots, and functionality should match exactly. Don't oversell.
+  </Accordion>
+
+  <Accordion title="Provide demo accounts" icon="user">
+    If login required, provide working test credentials. Many rejections happen because reviewers can't access the app.
+  </Accordion>
+
+  <Accordion title="Explain unusual features" icon="comment">
+    In review notes, explain anything that might confuse reviewers. Context helps.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="After Approval" icon="rocket" href="/publishing/app-store/after-approval">
+    Launch and beyond
+  </Card>
+  <Card title="Review Guidelines" icon="book" href="/publishing/app-store/review-guidelines">
+    Avoid rejection
+  </Card>
+</CardGroup>

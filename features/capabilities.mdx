@@ -1,0 +1,296 @@
+---
+title: "Capabilities"
+description: "Enable advanced iOS features like Push Notifications and Sign in with Apple"
+---
+
+# Capabilities
+
+Capabilities are advanced iOS features that require special entitlements from Apple. They enable powerful functionality but require additional setup.
+
+## What Are Capabilities?
+
+Capabilities are different from permissions:
+
+| Permissions | Capabilities |
+|-------------|--------------|
+| Runtime access (camera, location) | System-level features |
+| User grants access | Requires Apple provisioning |
+| Works immediately | Needs developer account setup |
+
+---
+
+## Available Capabilities
+
+### Push Notifications
+
+Send alerts to users even when the app isn't open.
+
+**Requirements:**
+- Apple Developer account ($99/year)
+- APNS (Apple Push Notification Service) setup
+- Server to send notifications (or service like Firebase, OneSignal)
+
+**Use cases:**
+- New message alerts
+- Order updates
+- Reminders
+- Marketing (with user consent)
+
+### Sign in with Apple
+
+Let users sign in with their Apple ID.
+
+**Requirements:**
+- Apple Developer account
+- Properly configured entitlements
+
+**Use cases:**
+- User authentication
+- Required if you offer other social sign-ins (Google, Facebook)
+
+**Benefits:**
+- Privacy-focused (can hide email)
+- Quick, trusted sign-in
+- No password to remember
+
+### HealthKit
+
+Access health and fitness data from the Health app.
+
+**Requirements:**
+- Apple Developer account
+- Specific usage descriptions
+- Health data review by Apple
+
+**Use cases:**
+- Fitness tracking apps
+- Health monitoring
+- Workout apps
+- Nutrition apps
+
+### HomeKit
+
+Control smart home devices.
+
+**Requirements:**
+- Apple Developer account
+- MFi (Made for iPhone) certification for accessories
+
+**Use cases:**
+- Home automation apps
+- Smart device control
+
+### CloudKit
+
+Store data in iCloud.
+
+**Requirements:**
+- Apple Developer account
+- CloudKit dashboard setup
+
+**Use cases:**
+- Sync data across user's devices
+- Server-free data storage
+- Sharing between users
+
+### In-App Purchases
+
+Sell content within your app.
+
+**Requirements:**
+- Apple Developer account
+- Products configured in App Store Connect
+- Review process
+
+**Use cases:**
+- Premium features
+- Subscriptions
+- Consumables (coins, credits)
+- Digital content
+
+### App Groups
+
+Share data between your apps or app extensions.
+
+**Use cases:**
+- Widget data sharing
+- Share extension
+- Multiple apps from same developer
+
+### Background Modes
+
+Run tasks in the background.
+
+**Types:**
+- Audio (music apps)
+- Location (navigation)
+- Background fetch (refresh data)
+- Remote notifications
+
+**Note:** Apple scrutinizes background modes. Only enable what you actually need.
+
+---
+
+## Enabling Capabilities
+
+### In Nativeline
+
+1. Open your project
+2. Go to **Settings** → **Capabilities**
+3. Toggle on the capabilities you need
+4. Complete any additional setup (API keys, etc.)
+
+### Via Chat
+
+You can ask:
+```
+Enable Push Notifications capability for this app
+```
+
+<Note>
+  Some capabilities require additional setup in Apple Developer Portal or App Store Connect.
+</Note>
+
+---
+
+## Apple Developer Account
+
+Most capabilities require an Apple Developer account:
+
+**Cost:** $99/year
+
+**What you get:**
+- Ability to use capabilities
+- TestFlight distribution
+- App Store submission
+- Access to developer resources
+
+**Sign up:** [developer.apple.com](https://developer.apple.com)
+
+---
+
+## Setting Up Common Capabilities
+
+### Push Notifications Setup
+
+<Steps>
+  <Step title="Enable in Nativeline">
+    Settings → Capabilities → Push Notifications → Enable
+  </Step>
+  <Step title="Create APNS Key in Apple Developer Portal">
+    Certificates, IDs & Profiles → Keys → Create Key for APNS
+  </Step>
+  <Step title="Download the .p8 key file">
+    Keep this secure — you can only download once
+  </Step>
+  <Step title="Configure push service">
+    Use Firebase, OneSignal, or your own server with the APNS key
+  </Step>
+  <Step title="Enter configuration in Nativeline">
+    Add your Key ID, Team ID, and .p8 file
+  </Step>
+</Steps>
+
+### Sign in with Apple Setup
+
+<Steps>
+  <Step title="Enable in Nativeline">
+    Settings → Capabilities → Sign in with Apple → Enable
+  </Step>
+  <Step title="Configure in Apple Developer Portal">
+    Identifiers → Your App ID → Enable "Sign in with Apple"
+  </Step>
+  <Step title="Add to your UI">
+    Ask AI: "Add Sign in with Apple button to the login screen"
+  </Step>
+</Steps>
+
+### HealthKit Setup
+
+<Steps>
+  <Step title="Enable in Nativeline">
+    Settings → Capabilities → HealthKit → Enable
+  </Step>
+  <Step title="Specify data types">
+    Configure which health data types your app reads/writes
+  </Step>
+  <Step title="Add usage descriptions">
+    Explain why you need each type of health data
+  </Step>
+  <Step title="Request authorization in app">
+    Ask AI: "Request HealthKit authorization for step count and workouts"
+  </Step>
+</Steps>
+
+---
+
+## Capabilities and App Review
+
+Apple reviews capability usage. They may reject apps that:
+
+- Don't actually use enabled capabilities
+- Use capabilities inappropriately
+- Don't explain capability usage clearly
+- Request sensitive data without justification
+
+### HealthKit Specific
+
+HealthKit apps face extra scrutiny:
+- Must have clear health/fitness purpose
+- Need detailed privacy policy
+- May require additional review time
+
+### Sign in with Apple
+
+If your app offers third-party sign-in (Google, Facebook), you **must** also offer Sign in with Apple. This is an App Store requirement.
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Push notifications not working" icon="bell-slash">
+    Common issues:
+    - APNS key not configured correctly
+    - Bundle ID doesn't match
+    - Device not registered for push
+    - Check certificate expiration
+
+    Test with Apple's Push Notifications Console first.
+  </Accordion>
+
+  <Accordion title="Sign in with Apple fails" icon="apple">
+    Check:
+    - Capability enabled in Developer Portal
+    - Bundle ID matches exactly
+    - Entitlements file is correct
+    - Testing on real device (Simulator has limitations)
+  </Accordion>
+
+  <Accordion title="HealthKit authorization denied" icon="heart-pulse">
+    - User must explicitly grant access
+    - Check usage description is clear
+    - Some data types require additional justification
+    - Test on real device (Simulator has limited Health data)
+  </Accordion>
+
+  <Accordion title="Capability not appearing" icon="eye-slash">
+    - Ensure Apple Developer account is connected
+    - Check Team ID is correct
+    - Regenerate provisioning profiles
+    - Some capabilities need explicit enabling in Developer Portal
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Permissions" icon="lock" href="/features/permissions">
+    Runtime permissions (camera, location, etc.)
+  </Card>
+  <Card title="Apple Developer Account" icon="apple" href="/publishing/apple-developer-account">
+    Setting up your developer account
+  </Card>
+</CardGroup>
