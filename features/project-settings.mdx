@@ -1,0 +1,300 @@
+---
+title: "Project Settings"
+description: "Configure your app's identity, permissions, and capabilities"
+---
+
+# Project Settings
+
+Project Settings is where you define what your app is and what it can do. Access it from the **Settings** tab in your project sidebar.
+
+## App Identity
+
+### App Name
+
+The name displayed under your app icon on the home screen. This is what users see when they install your app.
+
+<Tip>
+  Keep it short (under 12 characters works best) so it doesn't get truncated on the home screen.
+</Tip>
+
+**To change your app name:**
+1. Go to **Settings → App Identity**
+2. Click on the name field
+3. Type your new name
+4. Changes are saved automatically
+
+### App Icon
+
+Your app's visual identity. This appears on the home screen, in settings, and throughout iOS.
+
+**Requirements:**
+- **Size:** 1024x1024 pixels (recommended)
+- **Format:** PNG, JPG, or HEIC
+- **Shape:** Square (iOS automatically rounds the corners)
+
+**To set your app icon:**
+1. Go to **Settings → App Icon**
+2. Click the icon area or drag and drop an image
+3. Select your image file
+4. The icon is applied automatically
+
+<Note>
+  iOS creates multiple sizes from your 1024x1024 image. Use a simple, recognizable design that looks good even at small sizes.
+</Note>
+
+### Version Number
+
+Your app's version, shown in the App Store and Settings app. Use [semantic versioning](https://semver.org/):
+- **Major.Minor.Patch** (e.g., 1.0.0)
+- Increment **Major** for big changes
+- Increment **Minor** for new features
+- Increment **Patch** for bug fixes
+
+**To update your version:**
+1. Go to **Settings → Version**
+2. Enter your new version number
+3. Changes are saved automatically
+
+### Bundle Identifier
+
+A unique identifier for your app (e.g., `com.yourname.appname`). This is set during project creation but can be changed.
+
+<Warning>
+  Changing the bundle identifier creates a "new" app from Apple's perspective. Don't change this after publishing unless necessary.
+</Warning>
+
+## Permissions
+
+When your app needs access to device features, you must declare permissions and explain why. Users see these explanations when prompted.
+
+### Available Permissions
+
+<AccordionGroup>
+  <Accordion title="Camera" icon="camera">
+    **Purpose:** Taking photos, scanning codes, video calls
+
+    **Example description:**
+    > "This app uses your camera to scan barcodes and take photos of receipts."
+
+    Toggle this on if your app uses the camera for any purpose.
+  </Accordion>
+
+  <Accordion title="Photo Library" icon="image">
+    **Purpose:** Selecting photos, saving images
+
+    **Example description:**
+    > "This app accesses your photos so you can select images for your profile and posts."
+
+    Required for any photo picker or save functionality.
+  </Accordion>
+
+  <Accordion title="Location" icon="location-dot">
+    **Purpose:** Maps, geolocation, location-based features
+
+    **Example description:**
+    > "This app uses your location to show nearby restaurants and provide directions."
+
+    Choose between "While Using" and "Always" access levels.
+  </Accordion>
+
+  <Accordion title="Microphone" icon="microphone">
+    **Purpose:** Audio recording, voice memos, voice chat
+
+    **Example description:**
+    > "This app uses your microphone to record voice notes and enable voice search."
+
+    Required for any audio recording feature.
+  </Accordion>
+
+  <Accordion title="Notifications" icon="bell">
+    **Purpose:** Sending alerts, reminders, updates
+
+    **Example description:**
+    > "This app sends notifications to remind you of upcoming tasks and deadlines."
+
+    Users can customize notification settings in iOS Settings.
+  </Accordion>
+
+  <Accordion title="Contacts" icon="address-book">
+    **Purpose:** Finding friends, inviting users
+
+    **Example description:**
+    > "This app accesses your contacts to help you find friends who are also using the app."
+
+    Be thoughtful - only request if truly needed.
+  </Accordion>
+
+  <Accordion title="Calendar" icon="calendar">
+    **Purpose:** Reading or creating calendar events
+
+    **Example description:**
+    > "This app adds events to your calendar so you never miss a scheduled item."
+
+    Required for calendar integration features.
+  </Accordion>
+</AccordionGroup>
+
+### Writing Good Permission Descriptions
+
+Users see your description when asked to grant permission. Bad descriptions lead to denied permissions.
+
+<Warning>
+  **Bad descriptions:**
+  - "We need camera access" (no explanation of why)
+  - "To use features" (too vague)
+  - "Required for the app" (doesn't build trust)
+</Warning>
+
+<Check>
+  **Good descriptions:**
+  - "This app uses your camera to scan barcodes for quick item lookup"
+  - "Your location helps us show nearby coffee shops and estimated travel time"
+  - "Enable notifications to receive reminders for your scheduled habits"
+</Check>
+
+### To Configure Permissions:
+
+1. Go to **Settings → Permissions**
+2. Toggle on the permissions your app needs
+3. Write a clear, honest description for each
+4. Save changes
+
+## Apple Capabilities
+
+These are advanced iOS features that require special configuration.
+
+### Push Notifications
+
+Send alerts to users even when your app isn't running.
+
+**Use for:**
+- Reminders and alerts
+- New content notifications
+- Social updates
+
+**Requirements:**
+- Apple Developer Account
+- Push notification certificate setup
+
+### Sign in with Apple
+
+Let users sign in with their Apple ID - fast, secure, and private.
+
+**Benefits:**
+- One-tap sign in
+- No password to remember
+- Users can hide their email
+- Required if you offer other social sign-in options
+
+### In-App Purchase
+
+Sell digital content, subscriptions, or features inside your app.
+
+**Use for:**
+- Premium features
+- Subscriptions
+- Consumable items (coins, credits)
+- Non-consumable upgrades
+
+**Requirements:**
+- Apple Developer Account
+- App Store Connect setup
+- Tax and banking information
+
+### iCloud
+
+Sync data across user's devices via their iCloud account.
+
+**Use for:**
+- Document sync
+- User preferences
+- Data backup
+
+**Benefits:**
+- Automatic cross-device sync
+- No server infrastructure needed
+- User-controlled
+
+### HealthKit
+
+Access health and fitness data from the Health app.
+
+**Use for:**
+- Fitness tracking
+- Health monitoring
+- Workout apps
+
+<Warning>
+  HealthKit requires extra App Store review scrutiny. Only enable if your app genuinely needs health data.
+</Warning>
+
+### HomeKit
+
+Control smart home devices and automations.
+
+**Use for:**
+- Smart home apps
+- IoT controllers
+- Home automation
+
+### To Enable Capabilities:
+
+1. Go to **Settings → Capabilities**
+2. Toggle on the features you need
+3. Follow any additional setup prompts
+4. Some capabilities require Apple Developer Account configuration
+
+## Appearance
+
+### Theme
+
+Control your app's color scheme:
+
+- **Light** - Always use light mode
+- **Dark** - Always use dark mode
+- **System** - Match the user's device setting (recommended)
+
+### Color Palette
+
+If you configured colors in the wizard, they appear here. You can adjust:
+- Primary color (buttons, links, accents)
+- Secondary colors
+- Background tints
+
+## Localization
+
+Support multiple languages for international users.
+
+### Adding Languages
+
+1. Go to **Settings → Languages**
+2. Click **Add Language**
+3. Select from available languages
+4. The AI will help translate your app's text
+
+### Currently Supported
+
+- English
+- Spanish
+- French
+- Chinese (Simplified)
+- More coming soon
+
+<Tip>
+  Start with your primary language, then add others after your app is stable.
+</Tip>
+
+## Saving Changes
+
+Most settings save automatically as you change them. Look for:
+- A checkmark or "Saved" indicator
+- Changes reflecting immediately in your app
+
+For capabilities that require provisioning profile updates (like Push Notifications), you may need to:
+1. Save changes
+2. Wait for Nativeline to update configurations
+3. Rebuild your app
+
+<Card title="Connect a Database" icon="database" href="/features/database">
+  Learn how to add Supabase for data storage
+</Card>

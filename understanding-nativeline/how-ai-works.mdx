@@ -1,0 +1,208 @@
+---
+title: "How the AI Works"
+description: "Peek behind the curtain to understand Nativeline's AI system"
+---
+
+# How the AI Works
+
+Nativeline uses a sophisticated AI system to understand your requests and build iOS apps. While you don't need to understand the technical details to use Nativeline, knowing how it works can help you get better results.
+
+## The AI Team
+
+Nativeline doesn't use a single AI - it uses a team of specialized AI agents, each with a specific job:
+
+<CardGroup cols={2}>
+  <Card title="The Orchestrator" icon="sitemap">
+    The manager that understands your request and coordinates the team
+  </Card>
+  <Card title="The Planner" icon="clipboard-list">
+    Creates step-by-step implementation plans
+  </Card>
+  <Card title="The Coder" icon="code">
+    Writes Swift code based on plans
+  </Card>
+  <Card title="The Debugger" icon="bug">
+    Analyzes and fixes build errors
+  </Card>
+</CardGroup>
+
+### Why Multiple Agents?
+
+Different tasks need different skills:
+- **Planning** requires thinking big-picture
+- **Coding** requires precision and attention to detail
+- **Debugging** requires analytical problem-solving
+
+By using specialized agents, Nativeline delivers better results than a one-size-fits-all approach.
+
+## The Four Phases
+
+When you send a message, the AI goes through four phases:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                   YOUR MESSAGE                              │
+│              "Add a settings screen"                        │
+└─────────────────────────────────────────────────────────────┘
+                          │
+                          ▼
+┌─────────────────────────────────────────────────────────────┐
+│  PHASE 1: UNDERSTAND                                        │
+│  • What is the user asking for?                             │
+│  • What context do I need?                                  │
+│  • Are there any ambiguities?                               │
+└─────────────────────────────────────────────────────────────┘
+                          │
+                          ▼
+┌─────────────────────────────────────────────────────────────┐
+│  PHASE 2: PLAN                                              │
+│  • What files need to be created or modified?               │
+│  • What's the step-by-step approach?                        │
+│  • What are the potential challenges?                       │
+└─────────────────────────────────────────────────────────────┘
+                          │
+                          ▼
+┌─────────────────────────────────────────────────────────────┐
+│  PHASE 3: BUILD                                             │
+│  • Write the Swift code                                     │
+│  • Create or edit files                                     │
+│  • Follow iOS best practices                                │
+└─────────────────────────────────────────────────────────────┘
+                          │
+                          ▼
+┌─────────────────────────────────────────────────────────────┐
+│  PHASE 4: VERIFY                                            │
+│  • Build the app with Xcode                                 │
+│  • Check for errors                                         │
+│  • Fix any issues and rebuild                               │
+└─────────────────────────────────────────────────────────────┘
+                          │
+                          ▼
+┌─────────────────────────────────────────────────────────────┐
+│                   SUCCESS!                                  │
+│              App running in Simulator                       │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Phase 1: Understand
+
+The Orchestrator analyzes your request:
+- What are you asking for?
+- Does it need clarification?
+- What's the scope of the work?
+
+If your request is ambiguous, the AI may ask clarifying questions.
+
+### Phase 2: Plan
+
+The Planner creates a detailed plan:
+- What files to create or modify
+- Step-by-step tasks
+- Potential challenges to watch for
+
+You'll see this as a **todo list** in the chat.
+
+### Phase 3: Build
+
+The Coder executes the plan:
+- Writes Swift code
+- Creates or modifies files
+- Follows iOS development best practices
+
+You'll see **tool cards** showing what's being created/edited.
+
+### Phase 4: Verify
+
+After coding, the system builds your app:
+- Compiles with Xcode
+- Checks for errors
+- If there are errors, the Debugger fixes them
+- Repeats until successful (up to 3 attempts)
+
+## What the AI Remembers
+
+The AI maintains context about your project through special files. See [Context Files](/understanding-nativeline/context-files) for details.
+
+**Short-term memory:**
+- Your current conversation
+- Recent files it's worked on
+- Current phase and plan
+
+**Long-term memory:**
+- Your app's purpose and description
+- Key architectural decisions
+- Patterns used throughout the project
+
+## Why This Matters for You
+
+Understanding the AI workflow helps you:
+
+### Write Better Prompts
+
+Now you know the AI first plans, then codes. If you give detailed requirements upfront, the plan is better, and the code is better.
+
+### Understand What's Happening
+
+When you see a todo list appear, that's Phase 2 (Planning). When you see files being edited, that's Phase 3 (Building).
+
+### Know When to Wait
+
+The AI is thorough. Sometimes it takes a minute to plan and build. Trust the process - it's working through the phases.
+
+### Troubleshoot Better
+
+If builds fail repeatedly, you now know the Debugger is trying to fix issues. Sometimes describing the problem differently helps more than waiting for auto-fixes.
+
+## AI Cost Management
+
+The AI uses different models for different tasks:
+
+| Task Type | AI Model | Cost |
+|-----------|----------|------|
+| Understanding requests | Haiku (fast) | Low |
+| Planning features | Sonnet (balanced) | Medium |
+| Writing code | Sonnet (balanced) | Medium |
+| Complex debugging | Sonnet (balanced) | Medium |
+
+This is why simpler requests use fewer bits than complex ones - they require less AI processing.
+
+## The "Bits" Economy
+
+Every time the AI thinks, it uses bits:
+- **Simple questions:** 10-50 bits
+- **New features:** 100-500 bits
+- **Complete screens:** 500-1000 bits
+
+The bit cost reflects the actual AI computation needed.
+
+<Tip>
+  **Save bits by:** Being specific upfront, building incrementally, and testing after each change.
+</Tip>
+
+## Limitations
+
+While powerful, the AI has limits:
+
+### What It Does Well
+- Building standard iOS app features
+- Following Swift and SwiftUI best practices
+- Fixing common coding errors
+- Understanding natural language requests
+
+### What It Struggles With
+- Highly complex algorithms
+- Niche frameworks with limited documentation
+- Perfectly replicating intricate designs from screenshots
+- Understanding very vague requests
+
+### When to Provide More Detail
+
+If the AI isn't getting it right:
+1. Add more specific details
+2. Break down the request into smaller parts
+3. Provide reference images
+4. Describe the expected user experience
+
+<Card title="Context Files" icon="folder" href="/understanding-nativeline/context-files">
+  Learn how the AI remembers your project
+</Card>

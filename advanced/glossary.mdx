@@ -1,0 +1,229 @@
+---
+title: "Glossary"
+description: "Technical terms explained in plain English"
+---
+
+# Glossary
+
+Technical terms you'll encounter while using Nativeline, explained in plain English.
+
+---
+
+## A
+
+### Agent
+A specialized AI assistant that handles a specific task. Nativeline uses multiple agents: the Planner creates plans, the Coder writes code, the Debugger fixes errors.
+
+### API (Application Programming Interface)
+A way for software to talk to other software. When your app saves data to Supabase, it uses Supabase's API.
+
+### App Store Connect
+Apple's website for managing your apps on the App Store and TestFlight. You'll use this to add testers and submit your app.
+
+### Archive
+A packaged version of your app ready for distribution. Nativeline creates an archive before uploading to TestFlight.
+
+---
+
+## B
+
+### Bits
+Your monthly AI usage budget in Nativeline. More complex tasks use more bits. Different plans include different amounts of bits.
+
+### Build
+The process of compiling your Swift code into a runnable app. When a build succeeds, your app can run in the Simulator.
+
+### Bundle Identifier
+A unique identifier for your app, like `com.yourname.myapp`. This tells iOS "this is a specific app" and must be unique worldwide.
+
+---
+
+## C
+
+### Capability
+A special iOS feature your app can use, like push notifications, HealthKit, or Sign in with Apple. These must be enabled in project settings.
+
+### Claude
+The AI model that powers Nativeline. It understands your requests and generates Swift code.
+
+### Code Editor
+A feature (Pro plan and above) that lets you view and edit your app's Swift code directly.
+
+### Compaction
+When the AI's memory gets full, it summarizes older context to make room for new information. This happens automatically.
+
+### Context
+The information the AI knows about your project - what the app does, recent changes, patterns used, etc. Stored in the `.nativeline` folder.
+
+---
+
+## D
+
+### Debugger
+The AI agent that analyzes build errors and figures out how to fix them.
+
+### Deployment
+The process of publishing your app to TestFlight or the App Store.
+
+### Derived Data
+Temporary files Xcode creates during builds. Sometimes clearing derived data fixes stubborn build issues.
+
+---
+
+## F
+
+### Framework
+Pre-written code that provides common functionality. SwiftUI is a framework for building user interfaces.
+
+---
+
+## I
+
+### IDE (Integrated Development Environment)
+A program for writing code. Xcode is Apple's IDE. Nativeline uses Xcode behind the scenes.
+
+### iOS
+Apple's operating system for iPhones and iPads. Your Nativeline apps run on iOS.
+
+---
+
+## J
+
+### JWT (JSON Web Token)
+A secure way to prove identity. Your app uses JWTs when communicating with Supabase.
+
+---
+
+## M
+
+### macOS
+Apple's operating system for Mac computers. Nativeline runs on macOS.
+
+### Migration
+A change to your database structure - like adding a new column or table. Migrations track these changes over time.
+
+### Model
+In code, a structure that represents data. A `Task` model might have properties like `title`, `dueDate`, and `isCompleted`.
+
+---
+
+## O
+
+### Observable
+A Swift pattern that automatically updates your UI when data changes. Nativeline uses `@Observable` for state management.
+
+### Orchestrator
+The main AI agent that receives your requests and coordinates the other agents (Planner, Coder, Debugger).
+
+---
+
+## P
+
+### Permission
+Authorization your app needs to access device features. Camera, location, and photos are common permissions.
+
+### Plan
+A step-by-step list of tasks the AI creates before implementing a feature. You see this as a todo list in the chat.
+
+### Planner
+The AI agent that creates implementation plans before code is written.
+
+### Provisioning Profile
+Apple's way of authorizing your app to run on specific devices. Nativeline handles this automatically for Simulator builds.
+
+---
+
+## R
+
+### Row Level Security (RLS)
+A Supabase feature that controls which rows users can see and modify. Essential for keeping user data private.
+
+---
+
+## S
+
+### SDK (Software Development Kit)
+A collection of tools for building apps for a specific platform. The iOS SDK lets you build iPhone apps.
+
+### Simulator
+A virtual iPhone/iPad that runs on your Mac. Used for testing apps without a physical device.
+
+### Supabase
+A cloud service that provides databases, authentication, and storage. Nativeline integrates with Supabase for backend features.
+
+### Swift
+Apple's programming language for building iOS apps. All Nativeline apps are written in Swift.
+
+### SwiftData
+Apple's framework for storing data locally on the device. Great for offline apps.
+
+### SwiftUI
+Apple's modern framework for building user interfaces. All Nativeline apps use SwiftUI.
+
+---
+
+## T
+
+### TestFlight
+Apple's service for distributing beta versions of apps. Users install TestFlight from the App Store to test your app.
+
+### Token
+In AI context: a unit of text processing (roughly 4 characters). The AI has limits on how many tokens it can process.
+
+In auth context: a credential proving identity, like a password that expires.
+
+### Tool Card
+A visual indicator in the chat showing that the AI is reading, creating, or editing a file.
+
+---
+
+## U
+
+### UI (User Interface)
+The visual parts of your app that users see and interact with - buttons, text, images, etc.
+
+### UUID (Universally Unique Identifier)
+A unique ID like `123e4567-e89b-12d3-a456-426614174000`. Used to identify specific records in databases.
+
+---
+
+## V
+
+### View
+A building block of UI in SwiftUI. Buttons, text, images, and screens are all views.
+
+### ViewModel
+Code that manages data and logic for a view. Keeps your views focused on display.
+
+---
+
+## X
+
+### Xcode
+Apple's official app for building iOS apps. Nativeline uses Xcode behind the scenes to compile your app.
+
+### .xcodeproj
+The Xcode project file that contains your app's configuration and file references.
+
+---
+
+## Numbers and Symbols
+
+### .nativeline
+A hidden folder in your project containing the AI's context files - what it knows about your app.
+
+### .p8
+A private key file from Apple used for API authentication. You download this from App Store Connect for TestFlight deployment.
+
+---
+
+## Need More Help?
+
+<CardGroup cols={2}>
+  <Card title="Common Issues" icon="circle-question" href="/troubleshooting/common-issues">
+    Quick solutions to frequent problems
+  </Card>
+  <Card title="Getting Started" icon="rocket" href="/getting-started/installation">
+    Start from the beginning
+  </Card>
+</CardGroup>

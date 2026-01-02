@@ -1,0 +1,291 @@
+---
+title: "Publishing to TestFlight"
+description: "Deploy your app for beta testing with real users"
+---
+
+# Publishing to TestFlight
+
+TestFlight is Apple's official platform for beta testing iOS apps. Once you're happy with your app, you can share it with up to 10,000 testers before publishing to the App Store.
+
+## What is TestFlight?
+
+TestFlight lets you:
+- **Distribute your app** to testers without the App Store
+- **Get feedback** from real users on real devices
+- **Test on actual iPhones** (not just the Simulator)
+- **Iterate quickly** with multiple builds
+
+<Note>
+  TestFlight is the last step before the App Store. Most successful apps go through multiple rounds of TestFlight testing.
+</Note>
+
+## Requirements
+
+Before you can publish to TestFlight, you need:
+
+<CardGroup cols={2}>
+  <Card title="Apple Developer Account" icon="apple">
+    $99/year from [developer.apple.com](https://developer.apple.com)
+  </Card>
+  <Card title="Completed App" icon="check">
+    Your app builds successfully in the Simulator
+  </Card>
+  <Card title="App Store Connect Setup" icon="gear">
+    Included with your Developer account
+  </Card>
+  <Card title="App Icon" icon="image">
+    Required for App Store Connect
+  </Card>
+</CardGroup>
+
+## First-Time Setup
+
+You'll need to configure credentials so Nativeline can upload to Apple.
+
+### Option A: App Store Connect API Key (Recommended)
+
+This is the most reliable method. The API key is a file you download from Apple.
+
+<Steps>
+  <Step title="Open App Store Connect">
+    Go to [appstoreconnect.apple.com](https://appstoreconnect.apple.com)
+  </Step>
+  <Step title="Navigate to Keys">
+    Click **Users and Access** → **Keys** tab → **App Store Connect API**
+  </Step>
+  <Step title="Create a new key">
+    Click the **+** button to create a new key:
+    - **Name:** "Nativeline"
+    - **Access:** Admin (required for uploading)
+  </Step>
+  <Step title="Download the .p8 file">
+    Click **Download** next to your new key.
+
+    ⚠️ **You can only download this once!** Save it somewhere safe.
+  </Step>
+  <Step title="Copy your Issuer ID">
+    Find **Issuer ID** at the top of the Keys page. Copy it.
+  </Step>
+  <Step title="Get your Team ID">
+    Go to [developer.apple.com/account](https://developer.apple.com/account) and find your **Team ID** in the Membership section.
+  </Step>
+  <Step title="Configure in Nativeline">
+    In Nativeline, go to **Deploy** tab:
+    1. Drag and drop your `.p8` file
+    2. Enter your Issuer ID
+    3. Enter your Team ID
+    4. Click **Validate**
+  </Step>
+</Steps>
+
+<Warning>
+  Keep your `.p8` file secret! Anyone with this file can upload apps to your account.
+</Warning>
+
+### Option B: Xcode Account
+
+If you're already signed into Xcode with your Apple ID:
+
+1. Go to the **Deploy** tab
+2. Select **Use Xcode Account**
+3. Nativeline uses your existing credentials
+
+<Note>
+  This method may require re-authentication periodically.
+</Note>
+
+## Deploying Your App
+
+Once configured, deploying is straightforward:
+
+<Steps>
+  <Step title="Go to the Deploy tab">
+    Click **Deploy** in the sidebar
+  </Step>
+  <Step title="Click Deploy to TestFlight">
+    Start the deployment process
+  </Step>
+  <Step title="Watch the progress">
+    You'll see each stage complete:
+    - Setting up certificates
+    - Building your app
+    - Creating archive
+    - Uploading to Apple
+  </Step>
+  <Step title="Wait for success">
+    The upload typically takes 5-15 minutes
+  </Step>
+</Steps>
+
+## The Deployment Process
+
+Here's what happens behind the scenes:
+
+### 1. Code Signing
+
+Nativeline sets up the certificates and provisioning profiles needed to sign your app. This proves the app is from you.
+
+### 2. Building
+
+Your app is compiled in release mode - optimized and ready for distribution.
+
+### 3. Archiving
+
+The compiled app is packaged into an archive format that Apple accepts.
+
+### 4. Uploading
+
+The archive is uploaded to App Store Connect via Apple's official tools.
+
+### 5. Apple Processing
+
+After upload, Apple processes your build:
+- Validating the app format
+- Running automated tests
+- Checking for issues
+
+This takes 10-30 minutes.
+
+## After Upload
+
+Once Apple processes your build:
+
+### Check Processing Status
+
+1. Open [App Store Connect](https://appstoreconnect.apple.com)
+2. Find your app
+3. Go to the **TestFlight** tab
+4. Watch the status change from "Processing" to "Ready to Test"
+
+### Add Testers
+
+**Internal Testers (up to 100):**
+- Your team members
+- Added via App Store Connect
+- Get instant access to new builds
+
+**External Testers (up to 10,000):**
+- Public beta testers
+- Requires brief review from Apple (usually <24 hours)
+- Can share via public link
+
+### Invite Process
+
+1. Go to **TestFlight** in App Store Connect
+2. Click **+** next to Internal Testers or External Testers
+3. Add email addresses or create a public link
+4. Testers receive an email invitation
+5. They install TestFlight from the App Store
+6. They redeem the invitation to install your app
+
+## Updating Your TestFlight Build
+
+To release a new version:
+
+1. Make changes in Nativeline
+2. Update the version number (Settings → Version)
+3. Deploy again
+4. Testers are notified of the update
+
+<Tip>
+  Increment the version number for each new build. Apple requires each build to have a unique version.
+</Tip>
+
+## Troubleshooting TestFlight
+
+<AccordionGroup>
+  <Accordion title="'Invalid API key'" icon="key">
+    **Cause:** The .p8 file or IDs are incorrect.
+
+    **Solution:**
+    - Verify the .p8 file is the correct one
+    - Double-check your Issuer ID and Team ID
+    - Generate a new key if needed
+  </Accordion>
+
+  <Accordion title="'Code signing error'" icon="signature">
+    **Cause:** Provisioning profile or certificate issue.
+
+    **Solution:**
+    - Ensure your Apple Developer membership is active
+    - Try the deployment again (sometimes it's temporary)
+    - Contact support if persistent
+  </Accordion>
+
+  <Accordion title="'Upload failed'" icon="cloud-arrow-up">
+    **Cause:** Network issues or Apple servers are busy.
+
+    **Solution:**
+    - Check your internet connection
+    - Try again in a few minutes
+    - Check [Apple System Status](https://www.apple.com/support/systemstatus/)
+  </Accordion>
+
+  <Accordion title="'Build rejected' during processing" icon="xmark">
+    **Cause:** App violates Apple guidelines.
+
+    **Solution:**
+    - Check the rejection reason in App Store Connect
+    - Common issues: missing icon, privacy policy, permissions
+    - Fix the issue and re-deploy
+  </Accordion>
+
+  <Accordion title="'Build stuck on Processing'" icon="spinner">
+    **Cause:** Apple processing can be slow.
+
+    **Solution:**
+    - Wait up to an hour
+    - Check [Apple System Status](https://www.apple.com/support/systemstatus/)
+    - Upload a new build if it's stuck for hours
+  </Accordion>
+
+  <Accordion title="'App name conflicts'" icon="copy">
+    **Cause:** App name already used by another app.
+
+    **Solution:**
+    - Choose a different app name in Settings
+    - Make sure the name is unique in the App Store
+  </Accordion>
+</AccordionGroup>
+
+## TestFlight vs App Store
+
+| TestFlight | App Store |
+|------------|-----------|
+| For beta testing | For public release |
+| Up to 10,000 testers | Unlimited users |
+| 90-day build expiration | No expiration |
+| Minimal review | Full App Store review |
+| Free | May be free or paid |
+
+## Tips for Successful TestFlight
+
+<Check>
+  **Do:**
+  - Test thoroughly in Simulator before uploading
+  - Increment version numbers for each build
+  - Write clear release notes for testers
+  - Respond to tester feedback quickly
+  - Test on multiple device sizes
+</Check>
+
+<Warning>
+  **Don't:**
+  - Upload broken or untested builds
+  - Ignore crash reports from testers
+  - Skip testing on real devices
+  - Forget to update your app icon
+</Warning>
+
+## What's Next?
+
+After successful TestFlight testing, you're ready for the App Store! This final step happens in App Store Connect:
+
+1. Prepare App Store listing (screenshots, description)
+2. Submit for App Store Review
+3. Apple reviews (typically 1-3 days)
+4. Your app goes live!
+
+<Card title="How the AI Works" icon="brain" href="/understanding-nativeline/how-ai-works">
+  Learn about the AI that powers Nativeline
+</Card>

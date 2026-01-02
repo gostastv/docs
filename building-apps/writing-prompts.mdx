@@ -1,0 +1,357 @@
+---
+title: "Writing Effective Prompts"
+description: "Master the art of communicating with the AI to build exactly what you want"
+---
+
+# Writing Effective Prompts
+
+The quality of your prompts directly affects the quality of your app. This guide teaches you how to communicate with Nativeline's AI to get exactly what you want, every time.
+
+## The Golden Rules
+
+<CardGroup cols={2}>
+  <Card title="Be Specific" icon="bullseye">
+    Vague prompts get vague results. Details matter.
+  </Card>
+  <Card title="One Thing at a Time" icon="1">
+    Focus on a single feature or change per message.
+  </Card>
+  <Card title="Describe the Experience" icon="user">
+    Tell the AI what users should see and do.
+  </Card>
+  <Card title="Provide Context" icon="lightbulb">
+    Reference existing elements by name or description.
+  </Card>
+</CardGroup>
+
+---
+
+## Rule 1: Be Specific
+
+The more specific you are, the better results you get.
+
+### Bad Examples
+
+<Warning>
+  These prompts are too vague:
+  - "Make it look better"
+  - "Fix the design"
+  - "Add some features"
+  - "Make it more modern"
+</Warning>
+
+### Good Examples
+
+<Check>
+  These prompts give the AI what it needs:
+  - "Add rounded corners (12 points) to all cards and a subtle drop shadow"
+  - "Change the navigation bar color to dark blue (#1a365d)"
+  - "Add a favorite button (heart icon) in the top-right corner of each item"
+  - "Use San Francisco font at 17pt for body text with 24pt line height"
+</Check>
+
+### The Difference
+
+| Vague | Specific |
+|-------|----------|
+| "Change the color" | "Change the header background to warm orange (#FF8C42)" |
+| "Make it bigger" | "Increase the font size to 24 points" |
+| "Add a button" | "Add a circular blue '+' button in the bottom-right corner" |
+| "Fix the layout" | "Center the title horizontally and add 20 points of padding on the sides" |
+
+---
+
+## Rule 2: Describe the User Experience
+
+Don't just describe what you want - describe what the **user** experiences.
+
+### Less Effective
+
+> "Add a timer"
+
+### More Effective
+
+> "Add a countdown timer that shows minutes and seconds in large, bold text. When the timer reaches zero, play a gentle chime sound and show a 'Time's up!' message in the center of the screen. The user should be able to tap anywhere to dismiss the message."
+
+### Why This Works
+
+The second prompt tells the AI:
+- What the user sees (large bold text)
+- What happens at zero (sound + message)
+- How the user interacts (tap to dismiss)
+
+This context helps the AI build a complete, polished feature.
+
+---
+
+## Rule 3: Reference What Exists
+
+Always reference existing elements by name or description.
+
+### Less Effective
+
+> "Change the color"
+
+The AI doesn't know which color you mean - there might be dozens of colors in your app.
+
+### More Effective
+
+> "Change the blue header background at the top of the home screen to a warm orange"
+
+### How to Reference Elements
+
+- **By location:** "the button at the bottom of the settings screen"
+- **By function:** "the save button"
+- **By appearance:** "the blue card with the user's name"
+- **By screen:** "on the profile page"
+
+---
+
+## Rule 4: Break Down Complex Features
+
+Instead of asking for everything at once, build incrementally.
+
+### Less Effective
+
+> "Build a complete task management system with projects, tags, due dates, recurring tasks, subtasks, priorities, and team collaboration"
+
+This is too much for one request. The AI may get confused or miss details.
+
+### More Effective
+
+Build step by step:
+
+<Steps>
+  <Step title="Start with basics">
+    "Create a task list where I can add items with a title"
+  </Step>
+  <Step title="Add completion">
+    "Add checkboxes to mark tasks as complete. Completed tasks should appear faded with a strikethrough"
+  </Step>
+  <Step title="Add due dates">
+    "Let me set a due date for each task. Show it in small gray text under the title. Highlight overdue tasks in red"
+  </Step>
+  <Step title="Add priorities">
+    "Add three priority levels: high (red dot), medium (yellow dot), low (no dot). Let me tap to change priority"
+  </Step>
+</Steps>
+
+### Why This Works
+
+- Each step can be tested before moving on
+- Errors are easier to isolate and fix
+- The AI builds on a solid foundation
+- You use fewer bits overall (fewer re-dos)
+
+---
+
+## Rule 5: Provide Visual References
+
+Attach images to show the AI what you want.
+
+### When to Use Images
+
+<CardGroup cols={2}>
+  <Card title="UI Mockups" icon="pen-ruler">
+    Sketches, wireframes, or design files
+  </Card>
+  <Card title="Reference Apps" icon="mobile">
+    Screenshots from apps you like
+  </Card>
+  <Card title="Color Palettes" icon="palette">
+    Images showing your desired colors
+  </Card>
+  <Card title="Bug Reports" icon="bug">
+    Screenshots showing what's wrong
+  </Card>
+</CardGroup>
+
+### Example Prompt with Image
+
+> "Here's a screenshot of Spotify's playlist screen. I want my music list to look similar - dark background, album art on the left, song title and artist stacked on the right."
+>
+> [attached screenshot]
+
+---
+
+## Rule 6: Describe Edge Cases
+
+Think about what happens in unusual situations.
+
+### Basic Prompt
+
+> "Add a search feature"
+
+### Complete Prompt
+
+> "Add a search bar at the top of the list. As the user types, filter the results in real-time. If no results match, show 'No results found' with a magnifying glass icon. When the search bar is empty, show all items. Add a clear button (X) on the right side of the search bar."
+
+### Edge Cases to Consider
+
+- What happens when the list is empty?
+- What if the user types something with no matches?
+- What if the data is still loading?
+- What happens on very small or very large screens?
+- What if the user cancels an action?
+
+---
+
+## 20+ Example Prompts
+
+### Adding Screens
+
+<AccordionGroup>
+  <Accordion title="Settings Screen">
+    "Create a settings screen with sections for Account, Notifications, and Appearance. Each section should have a header and list of toggles. Add a Sign Out button at the bottom in red."
+  </Accordion>
+
+  <Accordion title="Profile Screen">
+    "Add a profile screen showing the user's avatar (large circle at top), name, email, and member since date. Below that, show their stats: total items, completed items, and current streak."
+  </Accordion>
+
+  <Accordion title="Onboarding">
+    "Create a 3-screen onboarding flow. Each screen has an illustration placeholder, a title, and a short description. Include dots at the bottom to show progress. The last screen has a 'Get Started' button."
+  </Accordion>
+</AccordionGroup>
+
+### Changing Design
+
+<AccordionGroup>
+  <Accordion title="Cards and Shadows">
+    "Make all cards have rounded corners (16pt radius), a subtle shadow (2pt blur, 10% opacity black), and 16pt padding inside. The background should be white in light mode and dark gray in dark mode."
+  </Accordion>
+
+  <Accordion title="Typography">
+    "Update the typography: Titles should be 24pt bold, subtitles 18pt medium, body text 16pt regular, and captions 12pt regular in gray. Use SF Pro throughout."
+  </Accordion>
+
+  <Accordion title="Color Scheme">
+    "Change the color scheme to use deep purple (#5B21B6) as the primary color, with light purple (#A78BFA) for secondary elements. Keep text black/white for contrast."
+  </Accordion>
+</AccordionGroup>
+
+### Adding Features
+
+<AccordionGroup>
+  <Accordion title="Favorites">
+    "Add a heart icon to each item. Tapping it toggles favorite status (filled = favorite, outline = not). Add a 'Favorites' tab that shows only favorited items."
+  </Accordion>
+
+  <Accordion title="Search">
+    "Add a search bar at the top of the list. Filter items in real-time as the user types. Show 'No results' with an empty state illustration when nothing matches."
+  </Accordion>
+
+  <Accordion title="Swipe Actions">
+    "Add swipe-to-delete on list items. Swiping left reveals a red 'Delete' button. Show a confirmation alert before actually deleting."
+  </Accordion>
+
+  <Accordion title="Pull to Refresh">
+    "Add pull-to-refresh to the main list. Show a loading spinner while refreshing. Display a brief 'Updated' message when complete."
+  </Accordion>
+</AccordionGroup>
+
+### Data & Storage
+
+<AccordionGroup>
+  <Accordion title="Local Persistence">
+    "Save the user's items locally so they persist when the app closes. Use SwiftData for storage."
+  </Accordion>
+
+  <Accordion title="User Preferences">
+    "Save the user's theme preference (light/dark/system), notification settings, and default list view. Use UserDefaults for these settings."
+  </Accordion>
+
+  <Accordion title="Cloud Sync">
+    "Connect to Supabase and sync the user's items to the cloud. Show a sync indicator when uploading changes."
+  </Accordion>
+</AccordionGroup>
+
+### Fixing Issues
+
+<AccordionGroup>
+  <Accordion title="Layout Problems">
+    "The text is getting cut off on smaller screens. Make the content scrollable and ensure text wraps properly instead of being truncated."
+  </Accordion>
+
+  <Accordion title="Navigation Issues">
+    "When I tap the back button, it goes to the wrong screen. It should return to the home screen, not the settings screen."
+  </Accordion>
+
+  <Accordion title="Styling Issues">
+    "The button text is hard to read because the text color is too similar to the background. Change the text to white for better contrast."
+  </Accordion>
+</AccordionGroup>
+
+### Animations
+
+<AccordionGroup>
+  <Accordion title="Button Press">
+    "Add a subtle scale animation when buttons are pressed - shrink to 95% on press, return to 100% on release. Make it feel snappy (0.1 second)."
+  </Accordion>
+
+  <Accordion title="List Items">
+    "Animate list items appearing when the screen loads. Each item should fade in and slide up slightly, with a small delay between each item."
+  </Accordion>
+
+  <Accordion title="Page Transitions">
+    "When navigating between screens, use a smooth horizontal slide transition instead of the default."
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## What NOT to Do
+
+<Warning>
+  **Avoid these common mistakes:**
+</Warning>
+
+### Don't Be Vague
+
+- ❌ "Make it prettier"
+- ✅ "Add more spacing between elements and softer colors"
+
+### Don't Overload a Single Request
+
+- ❌ "Add login, signup, forgot password, profile, settings, and logout"
+- ✅ Start with "Add a login screen with email and password fields"
+
+### Don't Assume the AI Remembers Everything
+
+- ❌ "Use the same style as before"
+- ✅ "Use rounded corners and shadows like we did on the home screen cards"
+
+### Don't Skip Testing
+
+- ❌ Ask for 10 features, then wonder why something is broken
+- ✅ Build and test one feature at a time
+
+---
+
+## Saving Bits with Better Prompts
+
+Better prompts = fewer retries = fewer bits used.
+
+<Tip>
+  **Save bits by:**
+  - Being specific the first time (avoids "no, I meant...")
+  - Breaking down complex features (catch issues early)
+  - Testing each feature before adding more
+  - Using images for visual requirements
+</Tip>
+
+---
+
+## Quick Reference Card
+
+| Situation | Prompt Pattern |
+|-----------|----------------|
+| New screen | "Create a [name] screen with [elements], [layout], and [functionality]" |
+| Design change | "Change [specific element] to [specific value/style]" |
+| New feature | "Add [feature] that [user action] and [expected result]" |
+| Fix issue | "[What's happening] instead of [what should happen]. [Location in app]" |
+| Animation | "When [trigger], [element] should [animation] in [duration]" |
+
+<Card title="Using Images" icon="image" href="/building-apps/using-images">
+  Learn how to use screenshots and mockups to guide the AI
+</Card>

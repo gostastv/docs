@@ -1,0 +1,264 @@
+---
+title: "Best Practices"
+description: "Tips and strategies for successful app building"
+---
+
+# Best Practices
+
+These tips come from experienced Nativeline users. Follow them to build better apps faster and use your bits more efficiently.
+
+## Building Strategy
+
+### Start Simple, Iterate Often
+
+<Steps>
+  <Step title="Build the core first">
+    Get the most important feature working before anything else
+  </Step>
+  <Step title="Test immediately">
+    Check it works in the Simulator before moving on
+  </Step>
+  <Step title="Add one thing at a time">
+    Each new feature should build on a working foundation
+  </Step>
+  <Step title="Polish later">
+    Save the visual refinements for after core features work
+  </Step>
+</Steps>
+
+<Check>
+  **Good approach:**
+  1. "Create a task list where I can add items" → Test it
+  2. "Add the ability to mark tasks complete" → Test it
+  3. "Add due dates" → Test it
+  4. "Make the cards look nicer with shadows" → Test it
+</Check>
+
+<Warning>
+  **Risky approach:**
+  "Build a complete task manager with categories, due dates, priorities, reminders, sync, and beautiful animations"
+  → Too many things can go wrong at once
+</Warning>
+
+### Test After Every Change
+
+Don't batch multiple features before testing. If something breaks, you won't know which change caused it.
+
+The Simulator is there for a reason - use it constantly!
+
+### One Feature Per Message
+
+Break complex requests into focused messages:
+
+| Instead of... | Try... |
+|--------------|--------|
+| "Add settings, profile, and notifications" | "Add a settings screen" → "Add a profile screen" → "Add notifications" |
+| "Make it look better with animations and colors" | "Add subtle animations to buttons" → "Update the color scheme to blue" |
+
+## Prompt Optimization
+
+### Be Specific Upfront
+
+Vague prompts lead to guesswork. Guesswork leads to corrections. Corrections use bits.
+
+| Vague (costs more bits) | Specific (saves bits) |
+|------------------------|----------------------|
+| "Change the color" | "Change the header background to #FF6B35" |
+| "Make it bigger" | "Increase the font size to 24pt" |
+| "Add a button" | "Add a 'Save' button below the form with green background" |
+
+### Describe the User Experience
+
+Instead of implementation details, describe what users see and do:
+
+> "When users tap a task, show a detail screen with the task title at the top, description in the middle, and a 'Mark Complete' button at the bottom"
+
+This gives the AI context to make good implementation decisions.
+
+### Include Edge Cases
+
+> "Add a task list. When the list is empty, show 'No tasks yet - tap + to add one' with a friendly illustration"
+
+Thinking about edge cases upfront prevents "oh wait, what about..." messages later.
+
+## Saving Bits
+
+### Combine Related Changes
+
+If you need several related changes, mention them together:
+
+> "Update the button styling across the app: make them all have 16pt corner radius, a subtle shadow, and use the blue accent color"
+
+This is more efficient than:
+- "Change button corners to 16pt" (50 bits)
+- "Add shadows to buttons" (50 bits)
+- "Make buttons blue" (50 bits)
+
+### Use Images
+
+A screenshot is worth hundreds of bits. Instead of describing a complex design:
+
+> "Make my app look like this" + [attached screenshot]
+
+The AI understands visual context better than textual descriptions of layouts.
+
+### Use the Code Editor (Pro Plan)
+
+For tiny changes, edit code directly:
+- Fixing typos
+- Changing color values
+- Adjusting padding
+- Minor text changes
+
+This uses zero bits!
+
+## Project Organization
+
+### Keep Context Clean
+
+The AI remembers your project, but too much context slows things down:
+
+- Clear conversations when starting fresh work
+- The AI will still know your project from context files
+- Fresh conversations are faster and cheaper
+
+### Back Up Your Projects
+
+Your projects live in `~/Documents/Nativeline Projects/`. Back them up:
+
+- Time Machine (automatic if enabled)
+- iCloud Drive
+- Manual copies before big changes
+- Git if you're comfortable with version control
+
+### Use Consistent Naming
+
+Consistency helps the AI understand your project:
+
+<Check>
+  **Consistent:**
+  - `HomeView`, `SettingsView`, `ProfileView`
+  - `TaskModel`, `UserModel`, `CategoryModel`
+  - `createTask()`, `updateTask()`, `deleteTask()`
+</Check>
+
+<Warning>
+  **Inconsistent:**
+  - `Home`, `SettingsScreen`, `ProfilePage`
+  - `TaskModel`, `userInfo`, `category_data`
+  - `newTask()`, `modifyUser()`, `removeItem()`
+</Warning>
+
+## Debugging Strategy
+
+### Let the AI Try First
+
+When builds fail:
+1. Wait for the automatic fix attempt
+2. Give it 2-3 tries
+3. Only intervene if it's stuck
+
+The AI learns from errors and often fixes them faster than you'd expect.
+
+### Describe Problems, Not Solutions
+
+If you need to intervene:
+
+<Check>
+  **Good:**
+  "The task list shows 'Loading...' forever even though I have data in the database"
+</Check>
+
+<Warning>
+  **Less helpful:**
+  "Change the fetchTasks function to use await instead of callbacks"
+</Warning>
+
+Let the AI diagnose - it might find a different root cause.
+
+### Simplify to Isolate
+
+If a feature isn't working:
+1. Remove the complex parts temporarily
+2. Test the simple version
+3. Add complexity back gradually
+4. Find where it breaks
+
+## Working with the AI
+
+### Trust the Process
+
+The four phases (Understand → Plan → Build → Verify) work. Let them complete before making new requests.
+
+### Interrupt Strategically
+
+Good times to interrupt:
+- You see the plan and it's wrong
+- The AI is about to do something you don't want
+- You have important context to add
+
+Bad times to interrupt:
+- Mid-build (let it finish)
+- After each small step (too disruptive)
+- To make tiny adjustments (save for later)
+
+### Keep a Running Wishlist
+
+As you test, note things you want to change:
+- "Make header sticky"
+- "Add pull-to-refresh"
+- "Button needs more padding"
+
+Then request them in batches after the current feature is complete.
+
+## Performance Tips
+
+### Don't Over-Optimize Early
+
+Focus on functionality first. Optimize only when:
+- Something is noticeably slow
+- The Simulator is struggling
+- You're ready for TestFlight
+
+### Test on Real Devices
+
+Before publishing:
+1. Deploy to TestFlight
+2. Test on your actual iPhone
+3. The Simulator isn't a perfect representation
+
+### Keep Data Loads Reasonable
+
+For initial development:
+- Test with small datasets (10-50 items)
+- Increase gradually
+- Add pagination for large lists
+
+## Publishing Checklist
+
+Before going to TestFlight:
+
+<Steps>
+  <Step title="Features complete">
+    All planned features work correctly
+  </Step>
+  <Step title="Edge cases handled">
+    Empty states, errors, loading states
+  </Step>
+  <Step title="Design polished">
+    Consistent spacing, colors, fonts
+  </Step>
+  <Step title="Tested on Simulator">
+    Works on both small (SE) and large (Pro Max) screens
+  </Step>
+  <Step title="Settings configured">
+    App name, icon, version, permissions
+  </Step>
+  <Step title="No crashes">
+    Run through the entire app without crashes
+  </Step>
+</Steps>
+
+<Card title="Keyboard Shortcuts" icon="keyboard" href="/advanced/keyboard-shortcuts">
+  Speed up your workflow with shortcuts
+</Card>

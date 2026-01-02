@@ -1,0 +1,281 @@
+---
+title: "Build Errors"
+description: "Understanding and fixing compilation errors"
+---
+
+# Build Errors
+
+Build errors happen when your app can't be compiled. They're a normal part of development, and Nativeline has smart tools to help fix them automatically.
+
+## How Build Errors Work
+
+When you build your app, Xcode compiles the Swift code into an executable. If something's wrong with the code, the build fails with an error.
+
+### The Automatic Fix Process
+
+<Steps>
+  <Step title="Build fails">
+    Xcode reports an error
+  </Step>
+  <Step title="AI detects error">
+    Nativeline captures the error message
+  </Step>
+  <Step title="AI analyzes">
+    The Debugger agent identifies the root cause
+  </Step>
+  <Step title="Fix is proposed">
+    You see the proposed fix in chat
+  </Step>
+  <Step title="Fix is applied">
+    The code is corrected
+  </Step>
+  <Step title="Rebuild">
+    The app is built again (up to 3 attempts)
+  </Step>
+</Steps>
+
+Most errors are fixed automatically within 1-3 attempts.
+
+## Types of Build Errors
+
+### Code Errors (AI Can Fix)
+
+These are errors in the Swift code itself. The AI handles these well:
+
+<AccordionGroup>
+  <Accordion title="Syntax Errors" icon="code">
+    **Example:** Missing semicolon, unbalanced braces, typos
+
+    ```swift
+    // Error: Expected '}' at end of closure
+    Button("Tap") {
+        print("tapped")
+    // Missing closing brace
+    ```
+
+    **The AI will:** Add the missing brace
+  </Accordion>
+
+  <Accordion title="Type Mismatches" icon="not-equal">
+    **Example:** Passing a String where an Int is expected
+
+    ```swift
+    // Error: Cannot convert value of type 'String' to expected type 'Int'
+    let count: Int = "five"
+    ```
+
+    **The AI will:** Fix the type or convert the value
+  </Accordion>
+
+  <Accordion title="Missing Imports" icon="file-import">
+    **Example:** Using SwiftUI without importing it
+
+    ```swift
+    // Error: Cannot find type 'View' in scope
+    struct ContentView: View {
+    ```
+
+    **The AI will:** Add `import SwiftUI` at the top
+  </Accordion>
+
+  <Accordion title="Undefined Variables" icon="question">
+    **Example:** Using a variable that doesn't exist
+
+    ```swift
+    // Error: Cannot find 'userName' in scope
+    Text(userName)
+    ```
+
+    **The AI will:** Define the variable or fix the typo
+  </Accordion>
+
+  <Accordion title="Missing Return Statements" icon="arrow-right-from-bracket">
+    **Example:** Function needs to return a value
+
+    ```swift
+    // Error: Missing return in function expected to return 'String'
+    func greeting() -> String {
+        let text = "Hello"
+        // Missing: return text
+    }
+    ```
+
+    **The AI will:** Add the return statement
+  </Accordion>
+
+  <Accordion title="Protocol Conformance" icon="list-check">
+    **Example:** Missing required protocol methods
+
+    ```swift
+    // Error: Type 'MyView' does not conform to protocol 'View'
+    struct MyView: View {
+        // Missing: var body: some View
+    }
+    ```
+
+    **The AI will:** Implement the required properties/methods
+  </Accordion>
+</AccordionGroup>
+
+### Configuration Errors (May Need Your Help)
+
+These are project-level issues. The AI provides guidance, but you may need to act:
+
+<AccordionGroup>
+  <Accordion title="Signing Errors" icon="signature">
+    **Example:** "Signing requires a development team"
+
+    **What's happening:** Xcode doesn't know which Apple Developer account to use.
+
+    **Solutions:**
+    1. Open the project in Xcode
+    2. Select your target → Signing & Capabilities
+    3. Choose your team from the dropdown
+    4. Let Xcode resolve signing issues
+    5. Return to Nativeline and rebuild
+  </Accordion>
+
+  <Accordion title="Provisioning Profile Errors" icon="id-card">
+    **Example:** "No provisioning profile found"
+
+    **What's happening:** Apple certificates aren't set up for this app.
+
+    **Solutions:**
+    1. Open Xcode → Settings → Accounts
+    2. Make sure you're signed in with your Apple ID
+    3. Click your team → Download Manual Profiles
+    4. In your project, ensure "Automatically manage signing" is checked
+  </Accordion>
+
+  <Accordion title="Bundle Identifier Conflicts" icon="copy">
+    **Example:** "Bundle identifier already in use"
+
+    **What's happening:** Another app uses this same identifier.
+
+    **Solution:** Change the bundle identifier in Settings → App Identity to something unique (e.g., `com.yourname.uniqueappname`)
+  </Accordion>
+
+  <Accordion title="Minimum Deployment Target" icon="calendar">
+    **Example:** "API not available before iOS 17"
+
+    **What's happening:** You're using features that require a newer iOS version.
+
+    **Solution:** The AI typically handles this by updating the deployment target, but if it persists, ask the AI to check the iOS version requirements.
+  </Accordion>
+</AccordionGroup>
+
+### System Errors (External Issues)
+
+These are problems outside the code. The AI provides guidance:
+
+<AccordionGroup>
+  <Accordion title="Xcode Not Found" icon="circle-exclamation">
+    **Solution:** Install Xcode from the Mac App Store
+  </Accordion>
+
+  <Accordion title="SDK Not Installed" icon="download">
+    **Solution:**
+    1. Open Xcode → Settings → Platforms
+    2. Download the iOS SDK
+  </Accordion>
+
+  <Accordion title="Simulator Not Available" icon="mobile-screen-button">
+    **Solution:**
+    1. Open Xcode → Window → Devices and Simulators
+    2. Add a simulator if none exist
+  </Accordion>
+
+  <Accordion title="Disk Full" icon="hard-drive">
+    **Solution:** Free up disk space (builds need ~5GB working space)
+  </Accordion>
+</AccordionGroup>
+
+## Reading Error Messages
+
+Error messages have a specific format:
+
+```
+/path/to/File.swift:42:15: error: Cannot find 'userName' in scope
+```
+
+| Part | Meaning |
+|------|---------|
+| `/path/to/File.swift` | The file with the error |
+| `42` | Line number |
+| `15` | Column number |
+| `error:` | Severity (error vs warning) |
+| `Cannot find 'userName' in scope` | The actual problem |
+
+## When Automatic Fixes Fail
+
+If the AI can't fix an error after 3 attempts:
+
+### 1. Describe the Error Differently
+
+Instead of waiting for auto-fix:
+
+> "I'm getting an error that says 'userName' isn't found. I want to display the logged-in user's name in this text field."
+
+### 2. Provide More Context
+
+> "The error is in the ProfileView. The userName should come from the UserManager that we created earlier."
+
+### 3. Ask for a Different Approach
+
+> "Let's try a different approach. Instead of passing the userName, can we store it in UserDefaults and read it from there?"
+
+### 4. Simplify the Request
+
+If a complex feature keeps failing, break it down:
+
+> "Let's start simpler. First, just add a text field that shows 'Hello'. We'll add the actual user name later."
+
+## Common Cascading Errors
+
+Sometimes one error causes many others. For example:
+
+```
+error: Cannot find type 'User' in scope
+error: Cannot find 'user' in scope
+error: Cannot find 'user.name' in scope
+error: Cannot find 'user.email' in scope
+error: Cannot find 'user.avatar' in scope
+```
+
+**These 5 errors have ONE root cause:** The `User` type is missing.
+
+The AI is trained to find the root cause, not just fix each error individually.
+
+## Preventing Build Errors
+
+<Check>
+  **Best practices:**
+  - Test after each change (catch errors early)
+  - Be specific in your prompts (reduces misunderstandings)
+  - Build incrementally (smaller changes = fewer errors)
+  - Let the AI finish before making new requests
+</Check>
+
+## When to Worry (And When Not To)
+
+### Don't Worry
+
+- Single build error → Normal, will be fixed
+- 2-3 retry attempts → The AI is working on it
+- "Fixing..." message → Solution in progress
+
+### Maybe Worry
+
+- 5+ retry attempts on same error → Describe differently
+- Errors returning after fix → May need different approach
+- Configuration errors → May need your intervention
+
+### Definitely Check
+
+- Errors mentioning certificates/signing → Open in Xcode to configure
+- "No team selected" → Need Apple Developer account setup
+- Disk space errors → Free up storage
+
+<Card title="Simulator Issues" icon="mobile" href="/troubleshooting/simulator-issues">
+  Troubleshoot iOS Simulator problems
+</Card>

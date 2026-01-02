@@ -1,0 +1,281 @@
+---
+title: "Database (Supabase)"
+description: "Connect a cloud database to store user data"
+---
+
+# Database with Supabase
+
+When your app needs to store data in the cloud - user accounts, posts, settings that sync across devices - you'll need a database. Nativeline integrates with **Supabase**, a powerful and free database service.
+
+## What is Supabase?
+
+Supabase is like a backend-in-a-box. It provides:
+
+<CardGroup cols={2}>
+  <Card title="Database" icon="database">
+    Store structured data like users, posts, and settings
+  </Card>
+  <Card title="Authentication" icon="shield">
+    Handle user signup, login, and sessions
+  </Card>
+  <Card title="Real-time" icon="bolt">
+    Live updates when data changes
+  </Card>
+  <Card title="Storage" icon="folder">
+    Store files like images and documents
+  </Card>
+</CardGroup>
+
+**Best of all:** It's free for small projects and scales with you.
+
+## Do You Need a Database?
+
+**Yes, if your app:**
+- Has user accounts
+- Syncs data across devices
+- Shares data between users
+- Stores data that shouldn't be lost if the app is deleted
+
+**No, if your app:**
+- Stores only on the local device
+- Doesn't have user accounts
+- Is a simple utility (calculator, timer, etc.)
+
+<Tip>
+  Not sure? Start without a database. You can always add one later - Nativeline makes it easy to migrate.
+</Tip>
+
+## Setting Up Supabase
+
+### Step 1: Create a Supabase Account
+
+<Steps>
+  <Step title="Open Supabase">
+    Go to [supabase.com](https://supabase.com) and click **Start your project**
+  </Step>
+  <Step title="Sign up">
+    Create an account using GitHub, email, or SSO
+  </Step>
+  <Step title="Create a project">
+    Click **New Project** and fill in:
+    - **Name:** Your project name (e.g., "MyApp Database")
+    - **Database Password:** Save this somewhere safe!
+    - **Region:** Choose the closest to your users
+  </Step>
+  <Step title="Wait for setup">
+    Supabase takes about 2 minutes to set up your database
+  </Step>
+</Steps>
+
+### Step 2: Get Your Access Token
+
+Nativeline needs an access token to connect to your Supabase account.
+
+<Steps>
+  <Step title="Go to Account Settings">
+    In Supabase, click your avatar → **Account Settings**
+  </Step>
+  <Step title="Navigate to Access Tokens">
+    Find the **Access Tokens** section
+  </Step>
+  <Step title="Generate a new token">
+    Click **Generate new token**
+    - Name it "Nativeline"
+    - Copy the token (it starts with `sbp_`)
+  </Step>
+  <Step title="Save it securely">
+    You won't be able to see this token again!
+  </Step>
+</Steps>
+
+<Warning>
+  **Keep your access token secret.** Anyone with this token can access your Supabase account. Never share it or commit it to public code.
+</Warning>
+
+### Step 3: Connect in Nativeline
+
+<Steps>
+  <Step title="Open Project Settings">
+    Go to **Settings → Integrations** in your Nativeline project
+  </Step>
+  <Step title="Click Connect to Supabase">
+    Start the connection wizard
+  </Step>
+  <Step title="Paste your access token">
+    Enter the `sbp_...` token you copied
+  </Step>
+  <Step title="Select your project">
+    Choose the Supabase project to connect (or create a new one)
+  </Step>
+  <Step title="Enter database password (optional)">
+    For advanced features, enter your database password
+  </Step>
+  <Step title="Done!">
+    Nativeline is now connected to your database
+  </Step>
+</Steps>
+
+## Using Your Database
+
+Once connected, you can work with your database through conversation.
+
+### Creating Tables
+
+Ask the AI to create database tables:
+
+> "Create a table called 'tasks' with columns for title (text), completed (boolean), and due_date (date)"
+
+The AI will:
+1. Create the table in Supabase
+2. Generate Swift models to work with the data
+3. Set up basic security rules
+
+### Storing Data
+
+Ask the AI to save data:
+
+> "When I tap the save button, save the task to the database"
+
+### Reading Data
+
+Ask the AI to display data from the database:
+
+> "Show all tasks from the database in a list, sorted by due date"
+
+### Updating Data
+
+> "When I tap a task, toggle its completed status in the database"
+
+### Deleting Data
+
+> "Add a swipe-to-delete action that removes the task from the database"
+
+## The Database Tab
+
+View and manage your data in Nativeline's Database tab:
+
+### Browse Tables
+
+See all your database tables in a list. Click one to view its contents.
+
+### View Data
+
+See rows in your tables. This is helpful for:
+- Verifying data was saved correctly
+- Debugging issues
+- Understanding your data structure
+
+### Run Migrations
+
+When the AI makes changes to your database structure (adding columns, changing types), it creates **migrations** - tracked changes that can be applied or rolled back.
+
+## Security: Row Level Security (RLS)
+
+Supabase uses **Row Level Security** to control who can see and modify data. By default:
+
+- Users can only see their own data
+- Users can only modify their own data
+- Unauthenticated users have no access
+
+The AI sets up sensible security policies, but you should understand:
+
+<Note>
+  **RLS is on by default.** This means even you can't see data in the Supabase dashboard without proper authentication. This is a security feature, not a bug!
+</Note>
+
+## Common Database Patterns
+
+### User Profiles
+
+> "Create a user profiles table that stores name, avatar URL, and bio for each user"
+
+### Posts/Items
+
+> "Create a posts table with title, content, created_at timestamp, and author (linked to user)"
+
+### Favorites
+
+> "Create a favorites table that links users to items they've favorited"
+
+### Settings
+
+> "Store user preferences like theme, notification settings, and language in a settings table"
+
+## Troubleshooting Database Issues
+
+<AccordionGroup>
+  <Accordion title="'Access token invalid'" icon="key">
+    **Cause:** The access token is incorrect or expired.
+
+    **Solution:**
+    1. Go to Supabase → Account Settings → Access Tokens
+    2. Generate a new token
+    3. Reconnect in Nativeline with the new token
+  </Accordion>
+
+  <Accordion title="'Project not found'" icon="folder-open">
+    **Cause:** The project was deleted or you don't have access.
+
+    **Solution:**
+    1. Check that the project exists in your Supabase dashboard
+    2. Verify you're using the correct account
+    3. Try reconnecting
+  </Accordion>
+
+  <Accordion title="'Permission denied' errors" icon="lock">
+    **Cause:** Row Level Security is blocking access.
+
+    **Solution:**
+    - For testing, temporarily disable RLS in Supabase
+    - Ask the AI to set up proper RLS policies
+    - Make sure users are authenticated before accessing data
+  </Accordion>
+
+  <Accordion title="'Connection timeout'" icon="clock">
+    **Cause:** Network issues or Supabase is down.
+
+    **Solution:**
+    - Check your internet connection
+    - Try again in a few minutes
+    - Check [Supabase Status](https://status.supabase.com)
+  </Accordion>
+
+  <Accordion title="Data not appearing in app" icon="eye-slash">
+    **Cause:** Data might exist but RLS is hiding it.
+
+    **Solution:**
+    - Check if the user is authenticated
+    - Verify RLS policies allow read access
+    - Look at the Supabase logs for errors
+  </Accordion>
+</AccordionGroup>
+
+## Security Best Practices
+
+<Check>
+  **Do:**
+  - Keep RLS enabled for all tables
+  - Store tokens securely (Nativeline uses Keychain)
+  - Use separate projects for development and production
+  - Regularly review your security policies
+</Check>
+
+<Warning>
+  **Don't:**
+  - Disable RLS for production tables
+  - Share access tokens
+  - Store sensitive data without encryption
+  - Give users more access than they need
+</Warning>
+
+## Credentials Storage
+
+Nativeline stores your database credentials securely:
+
+- **Access tokens** are stored in your Mac's Keychain
+- **Passwords are encrypted** locally
+- **We never see your credentials** - they never leave your Mac
+
+<Card title="Pro Code Editor" icon="code" href="/features/code-editor">
+  View and edit the database code yourself (Pro plan)
+</Card>

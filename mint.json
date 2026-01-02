@@ -1,0 +1,98 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "Nativeline",
+  "logo": {
+    "light": "/images/logo-light.png",
+    "dark": "/images/logo-dark.png"
+  },
+  "favicon": "/images/favicon.png",
+  "colors": {
+    "primary": "#FFBC89",
+    "light": "#F2A666",
+    "dark": "#1A1A1A",
+    "background": {
+      "dark": "#141414"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "Download",
+      "url": "https://nativeline.dev"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Get Started",
+    "url": "https://nativeline.dev"
+  },
+  "anchors": [
+    {
+      "name": "Community",
+      "icon": "discord",
+      "url": "https://discord.gg/nativeline"
+    },
+    {
+      "name": "Support",
+      "icon": "envelope",
+      "url": "mailto:support@nativeline.dev"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Getting Started",
+      "pages": [
+        "introduction",
+        "getting-started/installation",
+        "getting-started/create-first-app",
+        "getting-started/account-setup"
+      ]
+    },
+    {
+      "group": "Building Apps",
+      "pages": [
+        "building-apps/chat-interface",
+        "building-apps/writing-prompts",
+        "building-apps/using-images",
+        "building-apps/testing-simulator"
+      ]
+    },
+    {
+      "group": "Features",
+      "pages": [
+        "features/project-settings",
+        "features/database",
+        "features/code-editor",
+        "features/testflight"
+      ]
+    },
+    {
+      "group": "Understanding Nativeline",
+      "pages": [
+        "understanding-nativeline/how-ai-works",
+        "understanding-nativeline/context-files",
+        "understanding-nativeline/plans-and-tasks",
+        "understanding-nativeline/bits-pricing"
+      ]
+    },
+    {
+      "group": "Troubleshooting",
+      "pages": [
+        "troubleshooting/common-issues",
+        "troubleshooting/build-errors",
+        "troubleshooting/simulator-issues",
+        "troubleshooting/database-issues"
+      ]
+    },
+    {
+      "group": "Advanced",
+      "pages": [
+        "advanced/best-practices",
+        "advanced/keyboard-shortcuts",
+        "advanced/glossary"
+      ]
+    }
+  ],
+  "footerSocials": {
+    "twitter": "https://twitter.com/nativeline",
+    "github": "https://github.com/nativeline"
+  }
+}

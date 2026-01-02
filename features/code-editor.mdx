@@ -1,0 +1,278 @@
+---
+title: "Code Editor"
+description: "View and edit Swift code directly (Pro plan feature)"
+---
+
+# Code Editor
+
+The Code Editor is a Pro plan feature that lets you see and edit the actual Swift code of your app. It's perfect for learning, making quick tweaks, and understanding what the AI creates.
+
+<Note>
+  The Code Editor is available on **Pro**, **Scale**, and **BYOK** plans. [Upgrade your plan](/getting-started/account-setup) to access this feature.
+</Note>
+
+## When to Use the Code Editor
+
+### Learning Swift
+
+Watch the AI generate code, then explore it in the editor. You'll learn:
+- Swift syntax and patterns
+- SwiftUI view structure
+- How professional apps are organized
+- iOS development best practices
+
+### Quick Tweaks
+
+Sometimes it's faster to edit code directly:
+- Changing a color value
+- Adjusting spacing
+- Fixing a typo in text
+- Modifying a simple condition
+
+### Debugging
+
+When something isn't working:
+- Read the code to understand what's happening
+- Check for obvious issues
+- See exactly what the AI generated
+
+### Customization
+
+Make precise changes the AI might not understand:
+- Complex animations
+- Custom algorithms
+- Fine-tuned performance optimizations
+
+## The Code Editor Interface
+
+### File Browser
+
+On the left side, you'll see your project's file structure:
+
+```
+YourApp/
+├── Views/
+│   ├── ContentView.swift
+│   ├── HomeView.swift
+│   └── SettingsView.swift
+├── Models/
+│   ├── Task.swift
+│   └── User.swift
+├── Services/
+│   └── DatabaseService.swift
+└── App.swift
+```
+
+Click any file to open it in the editor.
+
+### Code Editor Panel
+
+The main area shows your code with:
+- **Syntax highlighting** - Swift keywords, strings, and types are color-coded
+- **Line numbers** - For easy navigation and reference
+- **Search** - Find text in the current file
+- **Auto-indentation** - Code stays properly formatted
+
+### Console Panel
+
+At the bottom, view:
+- Build output and errors
+- Print statements for debugging
+- Compiler warnings
+
+## File Organization
+
+Nativeline organizes your code into standard Swift project structure:
+
+| Folder | Contents |
+|--------|----------|
+| **Views/** | SwiftUI views (screens and components) |
+| **Models/** | Data structures and types |
+| **Services/** | API calls, database access, utilities |
+| **Resources/** | Images, fonts, and other assets |
+
+## Making Edits
+
+### Simple Changes
+
+1. Navigate to the file in the browser
+2. Click to open it
+3. Make your changes directly
+4. Save (Cmd+S)
+5. Nativeline automatically rebuilds
+
+### Example: Changing a Color
+
+```swift
+// Before
+Text("Hello")
+    .foregroundColor(.blue)
+
+// After
+Text("Hello")
+    .foregroundColor(.orange)
+```
+
+### Example: Adjusting Padding
+
+```swift
+// Before
+VStack {
+    // content
+}
+.padding(16)
+
+// After
+VStack {
+    // content
+}
+.padding(24)
+```
+
+### Example: Fixing Text
+
+```swift
+// Before
+Button("Sumbit")
+
+// After
+Button("Submit")
+```
+
+## Understanding Swift Code
+
+### Views (SwiftUI)
+
+Most of your app's UI is in SwiftUI views:
+
+```swift
+struct HomeView: View {
+    var body: some View {
+        VStack {
+            Text("Welcome!")
+                .font(.title)
+
+            Button("Get Started") {
+                // action here
+            }
+        }
+    }
+}
+```
+
+**Key concepts:**
+- `struct HomeView: View` - Defines a view
+- `var body: some View` - What the view displays
+- `VStack`, `HStack`, `ZStack` - Layout containers
+- Modifiers like `.font()`, `.padding()` - Styling
+
+### Models (Data)
+
+Data structures define your app's types:
+
+```swift
+struct Task: Identifiable {
+    let id: UUID
+    var title: String
+    var isCompleted: Bool
+    var dueDate: Date?
+}
+```
+
+### Observable State
+
+State management using `@Observable`:
+
+```swift
+@Observable
+class TaskManager {
+    var tasks: [Task] = []
+
+    func addTask(_ title: String) {
+        tasks.append(Task(title: title))
+    }
+}
+```
+
+## Best Practices
+
+### Do
+
+<Check>
+  - Save frequently (Cmd+S)
+  - Make small, incremental changes
+  - Test after each change
+  - Use the AI for complex changes
+  - Keep backups of working code
+</Check>
+
+### Don't
+
+<Warning>
+  - Make massive changes without testing
+  - Delete code you don't understand
+  - Ignore compiler errors
+  - Forget to save before rebuilding
+</Warning>
+
+## When Code Changes Don't Work
+
+If your edits cause build errors:
+
+1. **Check the error message** in the console
+2. **Undo your change** (Cmd+Z) if you can't fix it
+3. **Ask the AI** - "Fix this error: [paste error message]"
+4. **Rebuild** after fixing
+
+### Common Swift Errors
+
+| Error | Cause | Fix |
+|-------|-------|-----|
+| Missing `}` | Unbalanced braces | Add the missing brace |
+| Type mismatch | Wrong data type | Check variable types |
+| Unknown identifier | Typo or missing import | Check spelling, add import |
+| Missing `return` | Function needs return value | Add return statement |
+
+## Keyboard Shortcuts
+
+| Shortcut | Action |
+|----------|--------|
+| Cmd+S | Save file |
+| Cmd+Z | Undo |
+| Cmd+Shift+Z | Redo |
+| Cmd+F | Find in file |
+| Cmd+G | Find next |
+| Cmd+/ | Toggle comment |
+
+## Combining AI and Manual Edits
+
+The best workflow combines both:
+
+<Steps>
+  <Step title="Ask the AI for the big picture">
+    "Create a settings screen with toggle options"
+  </Step>
+  <Step title="Review the generated code">
+    Open the file in the editor to see what was created
+  </Step>
+  <Step title="Make small tweaks yourself">
+    Adjust colors, padding, or text directly
+  </Step>
+  <Step title="Use AI for complex changes">
+    "Add an animation when toggles change"
+  </Step>
+</Steps>
+
+## Code Editor vs AI Chat
+
+| Use Code Editor | Use AI Chat |
+|-----------------|-------------|
+| Fixing typos | Creating new features |
+| Changing colors/values | Adding screens |
+| Adjusting spacing | Complex logic |
+| Learning the code | Major refactoring |
+| Quick tweaks | Design changes |
+
+<Card title="Publish to TestFlight" icon="rocket" href="/features/testflight">
+  Ready to share your app? Deploy to TestFlight
+</Card>

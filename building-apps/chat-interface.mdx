@@ -1,0 +1,208 @@
+---
+title: "The Chat Interface"
+description: "Navigate your Nativeline workspace like a pro"
+---
+
+# The Chat Interface
+
+The chat interface is where you spend most of your time in Nativeline. It's your command center for building, testing, and refining your iOS app.
+
+## Workspace Overview
+
+When you open a project, you'll see the main workspace divided into sections:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  Toolbar (project name, settings, account)                  │
+├─────────────────────────────────────────────────────────────┤
+│                    │                                        │
+│   Sidebar          │         Main Content Area              │
+│   (tabs)           │         (chat or other views)          │
+│                    │                                        │
+│   - Chat           │   ┌─────────────────────────────────┐  │
+│   - Settings       │   │  Conversation History           │  │
+│   - Database       │   │                                 │  │
+│   - Deploy         │   │  Your messages (right)          │  │
+│                    │   │  AI responses (left)            │  │
+│                    │   │  Tool cards                     │  │
+│                    │   │  Todo lists                     │  │
+│                    │   └─────────────────────────────────┘  │
+│                    │                                        │
+│                    │   ┌─────────────────────────────────┐  │
+│                    │   │  Message Input                  │  │
+│                    │   └─────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────┘
+```
+
+## The Sidebar Tabs
+
+### Chat Tab
+Your primary workspace. This is where you communicate with the AI to build your app.
+
+### Settings Tab
+Configure your app's identity, permissions, and capabilities. See [Project Settings](/features/project-settings) for details.
+
+### Database Tab
+View and manage your Supabase database tables (if connected). See [Database](/features/database) for setup.
+
+### Deploy Tab
+Publish your app to TestFlight for beta testing. See [TestFlight](/features/testflight) for the full guide.
+
+## The Conversation Area
+
+### Your Messages
+
+When you type a message and send it, your message appears on the **right side** of the conversation. Each message shows:
+- Your text
+- Any images you attached
+- A timestamp
+
+### AI Responses
+
+The AI's responses appear on the **left side**. Responses can include:
+
+#### Text Explanations
+The AI explains what it's doing, answers questions, or asks for clarification.
+
+#### Tool Cards
+When the AI creates or edits files, you'll see **tool cards** that show:
+- The operation (Create, Edit, Read)
+- The file path
+- What changed
+
+Example tool card:
+```
+📝 Edit File
+ContentView.swift
+Added new button with blue background
+```
+
+#### Todo Lists
+For complex requests, the AI creates a **todo list** showing:
+- Steps to complete
+- Current progress
+- Completed items (checked off)
+
+This gives you visibility into what the AI is working on.
+
+#### Code Previews
+When code is being generated, you may see:
+- Real-time code appearing in a preview panel
+- Syntax highlighting for Swift
+- The file being edited
+
+## Sending Messages
+
+### Basic Input
+
+Type your message in the input box at the bottom of the chat and:
+- Press **Enter** to send
+- Press **Shift+Enter** for a new line (multi-line messages)
+- Press **Cmd+Enter** for quick send
+
+### Attaching Images
+
+You can drag and drop images directly into the chat:
+- Up to **5 images** per message
+- Supported formats: PNG, JPG, JPEG, GIF, WebP, HEIC
+
+See [Using Images](/building-apps/using-images) for tips on when and how to use visual references.
+
+### Message Tips
+
+<Tip>
+  **Be specific.** Instead of "make it better," try "increase the button size to 50 points and add a subtle shadow."
+</Tip>
+
+<Tip>
+  **One thing at a time.** For best results, ask for one feature or change per message. This helps the AI focus and reduces errors.
+</Tip>
+
+<Tip>
+  **Reference what exists.** Say "change the blue header" instead of "change the header color" so the AI knows exactly what you mean.
+</Tip>
+
+## Understanding AI Responses
+
+### When Things Are Working
+
+You'll see:
+- A todo list with items being checked off
+- Tool cards showing files being created/edited
+- Your app rebuilding in the Simulator
+- A success message when done
+
+### When Things Go Wrong
+
+Sometimes builds fail. When this happens:
+1. The AI automatically detects the error
+2. It shows you what went wrong
+3. It proposes a fix
+4. After your approval, it applies the fix and rebuilds
+
+Don't panic - errors are normal, and Nativeline handles most of them automatically.
+
+### When the AI Needs Clarification
+
+If your request is ambiguous, the AI may ask questions:
+- "Did you mean the header at the top or the section title?"
+- "What color did you have in mind for the button?"
+- "Should this save to the device or to the cloud?"
+
+Just answer naturally, and the AI will continue.
+
+## The Simulator Preview
+
+While you're chatting, the iOS Simulator runs on the right side of your screen (or in a separate window). This gives you:
+
+- **Instant feedback** - See changes as soon as builds complete
+- **Real interaction** - Tap, scroll, and use your app like a real user
+- **Error visibility** - See crashes or UI issues immediately
+
+### Build Status
+
+Watch for these indicators:
+- **Building...** - Your app is compiling
+- **Success** - App is running in Simulator
+- **Error** - Build failed (AI will help fix it)
+
+## Conversation Management
+
+### Scrolling Through History
+
+Your entire conversation is saved. Scroll up to see:
+- Previous requests
+- What the AI built
+- Earlier iterations
+
+This is helpful for understanding how your app evolved.
+
+### Starting Fresh
+
+If your conversation gets too long or you want a clean slate:
+1. Look for the **Clear Conversation** option
+2. Confirm you want to clear
+3. Start fresh (your app and files are preserved)
+
+<Note>
+  Clearing the conversation doesn't delete your app - it only clears the chat history. Your code and project files remain intact.
+</Note>
+
+## Keyboard Shortcuts
+
+| Action | Shortcut |
+|--------|----------|
+| Send message | Enter |
+| New line in message | Shift+Enter |
+| Quick send | Cmd+Enter |
+
+## Pro Tip: The Code Preview
+
+When the AI is writing code, you can watch it in real-time in the code preview panel. This helps you:
+- Understand what's being created
+- Catch issues before the build completes
+- Learn Swift by seeing what the AI writes
+
+<Card title="Master AI Prompts" icon="message" href="/building-apps/writing-prompts">
+  Learn how to write prompts that get exactly what you want
+</Card>

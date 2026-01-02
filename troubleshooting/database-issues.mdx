@@ -1,0 +1,302 @@
+---
+title: "Database Issues"
+description: "Fix Supabase connection and data problems"
+---
+
+# Database Issues
+
+If you're using Supabase for your database, you may encounter connection or data issues. Here's how to troubleshoot them.
+
+## Connection Problems
+
+<AccordionGroup>
+  <Accordion title="'Invalid access token'" icon="key">
+    **Your Supabase access token is incorrect or expired.**
+
+    **Solutions:**
+    1. Go to [supabase.com](https://supabase.com) and log in
+    2. Click your avatar → **Account Settings**
+    3. Go to **Access Tokens**
+    4. Generate a **new token** (name it "Nativeline")
+    5. Copy the new token (starts with `sbp_`)
+    6. In Nativeline: Settings → Integrations → Supabase
+    7. Update the access token
+    8. Test the connection
+
+    <Note>
+      Access tokens can expire. If it worked before and stopped, generate a new one.
+    </Note>
+  </Accordion>
+
+  <Accordion title="'Project not found'" icon="folder-open">
+    **Nativeline can't find your Supabase project.**
+
+    **Possible causes:**
+    - The project was deleted
+    - The project name changed
+    - Wrong account
+
+    **Solutions:**
+    1. Log into [supabase.com](https://supabase.com)
+    2. Verify the project exists in your dashboard
+    3. Make sure you're using the correct Supabase account
+    4. In Nativeline, reconnect and select the correct project
+  </Accordion>
+
+  <Accordion title="'Connection timeout'" icon="clock">
+    **Can't reach Supabase servers.**
+
+    **Solutions:**
+    1. Check your internet connection
+    2. Try again in a few minutes (may be temporary)
+    3. Check [status.supabase.com](https://status.supabase.com) for outages
+    4. If using a VPN, try disconnecting it
+  </Accordion>
+
+  <Accordion title="'Network error'" icon="wifi">
+    **General network connectivity problem.**
+
+    **Solutions:**
+    1. Verify you have internet access
+    2. Restart your router/modem
+    3. Try a different network (phone hotspot)
+    4. Check firewall settings aren't blocking Supabase
+  </Accordion>
+</AccordionGroup>
+
+## Authentication Issues
+
+<AccordionGroup>
+  <Accordion title="'Permission denied' errors" icon="lock">
+    **You're blocked from reading or writing data.**
+
+    **Cause:** Row Level Security (RLS) is enabled and blocking access.
+
+    **Solutions:**
+
+    **1. Make sure users are authenticated:**
+    If your app requires login, ensure users are signed in before accessing data.
+
+    **2. Check RLS policies:**
+    1. Go to Supabase Dashboard → your project
+    2. Go to Table Editor
+    3. Click the table with issues
+    4. Look at RLS policies
+
+    **3. Temporarily disable RLS (for testing):**
+    1. In Supabase: Database → Tables
+    2. Click the table
+    3. Turn off "Enable RLS" (only for testing!)
+
+    **4. Ask the AI to fix policies:**
+    > "Users can't read their own data from the tasks table. Can you set up the RLS policy correctly?"
+
+    <Warning>
+      Don't leave RLS disabled in production! It protects your users' data.
+    </Warning>
+  </Accordion>
+
+  <Accordion title="'Invalid JWT' or 'JWT expired'" icon="clock">
+    **The authentication token has expired.**
+
+    **Solutions:**
+    1. Sign out and sign back in within your app
+    2. Check that your app's auth flow is refreshing tokens
+    3. Ask the AI to add token refresh logic
+  </Accordion>
+
+  <Accordion title="Users can't sign up" icon="user-plus">
+    **User registration is failing.**
+
+    **Check:**
+    1. Email confirmations enabled? (Supabase → Auth → Settings)
+    2. Email templates configured?
+    3. Rate limits hit? (too many signups)
+    4. Email provider issues?
+  </Accordion>
+</AccordionGroup>
+
+## Data Issues
+
+<AccordionGroup>
+  <Accordion title="Data not saving" icon="floppy-disk">
+    **Inserts/updates aren't being saved.**
+
+    **Possible causes:**
+
+    **1. RLS blocking writes**
+    - Check RLS policies allow INSERT/UPDATE
+    - Ensure user is authenticated
+
+    **2. Validation failures**
+    - Required columns missing
+    - Data type mismatches
+    - Constraint violations
+
+    **3. Network issues**
+    - Check for failed requests in the console
+
+    **To debug:**
+    Ask the AI: "Data isn't saving to the tasks table. Can you add logging to see what's happening?"
+  </Accordion>
+
+  <Accordion title="Data not loading" icon="spinner">
+    **App shows empty or stuck on loading.**
+
+    **Possible causes:**
+
+    **1. RLS blocking reads**
+    - Check SELECT policies
+
+    **2. Query returning empty**
+    - Data might not exist yet
+    - Filter might be too restrictive
+
+    **3. Async code issue**
+    - Data might be loading but not updating UI
+
+    **To debug:**
+    Ask the AI: "The task list is always empty even though I have data in Supabase. Can you check why?"
+  </Accordion>
+
+  <Accordion title="Data appears but disappears" icon="ghost">
+    **Data shows briefly then vanishes.**
+
+    **Cause:** Usually an async race condition or re-fetch overwriting local changes.
+
+    **Solution:**
+    Ask the AI: "When I add a task, it appears then disappears. Can you fix this?"
+  </Accordion>
+
+  <Accordion title="Wrong data showing" icon="shuffle">
+    **Seeing other users' data or wrong records.**
+
+    **Cause:** RLS policies may be misconfigured.
+
+    **Check:**
+    1. RLS policies filter by user ID
+    2. User ID is being passed correctly
+    3. Foreign keys are set up right
+
+    **Example proper policy:**
+    ```sql
+    -- Users can only see their own tasks
+    CREATE POLICY "Users view own tasks"
+    ON tasks FOR SELECT
+    USING (user_id = auth.uid());
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## Schema Issues
+
+<AccordionGroup>
+  <Accordion title="'Column does not exist'" icon="table-columns">
+    **Trying to use a column that isn't in the table.**
+
+    **Solutions:**
+    1. Check the table schema in Supabase Dashboard
+    2. Add the missing column
+    3. Or ask the AI: "Add a 'completed' column to the tasks table"
+    4. Regenerate Swift models if needed
+  </Accordion>
+
+  <Accordion title="'Relation does not exist'" icon="table">
+    **Table doesn't exist.**
+
+    **Solutions:**
+    1. Create the table in Supabase Dashboard
+    2. Or ask the AI: "Create a tasks table with id, title, and completed columns"
+    3. Check you're using the correct database (not a different project)
+  </Accordion>
+
+  <Accordion title="Type mismatches" icon="not-equal">
+    **Data types don't match between Swift and Supabase.**
+
+    **Common issues:**
+    - Swift `Int` vs Postgres `bigint`
+    - Swift `Date` vs Postgres `timestamp`
+    - Swift `UUID` vs Postgres `uuid`
+
+    **Solution:**
+    Ask the AI to fix the Swift model to match the database schema.
+  </Accordion>
+</AccordionGroup>
+
+## Migration Issues
+
+<AccordionGroup>
+  <Accordion title="'Migration failed'" icon="arrow-right">
+    **Database migration couldn't be applied.**
+
+    **Solutions:**
+    1. Check the error message for specifics
+    2. The migration might conflict with existing data
+    3. Try rolling back and migrating again
+    4. In worst case, recreate the table (backup data first!)
+  </Accordion>
+
+  <Accordion title="'Table already exists'" icon="copy">
+    **Trying to create a table that already exists.**
+
+    **Solutions:**
+    1. Use the existing table instead of creating a new one
+    2. Drop the old table if you want to start fresh (backup data!)
+    3. Ask the AI to modify the existing table instead
+  </Accordion>
+</AccordionGroup>
+
+## Debugging Tips
+
+### Check the Supabase Dashboard
+
+1. Go to [supabase.com](https://supabase.com) → Your Project
+2. **Table Editor:** View your data directly
+3. **SQL Editor:** Run queries manually
+4. **Logs:** See API requests and errors
+
+### Test Queries Directly
+
+In Supabase SQL Editor:
+```sql
+-- See all tasks
+SELECT * FROM tasks;
+
+-- See tasks for a specific user
+SELECT * FROM tasks WHERE user_id = 'user-uuid-here';
+
+-- Check RLS is the issue
+SET role authenticated;
+SELECT * FROM tasks;
+```
+
+### Check App Logs
+
+Ask the AI: "Add logging to show what data is being sent to Supabase"
+
+## Re-Authenticating
+
+If all else fails with authentication:
+
+1. In Nativeline: Settings → Integrations → Supabase
+2. Click **Disconnect**
+3. Generate a fresh access token from Supabase
+4. Click **Connect to Supabase**
+5. Paste the new token
+6. Select your project
+7. Test the connection
+
+## Security Reminder
+
+<Warning>
+  **Row Level Security (RLS) is your friend!**
+
+  - Always keep RLS enabled on production tables
+  - Each table should have policies for SELECT, INSERT, UPDATE, DELETE
+  - Users should only access their own data
+  - Test with multiple users to ensure isolation
+</Warning>
+
+<Card title="Best Practices" icon="star" href="/advanced/best-practices">
+  Learn tips for successful app building
+</Card>
