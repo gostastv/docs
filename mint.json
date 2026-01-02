@@ -17,12 +17,12 @@
   "topbarLinks": [
     {
       "name": "Download",
-      "url": "https://nativeline.dev"
+      "url": "https://nativeline.ai"
     }
   ],
   "topbarCtaButton": {
     "name": "Get Started",
-    "url": "https://nativeline.dev"
+    "url": "https://nativeline.ai"
   },
   "anchors": [
     {
@@ -33,7 +33,7 @@
     {
       "name": "Support",
       "icon": "envelope",
-      "url": "mailto:support@nativeline.dev"
+      "url": "mailto:support@nativeline.ai"
     }
   ],
   "navigation": [
@@ -60,6 +60,7 @@
       "pages": [
         "features/project-settings",
         "features/database",
+        "features/external-apis",
         "features/code-editor",
         "features/testflight"
       ]

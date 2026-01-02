@@ -28,21 +28,35 @@ Supabase is like a backend-in-a-box. It provides:
 
 **Best of all:** It's free for small projects and scales with you.
 
-## Do You Need a Database?
+## Local vs Cloud Storage
 
-**Yes, if your app:**
-- Has user accounts
-- Syncs data across devices
-- Shares data between users
-- Stores data that shouldn't be lost if the app is deleted
+By default, your app stores data **locally on the device** using SwiftData. This is the simplest option and requires no setup.
 
-**No, if your app:**
-- Stores only on the local device
-- Doesn't have user accounts
-- Is a simple utility (calculator, timer, etc.)
+| | Local Storage (Default) | Cloud Storage (Supabase) |
+|--|------------------------|-------------------------|
+| **Setup** | None | Create Supabase account |
+| **User accounts** | No | Yes |
+| **Sync across devices** | No | Yes |
+| **Share between users** | No | Yes |
+| **Data persists if app deleted** | No | Yes |
+| **Cost** | Free | Free tier available |
+
+### When to Use Local Storage
+
+- Simple utilities (calculator, timer, notes)
+- Personal apps without accounts
+- Prototyping and testing
+- Apps that work offline
+
+### When to Use Supabase
+
+- Apps with user signup/login
+- Data that syncs across devices
+- Social features (sharing, following)
+- Data that must persist even if app is deleted
 
 <Tip>
-  Not sure? Start without a database. You can always add one later - Nativeline makes it easy to migrate.
+  Start with local storage. If you need cloud features later, Nativeline makes it easy to add Supabase.
 </Tip>
 
 ## Setting Up Supabase
@@ -152,22 +166,71 @@ Ask the AI to display data from the database:
 
 ## The Database Tab
 
-View and manage your data in Nativeline's Database tab:
+The Database tab in Nativeline lets you view and manage your Supabase data directly.
 
-### Browse Tables
+### Navigating the Database Tab
 
-See all your database tables in a list. Click one to view its contents.
+When you open the Database tab, you'll see:
 
-### View Data
+1. **Table List** - All your database tables on the left
+2. **Data View** - The selected table's contents
+3. **View Toggle** - Switch between Data and Schema views
 
-See rows in your tables. This is helpful for:
-- Verifying data was saved correctly
-- Debugging issues
-- Understanding your data structure
+### Data View
+
+The Data View shows your actual data in a spreadsheet-like grid.
+
+**Toolbar:**
+- **Search bar** - Filter rows by searching text
+- **Refresh button** - Reload data from Supabase
+- **Add row** - Insert new data
+
+**Data Grid:**
+- Click column headers to sort
+- Scroll horizontally for wide tables
+- Null values appear grayed out
+- Boolean values show as colored indicators
+
+**Row Inspector:**
+When you click a row, the Row Inspector panel appears on the right showing:
+- All column values for that row
+- Easier viewing of long text fields
+- Related data (if foreign keys exist)
+
+**Pagination:**
+- Navigate between pages for large tables
+- Adjust rows per page
+
+### Schema View
+
+Switch to Schema View to see how your table is structured.
+
+**Columns:**
+- Column names and types
+- Nullable settings
+- Default values
+
+**RLS Policies:**
+- View security policies
+- See who can read/write data
+
+**Relationships:**
+- Foreign key connections
+- How tables link together
+
+**Indexes:**
+- Performance optimizations
+- Search-enabled columns
+
+**Triggers:**
+- Automated actions
+- Database functions
 
 ### Run Migrations
 
 When the AI makes changes to your database structure (adding columns, changing types), it creates **migrations** - tracked changes that can be applied or rolled back.
+
+View pending migrations and apply them with one click.
 
 ## Security: Row Level Security (RLS)
 

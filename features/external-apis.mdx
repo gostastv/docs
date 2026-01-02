@@ -1,0 +1,206 @@
+---
+title: "External APIs"
+description: "Integrate third-party services like OpenAI, Stripe, and more into your app"
+---
+
+# External APIs
+
+Want your app to use AI, accept payments, or connect to other services? You can integrate external APIs by simply telling the AI what you want.
+
+## What Are External APIs?
+
+External APIs let your app connect to services made by other companies:
+
+<CardGroup cols={2}>
+  <Card title="AI Services" icon="robot">
+    OpenAI, Claude, Gemini - add AI features to your app
+  </Card>
+  <Card title="Payments" icon="credit-card">
+    Stripe, RevenueCat - accept payments and subscriptions
+  </Card>
+  <Card title="Authentication" icon="shield">
+    Auth0, Firebase - advanced login options
+  </Card>
+  <Card title="Other Services" icon="plug">
+    Maps, weather, social media, and thousands more
+  </Card>
+</CardGroup>
+
+## How to Add an External API
+
+Simply tell the AI what you want to do:
+
+### Example: Adding OpenAI
+
+> "I want to add a feature where users can ask a question and get an AI-generated response using the OpenAI API"
+
+The AI will:
+1. Add the necessary code to call OpenAI
+2. Create a UI for the feature
+3. Ask you for your API key
+4. Help you store the key securely
+
+### Example: Adding Payments
+
+> "Add Stripe so users can purchase a premium upgrade for $9.99"
+
+### Example: Adding Maps
+
+> "Show the user's location on a map with nearby restaurants using Apple Maps"
+
+## Getting API Keys
+
+Most external services require an **API key** - a secret code that identifies your app.
+
+### Where to Get Keys
+
+| Service | Where to Get Key |
+|---------|-----------------|
+| OpenAI | [platform.openai.com](https://platform.openai.com/api-keys) |
+| Stripe | [dashboard.stripe.com/apikeys](https://dashboard.stripe.com/apikeys) |
+| Google Maps | [console.cloud.google.com](https://console.cloud.google.com) |
+| Weather APIs | Varies by provider |
+
+### Providing Your Key
+
+When the AI asks for your API key, you can:
+1. **Paste it in chat** - The AI will add it to your app securely
+2. **Add it manually** - Follow the AI's instructions
+
+<Warning>
+  Never share your API keys publicly. They give access to your paid services and should be kept secret.
+</Warning>
+
+## How Keys Are Stored
+
+Your API keys are stored securely in your generated app:
+
+- **Stored in your Mac's Keychain** - encrypted and protected
+- **Never uploaded** - stays on your computer
+- **Not in code** - not visible in your Swift files
+- **Accessed at runtime** - loaded when your app runs
+
+This is the same secure storage that iOS uses for passwords.
+
+## Common Integrations
+
+### AI/Chat Features
+
+> "Add a chat interface that sends messages to OpenAI and displays the response"
+
+> "Create a feature that summarizes long text using Claude"
+
+> "Add voice transcription using Whisper"
+
+### Payments
+
+> "Add a subscription with monthly and yearly options using RevenueCat"
+
+> "Let users tip creators with Stripe"
+
+### Location & Maps
+
+> "Show a map with pins for saved locations"
+
+> "Get the user's current address and display it"
+
+### Social
+
+> "Add sharing to Twitter and Instagram"
+
+> "Let users log in with their Google account"
+
+### Weather & Data
+
+> "Show the current weather based on location"
+
+> "Display stock prices that update in real-time"
+
+## Best Practices
+
+<Check>
+  **Do:**
+  - Use test/sandbox keys during development
+  - Switch to production keys before publishing
+  - Check API pricing before heavy usage
+  - Handle errors gracefully (network issues, rate limits)
+</Check>
+
+<Warning>
+  **Don't:**
+  - Hardcode API keys in your code
+  - Use production keys for testing
+  - Ignore rate limits and quotas
+  - Store sensitive user data from APIs
+</Warning>
+
+## API Costs
+
+Many APIs have usage-based pricing. Before integrating:
+
+1. **Check the pricing page** of the service
+2. **Understand the free tier** limits
+3. **Set up billing alerts** if available
+4. **Start with small tests** before heavy usage
+
+<Tip>
+  Most services have generous free tiers. For testing and small apps, you often won't pay anything.
+</Tip>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="'Invalid API key' error" icon="key">
+    **Cause:** The API key is incorrect or expired.
+
+    **Solution:**
+    1. Double-check you copied the entire key
+    2. Verify it's for the right environment (test vs production)
+    3. Check if the key has expired
+    4. Generate a new key if needed
+  </Accordion>
+
+  <Accordion title="'Rate limit exceeded'" icon="gauge">
+    **Cause:** You've made too many requests.
+
+    **Solution:**
+    1. Wait a few minutes and try again
+    2. Implement caching to reduce calls
+    3. Upgrade your API plan if needed
+  </Accordion>
+
+  <Accordion title="'Network error'" icon="wifi-slash">
+    **Cause:** Can't reach the API service.
+
+    **Solution:**
+    1. Check your internet connection
+    2. Verify the service isn't down
+    3. Try again in a few minutes
+  </Accordion>
+
+  <Accordion title="API response is unexpected" icon="circle-question">
+    **Cause:** API format may have changed.
+
+    **Solution:**
+    1. Check the API documentation for updates
+    2. Ask the AI to update the integration
+    3. Look for version changes
+  </Accordion>
+</AccordionGroup>
+
+## Security Considerations
+
+When using external APIs, remember:
+
+- **Your API key = your account** - treat it like a password
+- **User data** should be handled according to privacy laws
+- **Some APIs** store data on their servers (check their privacy policy)
+- **Test mode** data is usually deleted automatically
+
+<Note>
+  If you're building an app that handles sensitive data (health, financial), review the API provider's compliance certifications (HIPAA, SOC 2, etc.).
+</Note>
+
+<Card title="Database (Supabase)" icon="database" href="/features/database">
+  Learn about cloud storage with Supabase
+</Card>

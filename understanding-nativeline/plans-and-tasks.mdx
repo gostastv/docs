@@ -176,18 +176,52 @@ For multi-step work, you'll see full plans:
 
 ## Plans Across Sessions
 
-If you close Nativeline mid-plan:
+Plans **persist** until they're completed or cleared. This means:
 
-1. **Plan is saved** to `.nativeline/plans/active.md`
-2. **When you return**, the AI notices the incomplete plan
-3. **It can continue** from where it left off
-4. **Or you can start fresh** with a new request
+- Close Nativeline mid-plan? The plan is still there when you return
+- Stop the AI while it's working? The plan waits for you
+- Come back tomorrow? Pick up right where you left off
 
-### Resuming Example
+### Resuming a Plan
 
-When reopening a project with an incomplete plan, you might see:
+When you reopen a project with an incomplete plan:
 
-> "I see we were working on a settings screen. Should I continue where we left off, or would you like to do something else?"
+1. The AI notices the existing plan
+2. You'll see the todo list with your progress
+3. Say "continue" or "keep going" to resume
+4. Or describe what you want next - the AI will incorporate it
+
+### Clearing a Plan
+
+Sometimes you want to abandon a plan and start fresh. Use the `/planclear` command:
+
+```
+/planclear
+```
+
+This:
+- Removes the active plan
+- Clears all pending tasks
+- Lets you start something completely new
+
+**When to use /planclear:**
+- The plan went in the wrong direction
+- You changed your mind about what to build
+- You want to try a completely different approach
+- The AI seems stuck on an old plan
+
+<Tip>
+  Your completed work stays intact when you clear a plan. Only the pending tasks are removed.
+</Tip>
+
+### Starting Over vs Continuing
+
+| Situation | What to Do |
+|-----------|------------|
+| Plan is going well, got interrupted | Just say "continue" |
+| Want to modify the remaining steps | Describe what you want changed |
+| Plan is totally wrong | Use `/planclear` and start fresh |
+| Finished one feature, starting another | The completed plan auto-clears |
 
 ## Plan Best Practices
 
@@ -232,8 +266,8 @@ These create messy, hard-to-execute plans:
 Sometimes a plan step fails (code doesn't compile, feature doesn't work). When this happens:
 
 1. **The step is marked failed** (✗)
-2. **The Debugger analyzes** the error
-3. **A fix is attempted** (up to 3 times)
+2. **The AI analyzes** the error
+3. **A fix is attempted** automatically
 4. **If fixed**, plan continues
 5. **If not**, you're asked for help
 

@@ -1,274 +1,86 @@
 ---
-title: "Context Files"
-description: "The .nativeline directory and how the AI remembers your project"
+title: "Your AI's Memory"
+description: "How Nativeline remembers your project across sessions"
 ---
 
-# Context Files
+# Your AI's Memory
 
-Nativeline maintains a hidden `.nativeline` directory in each project. These files help the AI remember your project's structure, recent work, and important decisions across sessions.
+One of Nativeline's most powerful features is that it remembers. When you close the app and come back later, the AI picks up right where you left off.
 
-## The .nativeline Directory
+## What the AI Remembers
 
-Every Nativeline project contains a hidden folder:
+### Your Project
 
-```
-YourProject/
-├── Views/
-├── Models/
-├── Services/
-├── .nativeline/          ← Hidden directory
-│   ├── project.md        ← Project context
-│   ├── memory.md         ← Working memory
-│   ├── chat_history.json ← Conversation history
-│   └── plans/
-│       └── active.md     ← Current plan
-└── YourProject.xcodeproj
-```
+The AI knows what you're building:
 
-<Note>
-  These files are hidden by default in Finder. To see them, press **Cmd+Shift+.** in Finder to show hidden files.
-</Note>
+- **What your app does** - Its purpose, features, and who it's for
+- **How it's organized** - Where different pieces of code live
+- **Your preferences** - Design choices, patterns you like, decisions you've made
 
-## project.md - Project Context
+This means you don't have to explain your app every time. The AI already knows.
 
-This file contains everything the AI knows about your app. It's loaded at the start of every session.
+### Your Conversation
 
-### What's Inside
+Every message you've exchanged is saved:
 
-```markdown
-# Project Context
+- Scroll up to see previous conversations
+- Reference past requests ("like we did before")
+- The AI uses past context to inform new work
 
-## About This App
-A habit tracking app that helps users build daily routines
-through streak counting and gentle reminders.
+### Ongoing Work
 
-## Key Directories
-- Views/ - SwiftUI views and screens
-- Models/ - Data structures (Habit, Streak, Reminder)
-- Services/ - Database and notification services
+If you're in the middle of building something:
 
-## Tech Standards
-- Swift 6.1+, iOS 18+
-- @Observable for state management
-- SwiftData for persistence
-- async/await for concurrency
+- Active plans stay active
+- Progress is tracked
+- You can resume anytime
 
-## Important Notes
-- User requested dark mode as default
-- Streaks reset at midnight local time
-- Notifications require user permission
+## What This Means for You
 
-## Database (Supabase)
-- habits table: id, name, frequency, created_at
-- streaks table: habit_id, date, completed
-- RLS enabled for user isolation
-```
+### Seamless Continuity
 
-### Why It Matters
+Close Nativeline, take a break, come back tomorrow - everything is exactly as you left it. The conversation, the plan, the progress.
 
-This file ensures the AI:
-- Knows what your app does
-- Understands the code structure
-- Follows consistent patterns
-- Remembers your preferences
+### Better Suggestions
 
-### When It Updates
+The more you work together, the smarter the AI gets about your specific project:
 
-The project context is updated:
-- When significant new features are added
-- When you change architectural decisions
-- During context compaction (when memory gets full)
+- It learns your coding patterns
+- It remembers what worked before
+- It avoids past mistakes
 
-## memory.md - Working Memory
+### No Repetition Needed
 
-This is the AI's short-term memory - what it's currently working on and recent decisions.
+You never have to re-explain:
 
-### What's Inside
+- "Remember, my app is a habit tracker" - It already knows
+- "Use the same style as before" - It will
+- "Continue what we started" - It can
 
-```markdown
-# Working Memory
+## When to Start Fresh
 
-## Current Task
-Adding notification settings screen with toggle for each habit
+Sometimes you want the AI to forget and start over. You might want this if:
 
-## Recent Decisions
-1. Using UserDefaults for notification preferences (simpler than database)
-2. Notification times stored per-habit, not globally
-3. Toggle animations use 0.2s spring
+- The conversation has become confusing
+- You want to try a completely different approach
+- Something seems stuck in a loop
 
-## Patterns Observed
-- All settings use SettingsRow component with toggle
-- Colors follow NL.Color namespace
-- Sheets use .presentationDetents([.medium])
-
-## Lessons Learned
-- Don't use 'description' as a property name (Swift reserved)
-- Always add Spacer() inside HStack for alignment
-- Check for existing imports before adding
-
-## Last Session Summary
-Completed: Profile screen with avatar upload
-In progress: Settings screen
-Next: Notification permissions flow
-```
-
-### Why It Matters
-
-Working memory helps the AI:
-- Continue where it left off
-- Avoid repeating mistakes
-- Follow patterns you've established
-- Remember recent context
-
-### When It Updates
-
-Memory updates:
-- After significant actions complete
-- When patterns are discovered
-- During context compaction
-- At session end
-
-## chat_history.json - Conversation History
-
-Your entire conversation is saved so you can continue seamlessly.
-
-### What's Stored
-
-- All your messages
-- All AI responses
-- Tool executions (file edits, builds)
-- Todo list progress
-- Timestamps
-
-### Why It Matters
-
-When you reopen a project:
-- The conversation is restored
-- You can scroll back to see history
-- The AI has context from previous sessions
+To start fresh, simply clear the conversation. Your code stays intact - only the AI's memory of your conversation is cleared.
 
 <Tip>
-  The conversation history persists even after closing Nativeline. Your progress is never lost.
+  Starting fresh doesn't delete your app or code - just the conversation history. The AI will quickly relearn your project from the code itself.
 </Tip>
 
-## plans/active.md - Current Plan
+## Technical Details (Advanced)
 
-When the AI creates a plan, it's stored here.
+For power users curious about how this works:
 
-### What's Inside
-
-```markdown
-# Current Plan: Add Settings Screen
-
-## What I'll Build
-Settings screen with sections for Account, Notifications, and Appearance
-
-## Steps
-- [x] Create SettingsView.swift with basic structure
-- [x] Add navigation from Profile to Settings
-- [ ] Build Account section with email display
-- [ ] Build Notifications section with toggles
-- [ ] Build Appearance section with theme picker
-- [ ] Add sign out button with confirmation
-
-## Status: In Progress
-Started: 2024-01-15 10:30
-Current Step: 3 of 6
-```
-
-### Why It Matters
-
-Plans provide:
-- Visibility into what the AI is doing
-- A checklist of remaining work
-- Ability to resume interrupted work
-
-### When It Updates
-
-- Items checked off as they're completed
-- New steps added if scope changes
-- Archived when plan completes
-
-## What Happens If You Delete These Files?
-
-| File Deleted | Consequence |
-|--------------|-------------|
-| project.md | AI loses project understanding, recreates from code analysis |
-| memory.md | AI forgets recent patterns and decisions |
-| chat_history.json | Conversation history cleared, starts fresh |
-| plans/active.md | Current plan lost, may recreate if you repeat request |
-| Entire .nativeline/ | Full reset - AI starts from scratch |
+Your project contains a hidden `.nativeline` folder with files that store the AI's memory. You can view these files by pressing **Cmd+Shift+.** in Finder to show hidden files.
 
 <Warning>
-  Deleting `.nativeline/` won't break your app, but the AI will lose all context and may make inconsistent decisions until it relearns your project.
+  These files are managed automatically by Nativeline. Editing them manually is not recommended and may cause issues.
 </Warning>
-
-## Context Compaction
-
-When the AI's context gets too large (approaching limits), it "compacts" - summarizing older information to make room for new context.
-
-### What Gets Compacted
-
-- Old conversation messages → Summarized
-- Detailed code snippets → Reduced to file references
-- Resolved plans → Archived
-
-### What's Preserved
-
-- Project context (project.md)
-- Key decisions and patterns (memory.md)
-- Active plan (plans/active.md)
-
-### When It Happens
-
-Compaction triggers at ~95% context capacity. You may see a message like:
-
-> "Compacting context to make room for new work..."
-
-This is normal and helps maintain performance.
-
-## Viewing Context Files
-
-To inspect these files:
-
-### In Finder
-
-1. Navigate to your project folder
-2. Press **Cmd+Shift+.** to show hidden files
-3. Open the `.nativeline` folder
-4. View files with any text editor
-
-### In Terminal
-
-```bash
-cd ~/Documents/Nativeline\ Projects/YourApp
-cat .nativeline/project.md
-```
-
-## Should You Edit These Files?
-
-<Warning>
-  **Generally, no.** These files are managed by Nativeline. Manual edits may:
-  - Be overwritten by the AI
-  - Cause inconsistencies
-  - Corrupt JSON files if malformed
-</Warning>
-
-However, you **can** edit them if you understand the format. For example:
-- Add notes to project.md
-- Correct wrong information in memory.md
-
-Just be careful and keep backups.
-
-## File Locations Summary
-
-| File | Purpose | Location |
-|------|---------|----------|
-| project.md | Persistent project knowledge | `.nativeline/project.md` |
-| memory.md | Working memory | `.nativeline/memory.md` |
-| chat_history.json | Conversation history | `.nativeline/chat_history.json` |
-| active.md | Current plan | `.nativeline/plans/active.md` |
 
 <Card title="Plans and Tasks" icon="list-check" href="/understanding-nativeline/plans-and-tasks">
-  Learn how the AI breaks down your requests
+  Learn how the AI breaks down your requests into manageable steps
 </Card>

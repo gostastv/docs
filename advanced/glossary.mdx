@@ -1,18 +1,15 @@
 ---
 title: "Glossary"
-description: "Technical terms explained in plain English"
+description: "Common terms explained in plain English"
 ---
 
 # Glossary
 
-Technical terms you'll encounter while using Nativeline, explained in plain English.
+Terms you'll encounter while using Nativeline, explained in plain English.
 
 ---
 
 ## A
-
-### Agent
-A specialized AI assistant that handles a specific task. Nativeline uses multiple agents: the Planner creates plans, the Coder writes code, the Debugger fixes errors.
 
 ### API (Application Programming Interface)
 A way for software to talk to other software. When your app saves data to Supabase, it uses Supabase's API.
@@ -43,24 +40,15 @@ A unique identifier for your app, like `com.yourname.myapp`. This tells iOS "thi
 ### Capability
 A special iOS feature your app can use, like push notifications, HealthKit, or Sign in with Apple. These must be enabled in project settings.
 
-### Claude
-The AI model that powers Nativeline. It understands your requests and generates Swift code.
-
 ### Code Editor
 A feature (Pro plan and above) that lets you view and edit your app's Swift code directly.
 
-### Compaction
-When the AI's memory gets full, it summarizes older context to make room for new information. This happens automatically.
-
 ### Context
-The information the AI knows about your project - what the app does, recent changes, patterns used, etc. Stored in the `.nativeline` folder.
+The information the AI knows about your project - what the app does, recent changes, patterns used, etc.
 
 ---
 
 ## D
-
-### Debugger
-The AI agent that analyzes build errors and figures out how to fix them.
 
 ### Deployment
 The process of publishing your app to TestFlight or the App Store.
@@ -112,9 +100,6 @@ In code, a structure that represents data. A `Task` model might have properties 
 ### Observable
 A Swift pattern that automatically updates your UI when data changes. Nativeline uses `@Observable` for state management.
 
-### Orchestrator
-The main AI agent that receives your requests and coordinates the other agents (Planner, Coder, Debugger).
-
 ---
 
 ## P
@@ -123,10 +108,10 @@ The main AI agent that receives your requests and coordinates the other agents (
 Authorization your app needs to access device features. Camera, location, and photos are common permissions.
 
 ### Plan
-A step-by-step list of tasks the AI creates before implementing a feature. You see this as a todo list in the chat.
+A step-by-step list of tasks the AI creates before implementing a feature. You see this as a todo list in the chat. Plans persist until completed or cleared with `/planclear`.
 
-### Planner
-The AI agent that creates implementation plans before code is written.
+### /planclear
+A command you can type in chat to clear the current plan and start fresh. Useful when you want to abandon an existing plan.
 
 ### Provisioning Profile
 Apple's way of authorizing your app to run on specific devices. Nativeline handles this automatically for Simulator builds.
@@ -167,11 +152,6 @@ Apple's modern framework for building user interfaces. All Nativeline apps use S
 ### TestFlight
 Apple's service for distributing beta versions of apps. Users install TestFlight from the App Store to test your app.
 
-### Token
-In AI context: a unit of text processing (roughly 4 characters). The AI has limits on how many tokens it can process.
-
-In auth context: a credential proving identity, like a password that expires.
-
 ### Tool Card
 A visual indicator in the chat showing that the AI is reading, creating, or editing a file.
 
@@ -202,18 +182,18 @@ Code that manages data and logic for a view. Keeps your views focused on display
 ### Xcode
 Apple's official app for building iOS apps. Nativeline uses Xcode behind the scenes to compile your app.
 
-### .xcodeproj
-The Xcode project file that contains your app's configuration and file references.
-
 ---
 
-## Numbers and Symbols
+## Symbols
 
 ### .nativeline
-A hidden folder in your project containing the AI's context files - what it knows about your app.
+A hidden folder in your project containing the AI's memory - what it knows about your app, conversation history, and active plans.
 
 ### .p8
-A private key file from Apple used for API authentication. You download this from App Store Connect for TestFlight deployment.
+A private key file from Apple used for API authentication. You download this from App Store Connect for TestFlight deployment and push notifications.
+
+### .xcodeproj
+The Xcode project file that contains your app's configuration and file references.
 
 ---
 

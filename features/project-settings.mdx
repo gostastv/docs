@@ -246,13 +246,34 @@ Control smart home devices and automations.
 
 ## Appearance
 
-### Theme
+These settings control how **your generated app** looks to your users - not Nativeline itself.
 
-Control your app's color scheme:
+### App Color Scheme
 
-- **Light** - Always use light mode
-- **Dark** - Always use dark mode
-- **System** - Match the user's device setting (recommended)
+Choose how your app handles light and dark mode:
+
+<CardGroup cols={3}>
+  <Card title="Automatic" icon="circle-half-stroke">
+    **Recommended**
+
+    Your app adapts to the user's device setting. If they use dark mode on their iPhone, your app appears in dark mode.
+  </Card>
+  <Card title="Light Only" icon="sun">
+    Your app always uses light mode, regardless of the user's device setting.
+  </Card>
+  <Card title="Dark Only" icon="moon">
+    Your app always uses dark mode, regardless of the user's device setting.
+  </Card>
+</CardGroup>
+
+**To change:**
+1. Go to **Settings → Appearance**
+2. Select your preferred option
+3. Rebuild to see the change in the Simulator
+
+<Note>
+  Most apps should use **Automatic** to respect user preferences. Only choose Light Only or Dark Only if your design specifically requires it.
+</Note>
 
 ### Color Palette
 
@@ -260,6 +281,8 @@ If you configured colors in the wizard, they appear here. You can adjust:
 - Primary color (buttons, links, accents)
 - Secondary colors
 - Background tints
+
+These colors apply to both light and dark mode versions of your app.
 
 ## Localization
 
