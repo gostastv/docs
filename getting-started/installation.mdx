@@ -5,26 +5,22 @@ description: "Get Nativeline up and running on your Mac"
 
 # Installing Nativeline
 
-Getting started with Nativeline takes just a few minutes. This guide walks you through everything you need to do before building your first app.
+Getting started with Nativeline takes just a few minutes. Download, install, and you're ready to build.
 
 ## System Requirements
 
 <CardGroup cols={2}>
-  <Card title="macOS 13+" icon="apple">
-    Ventura or later required. Check via  → About This Mac.
-  </Card>
-  <Card title="Xcode" icon="hammer">
-    Apple's developer tools. Free from the Mac App Store.
-  </Card>
-  <Card title="Apple ID" icon="user">
-    For testing apps and publishing to TestFlight.
+  <Card title="macOS 15.1+" icon="apple">
+    Sequoia or later required. Check via  → About This Mac.
   </Card>
   <Card title="Internet" icon="wifi">
-    Required for AI features and cloud sync.
+    Required for AI features and downloading dependencies.
   </Card>
 </CardGroup>
 
-## Step 1: Download Nativeline
+That's it. Nativeline automatically installs everything else you need on first launch.
+
+## Download and Install
 
 <Steps>
   <Step title="Visit nativeline.ai">
@@ -45,51 +41,31 @@ Getting started with Nativeline takes just a few minutes. This guide walks you t
   If you see a security warning saying the app is from an unidentified developer, right-click the app and select "Open" to bypass Gatekeeper for the first launch.
 </Tip>
 
-## Step 2: Install Xcode
+## First Launch
 
-Nativeline needs Xcode to build your iOS apps. If you don't have it installed, Nativeline will prompt you.
+When you open Nativeline for the first time:
 
-### Option A: Automatic Prompt
+### Automatic Setup
 
-When you first launch Nativeline, it checks for Xcode. If missing, you'll see a prompt with a button to download it directly from the App Store.
+Nativeline automatically downloads and installs everything needed to build iOS apps:
 
-### Option B: Manual Installation
+- **Xcode** - Apple's developer tools
+- **Command Line Tools** - Build utilities
+- **iOS Simulator** - For testing your apps
 
-1. Open the **Mac App Store**
-2. Search for **Xcode**
-3. Click **Get** (it's free, but large - about 12GB)
-4. Wait for the download and installation to complete
-5. Open Xcode once to accept the license agreement
-6. Restart Nativeline
+This happens automatically in the background. You'll see progress indicators as components are installed.
 
-<Warning>
-  Xcode is a large download (12GB+). Make sure you have a stable internet connection and enough disk space.
-</Warning>
-
-## Step 3: First Launch
-
-When you open Nativeline for the first time, you'll go through a quick setup:
+<Note>
+  The first launch takes longer due to downloading Xcode (~12GB). Make sure you have a stable internet connection and enough disk space.
+</Note>
 
 ### Welcome Screen
 
 A brief animated introduction shows you what Nativeline can do. You can skip this if you're eager to start building.
 
-### Xcode Verification
-
-Nativeline checks that:
-- Xcode is installed
-- Command-line tools are available
-- iOS Simulator is ready
-
-If anything is missing, you'll see clear instructions on how to fix it.
-
-### Dependency Check
-
-Nativeline verifies all required components are in place. This usually completes automatically within a few seconds.
-
 ### Home Page
 
-Once everything is ready, you'll land on the Home Page where you can:
+Once setup is complete, you'll land on the Home Page where you can:
 - Create a new app
 - Open existing projects
 - Access your account settings
@@ -106,34 +82,17 @@ Once everything is ready, you'll land on the Home Page where you can:
     You only need to do this once.
   </Accordion>
 
-  <Accordion title="'Xcode not found' after installing Xcode">
-    Xcode may need to complete its first-run setup:
-    1. Open Xcode directly from Applications
-    2. Accept the license agreement if prompted
-    3. Wait for component installation to complete
-    4. Restart Nativeline
-  </Accordion>
-
-  <Accordion title="'Command Line Tools not installed'">
-    Open Terminal and run:
-    ```bash
-    xcode-select --install
-    ```
-    Follow the prompts to install the command-line tools, then restart Nativeline.
-  </Accordion>
-
-  <Accordion title="'iOS Simulator not available'">
-    The iOS Simulator may not be installed:
-    1. Open Xcode
-    2. Go to **Xcode → Settings → Platforms**
-    3. Click the **+** button and add **iOS**
-    4. Wait for the download to complete
-    5. Restart Nativeline
+  <Accordion title="Automatic installation is stuck">
+    If the automatic setup seems stuck:
+    1. Check your internet connection
+    2. Make sure you have at least 20GB free disk space
+    3. Restart Nativeline and let it retry
+    4. Contact support if it continues to fail
   </Accordion>
 
   <Accordion title="App crashes on launch">
     Try these steps:
-    1. Make sure you're running macOS 13 or later
+    1. Make sure you're running macOS 15.1 or later
     2. Delete and re-download the app
     3. Check Console.app for error messages
     4. Contact support if the issue persists

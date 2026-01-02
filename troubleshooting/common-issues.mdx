@@ -21,45 +21,21 @@ Running into a problem? You're in the right place. Here are the most common issu
     You only need to do this once.
   </Accordion>
 
-  <Accordion title="'Xcode not found' error" icon="hammer">
-    **Nativeline can't find Xcode on your Mac.**
+  <Accordion title="Automatic setup is stuck or failed" icon="clock">
+    **Nativeline couldn't finish installing dependencies (Xcode, Simulator, etc.).**
 
-    **Solution:**
-    1. Open the Mac App Store
-    2. Search for "Xcode"
-    3. Click **Get** to download (it's free, ~12GB)
-    4. After installation, open Xcode once to accept the license
-    5. Restart Nativeline
-  </Accordion>
-
-  <Accordion title="'Command Line Tools not installed'" icon="terminal">
-    **Xcode's command line tools need to be installed separately.**
-
-    **Solution:**
-    1. Open Terminal (find it in Applications → Utilities)
-    2. Run: `xcode-select --install`
-    3. Click **Install** in the dialog
-    4. Wait for installation to complete
-    5. Restart Nativeline
-  </Accordion>
-
-  <Accordion title="'iOS Simulator not available'" icon="mobile">
-    **The iOS Simulator component isn't installed.**
-
-    **Solution:**
-    1. Open Xcode
-    2. Go to **Xcode → Settings → Platforms**
-    3. Click the **+** button at the bottom left
-    4. Select **iOS** and click **Download**
-    5. Wait for the download (2-4 GB)
-    6. Restart Nativeline
+    **Solutions:**
+    1. Check your internet connection - Xcode is a ~12GB download
+    2. Make sure you have at least 20GB free disk space
+    3. Restart Nativeline and let it retry
+    4. If it keeps failing, contact support@nativeline.ai
   </Accordion>
 
   <Accordion title="App crashes on launch" icon="bomb">
     **The app may be corrupted or incompatible with your macOS version.**
 
     **Solutions:**
-    1. Check you're running macOS 13 (Ventura) or later
+    1. Check you're running macOS 15.1 (Sequoia) or later
     2. Delete the app and re-download from [nativeline.ai](https://nativeline.ai)
     3. Check Console.app for crash logs
     4. Contact support with the crash report
