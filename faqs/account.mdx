@@ -60,7 +60,7 @@ Questions about account management, data security, and privacy.
     3. Confirm you want all data removed
     4. Account will be deleted within 30 days
 
-    This cannot be undone. Export any projects you want to keep first.
+    This cannot be undone. Your projects remain on your Mac in `~/Documents/Nativeline Projects/`.
   </Accordion>
 
   <Accordion title="What happens if I forget my email?">
@@ -134,25 +134,21 @@ Questions about account management, data security, and privacy.
   </Accordion>
 
   <Accordion title="What about AI provider privacy?">
-    When using AI features, your prompts and code are sent to:
-    - Anthropic (Claude models)
-    - OpenAI (if using BYOK with OpenAI key)
+    When using AI features, your prompts and code are sent to Anthropic (Claude models).
 
-    These providers:
-    - Process your data to generate responses
-    - Have their own privacy policies
-    - Generally don't train on API usage
+    Anthropic:
+    - Processes your data to generate responses
+    - Has their own privacy policy
+    - Does not train on API usage
 
-    See their policies:
-    - [Anthropic Privacy Policy](https://www.anthropic.com/privacy)
-    - [OpenAI Privacy Policy](https://openai.com/policies/privacy-policy)
+    See [Anthropic's Privacy Policy](https://www.anthropic.com/privacy) for details.
   </Accordion>
 
   <Accordion title="How is my payment info protected?">
-    Nativeline uses Apple's payment system:
+    Nativeline uses Stripe for secure payment processing:
     - We never see your full card number
-    - Payments are processed by Apple
-    - Apple's security protects your payment info
+    - Payments are processed by Stripe (PCI compliant)
+    - Your payment info is encrypted and protected
     - We only receive confirmation of subscription status
   </Accordion>
 

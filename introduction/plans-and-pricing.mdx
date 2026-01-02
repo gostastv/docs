@@ -40,7 +40,7 @@ Bit consumption depends on:
 
 ## Available Plans
 
-<CardGroup cols={2}>
+<CardGroup cols={3}>
   <Card title="Builder" icon="hammer">
     ### $25/month
     **1,000 bits included**
@@ -78,19 +78,6 @@ Bit consumption depends on:
     - Dedicated assistance
 
     *Best for: Power users, agencies, multiple projects*
-  </Card>
-
-  <Card title="BYOK" icon="key">
-    ### $15/month
-    **Unlimited usage**
-
-    Bring Your Own API Key:
-    - Use your Anthropic API key
-    - Pay Anthropic directly for usage
-    - Full code editor access
-    - No bit limits
-
-    *Best for: Heavy users, developers, maximum flexibility*
   </Card>
 </CardGroup>
 
@@ -131,7 +118,7 @@ Bit consumption depends on:
     - Read logs for debugging
     - Learn Swift by doing
 
-    Code access requires Pro, Scale, or BYOK.
+    Code access requires Pro or Scale.
   </Accordion>
 
   <Accordion title="I'm building multiple apps or complex features" icon="layer-group">
@@ -144,30 +131,20 @@ Bit consumption depends on:
 
     Scale gives you the flexibility to build as much as you need without running out.
   </Accordion>
-
-  <Accordion title="I use AI constantly and want unlimited" icon="bolt">
-    **BYOK ($15/month + API costs)**
-
-    If you're building daily, BYOK is most cost-effective. You pay:
-    - $15/month to Nativeline (platform access)
-    - Actual usage to Anthropic (typically $20-100/month)
-
-    Heavy users often spend $35-115/month total — less than Scale for high usage.
-  </Accordion>
 </AccordionGroup>
 
 ### Quick Comparison
 
-| Feature | Builder | Pro | Scale | BYOK |
-|---------|---------|-----|-------|------|
-| Monthly cost | $25 | $50 | $100-1,000 | $15 + API |
-| Bits included | 1,000 | 2,250 | 4,800-50,000 | Unlimited |
-| Unlimited projects | ✅ | ✅ | ✅ | ✅ |
-| iOS Simulator | ✅ | ✅ | ✅ | ✅ |
-| Code editor | ❌ | ✅ | ✅ | ✅ |
-| App logs | ❌ | ✅ | ✅ | ✅ |
-| Priority support | ❌ | ❌ | ✅ | ❌ |
-| Early access | ❌ | ❌ | ✅ | ❌ |
+| Feature | Builder | Pro | Scale |
+|---------|---------|-----|-------|
+| Monthly cost | $25 | $50 | $100-1,000 |
+| Bits included | 1,000 | 2,250 | 4,800-50,000 |
+| Unlimited projects | ✅ | ✅ | ✅ |
+| iOS Simulator | ✅ | ✅ | ✅ |
+| Code editor | ❌ | ✅ | ✅ |
+| App logs | ❌ | ✅ | ✅ |
+| Priority support | ❌ | ❌ | ✅ |
+| Early access | ❌ | ❌ | ✅ |
 
 ---
 
@@ -238,46 +215,6 @@ Your remaining bits are always visible in Nativeline:
 
 ---
 
-## BYOK Deep Dive
-
-Bring Your Own Key is for users who want unlimited AI usage.
-
-### How It Works
-
-1. Create an account at [console.anthropic.com](https://console.anthropic.com)
-2. Generate an API key
-3. Enter the key in Nativeline settings
-4. Pay $15/month to Nativeline for platform access
-5. Pay Anthropic directly for your actual API usage
-
-### Anthropic Pricing
-
-| Model | Input Cost | Output Cost |
-|-------|------------|-------------|
-| Claude Haiku | $1/million tokens | $5/million tokens |
-| Claude Sonnet | $3/million tokens | $15/million tokens |
-
-For context:
-- 1 million tokens ≈ 750,000 words
-- A typical feature request uses 2,000-5,000 tokens
-- A full building session uses 50,000-200,000 tokens
-
-<Note>
-Pricing may change. Check [Anthropic's pricing page](https://www.anthropic.com/pricing) for current rates.
-</Note>
-
-### Typical BYOK Costs
-
-| Usage Level | Hours/Week | Monthly API Cost |
-|-------------|------------|------------------|
-| Light | 2-3 hours | $5-15 |
-| Moderate | 5-10 hours | $20-50 |
-| Heavy | 20+ hours | $50-100+ |
-
-Plus the $15 Nativeline platform fee.
-
----
-
 ## Billing & Subscription
 
 ### Upgrading
@@ -335,10 +272,6 @@ Your projects are stored locally — they stay on your Mac even after cancellati
 
   <Accordion title="Is there a free trial?">
     Check [nativeline.ai](https://nativeline.ai) for current offers and trial availability.
-  </Accordion>
-
-  <Accordion title="Can I switch between BYOK and regular plans?">
-    Yes, you can switch anytime from Settings. When switching from BYOK to a bit-based plan, you'll receive the included bits immediately.
   </Accordion>
 
   <Accordion title="What payment methods do you accept?">
