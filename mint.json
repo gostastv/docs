@@ -2,10 +2,10 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "Nativeline",
   "logo": {
-    "light": "/images/logo-light.png",
-    "dark": "/images/logo-dark.png"
+    "light": "/images/logo.svg",
+    "dark": "/images/logo.svg"
   },
-  "favicon": "/images/favicon.png",
+  "favicon": "/images/logo.svg",
   "colors": {
     "primary": "#FFBC89",
     "light": "#F2A666",
