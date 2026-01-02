@@ -39,7 +39,7 @@ Not all requests use the same number of bits.
 Make the app look better
 ```
 → AI guesses, you correct, repeat several times
-→ **300+ bits**
+→ **60+ bits**
 
 ### Efficient (Specific)
 
@@ -48,7 +48,7 @@ Add 16pt padding to all cards, 12pt rounded corners,
 and a subtle drop shadow (offset 0, blur 8, opacity 10%)
 ```
 → AI implements exactly what you want
-→ **50 bits**
+→ **10-15 bits**
 
 ---
 
@@ -64,7 +64,7 @@ meal plans, progress charts, social sharing,
 achievements, and calendar integration
 ```
 → Huge plan, many errors, lots of fixes
-→ **2,000+ bits**
+→ **150+ bits**
 
 ### Efficient (Step by Step)
 
@@ -76,7 +76,7 @@ achievements, and calendar integration
 5. etc.
 ```
 → Each step builds on stable foundation
-→ **800-1,000 bits** total (same result)
+→ **80-120 bits** total (same result)
 
 ---
 
@@ -92,7 +92,7 @@ then the title below it in bold, then a subtitle
 in gray, and a price on the right side...
 ```
 → Multiple iterations to get it right
-→ **200+ bits**
+→ **50+ bits**
 
 ### With Image
 
@@ -101,7 +101,7 @@ Make my product cards look like this screenshot
 [attached image]
 ```
 → AI sees exactly what you want
-→ **80 bits**
+→ **15-25 bits**
 
 ### How to Use Images
 
@@ -200,7 +200,7 @@ then
 ```
 Change the settings screen button to blue
 ```
-→ **150+ bits** (3 separate operations)
+→ **45+ bits** (3 separate operations)
 
 ### Efficient (One Request)
 
@@ -208,7 +208,7 @@ Change the settings screen button to blue
 Change all buttons across the app to use blue (#007AFF)
 as the primary color
 ```
-→ **60 bits** (single operation)
+→ **15 bits** (single operation)
 
 ---
 
@@ -263,33 +263,33 @@ Feedback before implementation is cheaper than fixes after.
 
 ## Bit Usage by Action
 
-### Low Bit Usage (10-50 bits)
+### Low Bit Usage (1-10 bits)
 
-- Simple text changes
-- Color changes
+- Simple questions
+- Single color/text changes
 - Spacing adjustments
 - Single property changes
 
-### Medium Bit Usage (50-200 bits)
+### Medium Bit Usage (10-25 bits)
 
-- Adding a new component
-- Simple new features
+- Multiple styling changes
 - Minor bug fixes
-- UI polish
+- Small UI polish
+- Simple additions
 
-### High Bit Usage (200-500 bits)
+### High Bit Usage (25-50 bits)
 
+- New components
 - New screens
+- Small features
+- Multi-step changes
+
+### Very High Bit Usage (50-100+ bits)
+
+- Complete app builds
 - Complex features
-- Integration with services
-- Major bug fixes
-
-### Very High Bit Usage (500+ bits)
-
-- Complete new features with data
-- Complex error debugging
-- Major refactors
-- Features requiring back-and-forth
+- Major bug investigations
+- Large multi-file changes
 
 ---
 
