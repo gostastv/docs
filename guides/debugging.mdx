@@ -64,37 +64,54 @@ The AI detects and fixes errors automatically. It doesn't wait for your approval
 
 You can see what's happening:
 - The chat shows each attempt
-- The todo list shows current status
-- Tool cards show files being edited
+- Code previews show files being edited in real-time
+- Tool cards show what actions the AI is taking
 - Build status shows success or failure
+
+### Debug Logging
+
+For more visibility, you can enable debug logging:
+```
+/debug
+```
+
+This toggles verbose logging that shows detailed information about what's happening. Use `/debug` again to turn it off.
 
 ---
 
 ## When Automatic Fixes Fail
 
-If the AI can't fix the error after 3 attempts, you need to intervene.
+If the AI can't fix the error after 3 attempts, you'll see a **Continue Fixing** prompt in the chat.
 
 ### The Manual Fix Process
 
 <Steps>
-  <Step title="Press Run App">
-    Click the **Run App** button in the interface.
+  <Step title="See the Continue Fixing Card">
+    After 3 failed attempts, a card appears in the chat asking if you want to continue.
   </Step>
-  <Step title="Wait for Popup">
-    A popup appears asking what you want to do.
+  <Step title="Click Continue Fixing">
+    The AI will try again with a fresh approach.
   </Step>
-  <Step title="Click Apply Fix">
-    Select **Apply Fix** — the AI will automatically analyze the error and fix it.
+  <Step title="Provide Context (Optional)">
+    You can add a message with more details before clicking Continue.
   </Step>
 </Steps>
 
-### Providing Context (Optional)
+### Building Your App
 
-Apply Fix works automatically, but you can optionally message the AI with additional context if the automatic fix doesn't work:
+Nativeline supports both:
+- **Auto builds** — The AI automatically builds after making changes
+- **Manual builds** — You can trigger a build when you're ready
+
+Most of the time, auto-builds handle everything.
+
+### Providing Context
+
+If the automatic fix keeps failing, add context:
 
 > "I was adding a save button. The error mentions 'user' not found — I think the variable should be 'currentUser' from the login screen."
 
-Most fixes work without extra context.
+This helps the AI understand what you were trying to do.
 
 ---
 

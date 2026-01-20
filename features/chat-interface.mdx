@@ -13,17 +13,17 @@ When you open a project, you'll see the main workspace:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  Toolbar (project name, bits, settings, account)                │
+│  Toolbar (project name, bits, ✈️ deploy, settings, account)    │
 ├────────────────┬────────────────────────────────────────────────┤
 │                │                                                │
-│   Sidebar      │              Main Area                         │
+│   Tabs         │              Main Area                         │
 │                │                                                │
-│   - Chat       │   ┌──────────────────────────────────────┐     │
-│   - Settings   │   │  Conversation History                │     │
-│   - Database   │   │                                      │     │
-│   - Deploy     │   │  Your messages → (right)             │     │
+│   - Build      │   ┌──────────────────────────────────────┐     │
+│   - Database   │   │  Conversation History                │     │
+│   - Code       │   │                                      │     │
+│   - Settings   │   │  Your messages → (right)             │     │
 │                │   │  ← AI responses (left)               │     │
-│                │   │  Tool cards, todo lists              │     │
+│                │   │  Code previews, tool cards           │     │
 │                │   │                                      │     │
 │                │   └──────────────────────────────────────┘     │
 │                │                                                │
@@ -35,19 +35,22 @@ When you open a project, you'll see the main workspace:
 
 ---
 
-## Sidebar Tabs
+## Main Tabs
 
-### Chat Tab
-Your primary workspace. Communicate with the AI to build your app.
-
-### Settings Tab
-Configure your app's identity, permissions, and capabilities. See [Project Settings](/features/project-settings).
+### Build Tab
+Your primary workspace. This is where you chat with the AI to build your app. The AI responds with explanations, creates files, and builds your app automatically.
 
 ### Database Tab
-View and manage your Supabase database tables (if connected). See [Supabase](/integrations/supabase/overview).
+View and manage your Supabase database tables (appears when Supabase is connected). See [Supabase](/integrations/supabase/overview).
 
-### Deploy Tab
-Publish your app to TestFlight for beta testing. See [Publishing](/publishing/overview).
+### Code Tab
+View and edit your app's Swift code directly. This is a **Pro feature** — free users will see an upgrade prompt. See [Code Editor](/features/code-editor).
+
+### Project Settings Tab
+Configure your app's identity, permissions, capabilities, and appearance. See [Project Settings](/features/project-settings).
+
+### Deploy Button (Toolbar)
+The **plane icon** (✈️) in the top-right toolbar lets you publish to TestFlight for beta testing. See [Publishing](/publishing/overview).
 
 ---
 
@@ -67,25 +70,26 @@ The AI's responses include:
 **Text Explanations**
 The AI explains what it's doing, answers questions, or asks for clarification.
 
-**Tool Cards**
-When the AI creates or edits files:
-```
-📝 Edit File
-ContentView.swift
-Added login button with blue background
-```
+**Thinking Sections**
+For complex requests, you may see collapsible thinking sections that show the AI's reasoning process. Click to expand/collapse.
 
-**Todo Lists**
-For complex requests, a checklist shows:
-- Steps to complete (⏳)
-- Current task (🔄)
-- Completed items (✅)
+**Code Previews**
+When the AI writes or edits code, you'll see a live streaming preview of the code being written. This shows:
+- The file being edited
+- The code changes in real-time
+- Status (Writing, Wrote, Editing, Edited)
+
+**Tool Cards**
+Actions the AI takes appear as cards showing:
+- File operations (creating, reading, editing files)
+- Build commands
+- Other tool executions
 
 **Build Status**
 Indicators showing:
 - Building... (compiling)
-- Success (app running)
-- Error (build failed)
+- Success (app running in Simulator)
+- Error (build failed — AI will attempt to fix)
 
 ---
 
@@ -129,10 +133,10 @@ See [Using Images](/features/using-images) for best practices.
 ### When Things Work
 
 You'll see:
-1. Todo list with items being checked off
-2. Tool cards showing files being created/edited
-3. App rebuilding in the Simulator
-4. Success message when complete
+1. Code previews showing files being created/edited in real-time
+2. Tool cards indicating what actions are being taken
+3. App automatically building and launching in the Simulator
+4. Success when the build completes
 
 ### When Errors Occur
 
@@ -179,14 +183,20 @@ Your conversation is saved. Scroll up to see:
 - What the AI built
 - Earlier iterations
 
-### Clearing the Plan
+### Slash Commands
 
-To start fresh with a new approach:
-```
-/planclear
-```
+Nativeline supports several slash commands for power users:
 
-This clears the current plan but preserves your code.
+| Command | What it does |
+|---------|--------------|
+| `/help` | Shows all available commands |
+| `/plan` | Shows current plan status and progress |
+| `/planclear` | Clears the current plan (keeps your code) |
+| `/debug` | Toggles debug logging on/off |
+
+<Tip>
+  `/planclear` is useful when the AI seems stuck or you want to start a new approach. It clears the internal plan but preserves all your code.
+</Tip>
 
 ### Starting Fresh Conversation
 

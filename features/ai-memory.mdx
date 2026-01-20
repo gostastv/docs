@@ -80,14 +80,15 @@ The AI recalls the checkout context and picks up where it stopped.
 
 ## The .nativeline Folder
 
-Your project contains a hidden `.nativeline` folder that stores:
+Your project contains a hidden `.nativeline` folder that stores AI memory and project configuration:
 
 ```
 .nativeline/
-├── memory.md             # Project context and patterns
-├── project-settings.json # App settings (identity, permissions, etc.)
-├── conversation/         # Chat history
-└── plans/                # Active and completed plans
+├── settings.json   # App settings (identity, permissions, etc.)
+├── context.md      # Project context for the AI
+├── plans/          # Internal plan tracking
+├── patterns/       # Learned coding patterns
+└── memory/         # Additional context data
 ```
 
 <Warning>
